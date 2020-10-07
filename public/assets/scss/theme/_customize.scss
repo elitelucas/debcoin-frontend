@@ -1,0 +1,106 @@
+.theme-pannel-main {
+  background-color: $white;
+  position: fixed;
+  top: 30%;
+  right: 0;
+  z-index: 9;
+  padding: 0 5px;
+  box-shadow: 0 0 7px 1px rgba(158, 158, 158, 0.2);
+  ul {
+    li {
+      span {
+        padding: 0;
+        text-transform: uppercase;
+        color: #949494;
+        font-weight: 700;
+      }
+      a {
+        padding: 0;
+      }
+      display: flex;
+      padding: 10px 12px;
+      border-bottom: 1px solid #dadada;
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.header .bg {
+  // height: 150vh !important;
+  height: auto !important;
+}
+.font-14-18 {
+  font-size: 18px;
+}
+@media only screen and (max-width: 767px) {
+  footer.footer2.saas2 {
+    background: #333d7a !important;
+  }
+  .bannerHomePadding {
+    display: block;
+    padding-top: 0rem !important;
+    padding-bottom: 8rem !important;
+  }
+  .beforeFooterHeading h1 {
+    font-size: 20px !important;
+    line-height: 30px;
+  }
+}
+.beforeFooterHeading h1 {
+  font-family: Graphik_Semibold;
+  color: black;
+  font-size: 28px;
+}
+
+@media only screen and (max-width: 500px) {
+  .overFlow {
+    overflow-y: auto !important;
+  }
+  .mt-sm {
+    margin-top: 3rem !important;
+  }
+  .header .bg {
+    // height: 200vh !important;
+  }
+  .font-14-18 {
+    font-size: 14px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .bannerHomePadding {
+    margin-top: 8rem !important;
+    padding-bottom: 0rem !important;
+  }
+
+  .header.saas2 .center-text {
+    padding-top: 0px;
+  }
+  .header .bg {
+    // height: 180vh !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .header .saas2-content .center-text div {
+    width: 100%;
+  }
+  .header .bg {
+    // height: 190vh !important;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .bannerHomePadding {
+    margin-top: 8rem !important;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .header .bg {
+    // height: 130vh !important;
+  }
+  .bannerHomePadding {
+    margin-top: 10rem !important;
+  }
+}
