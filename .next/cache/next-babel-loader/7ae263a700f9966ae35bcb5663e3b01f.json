@@ -1,0 +1,1 @@
+{"ast":null,"code":"import axios from 'axios';\nvar baseURL = process.env.NODE_ENV === 'development' ? process.env.APP_URL : \"https://\".concat(process.env.SITE_NAME, \"/api\");\nvar publicFetch = axios.create({\n  baseURL: baseURL\n});\nexport { publicFetch, baseURL };","map":null,"metadata":{},"sourceType":"module"}

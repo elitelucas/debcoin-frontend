@@ -1,0 +1,241 @@
+{
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--8-1!node_modules/react-light-accordion/demo/css/index.css": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/font-awesome.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/flaticon.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/color-1.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/themify.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/slick.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/slick-theme.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!node_modules/bootstrap-scss/bootstrap.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!node_modules/bootstrap-scss/bootstrap.scss 0": 0,
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/flaticon.scss 0": 1,
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/font-awesome.scss 0": 2,
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/color-1.scss 0": 3,
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/themify.scss 0": 4,
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/slick.scss 0": 5,
+      "css node_modules/css-loader/index.js??ref--6-1!node_modules/sass-loader/lib/loader.js??ref--6-2!public/assets/scss/slick-theme.scss 0": 6,
+      "css node_modules/css-loader/index.js??ref--8-1!node_modules/react-light-accordion/demo/css/index.css 0": 7
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7
+    }
+  },
+  "chunks": {
+    "byName": {
+      "static/runtime/webpack.js": 0,
+      "commons": 1,
+      "styles": 2,
+      "static/runtime/main.js": 3,
+      "static/runtime/polyfills.js": 4,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\_app.js": 5,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\_error.js": 6,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\aml-kyc.js": 7,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\fraud-notice.js": 8,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\index.js": 9,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\GiftCardInformation.js": 10,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\StartYourOrder.js": 11,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\VerifySms.js": 12,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\accordian.js": 13,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\accordianold.js": 14,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\selectWallet.js": 15,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Accordian\\uploadImages.js": 16,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Banner\\Banner.js": 17,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\BeforeFooter\\BeforeFooter.js": 18,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Footer\\footer.js": 19,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Guide\\Guide.js": 20,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Header\\header.js": 21,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Header\\nav.js": 22,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Licenses\\Licenses.js": 23,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Settings\\Account.js": 24,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Settings\\BtcWallet.js": 25,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Settings\\Profile.js": 26,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\layouts\\sections\\Settings\\Verification.js": 27,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\limits-and-compliance.js": 28,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\login.js": 29,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\orders.js": 30,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\page\\404.js": 31,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\privacy-policy.js": 32,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\settings.js": 33,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\signup.js": 34,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\support.js": 35,
+      "static\\eNsvUaggX00q55vIdo8yB\\pages\\term-of-use.js": 36
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      2,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      3,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}

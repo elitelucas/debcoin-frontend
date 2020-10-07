@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import Head from "next/head";
 // import Custom Components
 import Header from "./layouts/sections/Header/header";
@@ -18,8 +18,36 @@ import {
   Label,
 } from "reactstrap";
 import ReCAPTCHA from "react-google-recaptcha";
-
+import { publicFetch } from '../utils/publicFetch';
+import { AuthContext } from '../utils/auth';
 const index = () => {
+  const [username,setUsername]=useState('');
+  const [phoneNumber,setPhoneNumber]=useState('');
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  const [terms,setTerms]=useState('');
+  const [privacy,setPrivacy]=useState(false);
+  const [captcha,setCaptcha]=useState(false);
+  const { setAuthState } = useContext(AuthContext);
+  const submit=async (e)=>{
+    e.preventDefault();
+    if(username!='' && phoneNumber!='' && email!='' &&
+    password!='' && terms!=false && privacy!=false)
+    {
+      try {
+        const { data } = await publicFetch.post('authenticate', {username,
+          password,email,phoneNumber,'g-recaptcha-response':captcha});
+        const { token, expiresAt, userInfo,message } = data;
+        setAuthState({ token, expiresAt, userInfo,message });
+        router.push('/', undefined, { shallow: true });
+       
+        
+       
+      } catch (error) {
+        console.log(error)
+      }  
+    }
+  };
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
@@ -27,7 +55,8 @@ const index = () => {
     document.body.style.setProperty("--dark", "#9647DB");
   });
   function onChange(value) {
-    console.log("Captcha value:", value);
+    setCaptcha(value);
+    // console.log("Captcha value:", value);
   }
   return (
     <div>
@@ -69,6 +98,8 @@ const index = () => {
                         name="usd"
                         id="usd"
                         placeholder="Username"
+                        value={username}
+                        onChange={(e)=>setUsername(e.target.value)}
                       />
                     </InputGroup>
                   </Col>
@@ -92,6 +123,8 @@ const index = () => {
                         name="number"
                         id="number"
                         placeholder="xxx-xxx-xxxx"
+                        value={phoneNumber}
+                        onChange={(e)=>setPhoneNumber(e.target.value)}
                       />
                     </InputGroup>
                   </Col>
@@ -115,6 +148,8 @@ const index = () => {
                         name="email"
                         id="email"
                         placeholder="name@example.com"
+                        value={email}
+                        onChange={(e)=>setEmail(e.target.value)}
                       />
                     </InputGroup>
                   </Col>
@@ -138,12 +173,14 @@ const index = () => {
                         name="password"
                         id="password"
                         placeholder="Password"
+                        value={password}
+                        onChange={(e)=>setPassword(e.target.value)}
                       />
                     </InputGroup>
                   </Col>
                   <Col sm={12}>
                     <FormGroup check className="mt-3">
-                      <Input type="checkbox" style={{ width: "unset" }} />{" "}
+                      <Input checked={terms} onChange={e=>setTerms(e.target.checked)} type="checkbox" style={{ width: "unset" }} />{" "}
                       <Label>
                         I've read and accept the
                         <a
@@ -160,7 +197,7 @@ const index = () => {
                   <Col sm={12}>
                     <FormGroup check className="mt-2">
                       <Label check>
-                        <Input type="checkbox" style={{ width: "unset" }} />{" "}
+                        <Input checked={privacy} onChange={e=>setPrivacy(e.target.checked)} type="checkbox" style={{ width: "unset" }} />{" "}
                         I've read and accept the{" "}
                         <a
                           href="/term-of-use"
@@ -181,7 +218,7 @@ const index = () => {
                     />
                   </Col>
                 </FormGroup>
-                <button className="btn primary-btn btn-default  mt-0">
+                <button className="btn primary-btn btn-default  mt-0" onClick={submit}>
                   Sign Up
                 </button>
               </Form>

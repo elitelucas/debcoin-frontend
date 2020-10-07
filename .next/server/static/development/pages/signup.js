@@ -88,10 +88,21 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
+
+/***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/map.js":
 /*!************************************************************!*\
@@ -5079,6 +5090,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react_google_recaptcha__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-google-recaptcha */ "react-google-recaptcha");
 /* harmony import */ var react_google_recaptcha__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_google_recaptcha__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _utils_publicFetch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/publicFetch */ "./utils/publicFetch.js");
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
 var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\signup.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -5092,7 +5105,76 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
+
 const index = () => {
+  const {
+    0: username,
+    1: setUsername
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: phoneNumber,
+    1: setPhoneNumber
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: email,
+    1: setEmail
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: password,
+    1: setPassword
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: terms,
+    1: setTerms
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: privacy,
+    1: setPrivacy
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const {
+    0: captcha,
+    1: setCaptcha
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const {
+    setAuthState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_9__["AuthContext"]);
+
+  const submit = async e => {
+    e.preventDefault();
+
+    if (username != '' && phoneNumber != '' && email != '' && password != '' && terms != false && privacy != false) {
+      try {
+        const {
+          data
+        } = await _utils_publicFetch__WEBPACK_IMPORTED_MODULE_8__["publicFetch"].post('authenticate', {
+          username,
+          password,
+          email,
+          phoneNumber,
+          'g-recaptcha-response': captcha
+        });
+        const {
+          token,
+          expiresAt,
+          userInfo,
+          message
+        } = data;
+        setAuthState({
+          token,
+          expiresAt,
+          userInfo,
+          message
+        });
+        router.push('/', undefined, {
+          shallow: true
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
@@ -5101,28 +5183,28 @@ const index = () => {
   });
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    setCaptcha(value); // console.log("Captcha value:", value);
   }
 
   return __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 62,
       columnNumber: 5
     }
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 63,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 64,
       columnNumber: 9
     }
   }, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -5131,7 +5213,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 66,
       columnNumber: 7
     }
   }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Row"], {
@@ -5139,7 +5221,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 67,
       columnNumber: 7
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5152,7 +5234,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 68,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -5160,7 +5242,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 73,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -5168,7 +5250,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 74,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -5176,7 +5258,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 75,
       columnNumber: 15
     }
   }, __jsx("h2", {
@@ -5184,28 +5266,28 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 76,
       columnNumber: 17
     }
   }, "Sign Up"), __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 77,
       columnNumber: 17
     }
   }, "Create your account to continue."), __jsx("hr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 78,
       columnNumber: 17
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Form"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 80,
       columnNumber: 15
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
@@ -5213,7 +5295,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 81,
       columnNumber: 17
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5222,7 +5304,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 82,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
@@ -5230,14 +5312,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 83,
       columnNumber: 21
     }
   }, "Username *"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 84,
       columnNumber: 21
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
@@ -5245,7 +5327,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 85,
       columnNumber: 23
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], {
@@ -5257,7 +5339,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 86,
       columnNumber: 25
     }
   }, __jsx("i", {
@@ -5265,7 +5347,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 93,
       columnNumber: 27
     }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
@@ -5273,10 +5355,12 @@ const index = () => {
     name: "usd",
     id: "usd",
     placeholder: "Username",
+    value: username,
+    onChange: e => setUsername(e.target.value),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 96,
       columnNumber: 23
     }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
@@ -5284,7 +5368,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 107,
       columnNumber: 17
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5292,7 +5376,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 108,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
@@ -5300,14 +5384,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 109,
       columnNumber: 21
     }
   }, "Mobile Number *"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 110,
       columnNumber: 21
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
@@ -5315,7 +5399,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 111,
       columnNumber: 23
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], {
@@ -5327,7 +5411,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 112,
       columnNumber: 25
     }
   }, "+1")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
@@ -5335,10 +5419,12 @@ const index = () => {
     name: "number",
     id: "number",
     placeholder: "xxx-xxx-xxxx",
+    value: phoneNumber,
+    onChange: e => setPhoneNumber(e.target.value),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90,
+      lineNumber: 121,
       columnNumber: 23
     }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
@@ -5346,7 +5432,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 132,
       columnNumber: 17
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5354,7 +5440,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 133,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
@@ -5362,14 +5448,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 134,
       columnNumber: 21
     }
   }, "Email *"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 135,
       columnNumber: 21
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
@@ -5377,7 +5463,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 136,
       columnNumber: 23
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], {
@@ -5389,7 +5475,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 137,
       columnNumber: 25
     }
   }, __jsx("i", {
@@ -5397,7 +5483,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 143,
       columnNumber: 27
     }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
@@ -5405,10 +5491,12 @@ const index = () => {
     name: "email",
     id: "email",
     placeholder: "name@example.com",
+    value: email,
+    onChange: e => setEmail(e.target.value),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 146,
       columnNumber: 23
     }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
@@ -5416,7 +5504,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122,
+      lineNumber: 157,
       columnNumber: 17
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5424,7 +5512,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123,
+      lineNumber: 158,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
@@ -5432,14 +5520,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124,
+      lineNumber: 159,
       columnNumber: 21
     }
   }, "Password *"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125,
+      lineNumber: 160,
       columnNumber: 21
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
@@ -5447,7 +5535,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126,
+      lineNumber: 161,
       columnNumber: 23
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], {
@@ -5459,7 +5547,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127,
+      lineNumber: 162,
       columnNumber: 25
     }
   }, __jsx("i", {
@@ -5467,7 +5555,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 133,
+      lineNumber: 168,
       columnNumber: 27
     }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
@@ -5475,10 +5563,12 @@ const index = () => {
     name: "password",
     id: "password",
     placeholder: "Password",
+    value: password,
+    onChange: e => setPassword(e.target.value),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136,
+      lineNumber: 171,
       columnNumber: 23
     }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5486,7 +5576,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144,
+      lineNumber: 181,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
@@ -5495,10 +5585,12 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145,
+      lineNumber: 182,
       columnNumber: 21
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
+    checked: terms,
+    onChange: e => setTerms(e.target.checked),
     type: "checkbox",
     style: {
       width: "unset"
@@ -5506,14 +5598,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 146,
+      lineNumber: 183,
       columnNumber: 23
     }
   }), " ", __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147,
+      lineNumber: 184,
       columnNumber: 23
     }
   }, "I've read and accept the", __jsx("a", {
@@ -5525,7 +5617,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 186,
       columnNumber: 25
     }
   }, "Terms of service")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5533,7 +5625,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 160,
+      lineNumber: 197,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
@@ -5542,7 +5634,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161,
+      lineNumber: 198,
       columnNumber: 21
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
@@ -5550,10 +5642,12 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162,
+      lineNumber: 199,
       columnNumber: 23
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
+    checked: privacy,
+    onChange: e => setPrivacy(e.target.checked),
     type: "checkbox",
     style: {
       width: "unset"
@@ -5561,7 +5655,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163,
+      lineNumber: 200,
       columnNumber: 25
     }
   }), " ", "I've read and accept the", " ", __jsx("a", {
@@ -5573,7 +5667,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165,
+      lineNumber: 202,
       columnNumber: 25
     }
   }, "Privacy policy")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
@@ -5582,7 +5676,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 177,
+      lineNumber: 214,
       columnNumber: 19
     }
   }, __jsx(react_google_recaptcha__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -5591,29 +5685,30 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178,
+      lineNumber: 215,
       columnNumber: 21
     }
   }))), __jsx("button", {
     className: "btn primary-btn btn-default  mt-0",
+    onClick: submit,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 184,
+      lineNumber: 221,
       columnNumber: 17
     }
   }, "Sign Up")), __jsx("hr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 188,
+      lineNumber: 225,
       columnNumber: 15
     }
   }), __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 189,
+      lineNumber: 226,
       columnNumber: 15
     }
   }, "Already have an account?? ", __jsx("a", {
@@ -5621,14 +5716,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190,
+      lineNumber: 227,
       columnNumber: 43
     }
   }, "Login")))))), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 196,
+      lineNumber: 233,
       columnNumber: 7
     }
   }));
@@ -5649,7 +5744,132 @@ module.exports = JSON.parse("{\"v\":\"5.6.7\",\"fr\":30,\"ip\":0,\"op\":190,\"w\
 
 /***/ }),
 
-/***/ 5:
+/***/ "./utils/auth.js":
+/*!***********************!*\
+  !*** ./utils/auth.js ***!
+  \***********************/
+/*! exports provided: AuthContext, AuthProvider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthContext", function() { return AuthContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthProvider", function() { return AuthProvider; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\utils\\auth.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+const AuthContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
+const {
+  Provider
+} = AuthContext;
+
+const AuthProvider = ({
+  children
+}) => {
+  const {
+    0: authState,
+    1: setAuthState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({});
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
+    const token = localStorage.getItem('token');
+    const userInfo = localStorage.getItem('userInfo');
+    const expiresAt = localStorage.getItem('expiresAt');
+    const message = localStorage.getItem('message');
+    setAuthState({
+      token,
+      expiresAt,
+      userInfo: userInfo ? JSON.parse(userInfo) : {},
+      message
+    });
+  }, []);
+
+  const setAuthInfo = ({
+    token,
+    userInfo,
+    expiresAt,
+    message
+  }) => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userInfo', _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(userInfo));
+    localStorage.setItem('expiresAt', expiresAt);
+    localStorage.setItem('message', message);
+    setAuthState({
+      token,
+      userInfo,
+      expiresAt,
+      message
+    });
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('expiresAt');
+    localStorage.removeItem('message');
+    setAuthState({});
+  };
+
+  const isAuthenticated = () => {
+    if (!authState.token || !authState.expiresAt || authState.message === "not verified") {
+      return false;
+    }
+
+    return new Date().getTime() / 1000 < authState.expiresAt;
+  };
+
+  const isAdmin = () => {
+    return authState.userInfo && authState.userInfo.role === 'admin';
+  };
+
+  return __jsx(Provider, {
+    value: {
+      authState,
+      setAuthState: authInfo => setAuthInfo(authInfo),
+      logout,
+      isAuthenticated,
+      isAdmin
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 5
+    }
+  }, children);
+};
+
+
+
+/***/ }),
+
+/***/ "./utils/publicFetch.js":
+/*!******************************!*\
+  !*** ./utils/publicFetch.js ***!
+  \******************************/
+/*! exports provided: publicFetch, baseURL */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "publicFetch", function() { return publicFetch; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseURL", function() { return baseURL; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+const baseURL =  true ? undefined : undefined;
+const publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL
+});
+
+
+/***/ }),
+
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/signup.js ***!
   \*******************************/
@@ -5658,6 +5878,28 @@ module.exports = JSON.parse("{\"v\":\"5.6.7\",\"fr\":30,\"ip\":0,\"op\":190,\"w\
 
 module.exports = __webpack_require__(/*! D:\Working_place\Hossam\debcoins_next\pages\signup.js */"./pages/signup.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
+
+/***/ "core-js/library/fn/json/stringify":
+/*!****************************************************!*\
+  !*** external "core-js/library/fn/json/stringify" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ }),
 

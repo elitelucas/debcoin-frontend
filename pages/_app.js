@@ -5,7 +5,8 @@ import NProgress from "nprogress";
 import getConfig from "next/config";
 import { ToastContainer } from "react-toastify";
 import CookieConsent, { Cookies } from "react-cookie-consent";
-
+import { AuthProvider } from '../utils/auth';
+import { FetchProvider } from '../utils/authFetch'
 import "bootstrap-scss";
 import "../public/assets/scss/flaticon.scss";
 import "../public/assets/scss/font-awesome.scss";
@@ -97,19 +98,21 @@ function MyFunctionComponent({ children }) {
 
 export default function MyApp({ Component, pageProps, graphql }) {
   return (
-    <div>
-      <MyFunctionComponent>
-        <Component {...pageProps} />
-        <CookieConsent style={{ textAlign: "center" }}>
-          This website uses cookies to enhance the user experience.
-          <a
-            href="/privacy-policy"
-            style={{ paddingLeft: "5px", textDecoration: "underline" }}>
-            Learn More
-          </a>
-        </CookieConsent>
-      </MyFunctionComponent>
-      <ToastContainer />
-    </div>
+    <AuthProvider>
+      <FetchProvider>
+        <MyFunctionComponent>
+          <Component {...pageProps} />
+          <CookieConsent style={{ textAlign: "center" }}>
+            This website uses cookies to enhance the user experience.
+            <a
+              href="/privacy-policy"
+              style={{ paddingLeft: "5px", textDecoration: "underline" }}>
+              Learn More
+            </a>
+          </CookieConsent>
+        </MyFunctionComponent>
+        <ToastContainer />
+      </FetchProvider>
+    </AuthProvider>
   );
 }

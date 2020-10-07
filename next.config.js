@@ -20,5 +20,9 @@ module.exports = withImages(withSass(withCss({
         },
         cssLoaderOptions: {
           url: false
+        },
+        env: {
+          APP_URL:process.env.APP_URL,
+          CAPTCHA_SITE_KEY:process.env.CAPTCHA_SITE_KEY
         }
       })))
