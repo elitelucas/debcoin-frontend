@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
 
 const Header = (props) => {
+  console.log(props.shop);
   const [show, setShow] = useState(false);
   const [sidebar, setSidebar] = useState(false);
   const [search, setSearch] = useState(false);
@@ -40,7 +41,7 @@ const Header = (props) => {
                 </a>
               </div>
               <Nav />
-              {props.shop && (
+              {props.shop===true && (
                 <div className="top-header-right">
                   <ul>
                     <li className="search">

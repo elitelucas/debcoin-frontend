@@ -45,6 +45,7 @@ const AuthProvider = ({ children }) => {
     if (!authState.token || !authState.expiresAt || authState.message==="not verified") {
       return false
     }
+    console.log(new Date().getTime() / 1000 +" < "+ authState.expiresAt);
     return new Date().getTime() / 1000 < authState.expiresAt
   }
 

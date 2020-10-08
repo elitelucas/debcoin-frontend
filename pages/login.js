@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState,useContext } from "react";
 import Head from "next/head";
+import { useRouter } from 'next/router';
 // import Custom Components
 import Header from "./layouts/sections/Header/header";
-
+import { publicFetch } from '../utils/publicFetch';
+import { AuthContext } from '../utils/auth';
 import FooterSection from "./layouts/sections/Footer/footer";
 import {
   Row,
@@ -17,6 +19,30 @@ import {
 } from "reactstrap";
 
 const index = () => {
+  const router = useRouter();
+  const [username,setUsername]=useState(''); 
+  const [password,setPassword]=useState('');
+  const { setAuthState } = useContext(AuthContext);
+  const submit=async (e)=>{
+    e.preventDefault();
+    if(username!=''&& password!='')
+    {
+      try {
+        const { data } = await publicFetch.post('authenticate', {username,
+          password});
+        const { token, expiresAt, userInfo,message } = data;
+        var today = new Date();
+        today.setHours(today.getHours() + parseFloat(expiresAt));
+        setAuthState({ token, expiresAt:today.getTime()/1000, userInfo,message });
+        router.push('/', undefined, { shallow: true });
+       
+        
+       
+      } catch (error) {
+        console.log(error)
+      }  
+    }
+  };
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
@@ -46,7 +72,7 @@ const index = () => {
               <Form>
                 <FormGroup row>
                   <Col sm={12} className="m-auto">
-                    <Label for="Email address">Email address</Label>
+                    <Label for="Email address">Email address or Username</Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText
@@ -62,7 +88,9 @@ const index = () => {
                         type="text"
                         name="usd"
                         id="usd"
-                        placeholder="USD"
+                        value={username}
+                        onChange={(e)=>setUsername(e.target.value)}
+                        placeholder="Email & Username"
                       />
                     </InputGroup>
                   </Col>
@@ -70,8 +98,7 @@ const index = () => {
                 <FormGroup row>
                   <Col sm={12}>
                     <Label
-                      for="Password
-">
+                      for="Password">
                       Password
                     </Label>
                     <InputGroup>
@@ -90,11 +117,13 @@ const index = () => {
                         name="password"
                         id="password"
                         placeholder="Password"
+                        value={password}
+                        onChange={(e)=>setPassword(e.target.value)}
                       />
                     </InputGroup>
                   </Col>
                 </FormGroup>
-                <button className="btn primary-btn btn-default  mt-0">
+                <button className="btn primary-btn btn-default  mt-0" onClick={submit}>
                   Sign in
                 </button>
               </Form>

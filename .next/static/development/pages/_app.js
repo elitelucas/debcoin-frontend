@@ -19080,6 +19080,7 @@ var AuthProvider = function AuthProvider(_ref) {
       return false;
     }
 
+    console.log(new Date().getTime() / 1000 + " < " + authState.expiresAt);
     return new Date().getTime() / 1000 < authState.expiresAt;
   };
 
@@ -19100,7 +19101,7 @@ var AuthProvider = function AuthProvider(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 57,
       columnNumber: 5
     }
   }, children);
@@ -19199,7 +19200,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var baseURL =  true ? undefined : undefined;
+var baseURL = "https://64.227.30.137:443" + "/api";
 var publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: baseURL
 });

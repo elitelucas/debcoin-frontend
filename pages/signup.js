@@ -1,5 +1,6 @@
 import React, { useEffect, useState,useContext } from "react";
 import Head from "next/head";
+import { useRouter } from 'next/router'
 // import Custom Components
 import Header from "./layouts/sections/Header/header";
 // import Header from "../containers/common/header";
@@ -21,6 +22,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
 const index = () => {
+  const router = useRouter();
   const [username,setUsername]=useState('');
   const [phoneNumber,setPhoneNumber]=useState('');
   const [email,setEmail]=useState('');
@@ -35,10 +37,12 @@ const index = () => {
     password!='' && terms!=false && privacy!=false)
     {
       try {
-        const { data } = await publicFetch.post('authenticate', {username,
+        const { data } = await publicFetch.post('signup', {username,
           password,email,phoneNumber,'g-recaptcha-response':captcha});
         const { token, expiresAt, userInfo,message } = data;
-        setAuthState({ token, expiresAt, userInfo,message });
+        var today = new Date();
+        today.setHours(today.getHours() + parseFloat(expiresAt));
+        setAuthState({ token, expiresAt:today.getTime()/1000, userInfo,message });
         router.push('/', undefined, { shallow: true });
        
         

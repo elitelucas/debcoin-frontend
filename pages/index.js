@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useContext } from "react";
 import Head from "next/head";
 
 import Header from "./layouts/sections/Header/header";
@@ -9,7 +9,10 @@ import FooterSection from "./layouts/sections/Footer/footer";
 import BeforeFooter from "./layouts/sections/BeforeFooter/BeforeFooter";
 import License from "./layouts/sections/Licenses/Licenses";
 import Guide from "./layouts/sections/Guide/Guide";
+import { publicFetch } from '../utils/publicFetch';
+import { AuthContext } from '../utils/auth';
 const index = () => {
+  const { isAuthenticated } = useContext(AuthContext);
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
@@ -23,7 +26,7 @@ const index = () => {
         <title>DebCoins </title>
       </Head>
 
-      <Header className="saas2" isHome={true} />
+      <Header className="saas2" isHome={true} shop={isAuthenticated()} />
 
       <BannerSection />
       <Guide />
