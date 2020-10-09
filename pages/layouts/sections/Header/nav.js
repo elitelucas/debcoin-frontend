@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-const Nav = () => {
+const Nav = (props) => {
   const [sidebar, setSidebar] = useState(false);
 
   function closeSidebar() {
@@ -41,24 +41,29 @@ const Nav = () => {
             Fraud Notice
           </Link>
         </li> */}
-        <li className="mega-menu">
-          <Link href="/login" className="active">
-            <a
-              className="btn btn-default primary-btn "
-              style={{ padding: "10px 20px", marginRight: "5px" }}>
-              Login
-            </a>
-          </Link>
-        </li>
-        <li className="mega-menu">
-          <Link href="/signup" className="active">
-            <a
-              className="btn btn-default primary-btn transparent"
-              style={{ padding: "10px 20px" }}>
-              Sign Up
-            </a>
-          </Link>
-        </li>
+        {props.isAuth===false ? (
+          <>
+            <li className="mega-menu">
+              <Link href="/login" className="active">
+                <a
+                  className="btn btn-default primary-btn "
+                  style={{ padding: "10px 20px", marginRight: "5px" }}>
+                  Login
+                </a>
+              </Link>
+            </li>
+            <li className="mega-menu">
+              <Link href="/signup" className="active">
+                <a
+                  className="btn btn-default primary-btn transparent"
+                  style={{ padding: "10px 20px" }}>
+                  Sign Up
+                </a>
+              </Link>
+            </li>
+          </>
+        ) : ''}
+        
       </ul>
     </div>
   );

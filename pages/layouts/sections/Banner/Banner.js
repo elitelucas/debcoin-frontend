@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import Lottie from "react-lottie";
 import Accordian from "../Accordian/accordian";
 import animationData from "../../../../public/assets/animation/animation.json";
-const Banner = () => {
+const Banner = (props) => {
   const scrollToRef = (val) => {
     document.querySelector(`#${val}`).scrollIntoView({ behavior: "smooth" });
   };
@@ -28,7 +28,7 @@ const Banner = () => {
                 justifyContent: "center",
               }}>
               <Col lg="6" className=" order-2 order-lg-1">
-                <Accordian />
+                <Accordian price={props.price} getRate={props.getRate} />
               </Col>
               <Col lg="6" className="order-1 order-lg-2">
                 <div className="center-text bannerHomePadding ">
@@ -69,6 +69,7 @@ const Banner = () => {
             alt=""
             className="img-fluid set-abs background-animate"
             src="/assets/images/background2.png"
+            style={{ pointerEvents: "none" }}
           />
 
           {/* <div className="set-abs round move-right-left">

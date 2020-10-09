@@ -14,7 +14,7 @@ import "../public/assets/scss/color-1.scss";
 import "../public/assets/scss/themify.scss";
 import "../public/assets/scss/slick.scss";
 import "../public/assets/scss/slick-theme.scss";
-
+import 'react-toastify/dist/ReactToastify.css';
 const { publicRuntimeConfig = {} } = getConfig() || {};
 
 NProgress.configure({ showSpinner: publicRuntimeConfig.NProgressShowSpinner });
@@ -40,7 +40,7 @@ function MyFunctionComponent({ children }) {
     setTimeout(() => {
       setLoader(false);
     }, 1500);
-
+    
     // Tap to Top Scroll
     const handleScroll = () => {
       const currentScrollY = window.scrollY;

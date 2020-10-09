@@ -5,7 +5,7 @@ const { Provider } = AuthContext
 
 const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({})
-
+  const [loading,setLoading]=useState(true);
   useEffect(() => {
     const token = localStorage.getItem('token')
     const userInfo = localStorage.getItem('userInfo')
@@ -16,7 +16,8 @@ const AuthProvider = ({ children }) => {
       expiresAt,
       userInfo: userInfo ? JSON.parse(userInfo) : {},
       message
-    })
+    });
+    setLoading(false);
   }, [])
 
   const setAuthInfo = ({ token, userInfo, expiresAt,message }) => {
@@ -45,7 +46,6 @@ const AuthProvider = ({ children }) => {
     if (!authState.token || !authState.expiresAt || authState.message==="not verified") {
       return false
     }
-    console.log(new Date().getTime() / 1000 +" < "+ authState.expiresAt);
     return new Date().getTime() / 1000 < authState.expiresAt
   }
 
@@ -60,7 +60,8 @@ const AuthProvider = ({ children }) => {
         setAuthState: (authInfo) => setAuthInfo(authInfo),
         logout,
         isAuthenticated,
-        isAdmin
+        isAdmin,
+        loading
       }}
     >
       {children}

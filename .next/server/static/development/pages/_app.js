@@ -170,6 +170,17 @@ function _extends() {
 
 /***/ }),
 
+/***/ "./node_modules/react-toastify/dist/ReactToastify.css":
+/*!************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./pages/_app.js":
 /*!***********************!*\
   !*** ./pages/_app.js ***!
@@ -211,9 +222,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_assets_scss_slick_scss__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_public_assets_scss_slick_scss__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var _public_assets_scss_slick_theme_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../public/assets/scss/slick-theme.scss */ "./public/assets/scss/slick-theme.scss");
 /* harmony import */ var _public_assets_scss_slick_theme_scss__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_public_assets_scss_slick_theme_scss__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_17__);
 
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\_app.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -559,7 +573,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\utils\\auth.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\auth.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 const AuthContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
@@ -574,6 +588,10 @@ const AuthProvider = ({
     0: authState,
     1: setAuthState
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({});
+  const {
+    0: loading,
+    1: setLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
     const token = localStorage.getItem('token');
     const userInfo = localStorage.getItem('userInfo');
@@ -585,6 +603,7 @@ const AuthProvider = ({
       userInfo: userInfo ? JSON.parse(userInfo) : {},
       message
     });
+    setLoading(false);
   }, []);
 
   const setAuthInfo = ({
@@ -618,7 +637,6 @@ const AuthProvider = ({
       return false;
     }
 
-    console.log(new Date().getTime() / 1000 + " < " + authState.expiresAt);
     return new Date().getTime() / 1000 < authState.expiresAt;
   };
 
@@ -632,7 +650,8 @@ const AuthProvider = ({
       setAuthState: authInfo => setAuthInfo(authInfo),
       logout,
       isAuthenticated,
-      isAdmin
+      isAdmin,
+      loading
     },
     __self: undefined,
     __source: {
@@ -667,7 +686,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth */ "./utils/auth.js");
 /* harmony import */ var _publicFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./publicFetch */ "./utils/publicFetch.js");
 
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\utils\\authFetch.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\authFetch.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 

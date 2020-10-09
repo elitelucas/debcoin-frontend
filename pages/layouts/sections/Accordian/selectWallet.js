@@ -1,6 +1,9 @@
-import React from "react";
-import { FormGroup, Input } from "reactstrap";
+import React, { useState } from "react";
+import { FormGroup, Input, Spinner, Button } from "reactstrap";
+import AddWallet from "../Settings/AddWallet";
 const selectWallet = (props) => {
+  const [modal4, setModal4] = useState(false);
+  const toggleModal4 = () => setModal4(!modal4);
   return (
     <div>
       <div class=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
@@ -26,16 +29,30 @@ const selectWallet = (props) => {
           <br />
           MYBTC
         </div>
+        <p style={{ color: "black", display: "block" }}>
+          No wallet has been registered with your account.
+        </p>
+        <br />
+        <p style={{ color: "black" }}>
+          <a onClick={toggleModal4}>Add a wallet now</a>
+        </p>
       </div>
-      <button
+      <AddWallet
+        toggle={() => {
+          toggleModal4();
+        }}
+        isOpen={modal4}
+      />
+      <Button
         className="btn primary-btn btn-default text-uppercase mt-3"
+        disabled={props.isLoading}
         onClick={(e) => {
           e.preventDefault();
 
           props.isClicked();
         }}>
-        select
-      </button>
+        {props.isLoading ? <Spinner size="sm" color="primary" /> : "Select"}
+      </Button>
     </div>
   );
 };

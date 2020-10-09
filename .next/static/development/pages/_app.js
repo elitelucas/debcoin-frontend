@@ -18736,9 +18736,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_assets_scss_slick_scss__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_public_assets_scss_slick_scss__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var _public_assets_scss_slick_theme_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../public/assets/scss/slick-theme.scss */ "./public/assets/scss/slick-theme.scss");
 /* harmony import */ var _public_assets_scss_slick_theme_scss__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_public_assets_scss_slick_theme_scss__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_17__);
 
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\_app.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -19023,7 +19026,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\utils\\auth.js";
+    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\auth.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -19037,6 +19040,10 @@ var AuthProvider = function AuthProvider(_ref) {
       authState = _useState[0],
       setAuthState = _useState[1];
 
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var token = localStorage.getItem('token');
     var userInfo = localStorage.getItem('userInfo');
@@ -19048,6 +19055,7 @@ var AuthProvider = function AuthProvider(_ref) {
       userInfo: userInfo ? JSON.parse(userInfo) : {},
       message: message
     });
+    setLoading(false);
   }, []);
 
   var setAuthInfo = function setAuthInfo(_ref2) {
@@ -19080,7 +19088,6 @@ var AuthProvider = function AuthProvider(_ref) {
       return false;
     }
 
-    console.log(new Date().getTime() / 1000 + " < " + authState.expiresAt);
     return new Date().getTime() / 1000 < authState.expiresAt;
   };
 
@@ -19096,7 +19103,8 @@ var AuthProvider = function AuthProvider(_ref) {
       },
       logout: logout,
       isAuthenticated: isAuthenticated,
-      isAdmin: isAdmin
+      isAdmin: isAdmin,
+      loading: loading
     },
     __self: _this,
     __source: {
@@ -19133,7 +19141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\utils\\authFetch.js";
+    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\authFetch.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 

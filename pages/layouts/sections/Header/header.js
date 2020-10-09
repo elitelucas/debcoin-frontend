@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Nav from "./nav";
 import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
+import { AuthContext } from '../../../../utils/auth';
 
 const Header = (props) => {
-  console.log(props.shop);
+  const {isAuthenticated}=useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [sidebar, setSidebar] = useState(false);
   const [search, setSearch] = useState(false);
@@ -40,32 +41,11 @@ const Header = (props) => {
                   <i aria-hidden="true" className="fa fa-bars text-white"></i>
                 </a>
               </div>
-              <Nav />
-              {props.shop===true && (
+              <Nav isAuth={isAuthenticated()} />
+              {isAuthenticated()===true && (
                 <div className="top-header-right">
                   <ul>
-                    <li className="search">
-                      <a href="#" onClick={() => setSearch(!search)}>
-                        <i className="icon-search"></i>
-                      </a>
-                      <div
-                        aria-labelledby="dropdownMenuButton"
-                        className={`dropdown-menu ${
-                          search && `show`
-                        } dropdown-menu-right`}>
-                        <form className="form-inline search-form">
-                          <div className="form-group">
-                            <label className="sr-only">Email</label>
-                            <input
-                              className="form-control-plaintext"
-                              placeholder="Search...."
-                              type="search"
-                            />
-                            <span className="d-sm-none mobile-search"></span>
-                          </div>
-                        </form>
-                      </div>
-                    </li>
+                    
 
                     <li className="account ">
                       <a href="#" onClick={() => setShow(!show)}>
@@ -75,16 +55,12 @@ const Header = (props) => {
                         className={`dropdown-menu ${
                           show && `show`
                         } dropdown-menu-right`}>
-                        <Link href={"/shop/auth/login"}>
-                          <a href="#">Login</a>
+                        <Link href={"/logout"}>
+                          <a href="#">Logout</a>
                         </Link>
-                        <a href="#">Account</a>
-                        <Link href={"/shop/wishlist"}>
-                          <a href="#">Wishlist</a>
-                        </Link>
-                        <Link href={"/shop/checkout"}>
-                          <a href="#">checkout</a>
-                        </Link>
+                        <Link href={"/settings"}>
+                          <a href="#">Profile</a>
+                        </Link>                       
                       </div>
                     </li>
                   </ul>

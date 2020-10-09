@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Collapse,
+  Spinner,
   Button,
-  CardBody,
-  Card,
-  CardHeader,
   Label,
-  Container,
   Row,
   Col,
   Form,
   FormGroup,
   Input,
-  FormText,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
 } from "reactstrap";
+import NumberFormat from "react-number-format";
+
 const giftCardInformation = (props) => {
   return (
     <div>
@@ -38,12 +32,8 @@ const giftCardInformation = (props) => {
             <Col md="12">
               <FormGroup>
                 <Label for="Card Number">Card Number *</Label>
-                <Input
-                  type="text"
-                  name="cardNumber"
-                  id="cardNumber"
-                  placeholder="Prepaid Giftcard Number"
-                />
+
+                <NumberFormat format="#### #### #### ####" mask="_" />
               </FormGroup>
             </Col>
             <Col md="6">
@@ -69,15 +59,17 @@ const giftCardInformation = (props) => {
               </FormGroup>
             </Col>
           </Row>
-          <button
+
+          <Button
             className="btn primary-btn btn-default text-uppercase mt-0"
+            disabled={props.isLoading}
             onClick={(e) => {
               e.preventDefault();
 
               props.isClicked();
             }}>
-            Verify
-          </button>
+            {props.isLoading ? <Spinner size="sm" color="primary" /> : "Verify"}
+          </Button>
         </Form>
       </div>
     </div>

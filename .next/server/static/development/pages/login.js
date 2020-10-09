@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2119,7 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\layouts\\sections\\Footer\\footer.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Footer\\footer.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -2634,15 +2634,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\layouts\\sections\\Header\\header.js";
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/auth */ "./utils/auth.js");
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Header\\header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 
+
 const Header = props => {
-  console.log(props.shop);
+  const {
+    isAuthenticated
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["AuthContext"]);
   const {
     0: show,
     1: setShow
@@ -2670,35 +2674,35 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 19,
       columnNumber: 5
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 27,
       columnNumber: 7
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 28,
       columnNumber: 9
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 29,
       columnNumber: 11
     }
   }, __jsx("nav", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 30,
       columnNumber: 13
     }
   }, __jsx("a", {
@@ -2707,7 +2711,7 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 31,
       columnNumber: 15
     }
   }, __jsx("img", {
@@ -2720,7 +2724,7 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 32,
       columnNumber: 17
     }
   })), __jsx("div", {
@@ -2728,7 +2732,7 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 39,
       columnNumber: 15
     }
   }, __jsx("a", {
@@ -2737,7 +2741,7 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 17
     }
   }, __jsx("i", {
@@ -2746,113 +2750,38 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 41,
       columnNumber: 19
     }
   }))), __jsx(_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    isAuth: isAuthenticated(),
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 44,
       columnNumber: 15
     }
-  }), props.shop === true && __jsx("div", {
+  }), isAuthenticated() === true && __jsx("div", {
     className: "top-header-right",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 46,
       columnNumber: 17
     }
   }, __jsx("ul", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 47,
       columnNumber: 19
     }
   }, __jsx("li", {
-    className: "search",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 21
-    }
-  }, __jsx("a", {
-    href: "#",
-    onClick: () => setSearch(!search),
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 23
-    }
-  }, __jsx("i", {
-    className: "icon-search",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49,
-      columnNumber: 25
-    }
-  })), __jsx("div", {
-    "aria-labelledby": "dropdownMenuButton",
-    className: `dropdown-menu ${search && `show`} dropdown-menu-right`,
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 23
-    }
-  }, __jsx("form", {
-    className: "form-inline search-form",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 25
-    }
-  }, __jsx("div", {
-    className: "form-group",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 27
-    }
-  }, __jsx("label", {
-    className: "sr-only",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 29
-    }
-  }, "Email"), __jsx("input", {
-    className: "form-control-plaintext",
-    placeholder: "Search....",
-    type: "search",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 29
-    }
-  }), __jsx("span", {
-    className: "d-sm-none mobile-search",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 29
-    }
-  }))))), __jsx("li", {
     className: "account ",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 50,
       columnNumber: 21
     }
   }, __jsx("a", {
@@ -2861,7 +2790,7 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 51,
       columnNumber: 23
     }
   }, __jsx("i", {
@@ -2869,7 +2798,7 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 52,
       columnNumber: 25
     }
   })), __jsx("div", {
@@ -2877,15 +2806,15 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 54,
       columnNumber: 23
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/shop/auth/login",
+    href: "/logout",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 58,
       columnNumber: 25
     }
   }, __jsx("a", {
@@ -2893,23 +2822,15 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 59,
       columnNumber: 27
     }
-  }, "Login")), __jsx("a", {
-    href: "#",
+  }, "Logout")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/settings",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
-      columnNumber: 25
-    }
-  }, "Account"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/shop/wishlist",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 61,
       columnNumber: 25
     }
   }, __jsx("a", {
@@ -2917,26 +2838,10 @@ const Header = props => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 62,
       columnNumber: 27
     }
-  }, "Wishlist")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/shop/checkout",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85,
-      columnNumber: 25
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 86,
-      columnNumber: 27
-    }
-  }, "checkout")))))))))));
+  }, "Profile")))))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -2956,12 +2861,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\layouts\\sections\\Header\\nav.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Header\\nav.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const Nav = () => {
+const Nav = props => {
   const {
     0: sidebar,
     1: setSidebar
@@ -3081,13 +2986,13 @@ const Nav = () => {
       lineNumber: 35,
       columnNumber: 11
     }
-  }, "Limits & Compliance")), __jsx("li", {
+  }, "Limits & Compliance")), props.isAuth === false ? __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("li", {
     className: "mega-menu",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 9
+      lineNumber: 46,
+      columnNumber: 13
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/login",
@@ -3095,8 +3000,8 @@ const Nav = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
-      columnNumber: 11
+      lineNumber: 47,
+      columnNumber: 15
     }
   }, __jsx("a", {
     className: "btn btn-default primary-btn ",
@@ -3107,16 +3012,16 @@ const Nav = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 13
+      lineNumber: 48,
+      columnNumber: 17
     }
   }, "Login"))), __jsx("li", {
     className: "mega-menu",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 9
+      lineNumber: 55,
+      columnNumber: 13
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signup",
@@ -3124,8 +3029,8 @@ const Nav = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 11
+      lineNumber: 56,
+      columnNumber: 15
     }
   }, __jsx("a", {
     className: "btn btn-default primary-btn transparent",
@@ -3135,10 +3040,10 @@ const Nav = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 13
+      lineNumber: 57,
+      columnNumber: 17
     }
-  }, "Sign Up")))));
+  }, "Sign Up")))) : ''));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
@@ -3166,10 +3071,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_publicFetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/publicFetch */ "./utils/publicFetch.js");
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
 /* harmony import */ var _layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./layouts/sections/Footer/footer */ "./pages/layouts/sections/Footer/footer.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-toastify */ "react-toastify");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_9__);
 
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\pages\\login.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\login.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -3181,8 +3088,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
 const index = () => {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["useRouter"])();
+  const {
+    0: loading,
+    1: setLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
   const {
     0: username,
     1: setUsername
@@ -3197,6 +3109,7 @@ const index = () => {
 
   const submit = async e => {
     e.preventDefault();
+    setLoading(true);
 
     if (username != '' && password != '') {
       try {
@@ -3220,11 +3133,11 @@ const index = () => {
           userInfo,
           message
         });
-        router.push('/', undefined, {
-          shallow: true
-        });
+        router.push('/');
       } catch (error) {
         console.log(error);
+        react_toastify__WEBPACK_IMPORTED_MODULE_8__["toast"].error("username or password incorrect !");
+        setLoading(false);
       }
     }
   };
@@ -3239,21 +3152,21 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 60,
       columnNumber: 5
     }
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 61,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 62,
       columnNumber: 9
     }
   }, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -3262,18 +3175,18 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 64,
       columnNumber: 7
     }
-  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
+  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Row"], {
     className: "mb-5",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 65,
       columnNumber: 7
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Col"], {
     sm: "12",
     md: "4",
     className: "ml-auto mr-auto",
@@ -3283,7 +3196,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 66,
       columnNumber: 9
     }
   }, __jsx("div", {
@@ -3291,7 +3204,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 71,
       columnNumber: 11
     }
   }, __jsx("div", {
@@ -3299,7 +3212,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 72,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -3307,7 +3220,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 73,
       columnNumber: 15
     }
   }, __jsx("h2", {
@@ -3315,71 +3228,71 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 74,
       columnNumber: 17
     }
   }, "Login"), __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 75,
       columnNumber: 17
     }
   }, "Sign in to your account to continue."), __jsx("hr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 76,
       columnNumber: 17
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Form"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 78,
       columnNumber: 15
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
     row: true,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 79,
       columnNumber: 17
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Col"], {
     sm: 12,
     className: "m-auto",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 80,
       columnNumber: 19
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
     for: "Email address",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 21
+      lineNumber: 81,
+      columnNumber: 19
     }
-  }, "Email address or Username"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], {
+  }, "Email address or Username"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["InputGroup"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 82,
       columnNumber: 21
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["InputGroupAddon"], {
     addonType: "prepend",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 83,
       columnNumber: 23
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["InputGroupText"], {
     style: {
       borderTopLeftRadius: "20px",
       borderBottomLeftRadius: "20px",
@@ -3388,7 +3301,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 84,
       columnNumber: 25
     }
   }, __jsx("i", {
@@ -3396,10 +3309,10 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 90,
       columnNumber: 27
     }
-  }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+  }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
     type: "text",
     name: "usd",
     id: "usd",
@@ -3409,49 +3322,49 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
+      lineNumber: 93,
       columnNumber: 23
     }
-  })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+  })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
     row: true,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98,
+      lineNumber: 104,
       columnNumber: 17
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Col"], {
     sm: 12,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 105,
       columnNumber: 19
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
     for: "Password",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 106,
       columnNumber: 21
     }
-  }, "Password"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], {
+  }, "Password"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["InputGroup"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 110,
       columnNumber: 21
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["InputGroupAddon"], {
     addonType: "prepend",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105,
+      lineNumber: 111,
       columnNumber: 23
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["InputGroupText"], {
     style: {
       borderTopLeftRadius: "20px",
       borderBottomLeftRadius: "20px",
@@ -3460,7 +3373,7 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106,
+      lineNumber: 112,
       columnNumber: 25
     }
   }, __jsx("i", {
@@ -3468,10 +3381,10 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
+      lineNumber: 118,
       columnNumber: 27
     }
-  }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+  }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
     type: "password",
     name: "password",
     id: "password",
@@ -3481,30 +3394,39 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115,
+      lineNumber: 121,
       columnNumber: 23
     }
-  })))), __jsx("button", {
+  })))), loading === true ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Spinner"], {
+    size: "sm",
+    color: "primary",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 133,
+      columnNumber: 19
+    }
+  }) : __jsx("button", {
     className: "btn primary-btn btn-default  mt-0",
     onClick: submit,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126,
-      columnNumber: 17
+      lineNumber: 135,
+      columnNumber: 19
     }
   }, "Sign in")), __jsx("hr", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130,
+      lineNumber: 141,
       columnNumber: 15
     }
   }), __jsx("p", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131,
+      lineNumber: 142,
       columnNumber: 15
     }
   }, "Not registered? ", __jsx("a", {
@@ -3512,14 +3434,14 @@ const index = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 132,
+      lineNumber: 143,
       columnNumber: 33
     }
   }, " Create account")))))), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138,
+      lineNumber: 149,
       columnNumber: 7
     }
   }));
@@ -3545,7 +3467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next\\utils\\auth.js";
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\auth.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 const AuthContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
@@ -3560,6 +3482,10 @@ const AuthProvider = ({
     0: authState,
     1: setAuthState
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({});
+  const {
+    0: loading,
+    1: setLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
     const token = localStorage.getItem('token');
     const userInfo = localStorage.getItem('userInfo');
@@ -3571,6 +3497,7 @@ const AuthProvider = ({
       userInfo: userInfo ? JSON.parse(userInfo) : {},
       message
     });
+    setLoading(false);
   }, []);
 
   const setAuthInfo = ({
@@ -3604,7 +3531,6 @@ const AuthProvider = ({
       return false;
     }
 
-    console.log(new Date().getTime() / 1000 + " < " + authState.expiresAt);
     return new Date().getTime() / 1000 < authState.expiresAt;
   };
 
@@ -3618,7 +3544,8 @@ const AuthProvider = ({
       setAuthState: authInfo => setAuthInfo(authInfo),
       logout,
       isAuthenticated,
-      isAdmin
+      isAdmin,
+      loading
     },
     __self: undefined,
     __source: {
@@ -3655,14 +3582,14 @@ const publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /*!******************************!*\
   !*** multi ./pages/login.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Working_place\Hossam\debcoins_next\pages\login.js */"./pages/login.js");
+module.exports = __webpack_require__(/*! D:\Working_place\Hossam\debcoins_next1\pages\login.js */"./pages/login.js");
 
 
 /***/ }),
@@ -3840,6 +3767,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-toastify":
+/*!*********************************!*\
+  !*** external "react-toastify" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-toastify");
 
 /***/ }),
 

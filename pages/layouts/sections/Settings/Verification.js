@@ -45,7 +45,9 @@ const verification = () => {
       <h4 className="text-dark mb-2 mt-2">Verification</h4>
       <Row className="mt-3">
         <Col md="12" lg="4">
-          <div className={`p-4 shadow-showcase text-center shadow`}>
+          <div
+            className={`p-4 shadow-showcase text-center shadow`}
+            style={{ minHeight: "27rem" }}>
             <div
               style={{
                 backgroundColor: colorSuccess,
@@ -77,20 +79,12 @@ const verification = () => {
                 style={{ color: colorSuccess }}></i>
               SMS verification required
             </p>
-            <p className="mt-2 mb-0">
-              <i
-                className="fa fa-check  mr-2 invisible"
-                style={{ color: colorSuccess }}></i>
-            </p>
-            <p className="mt-2 mb-0">
-              <i
-                className="fa fa-check invisible mr-2"
-                style={{ color: colorSuccess }}></i>
-            </p>
           </div>
         </Col>
         <Col md="12" lg="4">
-          <div className={`p-4 shadow-showcase text-center shadow`}>
+          <div
+            className={`p-4 shadow-showcase text-center shadow`}
+            style={{ minHeight: "27rem" }}>
             <div
               style={{
                 backgroundColor: colorWarning,
@@ -136,7 +130,9 @@ const verification = () => {
           </div>
         </Col>
         <Col md="12" lg="4">
-          <div className={`p-4 shadow-showcase text-center shadow`}>
+          <div
+            className={`p-4 shadow-showcase text-center shadow`}
+            style={{ minHeight: "27rem" }}>
             <div
               style={{
                 backgroundColor: colorDanger,
@@ -202,7 +198,7 @@ const verification = () => {
               Your mobile number 9165810509 is successfully verified via SMS.
             </p>
           </Col>
-          <Col sm="12" md="3" className="text-right">
+          <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
             <Button
               style={{
                 backgroundColor: colorSuccess,
@@ -239,7 +235,7 @@ const verification = () => {
               Your mobile number 9165810509 is successfully verified via SMS.
             </p>
           </Col>
-          <Col sm="12" md="4" className="text-right">
+          <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
             {" "}
             <Button
               style={{
@@ -286,7 +282,7 @@ const verification = () => {
               <li>Bank Statement</li>
             </ul>
           </Col>
-          <Col sm="12" md="4" className="text-right">
+          <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
             <Button
               style={{
                 backgroundColor: colorWarning,
@@ -302,7 +298,7 @@ const verification = () => {
           <img
             alt=""
             className="img-fluid team"
-            src="/assets/images/home/id.svg"
+            src="/assets/images/home/id.png"
           />
         </ModalBody>
         <ModalFooter>
@@ -318,7 +314,7 @@ const verification = () => {
           <img
             alt=""
             className="img-fluid team"
-            src="/assets/images/home/poa.svg"
+            src="/assets/images/home/poa.png"
           />
         </ModalBody>
         <ModalFooter>

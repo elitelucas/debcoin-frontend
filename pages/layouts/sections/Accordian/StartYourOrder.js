@@ -1,24 +1,48 @@
-import React from "react";
-
+import React,{useState,useEffect,useContext} from "react";
+import {AuthContext} from '../../../../utils/auth';
 import {
-  Collapse,
   Button,
-  CardBody,
-  Card,
-  CardHeader,
-  Label,
-  Container,
-  Row,
   Col,
   Form,
   FormGroup,
   Input,
-  FormText,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
+  Spinner,
 } from "reactstrap";
+import Router  from 'next/router';
 const startYourOrder = (props) => {
+  const [count,setCount]=useState(300);
+  const [btc,setBtc]=useState(0);
+  const [usd,setUsd]=useState(0);
+  let timer1;
+  const calc_btc=(e)=>{
+    setUsd(e.target.value);
+    setBtc(parseFloat(e.target.value)/parseFloat(props.price));
+  }
+  const calc_usd=(e)=>{
+    setBtc(e.target.value);
+    setUsd(parseFloat(e.target.value)*parseFloat(props.price));
+  }
+  useEffect(() => {
+    props.getRate();
+    timer1=setInterval(async ()=>{
+      if(count-1<=0){
+        props.getRate();
+      }else{
+        let aa=count-1;
+        setCount(aa);
+      }
+     
+    },1000);
+    
+    
+    return ()=>{
+      clearInterval(timer1);
+    };
+  });
+  const {isAuthenticated}=useContext(AuthContext);
   return (
     <div>
       <div
@@ -28,13 +52,13 @@ const startYourOrder = (props) => {
           <span class="text-left font-14-18" style={{}}>
             <i class="fab fa-btc pr-2"></i>Bitcoins
           </span>
-          <span class="float-right font-14-18">1BTC = $13922.53USD</span>
+  <span class="float-right font-14-18">1BTC = ${props.price}USD</span>
           <br />
         </div>
 
         <div class="col-12">
           <span>Bitcoin price has all Conversion Rate fees included</span>
-          <span class="float-right">12s</span>
+          <span class="float-right">{count}s</span>
         </div>
       </div>
       <div class="col-12 mt-3">
@@ -53,7 +77,7 @@ const startYourOrder = (props) => {
                       USD
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input type="number" name="usd" id="usd" placeholder="USD" />
+                  <Input type="number" value={usd} name="usd" id="usd" placeholder="USD" onChange={calc_btc} />
                 </InputGroup>
               </Col>
             </FormGroup>
@@ -70,19 +94,26 @@ const startYourOrder = (props) => {
                       BTC
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input type="number" name="BTC" id="BTC" placeholder="BTC" />
+                  <Input type="number" value={btc} name="BTC" id="BTC" placeholder="BTC" onChange={calc_usd} />
                 </InputGroup>
               </Col>
             </FormGroup>
-            <button
+            <Button
               className="btn primary-btn btn-default text-uppercase mt-0"
+              disabled={props.isLoading}
               onClick={(e) => {
                 e.preventDefault();
-
-                props.isClicked();
+                if(isAuthenticated())
+                  props.isClicked();
+                else
+                  Router.push('/login');
               }}>
-              Buy Bitcoins
-            </button>
+              {props.isLoading ? (
+                <Spinner size="sm" color="primary" />
+              ) : (
+                "Buy Bitcoins"
+              )}
+            </Button>
           </Form>
         </div>
       </div>

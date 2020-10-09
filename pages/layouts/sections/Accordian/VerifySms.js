@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, Form, FormGroup, Input } from "reactstrap";
+import { Label, Form, FormGroup, Input, Button, Spinner } from "reactstrap";
 const verifySms = (props) => {
   return (
     <div class="col-12 mt-3">
@@ -20,15 +20,17 @@ const verifySms = (props) => {
               />
             </FormGroup>
           </div>
-          <button
+
+          <Button
             className="btn primary-btn btn-default text-uppercase mt-0"
+            disabled={props.isLoading}
             onClick={(e) => {
               e.preventDefault();
 
               props.isClicked();
             }}>
-            Verify
-          </button>
+            {props.isLoading ? <Spinner size="sm" color="primary" /> : "Verify"}
+          </Button>
         </Form>
       </div>
     </div>

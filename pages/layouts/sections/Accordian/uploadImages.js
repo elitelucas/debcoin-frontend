@@ -1,6 +1,13 @@
 import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Spinner,
+} from "reactstrap";
 
 const uploadImages = (props) => {
   const onDrop = useCallback((acceptedFiles) => {
@@ -40,9 +47,9 @@ const uploadImages = (props) => {
       </p>
       <Modal isOpen={modalFor} toggle={toggleFor}>
         <ModalHeader toggle={toggleFor}>Front of Receipt</ModalHeader>
-        <ModalBody>
+        <ModalBody className="text-center">
           <img
-            src="/assets/images/home/receipt.svg"
+            src="/assets/images/home/receipt.jpg"
             style={{ maxHeight: "350px" }}
           />
         </ModalBody>
@@ -67,7 +74,7 @@ const uploadImages = (props) => {
         </ModalHeader>
         <ModalBody>
           <img
-            src="/assets/images/home/card-front.svg"
+            src="/assets/images/home/card-front.png"
             style={{ maxHeight: "350px" }}
           />
         </ModalBody>
@@ -93,7 +100,7 @@ const uploadImages = (props) => {
         </ModalHeader>
         <ModalBody>
           <img
-            src="/assets/images/home/card-back.svg"
+            src="/assets/images/home/card-back.png"
             style={{ maxHeight: "350px" }}
           />
         </ModalBody>
@@ -121,15 +128,16 @@ const uploadImages = (props) => {
           <p>Tap to add a photo.</p>
         )}
       </div>
-      <button
+      <Button
         className="btn primary-btn btn-default text-uppercase mt-3"
+        disabled={props.isLoading}
         onClick={(e) => {
           e.preventDefault();
 
           props.isClicked();
         }}>
-        Upload
-      </button>
+        {props.isLoading ? <Spinner size="sm" color="primary" /> : "Upload"}
+      </Button>
     </div>
   );
 };

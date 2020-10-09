@@ -6,8 +6,6 @@ import Header from "./layouts/sections/Header/header";
 import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
 import FooterSection from "./layouts/sections/Footer/footer";
-import { toast } from 'react-toastify';
-
 import {
   Row,
   Col,
@@ -17,18 +15,16 @@ import {
   InputGroupText,
   InputGroupAddon,
   Input,
-  Label,Spinner
+  Label,
 } from "reactstrap";
 
 const index = () => {
   const router = useRouter();
-  const [loading,setLoading]=useState(false);
   const [username,setUsername]=useState(''); 
   const [password,setPassword]=useState('');
   const { setAuthState } = useContext(AuthContext);
   const submit=async (e)=>{
     e.preventDefault();
-    setLoading(true);
     if(username!=''&& password!='')
     {
       try {
@@ -38,14 +34,12 @@ const index = () => {
         var today = new Date();
         today.setHours(today.getHours() + parseFloat(expiresAt));
         setAuthState({ token, expiresAt:today.getTime()/1000, userInfo,message });
-        router.push('/');
+        router.push('/', undefined, { shallow: true });
        
         
        
       } catch (error) {
-        console.log(error);
-        toast.error("username or password incorrect !");
-        setLoading(false);
+        console.log(error)
       }  
     }
   };
@@ -78,7 +72,7 @@ const index = () => {
               <Form>
                 <FormGroup row>
                   <Col sm={12} className="m-auto">
-                  <Label for="Email address">Email address or Username</Label>
+                    <Label for="Email address">Email address or Username</Label>
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText
@@ -129,14 +123,9 @@ const index = () => {
                     </InputGroup>
                   </Col>
                 </FormGroup>
-                {loading===true ? (
-                  <Spinner size="sm" color="primary" />
-                ) : (
-                  <button className="btn primary-btn btn-default  mt-0" onClick={submit}>
-                    Sign in
-                  </button>
-                )}
-                
+                <button className="btn primary-btn btn-default  mt-0" onClick={submit}>
+                  Sign in
+                </button>
               </Form>
               <hr />
               <p>

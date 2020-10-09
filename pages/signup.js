@@ -16,13 +16,14 @@ import {
   InputGroupText,
   InputGroupAddon,
   Input,
-  Label,
+  Label,Spinner
 } from "reactstrap";
 import ReCAPTCHA from "react-google-recaptcha";
 import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
 const index = () => {
   const router = useRouter();
+  const [loading,setLoading]=useState(false);
   const [username,setUsername]=useState('');
   const [phoneNumber,setPhoneNumber]=useState('');
   const [email,setEmail]=useState('');
@@ -33,6 +34,7 @@ const index = () => {
   const { setAuthState } = useContext(AuthContext);
   const submit=async (e)=>{
     e.preventDefault();
+    setLoading(true);
     if(username!='' && phoneNumber!='' && email!='' &&
     password!='' && terms!=false && privacy!=false)
     {
@@ -48,7 +50,9 @@ const index = () => {
         
        
       } catch (error) {
-        console.log(error)
+        console.log(error);
+        toast.error("Register failed !");
+        setLoading(false);
       }  
     }
   };
@@ -60,7 +64,6 @@ const index = () => {
   });
   function onChange(value) {
     setCaptcha(value);
-    // console.log("Captcha value:", value);
   }
   return (
     <div>
@@ -88,7 +91,6 @@ const index = () => {
                     <InputGroup>
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText
-                          
                           style={{
                             borderTopLeftRadius: "20px",
                             borderBottomLeftRadius: "20px",
@@ -222,9 +224,14 @@ const index = () => {
                     />
                   </Col>
                 </FormGroup>
-                <button className="btn primary-btn btn-default  mt-0" onClick={submit}>
-                  Sign Up
-                </button>
+                {loading ? (
+                  <Spinner size="sm" color="primary" />
+                ) : (
+                  <button className="btn primary-btn btn-default  mt-0" onClick={submit}>
+                    Sign Up
+                  </button>
+                )}
+                
               </Form>
               <hr />
               <p>

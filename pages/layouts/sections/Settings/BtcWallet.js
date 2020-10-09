@@ -8,14 +8,15 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
+import AddWallet from "./AddWallet";
 
 const BtcWallet = () => {
   const [modal3, setModal3] = useState(false);
-  const toggleModal3 = () => setModal3(!modal3);
+  const [modal4, setModal4] = useState(false);
 
+  const toggleModal3 = () => setModal3(!modal3);
   const toggleModal4 = () => setModal4(!modal4);
 
-  const [modal4, setModal4] = useState(false);
   return (
     <Row className="mt-3 mb-3">
       <Col sm="12">
@@ -90,7 +91,13 @@ const BtcWallet = () => {
           </Row>
         </div>
       </Col>
-      <Modal isOpen={modal4} toggle={toggleModal4}>
+      <AddWallet
+        toggle={() => {
+          toggleModal4();
+        }}
+        isOpen={modal4}
+      />
+      {/* <Modal isOpen={modal4} toggle={toggleModal4}>
         <ModalHeader toggle={toggleModal4}>Add Wallet</ModalHeader>
         <ModalBody>
           <div className="typo-content">
@@ -128,7 +135,7 @@ const BtcWallet = () => {
             Save Address
           </Button>
         </ModalFooter>
-      </Modal>
+      </Modal> */}
 
       <Modal isOpen={modal3} toggle={toggleModal3}>
         <ModalHeader toggle={toggleModal3}>ID Verification</ModalHeader>

@@ -20,21 +20,12 @@ import {
   Input,
 } from "reactstrap";
 
-const AccordionElementSection = () => {
+const AccordionElementSection = (props) => {
   const [condition, setCondition] = useState("1st");
-  const [isFirstOpen, setFirstOpen] = useState(false);
-  const [isSecondOpen, setSecondOpen] = useState(false);
-  const [isThirdOpen, setThirdOpen] = useState(false);
-  const [isFourthOpen, setFourthOpen] = useState(false);
-  const [isFifthOpen, setFifthOpen] = useState(false);
 
-  const toggle1 = () => setFirstOpen(!isFirstOpen);
-  const toggle2 = () => setSecondOpen(!isSecondOpen);
-  const toggle3 = () => setThirdOpen(!isThirdOpen);
-  const toggle4 = () => setFourthOpen(!isFourthOpen);
-  const toggle5 = () => setFifthOpen(!isFifthOpen);
   const width = { width: "45px", height: "45px", backgroundColor: "#333D7A" };
-  const clicked = () => [console.log("clicked")];
+  const [isLoading, setIsLoading] = useState(false);
+
   let cardToShow = "";
 
   if (condition === "1st") {
@@ -56,7 +47,17 @@ const AccordionElementSection = () => {
         </CardHeader>
         <Collapse isOpen={true}>
           <CardBody className="w-100">
-            <StartYourOrder isClicked={() => setCondition("2nd")} />
+            <StartYourOrder
+              price={props.price}
+              getRate={props.getRate}
+              isClicked={() => {
+                setIsLoading(true);
+                setTimeout(() => {
+                  setCondition("2nd"), setIsLoading(false);
+                }, 1500);
+              }}
+              isLoading={isLoading}
+            />
           </CardBody>
         </Collapse>
       </>
@@ -80,7 +81,15 @@ const AccordionElementSection = () => {
         </CardHeader>
         <Collapse isOpen={true}>
           <CardBody>
-            <VerifySms isClicked={() => setCondition("3rd")} />
+            <VerifySms
+              isClicked={() => {
+                setIsLoading(true);
+                setTimeout(() => {
+                  setCondition("3rd"), setIsLoading(false);
+                }, 1500);
+              }}
+              isLoading={isLoading}
+            />
           </CardBody>
         </Collapse>
       </>
@@ -104,7 +113,15 @@ const AccordionElementSection = () => {
         </CardHeader>
         <Collapse isOpen={true}>
           <CardBody>
-            <SelectWallet isClicked={() => setCondition("4th")} />
+            <SelectWallet
+              isClicked={() => {
+                setIsLoading(true);
+                setTimeout(() => {
+                  setCondition("4th"), setIsLoading(false);
+                }, 1500);
+              }}
+              isLoading={isLoading}
+            />
           </CardBody>
         </Collapse>
       </>
@@ -128,7 +145,15 @@ const AccordionElementSection = () => {
         </CardHeader>
         <Collapse isOpen={true}>
           <CardBody>
-            <UploadImages isClicked={() => setCondition("5th")} />
+            <UploadImages
+              isClicked={() => {
+                setIsLoading(true);
+                setTimeout(() => {
+                  setCondition("5th"), setIsLoading(false);
+                }, 1500);
+              }}
+              isLoading={isLoading}
+            />
           </CardBody>
         </Collapse>
       </>
@@ -154,7 +179,15 @@ const AccordionElementSection = () => {
         </CardHeader>
         <Collapse isOpen={true}>
           <CardBody>
-            <GiftCardInformation isClicked={() => setCondition("1st")} />
+            <GiftCardInformation
+              isClicked={() => {
+                setIsLoading(true);
+                setTimeout(() => {
+                  setCondition("1st"), setIsLoading(false);
+                }, 1500);
+              }}
+              isLoading={isLoading}
+            />
           </CardBody>
         </Collapse>
       </>
@@ -165,7 +198,7 @@ const AccordionElementSection = () => {
     <div className="w-100 h-50 mt-sm">
       <Card
         className="shadow  w-95 m-auto"
-        style={{ width: "95%", zIndex: "9999" }}>
+        style={{ width: "95%", zIndex: "999" }}>
         {cardToShow}
       </Card>
     </div>
