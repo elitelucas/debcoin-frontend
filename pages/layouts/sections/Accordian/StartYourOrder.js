@@ -13,23 +13,28 @@ import {
 } from "reactstrap";
 import Router  from 'next/router';
 const startYourOrder = (props) => {
-  const [count,setCount]=useState(300);
+  const [count,setCount]=useState(30);
   const [btc,setBtc]=useState(0);
   const [usd,setUsd]=useState(0);
   let timer1;
   const calc_btc=(e)=>{
     setUsd(e.target.value);
-    setBtc(parseFloat(e.target.value)/parseFloat(props.price));
+    setBtc(Math.floor(100000000*parseFloat(e.target.value)/parseFloat(props.price))/100000000);
   }
   const calc_usd=(e)=>{
     setBtc(e.target.value);
-    setUsd(parseFloat(e.target.value)*parseFloat(props.price));
+    setUsd(Math.floor(100000000*parseFloat(e.target.value)*parseFloat(props.price))/100000000);
   }
   useEffect(() => {
     props.getRate();
+ 
+  },[]);
+  useEffect(() => {
     timer1=setInterval(async ()=>{
       if(count-1<=0){
+        console.log(count);
         props.getRate();
+        setCount(30);
       }else{
         let aa=count-1;
         setCount(aa);
@@ -77,7 +82,7 @@ const startYourOrder = (props) => {
                       USD
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input type="number" value={usd} name="usd" id="usd" placeholder="USD" onChange={calc_btc} />
+                  <Input type="number" min={25} value={usd} name="usd" id="usd" placeholder="USD" onChange={calc_btc} />
                 </InputGroup>
               </Col>
             </FormGroup>

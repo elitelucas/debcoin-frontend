@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 const Nav = (props) => {
   const [sidebar, setSidebar] = useState(false);
-
+  const [show, setShow] = useState(false);
   function closeSidebar() {
     setSidebar(!sidebar);
     document.querySelector(".navbar").classList.remove("openSidebar");
@@ -62,8 +62,27 @@ const Nav = (props) => {
               </Link>
             </li>
           </>
-        ) : ''}
-        
+        ) : (
+          <li className="mega-menu account">
+  
+              <a href="#" onClick={() => setShow(!show)}>
+                <i className="icon-user"></i>
+              </a>
+              <div style={{top:'70'}}
+                className={`dropdown-menu ${
+                  show && `show`
+                } dropdown-menu-right`}>
+                <Link href={"/logout"}>
+                  Logout
+                </Link>
+                <Link href={"/settings"}>
+                  Profile
+                </Link>                       
+              </div>
+          
+        </li>
+        )}
+
       </ul>
     </div>
   );

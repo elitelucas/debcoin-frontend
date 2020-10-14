@@ -10,7 +10,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 
-const verification = () => {
+const verification = (props) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
 
@@ -40,6 +40,7 @@ const verification = () => {
     width: "3.125rem",
     height: "3.125rem",
   };
+  
   return (
     <Container>
       <h4 className="text-dark mb-2 mt-2">Verification</h4>
@@ -192,21 +193,47 @@ const verification = () => {
                 }}></i>
             </div>
           </Col>
-          <Col sm="12" md="7">
-            <h5 className="mb-2"> SMS Verification</h5>
-            <p>
-              Your mobile number 9165810509 is successfully verified via SMS.
-            </p>
-          </Col>
-          <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
-            <Button
-              style={{
-                backgroundColor: colorSuccess,
-              }}
-              disabled>
-              Verified
-            </Button>
-          </Col>
+          {
+            props.phoneVerification===true ? (
+              <>
+              <Col sm="12" md="7">
+                <h5 className="mb-2"> SMS Verification</h5>
+                <p>
+                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
+                </p>
+              </Col>
+              <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
+                <Button
+                  style={{
+                    backgroundColor: colorSuccess,
+                  }}
+                  disabled>
+                  Verified
+                </Button>
+              </Col>
+              </>
+            ) : (
+              <>
+              <Col sm="12" md="7">
+                <h5 className="mb-2"> SMS Verification</h5>
+                <p>
+                  Your mobile number {props.phoneNumber} is not verified.
+                </p>
+              </Col>
+              <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
+                <Button
+                  style={{
+                    backgroundColor: colorWarning,
+                  }}
+                  onClick={()=>props.verify(1)}
+                  >
+                  start
+                </Button>
+              </Col>
+              </>
+            )
+          }
+          
         </Row>
       </div>
 
@@ -223,27 +250,60 @@ const verification = () => {
                 }}></i>
             </div>
           </Col>
-          <Col sm="12" md="6">
-            {" "}
-            <h5 className="mb-2">
-              ID Verification{" "}
-              <i
-                className="fa fa-question-circle pl-2"
-                onClick={toggleModal}></i>
-            </h5>
-            <p>
-              Your mobile number 9165810509 is successfully verified via SMS.
-            </p>
-          </Col>
-          <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-            {" "}
-            <Button
-              style={{
-                backgroundColor: colorWarning,
-              }}>
-              Start
-            </Button>
-          </Col>
+          {props.level===2 ? (
+            <>
+              <Col sm="12" md="6">
+                {" "}
+                <h5 className="mb-2">
+                  ID Verification{" "}
+                  <i
+                    className="fa fa-question-circle pl-2"
+                    onClick={toggleModal}></i>
+                </h5>
+                <p>
+                  Your mobile number 9165810509 is successfully verified via SMS.
+                </p>
+              </Col>
+              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                {" "}
+                <Button
+                  style={{
+                    backgroundColor: colorSuccess,
+                  }}
+                  disabled
+                  >
+                  Verified
+                </Button>
+              </Col>
+            </>
+          ) : (
+            <>
+              <Col sm="12" md="6">
+                {" "}
+                <h5 className="mb-2">
+                  ID Verification{" "}
+                  <i
+                    className="fa fa-question-circle pl-2"
+                    onClick={toggleModal}></i>
+                </h5>
+                <p>
+                  Your mobile number 9165810509 is successfully verified via SMS.
+                </p>
+              </Col>
+              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                {" "}
+                <Button
+                  style={{
+                    backgroundColor: colorWarning,
+                  }}
+                  onClick={()=>props.verify(2)}
+                  >
+                  Start
+                </Button>
+              </Col>
+            </>
+          )}
+          
         </Row>
       </div>
 
@@ -260,36 +320,77 @@ const verification = () => {
                 }}></i>
             </div>
           </Col>
-          <Col sm="12" md="6">
-            <h5 className="mb-2">
-              Proof of Address
-              <i
-                className="fa fa-question-circle pl-2"
-                onClick={toggleModal2}></i>
-            </h5>
-            <p>
-              A utility bill is required to unlock Tier 3 limit. Make sure this
-              includes your name and the address associated with your ID.
-              Acceptable forms of Proof of Address include, but are not limited
-              to:
-            </p>
-            <ul style={{ listStyleType: "disc" }} className="mt-3">
-              <li>Electric Bill</li>
-              <li>Water Bill</li>
-              <li>Insurance Bill</li>
-              <li>Insurance Bill</li>
+          {props.level===3 ? (
+            <>
+              <Col sm="12" md="6">
+                <h5 className="mb-2">
+                  Proof of Address
+                  <i
+                    className="fa fa-question-circle pl-2"
+                    onClick={toggleModal2}></i>
+                </h5>
+                <p>
+                  A utility bill is required to unlock Tier 3 limit. Make sure this
+                  includes your name and the address associated with your ID.
+                  Acceptable forms of Proof of Address include, but are not limited
+                  to:
+                </p>
+                <ul style={{ listStyleType: "disc" }} className="mt-3">
+                  <li>Electric Bill</li>
+                  <li>Water Bill</li>
+                  <li>Insurance Bill</li>
+                  <li>Insurance Bill</li>
 
-              <li>Bank Statement</li>
-            </ul>
-          </Col>
-          <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-            <Button
-              style={{
-                backgroundColor: colorWarning,
-              }}>
-              Start
-            </Button>
-          </Col>
+                  <li>Bank Statement</li>
+                </ul>
+              </Col>
+              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                <Button
+                  style={{
+                    backgroundColor: colorSuccess,
+                  }}
+                  disabled
+                  >
+                  Verified
+                </Button>
+              </Col>
+            </>
+          ) : (
+            <>
+              <Col sm="12" md="6">
+                <h5 className="mb-2">
+                  Proof of Address
+                  <i
+                    className="fa fa-question-circle pl-2"
+                    onClick={toggleModal2}></i>
+                </h5>
+                <p>
+                  A utility bill is required to unlock Tier 3 limit. Make sure this
+                  includes your name and the address associated with your ID.
+                  Acceptable forms of Proof of Address include, but are not limited
+                  to:
+                </p>
+                <ul style={{ listStyleType: "disc" }} className="mt-3">
+                  <li>Electric Bill</li>
+                  <li>Water Bill</li>
+                  <li>Insurance Bill</li>
+                  <li>Insurance Bill</li>
+
+                  <li>Bank Statement</li>
+                </ul>
+              </Col>
+              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                <Button
+                  style={{
+                    backgroundColor: colorWarning,
+                  }}
+                  onClick={()=>props.verify(3)}
+                  >
+                  Start
+                </Button>
+              </Col>
+            </>
+          )}
         </Row>
       </div>
       <Modal isOpen={modal} toggle={toggleModal}>

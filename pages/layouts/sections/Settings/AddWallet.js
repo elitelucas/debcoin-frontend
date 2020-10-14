@@ -9,6 +9,8 @@ import {
 } from "reactstrap";
 
 const addWallet = (props) => {
+  const [title,setTitle]=useState('');
+  const [address,setAddress]=useState('');
   return (
     <Modal isOpen={props.isOpen} toggle={props.toggle}>
       <ModalHeader toggle={props.toggle}>Add Wallet</ModalHeader>
@@ -25,6 +27,8 @@ const addWallet = (props) => {
                   placeholder="title"
                   required=""
                   type="text"
+                  value={title}
+                  onChange={(e)=>setTitle(e.target.value)}
                 />
               </div>
               <div className="col-sm-12  mb-3">
@@ -34,6 +38,8 @@ const addWallet = (props) => {
                   placeholder="Wallet Address"
                   required=""
                   type="text"
+                  value={address}
+                  onChange={(e)=>setAddress(e.target.value)}
                 />
               </div>
             </Row>
@@ -44,7 +50,7 @@ const addWallet = (props) => {
         <Button color="secondary" onClick={props.toggle}>
           Close
         </Button>
-        <Button color="primary" onClick={props.toggle}>
+        <Button color="primary" onClick={()=>{props.submit(title,address);props.toggle();}}>
           Save Address
         </Button>
       </ModalFooter>

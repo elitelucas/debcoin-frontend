@@ -10,6 +10,7 @@ import License from "./layouts/sections/Licenses/Licenses";
 import Guide from "./layouts/sections/Guide/Guide";
 import Pricing from "./layouts/sections/Prices/Prices";
 import { publicFetch } from '../utils/publicFetch';
+import { AuthContext } from '../utils/auth';
 const index = () => {
   const [rate,setRate]=useState('');
   useEffect(() => {

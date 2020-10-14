@@ -52070,6 +52070,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layouts/sections/Guide/Guide */ "./pages/layouts/sections/Guide/Guide.js");
 /* harmony import */ var _layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./layouts/sections/Prices/Prices */ "./pages/layouts/sections/Prices/Prices.js");
 /* harmony import */ var _utils_publicFetch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/publicFetch */ "./utils/publicFetch.js");
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
 
 
 
@@ -52077,6 +52078,7 @@ var _this = undefined,
     _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+
 
 
 
@@ -52131,21 +52133,21 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 27,
       columnNumber: 5
     }
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 28,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 29,
       columnNumber: 9
     }
   }, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -52154,7 +52156,7 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 32,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Banner_Banner__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -52163,42 +52165,42 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 34,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_9__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Licenses_Licenses__WEBPACK_IMPORTED_MODULE_8__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 37,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_10__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 38,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_BeforeFooter_BeforeFooter__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 39,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 7
     }
   }));
@@ -52488,7 +52490,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 var startYourOrder = function startYourOrder(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(300),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(30),
       count = _useState[0],
       setCount = _useState[1];
 
@@ -52504,16 +52506,18 @@ var startYourOrder = function startYourOrder(props) {
 
   var calc_btc = function calc_btc(e) {
     setUsd(e.target.value);
-    setBtc(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(e.target.value) / _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(props.price));
+    setBtc(Math.floor(100000000 * _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(e.target.value) / _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(props.price)) / 100000000);
   };
 
   var calc_usd = function calc_usd(e) {
     setBtc(e.target.value);
-    setUsd(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(e.target.value) * _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(props.price));
+    setUsd(Math.floor(100000000 * _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(e.target.value) * _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_2___default()(props.price)) / 100000000);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     props.getRate();
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
     timer1 = setInterval( /*#__PURE__*/Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var aa;
       return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -52521,7 +52525,9 @@ var startYourOrder = function startYourOrder(props) {
           switch (_context.prev = _context.next) {
             case 0:
               if (count - 1 <= 0) {
+                console.log(count);
                 props.getRate();
+                setCount(30);
               } else {
                 aa = count - 1;
                 setCount(aa);
@@ -52546,7 +52552,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 52,
       columnNumber: 5
     }
   }, __jsx("div", {
@@ -52557,7 +52563,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 53,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -52565,7 +52571,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 56,
       columnNumber: 9
     }
   }, __jsx("span", {
@@ -52574,7 +52580,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 57,
       columnNumber: 11
     }
   }, __jsx("i", {
@@ -52582,7 +52588,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 58,
       columnNumber: 13
     }
   }), "Bitcoins"), __jsx("span", {
@@ -52590,14 +52596,14 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 60,
       columnNumber: 3
     }
   }, "1BTC = $", props.price, "USD"), __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 61,
       columnNumber: 11
     }
   })), __jsx("div", {
@@ -52605,14 +52611,14 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 64,
       columnNumber: 9
     }
   }, __jsx("span", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 65,
       columnNumber: 11
     }
   }, "Bitcoin price has all Conversion Rate fees included"), __jsx("span", {
@@ -52620,7 +52626,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 66,
       columnNumber: 11
     }
   }, count, "s"))), __jsx("div", {
@@ -52628,7 +52634,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 69,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -52636,14 +52642,14 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 70,
       columnNumber: 9
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Form"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 71,
       columnNumber: 11
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["FormGroup"], {
@@ -52651,7 +52657,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 72,
       columnNumber: 13
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
@@ -52659,14 +52665,14 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 73,
       columnNumber: 15
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 74,
       columnNumber: 17
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
@@ -52674,7 +52680,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 75,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], {
@@ -52686,11 +52692,12 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 76,
       columnNumber: 21
     }
   }, "USD")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
     type: "number",
+    min: 25,
     value: usd,
     name: "usd",
     id: "usd",
@@ -52699,7 +52706,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 85,
       columnNumber: 19
     }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["FormGroup"], {
@@ -52707,7 +52714,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 89,
       columnNumber: 13
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
@@ -52715,14 +52722,14 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 90,
       columnNumber: 15
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 91,
       columnNumber: 17
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
@@ -52730,7 +52737,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
+      lineNumber: 92,
       columnNumber: 19
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], {
@@ -52742,7 +52749,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 93,
       columnNumber: 21
     }
   }, "BTC")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -52755,7 +52762,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 102,
       columnNumber: 19
     }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
@@ -52768,7 +52775,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 106,
       columnNumber: 13
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Spinner"], {
@@ -52777,7 +52784,7 @@ var startYourOrder = function startYourOrder(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112,
+      lineNumber: 117,
       columnNumber: 17
     }
   }) : "Buy Bitcoins")))));
@@ -55173,16 +55180,12 @@ var Header = function Header(props) {
       isAuthenticated = _useContext.isAuthenticated;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      show = _useState[0],
-      setShow = _useState[1];
+      sidebar = _useState[0],
+      setSidebar = _useState[1];
 
   var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      sidebar = _useState2[0],
-      setSidebar = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      search = _useState3[0],
-      setSearch = _useState3[1];
+      search = _useState2[0],
+      setSearch = _useState2[1];
 
   var clickSidebar = function clickSidebar() {
     setSidebar(!sidebar);
@@ -55285,89 +55288,7 @@ var Header = function Header(props) {
       lineNumber: 44,
       columnNumber: 15
     }
-  }), isAuthenticated() === true && __jsx("div", {
-    className: "top-header-right",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 17
-    }
-  }, __jsx("ul", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 19
-    }
-  }, __jsx("li", {
-    className: "account ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 21
-    }
-  }, __jsx("a", {
-    href: "#",
-    onClick: function onClick() {
-      return setShow(!show);
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 23
-    }
-  }, __jsx("i", {
-    className: "icon-user",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 25
-    }
-  })), __jsx("div", {
-    className: "dropdown-menu ".concat(show && "show", " dropdown-menu-right"),
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 23
-    }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/logout",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 25
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 27
-    }
-  }, "Logout")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/settings",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61,
-      columnNumber: 25
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 27
-    }
-  }, "Profile")))))))))));
+  }))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -55398,6 +55319,10 @@ var Nav = function Nav(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       sidebar = _useState[0],
       setSidebar = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      show = _useState2[0],
+      setShow = _useState2[1];
 
   function closeSidebar() {
     setSidebar(!sidebar);
@@ -55570,7 +55495,61 @@ var Nav = function Nav(props) {
       lineNumber: 57,
       columnNumber: 17
     }
-  }, "Sign Up")))) : ''));
+  }, "Sign Up")))) : __jsx("li", {
+    className: "mega-menu account",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#",
+    onClick: function onClick() {
+      return setShow(!show);
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 15
+    }
+  }, __jsx("i", {
+    className: "icon-user",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 17
+    }
+  })), __jsx("div", {
+    style: {
+      top: '70'
+    },
+    className: "dropdown-menu ".concat(show && "show", " dropdown-menu-right"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 15
+    }
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/logout",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 17
+    }
+  }, "Logout"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/settings",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 17
+    }
+  }, "Profile")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
@@ -56256,13 +56235,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var addWallet = function addWallet(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      title = _useState[0],
+      setTitle = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      address = _useState2[0],
+      setAddress = _useState2[1];
+
   return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     isOpen: props.isOpen,
     toggle: props.toggle,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 15,
       columnNumber: 5
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], {
@@ -56270,14 +56257,14 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 16,
       columnNumber: 7
     }
   }, "Add Wallet"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 17,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -56285,7 +56272,7 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 18,
       columnNumber: 9
     }
   }, __jsx("h4", {
@@ -56293,21 +56280,21 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 19,
       columnNumber: 11
     }
   }, "Add Wallet"), __jsx("form", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 20,
       columnNumber: 11
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 21,
       columnNumber: 13
     }
   }, __jsx("div", {
@@ -56315,7 +56302,7 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 22,
       columnNumber: 15
     }
   }, __jsx("label", {
@@ -56323,7 +56310,7 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 23,
       columnNumber: 17
     }
   }, "Title *"), __jsx("input", {
@@ -56332,10 +56319,14 @@ var addWallet = function addWallet(props) {
     placeholder: "title",
     required: "",
     type: "text",
+    value: title,
+    onChange: function onChange(e) {
+      return setTitle(e.target.value);
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 24,
       columnNumber: 17
     }
   })), __jsx("div", {
@@ -56343,7 +56334,7 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 34,
       columnNumber: 15
     }
   }, __jsx("label", {
@@ -56351,7 +56342,7 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 35,
       columnNumber: 17
     }
   }, "Wallet Address *"), __jsx("input", {
@@ -56359,17 +56350,21 @@ var addWallet = function addWallet(props) {
     placeholder: "Wallet Address",
     required: "",
     type: "text",
+    value: address,
+    onChange: function onChange(e) {
+      return setAddress(e.target.value);
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 36,
       columnNumber: 17
     }
   })))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 49,
       columnNumber: 7
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -56378,16 +56373,19 @@ var addWallet = function addWallet(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 50,
       columnNumber: 9
     }
   }, "Close"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     color: "primary",
-    onClick: props.toggle,
+    onClick: function onClick() {
+      props.submit(title, address);
+      props.toggle();
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 53,
       columnNumber: 9
     }
   }, "Save Address")));

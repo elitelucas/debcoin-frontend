@@ -1,3 +1,4 @@
+import { remove } from "nprogress";
 import React, { useState } from "react";
 import {
   Row,
@@ -10,12 +11,16 @@ import {
 } from "reactstrap";
 import AddWallet from "./AddWallet";
 
-const BtcWallet = () => {
+const BtcWallet = (props) => {
   const [modal3, setModal3] = useState(false);
   const [modal4, setModal4] = useState(false);
-
+  const [removekey,setRemoveKey]=useState('');
   const toggleModal3 = () => setModal3(!modal3);
   const toggleModal4 = () => setModal4(!modal4);
+  const remove=(key)=>()=>{
+    setRemoveKey(key);
+    setModal3(true);
+  };
 
   return (
     <Row className="mt-3 mb-3">
@@ -23,58 +28,37 @@ const BtcWallet = () => {
         <h4 className="text-dark">BTC Wallet</h4>
         <div className={`p-5  shadow mt-2`}>
           <Row>
-            <Col xs="12" md="4" className="shadow-sm mt-2">
-              <div class="card-header pl-2 pr-2 ">
-                <strong> MYBTC</strong>
-                <span className="float-right">
-                  <i
-                    className="fa fa-trash"
-                    style={{
-                      color: "#ccc",
-                      cursor: "pointer",
-                    }}
-                    onclick={toggleModal3}></i>
-                </span>
-              </div>
-              <div className="card-body text-center">
-                <img
-                  alt=""
-                  className="img-fluid team"
-                  src="/assets/images/home/btc.png"
-                />
-              </div>
-              <div className="card-footer">
-                <p style={{ overflowWrap: "anywhere" }}>
-                  1FMHNFuts92FnzRxBYvzCgTSfe9Bn2PvMN
-                </p>
-              </div>
-            </Col>
-            <Col xs="12" md="4" className="shadow-sm mt-2">
-              <div class="card-header pl-2 pr-2 ">
-                <strong> MYBTC</strong>
-                <span className="float-right">
-                  <i
-                    className="fa fa-trash"
-                    style={{
-                      color: "#ccc",
-                      cursor: "pointer",
-                    }}
-                    onClick={toggleModal3}></i>
-                </span>
-              </div>
-              <div className="card-body text-center">
-                <img
-                  alt=""
-                  className="img-fluid team"
-                  src="/assets/images/home/btc.png"
-                />
-              </div>
-              <div className="card-footer">
-                <p style={{ overflowWrap: "anywhere" }}>
-                  1FMHNFuts92FnzRxBYvzCgTSfe9Bn2PvMN
-                </p>
-              </div>
-            </Col>
+            {
+              props.wallet && props.wallet.map((ele,key)=>(
+                <Col xs="12" md="4" className="shadow-sm mt-2" key={key}>
+                  <div class="card-header pl-2 pr-2 ">
+                    <strong> {ele.title}</strong>
+                    <span className="float-right">
+                      <i
+                        className="fa fa-trash"
+                        style={{
+                          color: "#ccc",
+                          cursor: "pointer",
+                        }}
+                        onclick={remove(key)}></i>
+                    </span>
+                  </div>
+                  <div className="card-body text-center">
+                    <img
+                      alt=""
+                      className="img-fluid team"
+                      src="/assets/images/home/btc.png"
+                    />
+                  </div>
+                  <div className="card-footer">
+                    <p style={{ overflowWrap: "anywhere" }}>
+                      {ele.address}
+                    </p>
+                  </div>
+                </Col>
+              ))
+            }            
+            
             <Col
               xs="12"
               md="4"
@@ -92,6 +76,7 @@ const BtcWallet = () => {
         </div>
       </Col>
       <AddWallet
+        submit={props.submit}
         toggle={() => {
           toggleModal4();
         }}
@@ -146,7 +131,7 @@ const BtcWallet = () => {
           <Button color="secondary" onClick={toggleModal3}>
             Close
           </Button>
-          <Button color="primary" onClick={toggleModal3}>
+          <Button color="primary" onClick={()=>{props.remove(removeKey);toggleModal3()}}>
             Confirm
           </Button>
         </ModalFooter>

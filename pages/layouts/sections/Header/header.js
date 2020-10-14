@@ -6,7 +6,7 @@ import { AuthContext } from '../../../../utils/auth';
 
 const Header = (props) => {
   const {isAuthenticated}=useContext(AuthContext);
-  const [show, setShow] = useState(false);
+
   const [sidebar, setSidebar] = useState(false);
   const [search, setSearch] = useState(false);
 
@@ -42,30 +42,7 @@ const Header = (props) => {
                 </a>
               </div>
               <Nav isAuth={isAuthenticated()} />
-              {isAuthenticated()===true && (
-                <div className="top-header-right">
-                  <ul>
-                    
-
-                    <li className="account ">
-                      <a href="#" onClick={() => setShow(!show)}>
-                        <i className="icon-user"></i>
-                      </a>
-                      <div
-                        className={`dropdown-menu ${
-                          show && `show`
-                        } dropdown-menu-right`}>
-                        <Link href={"/logout"}>
-                          <a href="#">Logout</a>
-                        </Link>
-                        <Link href={"/settings"}>
-                          <a href="#">Profile</a>
-                        </Link>                       
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              )}
+              
             </nav>
           </Col>
         </Row>
