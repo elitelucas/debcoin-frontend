@@ -56535,7 +56535,9 @@ var baseURL = "https://64.227.30.137:443" + "/api";
 var publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: baseURL,
   headers: {
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    referrerPolicy: 'no-referrer',
+    "referrer policy": 'no-referrer'
   }
 });
 
