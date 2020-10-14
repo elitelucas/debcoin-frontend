@@ -1,15 +1,12 @@
 import axios from 'axios'
 
 const baseURL =
-  process.env.SITE_NAME+"/api"
+  "/api"
     
 
 const publicFetch = axios.create({
-  baseURL,
-  headers: {'Access-Control-Allow-Origin': '*',
-  'Referrer-Policy': 'no-referrer'
-  
-}
+  baseURL
+ 
 })
 
 export { publicFetch, baseURL }

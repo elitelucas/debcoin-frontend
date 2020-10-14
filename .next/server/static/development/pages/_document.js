@@ -1323,7 +1323,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/document */ "./node_modules/next/document.js");
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\_document.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -1333,12 +1332,6 @@ const BaseCSS = ({
 }) => __jsx("style", {
   dangerouslySetInnerHTML: {
     __html: css
-  },
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 4,
-    columnNumber: 3
   }
 });
 
@@ -1347,131 +1340,36 @@ BaseCSS.defaultProps = {
 };
 class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
   render() {
-    return __jsx("html", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18,
-        columnNumber: 7
-      }
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 19,
-        columnNumber: 9
-      }
-    }, __jsx("link", {
+    return __jsx("html", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null, __jsx("link", {
       rel: "shortcut icon",
-      href: "/assets/images/home/favicon.png",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 20,
-        columnNumber: 11
-      }
+      href: "/assets/images/home/favicon.png"
     }), __jsx("meta", {
       name: "viewport",
-      content: "width=device-width, initial-scale=1",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 21,
-        columnNumber: 11
-      }
+      content: "width=device-width, initial-scale=1"
     }), __jsx("meta", {
       name: "generator",
-      content: "mdx-docs",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 22,
-        columnNumber: 11
-      }
+      content: "mdx-docs"
     }), __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Capriola&subset=latin-ext",
-      rel: "stylesheet",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 23,
-        columnNumber: 11
-      }
+      rel: "stylesheet"
     }), __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900",
-      rel: "stylesheet",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 27,
-        columnNumber: 11
-      }
+      rel: "stylesheet"
     }), __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Satisfy",
-      rel: "stylesheet",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 31,
-        columnNumber: 11
-      }
+      rel: "stylesheet"
     }), __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Alex+Brush&subset=latin-ext",
-      rel: "stylesheet",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35,
-        columnNumber: 11
-      }
+      rel: "stylesheet"
     }), __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Raleway:400,600,700,800,900&display=swap",
-      rel: "stylesheet",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38,
-        columnNumber: 11
-      }
+      rel: "stylesheet"
     }), __jsx("link", {
       href: "https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800",
-      rel: "stylesheet",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 41,
-        columnNumber: 11
-      }
-    }), __jsx(BaseCSS, {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 45,
-        columnNumber: 11
-      }
-    })), __jsx("body", {
-      className: "try",
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 47,
-        columnNumber: 9
-      }
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 48,
-        columnNumber: 11
-      }
-    }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 49,
-        columnNumber: 11
-      }
-    })));
+      rel: "stylesheet"
+    }), __jsx(BaseCSS, null)), __jsx("body", {
+      className: "try"
+    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], null), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], null)));
   }
 
 }

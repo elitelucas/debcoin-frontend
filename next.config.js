@@ -23,9 +23,9 @@ module.exports = withPlugins([[withSass], [withImages], [withCss]], {
     url: false
   },
   env: {
-    APP_URL:"https://64.227.30.137:443",
     CAPTCHA_SITE_KEY:"6LcGYNEZAAAAAJcbNy-gij3qs1zGNo-ajvNOiR0t",
-    SITE_NAME:"https://64.227.30.137:443"
-  }
-  
+  },
+  api: {
+    externalResolver: true,
+  },
 });

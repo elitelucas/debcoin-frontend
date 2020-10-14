@@ -52073,10 +52073,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
 
 
-
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\index.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
@@ -52129,81 +52125,13 @@ var index = function index() {
     };
   }();
 
-  return __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 5
-    }
-  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 7
-    }
-  }, __jsx("title", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 9
-    }
-  }, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("title", null, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: "saas2",
-    isHome: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 7
-    }
+    isHome: true
   }), __jsx(_layouts_sections_Banner_Banner__WEBPACK_IMPORTED_MODULE_5__["default"], {
     price: rate,
-    getRate: getRate,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 7
-    }
-  }), __jsx(_layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 7
-    }
-  }), __jsx(_layouts_sections_Licenses_Licenses__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 7
-    }
-  }), __jsx(_layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 7
-    }
-  }), __jsx(_layouts_sections_BeforeFooter_BeforeFooter__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 7
-    }
-  }), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 7
-    }
-  }));
+    getRate: getRate
+  }), __jsx(_layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_9__["default"], null), __jsx(_layouts_sections_Licenses_Licenses__WEBPACK_IMPORTED_MODULE_8__["default"], null), __jsx(_layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_10__["default"], null), __jsx(_layouts_sections_BeforeFooter_BeforeFooter__WEBPACK_IMPORTED_MODULE_7__["default"], null), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_6__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (index);
@@ -52223,232 +52151,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-number-format */ "./node_modules/react-number-format/dist/react-number-format.es.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\GiftCardInformation.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 var giftCardInformation = function giftCardInformation(props) {
-  return __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 5
-    }
-  }, __jsx("div", {
+  return __jsx("div", null, __jsx("div", {
     "class": " d-flex row  p-2",
     style: {
       backgroundColor: "#ebf9f4"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 7
     }
   }, __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 9
-    }
+    "class": "col-12"
   }, __jsx("span", {
-    "class": "text-left font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 11
-    }
+    "class": "text-left font-14-18"
   }, "Giftcard Amount"), __jsx("span", {
-    "class": "float-right font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 11
-    }
-  }, "BTC Value"), __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 11
-    }
-  })), __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 9
-    }
-  }, __jsx("span", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25,
-      columnNumber: 11
-    }
-  }, "$25"), __jsx("span", {
-    "class": "float-right",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 11
-    }
+    "class": "float-right font-14-18"
+  }, "BTC Value"), __jsx("br", null)), __jsx("div", {
+    "class": "col-12"
+  }, __jsx("span", null, "$25"), __jsx("span", {
+    "class": "float-right"
   }, "0.000183411 / $20.66"))), __jsx("div", {
-    className: "login-modal",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    className: "mt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 11
-    }
+    className: "login-modal"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    className: "mt-3"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 13
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 15
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    "for": "Card Number",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 17
-    }
+    md: "12"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    "for": "Card Number"
   }, "Card Number *"), __jsx(react_number_format__WEBPACK_IMPORTED_MODULE_2__["default"], {
     format: "#### #### #### ####",
-    mask: "_",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 17
-    }
+    mask: "_"
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "6",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 13
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 15
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    "for": "examplePassword",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 17
-    }
+    md: "6"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    "for": "examplePassword"
   }, "Expiration Date *"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     type: "text",
     name: "expirationDate",
     id: "expirationDate",
-    placeholder: "MM/YY",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 17
-    }
+    placeholder: "MM/YY"
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "6",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 13
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 15
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    "for": "examplePassword",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 17
-    }
+    md: "6"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    "for": "examplePassword"
   }, "CVV*"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     type: "text",
     name: "cvv",
     id: "cvv",
-    placeholder: "3 or 4 digits",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 17
-    }
+    placeholder: "3 or 4 digits"
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-0",
     disabled: props.isLoading,
     onClick: function onClick(e) {
       e.preventDefault();
       props.isClicked();
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63,
-      columnNumber: 11
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
     size: "sm",
-    color: "primary",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 32
-    }
+    color: "primary"
   }) : "Verify"))));
 };
 
@@ -52478,10 +52240,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
 
 
-
-
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\StartYourOrder.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
@@ -52548,152 +52306,39 @@ var startYourOrder = function startYourOrder(props) {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_3__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["AuthContext"]),
       isAuthenticated = _useContext.isAuthenticated;
 
-  return __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 5
-    }
-  }, __jsx("div", {
+  return __jsx("div", null, __jsx("div", {
     "class": " d-flex row  p-2 w-100",
     style: {
       backgroundColor: "#ebf9f4"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 7
     }
   }, __jsx("div", {
-    "class": "col-12 ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 9
-    }
+    "class": "col-12 "
   }, __jsx("span", {
     "class": "text-left font-14-18",
-    style: {},
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 11
-    }
+    style: {}
   }, __jsx("i", {
-    "class": "fab fa-btc pr-2",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 13
-    }
+    "class": "fab fa-btc pr-2"
   }), "Bitcoins"), __jsx("span", {
-    "class": "float-right font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 3
-    }
-  }, "1BTC = $", props.price, "USD"), __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61,
-      columnNumber: 11
-    }
-  })), __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 9
-    }
-  }, __jsx("span", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65,
-      columnNumber: 11
-    }
-  }, "Bitcoin price has all Conversion Rate fees included"), __jsx("span", {
-    "class": "float-right",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 11
-    }
+    "class": "float-right font-14-18"
+  }, "1BTC = $", props.price, "USD"), __jsx("br", null)), __jsx("div", {
+    "class": "col-12"
+  }, __jsx("span", null, "Bitcoin price has all Conversion Rate fees included"), __jsx("span", {
+    "class": "float-right"
   }, count, "s"))), __jsx("div", {
-    "class": "col-12 mt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69,
-      columnNumber: 7
-    }
+    "class": "col-12 mt-3"
   }, __jsx("div", {
-    className: "login-modal",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Form"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 11
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["FormGroup"], {
-    row: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 13
-    }
+    className: "login-modal"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Form"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["FormGroup"], {
+    row: true
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
-    sm: 12,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 73,
-      columnNumber: 15
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 74,
-      columnNumber: 17
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
-    addonType: "prepend",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 19
-    }
+    sm: 12
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
+    addonType: "prepend"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], {
     style: {
       borderTopLeftRadius: "20px",
       borderBottomLeftRadius: "20px",
       border: "0"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 76,
-      columnNumber: 21
     }
   }, "USD")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
     type: "number",
@@ -52702,55 +52347,18 @@ var startYourOrder = function startYourOrder(props) {
     name: "usd",
     id: "usd",
     placeholder: "USD",
-    onChange: calc_btc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85,
-      columnNumber: 19
-    }
+    onChange: calc_btc
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["FormGroup"], {
-    row: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 89,
-      columnNumber: 13
-    }
+    row: true
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
-    sm: 12,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 90,
-      columnNumber: 15
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 91,
-      columnNumber: 17
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
-    addonType: "prepend",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 92,
-      columnNumber: 19
-    }
+    sm: 12
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
+    addonType: "prepend"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], {
     style: {
       borderTopLeftRadius: "20px",
       borderBottomLeftRadius: "20px",
       border: "0"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 93,
-      columnNumber: 21
     }
   }, "BTC")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
     type: "number",
@@ -52758,35 +52366,17 @@ var startYourOrder = function startYourOrder(props) {
     name: "BTC",
     id: "BTC",
     placeholder: "BTC",
-    onChange: calc_usd,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 102,
-      columnNumber: 19
-    }
+    onChange: calc_usd
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-0",
     disabled: props.isLoading,
     onClick: function onClick(e) {
       e.preventDefault();
       if (isAuthenticated()) props.isClicked();else next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push('/login');
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 106,
-      columnNumber: 13
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Spinner"], {
     size: "sm",
-    color: "primary",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 117,
-      columnNumber: 17
-    }
+    color: "primary"
   }) : "Buy Bitcoins")))));
 };
 
@@ -52806,109 +52396,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\VerifySms.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 var verifySms = function verifySms(props) {
   return __jsx("div", {
-    "class": "col-12 mt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 5
-    }
-  }, __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 7
-    }
-  }, "A one-time SMS has been sent to your registered mobile number.", " ", __jsx("span", {
-    className: "text-dark",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 9
-    }
+    "class": "col-12 mt-3"
+  }, __jsx("p", null, "A one-time SMS has been sent to your registered mobile number.", " ", __jsx("span", {
+    className: "text-dark"
   }, "+19165810509")), __jsx("div", {
-    className: "login-modal",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 9
-    }
-  }, __jsx("div", {
-    className: "form-row",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
+    className: "login-modal"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, __jsx("div", {
+    className: "form-row"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
-    className: "col-md-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 13
-    }
+    className: "col-md-12"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    "for": "inputEmail",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 15
-    }
+    "for": "inputEmail"
   }, "SMS"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     className: "form-control",
     id: "SMS",
     placeholder: "SMS",
-    type: "text",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 15
-    }
+    type: "text"
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-0",
     disabled: props.isLoading,
     onClick: function onClick(e) {
       e.preventDefault();
       props.isClicked();
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 11
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
     size: "sm",
-    color: "primary",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 32
-    }
+    color: "primary"
   }) : "Verify"))));
 };
 
@@ -52935,9 +52454,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-light-accordion/demo/css/index.css */ "./node_modules/react-light-accordion/demo/css/index.css");
 /* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\accordian.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -52967,73 +52483,24 @@ var AccordionElementSection = function AccordionElementSection(props) {
 
   if (condition === "1st") {
     cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 34,
-        columnNumber: 9
-      }
-    }, __jsx("div", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35,
-        columnNumber: 11
-      }
-    }, __jsx("div", {
-      "class": " p-3 d-flex",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 36,
-        columnNumber: 13
-      }
+      className: "bg-white"
+    }, __jsx("div", null, __jsx("div", {
+      "class": " p-3 d-flex"
     }, __jsx("div", {
       "class": "rounded-circle text-white mr-4",
-      style: width,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 37,
-        columnNumber: 15
-      }
+      style: width
     }, __jsx("span", {
       "class": "text-white ",
       style: {
         fontSize: "2rem",
         padding: "15px"
-      },
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38,
-        columnNumber: 17
       }
     }, "1")), __jsx("span", {
-      "class": "h6 align-self-center mb-0",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 44,
-        columnNumber: 15
-      }
+      "class": "h6 align-self-center mb-0"
     }, "START YOUR ORDER")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 48,
-        columnNumber: 9
-      }
+      isOpen: true
     }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], {
-      className: "w-100",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 49,
-        columnNumber: 11
-      }
+      className: "w-100"
     }, __jsx(_StartYourOrder__WEBPACK_IMPORTED_MODULE_1__["default"], {
       price: props.price,
       getRate: props.getRate,
@@ -53043,367 +52510,125 @@ var AccordionElementSection = function AccordionElementSection(props) {
           setCondition("2nd"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 50,
-        columnNumber: 13
-      }
+      isLoading: isLoading
     }))));
   } else if (condition === "2nd") {
     cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 68,
-        columnNumber: 9
-      }
-    }, __jsx("div", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 69,
-        columnNumber: 11
-      }
-    }, __jsx("div", {
-      "class": " p-3 d-flex",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 70,
-        columnNumber: 13
-      }
+      className: "bg-white"
+    }, __jsx("div", null, __jsx("div", {
+      "class": " p-3 d-flex"
     }, __jsx("div", {
       "class": "rounded-circle  text-white mr-4",
-      style: width,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 71,
-        columnNumber: 15
-      }
+      style: width
     }, __jsx("span", {
       "class": "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
-      },
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 72,
-        columnNumber: 17
       }
     }, "2")), __jsx("span", {
-      "class": "h6 align-self-center mb-0",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 78,
-        columnNumber: 15
-      }
+      "class": "h6 align-self-center mb-0"
     }, "Verify SMS")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 82,
-        columnNumber: 9
-      }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 83,
-        columnNumber: 11
-      }
-    }, __jsx(_VerifySms__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      isOpen: true
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_VerifySms__WEBPACK_IMPORTED_MODULE_2__["default"], {
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
           setCondition("3rd"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 84,
-        columnNumber: 13
-      }
+      isLoading: isLoading
     }))));
   } else if (condition === "3rd") {
     cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 100,
-        columnNumber: 9
-      }
-    }, __jsx("div", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 101,
-        columnNumber: 11
-      }
-    }, __jsx("div", {
-      "class": " p-3 d-flex",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 102,
-        columnNumber: 13
-      }
+      className: "bg-white"
+    }, __jsx("div", null, __jsx("div", {
+      "class": " p-3 d-flex"
     }, __jsx("div", {
       "class": "rounded-circle  text-white mr-4",
-      style: width,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 103,
-        columnNumber: 15
-      }
+      style: width
     }, __jsx("span", {
       "class": "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
-      },
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 104,
-        columnNumber: 17
       }
     }, "3")), __jsx("span", {
-      "class": "h6 align-self-center mb-0",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 110,
-        columnNumber: 15
-      }
+      "class": "h6 align-self-center mb-0"
     }, "Select Wallet")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 114,
-        columnNumber: 9
-      }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 115,
-        columnNumber: 11
-      }
-    }, __jsx(_selectWallet__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      isOpen: true
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_selectWallet__WEBPACK_IMPORTED_MODULE_3__["default"], {
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
           setCondition("4th"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 116,
-        columnNumber: 13
-      }
+      isLoading: isLoading
     }))));
   } else if (condition === "4th") {
     cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 132,
-        columnNumber: 9
-      }
-    }, __jsx("div", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 133,
-        columnNumber: 11
-      }
-    }, __jsx("div", {
-      "class": " p-3 d-flex",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 134,
-        columnNumber: 13
-      }
+      className: "bg-white"
+    }, __jsx("div", null, __jsx("div", {
+      "class": " p-3 d-flex"
     }, __jsx("div", {
       "class": "rounded-circle  text-white mr-4",
-      style: width,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 135,
-        columnNumber: 15
-      }
+      style: width
     }, __jsx("span", {
       "class": "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
-      },
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 136,
-        columnNumber: 17
       }
     }, "4")), __jsx("span", {
-      "class": "h6 align-self-center mb-0",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 142,
-        columnNumber: 15
-      }
+      "class": "h6 align-self-center mb-0"
     }, "Upload Images")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 146,
-        columnNumber: 9
-      }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 147,
-        columnNumber: 11
-      }
-    }, __jsx(_uploadImages__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      isOpen: true
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_uploadImages__WEBPACK_IMPORTED_MODULE_4__["default"], {
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
           setCondition("5th"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 148,
-        columnNumber: 13
-      }
+      isLoading: isLoading
     }))));
   } else if (condition == "5th") {
     cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 164,
-        columnNumber: 9
-      }
-    }, __jsx("div", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 165,
-        columnNumber: 11
-      }
-    }, __jsx("div", {
-      "class": " p-3 d-flex",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 166,
-        columnNumber: 13
-      }
+      className: "bg-white"
+    }, __jsx("div", null, __jsx("div", {
+      "class": " p-3 d-flex"
     }, __jsx("div", {
       "class": "rounded-circle text-white mr-4",
-      style: width,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 167,
-        columnNumber: 15
-      }
+      style: width
     }, __jsx("span", {
       "class": "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
-      },
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 168,
-        columnNumber: 17
       }
     }, "5")), __jsx("span", {
-      "class": "h6 align-self-center mb-0",
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 174,
-        columnNumber: 15
-      }
+      "class": "h6 align-self-center mb-0"
     }, "Gift card Information")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 180,
-        columnNumber: 9
-      }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 181,
-        columnNumber: 11
-      }
-    }, __jsx(_GiftCardInformation__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      isOpen: true
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_GiftCardInformation__WEBPACK_IMPORTED_MODULE_5__["default"], {
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
           setCondition("1st"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 182,
-        columnNumber: 13
-      }
+      isLoading: isLoading
     }))));
   }
 
   return __jsx("div", {
-    className: "w-100 h-50 mt-sm",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 198,
-      columnNumber: 5
-    }
+    className: "w-100 h-50 mt-sm"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], {
     className: "shadow  w-95 m-auto",
     style: {
       width: "95%",
       zIndex: "999"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 199,
-      columnNumber: 7
     }
   }, cardToShow));
 };
@@ -53425,9 +52650,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var _Settings_AddWallet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Settings/AddWallet */ "./pages/layouts/sections/Settings/AddWallet.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\selectWallet.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -53442,198 +52664,61 @@ var selectWallet = function selectWallet(props) {
     return setModal4(!modal4);
   };
 
-  return __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 5
-    }
-  }, __jsx("div", {
+  return __jsx("div", null, __jsx("div", {
     "class": " d-flex row  p-2",
     style: {
       backgroundColor: "#ebf9f4"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 7
     }
   }, __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 9
-    }
+    "class": "col-12"
   }, __jsx("span", {
-    "class": "text-left font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 11
-    }
+    "class": "text-left font-14-18"
   }, "Giftcard Amount"), __jsx("span", {
-    "class": "float-right font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
-  }, "BTC Value"), __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 11
-    }
-  })), __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 9
-    }
-  }, __jsx("span", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 11
-    }
-  }, "$25"), __jsx("span", {
-    "class": "float-right",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 11
-    }
+    "class": "float-right font-14-18"
+  }, "BTC Value"), __jsx("br", null)), __jsx("div", {
+    "class": "col-12"
+  }, __jsx("span", null, "$25"), __jsx("span", {
+    "class": "float-right"
   }, "0.000183411 / $20.66"))), __jsx("div", {
-    className: " d-flex row mt-2 ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 7
-    }
+    className: " d-flex row mt-2 "
   }, __jsx("div", {
     className: "col-6  p-3 text-center",
     style: {
       backgroundColor: "#eaecf3 "
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 9
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
     check: true,
-    className: "float-right",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25,
-      columnNumber: 11
-    }
+    className: "float-right"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    type: "checkbox",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 13
-    }
+    type: "checkbox"
   })), __jsx("img", {
-    src: "/assets/images/home/btc.png",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 11
-    }
-  }), __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
-  }), "MYBTC"), __jsx("p", {
+    src: "/assets/images/home/btc.png"
+  }), __jsx("br", null), "MYBTC"), __jsx("p", {
     style: {
       color: "black",
       display: "block"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 9
     }
-  }, "No wallet has been registered with your account."), __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 9
-    }
-  }), __jsx("p", {
+  }, "No wallet has been registered with your account."), __jsx("br", null), __jsx("p", {
     style: {
       color: "black"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 9
     }
   }, __jsx("a", {
-    onClick: toggleModal4,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 11
-    }
+    onClick: toggleModal4
   }, "Add a wallet now"))), __jsx(_Settings_AddWallet__WEBPACK_IMPORTED_MODULE_2__["default"], {
     toggle: function toggle() {
       toggleModal4();
     },
-    isOpen: modal4,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 7
-    }
+    isOpen: modal4
   }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-3",
     disabled: props.isLoading,
     onClick: function onClick(e) {
       e.preventDefault();
       props.isClicked();
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 7
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
     size: "sm",
-    color: "primary",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 28
-    }
+    color: "primary"
   }) : "Select"));
 };
 
@@ -53655,10 +52740,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dropzone */ "./node_modules/react-dropzone/dist/es/index.js");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-
-
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\uploadImages.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -53700,362 +52781,103 @@ var uploadImages = function uploadImages(props) {
     return setModalBogc(!modalBogc);
   };
 
-  return __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25,
-      columnNumber: 5
-    }
-  }, __jsx("div", {
+  return __jsx("div", null, __jsx("div", {
     "class": " d-flex row  p-2",
     style: {
       backgroundColor: "#ebf9f4"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 7
     }
   }, __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 9
-    }
+    "class": "col-12"
   }, __jsx("span", {
-    "class": "text-left font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 11
-    }
+    "class": "text-left font-14-18"
   }, "Giftcard Amount"), __jsx("span", {
-    "class": "float-right font-14-18",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
-  }, "BTC Value"), __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 11
-    }
-  })), __jsx("div", {
-    "class": "col-12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 9
-    }
-  }, __jsx("span", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 11
-    }
-  }, "$25"), __jsx("span", {
-    "class": "float-right",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 11
-    }
-  }, "0.000183411 / $20.66"))), __jsx("hr", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 7
-    }
-  }), __jsx("p", {
-    "class": "text-left ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 7
-    }
+    "class": "float-right font-14-18"
+  }, "BTC Value"), __jsx("br", null)), __jsx("div", {
+    "class": "col-12"
+  }, __jsx("span", null, "$25"), __jsx("span", {
+    "class": "float-right"
+  }, "0.000183411 / $20.66"))), __jsx("hr", null), __jsx("p", {
+    "class": "text-left "
   }, "Front of reciept", __jsx("i", {
     onClick: toggleFor,
     className: "fa fa-question-circle pl-3 mb-3 font-14-18",
     style: {
       cursor: "pointer"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 9
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     isOpen: modalFor,
-    toggle: toggleFor,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 7
-    }
+    toggle: toggleFor
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalHeader"], {
-    toggle: toggleFor,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49,
-      columnNumber: 9
-    }
+    toggle: toggleFor
   }, "Front of Receipt"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], {
-    className: "text-center",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 9
-    }
+    className: "text-center"
   }, __jsx("img", {
     src: "/assets/images/home/receipt.jpg",
     style: {
       maxHeight: "350px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 11
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     color: "secondary",
-    onClick: toggleFor,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 11
-    }
+    onClick: toggleFor
   }, "Cancel"))), __jsx("p", {
-    "class": "text-left ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 7
-    }
+    "class": "text-left "
   }, "Front of Gift Card beside Reciept", __jsx("i", {
     onClick: toggleFogc,
     className: "fa fa-question-circle pl-3 mb-3 font-14-18",
     style: {
       cursor: "pointer"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 9
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     isOpen: modalFogc,
-    toggle: toggleFogc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 7
-    }
+    toggle: toggleFogc
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalHeader"], {
-    toggle: toggleFogc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 9
-    }
-  }, "Front of Gift Card beside Reciept"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 9
-    }
-  }, __jsx("img", {
+    toggle: toggleFogc
+  }, "Front of Gift Card beside Reciept"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], null, __jsx("img", {
     src: "/assets/images/home/card-front.png",
     style: {
       maxHeight: "350px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 76,
-      columnNumber: 11
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 81,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     color: "secondary",
-    onClick: toggleFogc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 82,
-      columnNumber: 11
-    }
+    onClick: toggleFogc
   }, "Cancel"))), __jsx("p", {
-    "class": "text-left ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 87,
-      columnNumber: 7
-    }
+    "class": "text-left "
   }, "Back of Gift Card beside Receipt", __jsx("i", {
     onClick: toggleBogc,
     className: "fa fa-question-circle pl-3 mb-3 font-14-18",
     "aria-hidden": "true",
     style: {
       cursor: "pointer"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 89,
-      columnNumber: 9
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     isOpen: modalBogc,
-    toggle: toggleBogc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 97,
-      columnNumber: 7
-    }
+    toggle: toggleBogc
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalHeader"], {
-    toggle: toggleBogc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 98,
-      columnNumber: 9
-    }
-  }, "Back of Gift Card beside Receipt"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 101,
-      columnNumber: 9
-    }
-  }, __jsx("img", {
+    toggle: toggleBogc
+  }, "Back of Gift Card beside Receipt"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], null, __jsx("img", {
     src: "/assets/images/home/card-back.png",
     style: {
       maxHeight: "350px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 102,
-      columnNumber: 11
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 107,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     color: "secondary",
-    onClick: toggleBogc,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 108,
-      columnNumber: 11
-    }
-  }, "Cancel"))), __jsx("small", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 113,
-      columnNumber: 7
-    }
-  }, "Upload a picture of the back side of your prepaid gift card beside the written reeipt."), __jsx("div", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getRootProps(), {
+    onClick: toggleBogc
+  }, "Cancel"))), __jsx("small", null, "Upload a picture of the back side of your prepaid gift card beside the written reeipt."), __jsx("div", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getRootProps(), {
     className: "p-5 mt-2 text-center",
     style: {
       border: "1px dotted #aaaaaa",
       cursor: "pointer"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 117,
-      columnNumber: 7
     }
-  }), __jsx("input", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getInputProps(), {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 124,
-      columnNumber: 9
-    }
-  })), isDragActive ? __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 126,
-      columnNumber: 11
-    }
-  }, "Drop the files here ...") : __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 128,
-      columnNumber: 11
-    }
-  }, "Tap to add a photo.")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  }), __jsx("input", getInputProps()), isDragActive ? __jsx("p", null, "Drop the files here ...") : __jsx("p", null, "Tap to add a photo.")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-3",
     disabled: props.isLoading,
     onClick: function onClick(e) {
       e.preventDefault();
       props.isClicked();
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 131,
-      columnNumber: 7
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Spinner"], {
     size: "sm",
-    color: "primary",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 139,
-      columnNumber: 28
-    }
+    color: "primary"
   }) : "Upload"));
 };
 
@@ -54080,9 +52902,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Accordian_accordian__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Accordian/accordian */ "./pages/layouts/sections/Accordian/accordian.js");
 /* harmony import */ var _public_assets_animation_animation_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../public/assets/animation/animation.json */ "./public/assets/animation/animation.json");
 var _public_assets_animation_animation_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../../public/assets/animation/animation.json */ "./public/assets/animation/animation.json", 1);
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Banner\\Banner.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -54107,203 +52926,68 @@ var Banner = function Banner(props) {
   };
   return __jsx("section", {
     className: "saas2 header",
-    id: "home",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 5
-    }
+    id: "home"
   }, __jsx("div", {
-    className: "saas2-content ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 7
-    }
+    className: "saas2-content "
   }, __jsx("div", {
-    className: "bg saas2-bg",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 9
-    }
+    className: "bg saas2-bg"
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
     style: {
       paddingBottom: "13rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 11
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
     style: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 13
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "6",
-    className: " order-2 order-lg-1",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 15
-    }
+    className: " order-2 order-lg-1"
   }, __jsx(_Accordian_accordian__WEBPACK_IMPORTED_MODULE_3__["default"], {
     price: props.price,
-    getRate: props.getRate,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 17
-    }
+    getRate: props.getRate
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "6",
-    className: "order-1 order-lg-2",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 15
-    }
+    className: "order-1 order-lg-2"
   }, __jsx("div", {
-    className: "center-text bannerHomePadding ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 17
-    }
-  }, __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 19
-    }
-  }, __jsx("div", {
-    className: "header-text",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 21
-    }
+    className: "center-text bannerHomePadding "
+  }, __jsx("div", null, __jsx("div", {
+    className: "header-text"
   }, __jsx("h1", {
     style: {
       fontFamily: "Graphik_Semibold"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 23
     }
   }, " ", "Buy Bitcoin with Visa, Mastercard & Amex Gift Cards")), __jsx("div", {
-    className: "header-sub-text",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 21
-    }
+    className: "header-sub-text"
   }, __jsx("p", {
-    className: "sub-para text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 23
-    }
+    className: "sub-para text-white"
   }, "Get your Bitcoin instantly using our service - no more \"temporary holds\" on your Bitcoin that traditional exchanges have in place. Exchange your nonreloadable prepaid gift card today!")), __jsx(react_lottie__WEBPACK_IMPORTED_MODULE_2___default.a, {
     options: defaultOptions,
     isClickToPauseDisabled: true,
     height: "auto",
-    width: "100%",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 21
-    }
+    width: "100%"
   })))))), __jsx("img", {
     alt: "",
     className: "img-fluid set-abs background-animate",
     src: "/assets/images/background2.png",
     style: {
       pointerEvents: "none"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 11
     }
   }), __jsx("div", {
-    className: "center-content set-abs bottom-content",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84,
-      columnNumber: 11
-    }
+    className: "center-content set-abs bottom-content"
   }, __jsx("div", {
-    className: "bottom",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85,
-      columnNumber: 13
-    }
+    className: "bottom"
   }, __jsx("a", {
     className: "down",
     onClick: function onClick() {
       return scrollToRef("feature");
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 86,
-      columnNumber: 15
     }
   }, __jsx("img", {
     alt: "",
     className: "img-fluid",
-    src: "/assets/images/down.png",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 87,
-      columnNumber: 17
-    }
-  })), __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 93,
-      columnNumber: 15
-    }
-  }))))), __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 98,
-      columnNumber: 7
-    }
-  }));
+    src: "/assets/images/down.png"
+  })), __jsx("div", null))))), __jsx("div", null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Banner);
@@ -54322,9 +53006,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\BeforeFooter\\BeforeFooter.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -54340,86 +53021,23 @@ var BeforeFooter = function BeforeFooter() {
       backgroundSize: "cover",
       paddingTop: "12rem",
       paddingBottom: "12rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 5
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: "6",
-    xs: "12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 9
-    }
+    xs: "12"
   }, __jsx("div", {
-    className: "beforeFooterHeading",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 11
-    }
+    className: "beforeFooterHeading"
   }, __jsx("div", {
-    className: "header-text ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 13
-    }
-  }, __jsx("h1", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 15
-    }
-  }, "Buy or Sell Cryptocurrency in Just a Few Minutes!")), __jsx("p", {
-    className: " text-dark mt-4",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 13
-    }
+    className: "header-text "
+  }, __jsx("h1", null, "Buy or Sell Cryptocurrency in Just a Few Minutes!")), __jsx("p", {
+    className: " text-dark mt-4"
   }, "The best way to exchange crypto and e-money around the world."))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: "6",
     xs: "12",
-    className: "text-center mb-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 9
-    }
+    className: "text-center mb-3"
   }, __jsx("a", {
     className: "btn btn-default primary-btn ",
-    href: "signup",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
+    href: "signup"
   }, "Get Started")))));
 };
 
@@ -54439,9 +53057,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Footer\\footer.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -54452,489 +53067,117 @@ var Footer = function Footer() {
     id: "contact",
     style: {
       backgroundColor: "#333D7A"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 4,
-      columnNumber: 3
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 5
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    className: ""
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "4",
     md: "6",
-    sm: "12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 9
-    }
+    sm: "12"
   }, __jsx("div", {
-    className: "logo-sec",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 11
-    }
+    className: "logo-sec"
   }, __jsx("div", {
-    className: "footer-contant",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 13
-    }
+    className: "footer-contant"
   }, __jsx("img", {
     alt: "",
     className: "img-fluid footer-logo",
     src: "/assets/images/home/logo.png",
     style: {
       maxWidth: "200px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 15
     }
   }), __jsx("div", {
-    className: "footer-para text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 15
-    }
+    className: "footer-para text-white"
   }, __jsx("p", {
-    className: "text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 17
-    }
+    className: "text-white"
   }, "Debcoins is a pending trademark of Debcoins, LLC. Debcoins has no relation to Visa, Mastercard, or American-express branded gift cards. Their respective wordmarks and trademarks belong to them alone."))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "2",
     md: "6",
-    sm: "12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 9
-    }
+    sm: "12"
   }, __jsx("div", {
-    className: "footer-title mobile-title",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 11
-    }
+    className: "footer-title mobile-title"
   }, __jsx("h3", {
-    className: "text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 13
-    }
+    className: "text-white"
   }, "Pages")), __jsx("div", {
-    className: "footer-contant",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 11
-    }
+    className: "footer-contant"
   }, __jsx("h5", {
-    className: "footer-headings",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 13
-    }
-  }, "QUICK LINKS"), __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 13
-    }
-  }, __jsx("ul", {
-    className: "footer-lists",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 15
-    }
-  }, __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 19
-    }
-  }, "Home")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 19
-    }
-  }, "Support")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 19
-    }
+    className: "footer-headings"
+  }, "QUICK LINKS"), __jsx("div", null, __jsx("ul", {
+    className: "footer-lists"
+  }, __jsx("li", null, __jsx("a", {
+    href: "#"
+  }, "Home")), __jsx("li", null, __jsx("a", {
+    href: "#"
+  }, "Support")), __jsx("li", null, __jsx("a", {
+    href: "#"
   }, "Sign Up")))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "2",
     md: "6",
-    sm: "12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 9
-    }
+    sm: "12"
   }, __jsx("div", {
-    className: "footer-title mobile-title",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 11
-    }
+    className: "footer-title mobile-title"
   }, __jsx("h3", {
-    className: "text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 13
-    }
+    className: "text-white"
   }, "LEGAL")), __jsx("div", {
-    className: "footer-contant",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 11
-    }
+    className: "footer-contant"
   }, __jsx("h5", {
-    className: "footer-headings",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 13
-    }
-  }, "LEGAL"), __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 13
-    }
-  }, __jsx("ul", {
-    className: "footer-lists",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61,
-      columnNumber: 15
-    }
-  }, __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "aml-kyc",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63,
-      columnNumber: 19
-    }
-  }, "AML/KYC")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 19
-    }
-  }, "Support")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69,
-      columnNumber: 19
-    }
-  }, "Term of Use")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 19
-    }
-  }, "privacy Policy")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 74,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 19
-    }
-  }, "Limit and Compliance")), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 77,
-      columnNumber: 17
-    }
-  }, __jsx("a", {
-    href: "/fraud-notice",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 78,
-      columnNumber: 19
-    }
+    className: "footer-headings"
+  }, "LEGAL"), __jsx("div", null, __jsx("ul", {
+    className: "footer-lists"
+  }, __jsx("li", null, __jsx("a", {
+    href: "aml-kyc"
+  }, "AML/KYC")), __jsx("li", null, __jsx("a", {
+    href: "#"
+  }, "Support")), __jsx("li", null, __jsx("a", {
+    href: "#"
+  }, "Term of Use")), __jsx("li", null, __jsx("a", {
+    href: "#"
+  }, "privacy Policy")), __jsx("li", null, __jsx("a", {
+    href: "#"
+  }, "Limit and Compliance")), __jsx("li", null, __jsx("a", {
+    href: "/fraud-notice"
   }, " Fraud Notice")))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "4",
     md: "6",
-    sm: "12",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85,
-      columnNumber: 9
-    }
+    sm: "12"
   }, __jsx("div", {
-    className: "logo-sec",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 86,
-      columnNumber: 11
-    }
+    className: "logo-sec"
   }, __jsx("div", {
-    className: "footer-title mobile-title p-t-0",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 87,
-      columnNumber: 13
-    }
+    className: "footer-title mobile-title p-t-0"
   }, __jsx("h3", {
-    className: "text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 88,
-      columnNumber: 15
-    }
+    className: "text-white"
   }, "COMPANY INFO")), __jsx("div", {
-    className: "footer-contant",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 90,
-      columnNumber: 13
-    }
+    className: "footer-contant"
   }, __jsx("h5", {
-    className: "footer-headings",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 91,
-      columnNumber: 15
-    }
+    className: "footer-headings"
   }, "COMPANY INFO"), __jsx("div", {
-    className: "footer-para text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 92,
-      columnNumber: 15
-    }
+    className: "footer-para text-white"
   }, __jsx("h6", {
-    className: "text-white para-address",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 93,
-      columnNumber: 17
-    }
+    className: "text-white para-address"
   }, "ABC Street New york City,", " "), __jsx("h6", {
-    className: "text-white para-address",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 96,
-      columnNumber: 17
-    }
+    className: "text-white para-address"
   }, "NY 10001.")), __jsx("ul", {
-    className: "d-d-flex footer-social social",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 98,
-      columnNumber: 15
-    }
+    className: "d-d-flex footer-social social"
   }, __jsx("li", {
-    className: "footer-social-list",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 99,
-      columnNumber: 17
-    }
+    className: "footer-social-list"
   }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 100,
-      columnNumber: 19
-    }
+    href: "#"
   }, __jsx("i", {
     "aria-hidden": "true",
-    className: "fa fa-facebook",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 101,
-      columnNumber: 21
-    }
+    className: "fa fa-facebook"
   }))), __jsx("li", {
-    className: "footer-social-list",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 104,
-      columnNumber: 17
-    }
+    className: "footer-social-list"
   }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 105,
-      columnNumber: 19
-    }
+    href: "#"
   }, __jsx("i", {
     "aria-hidden": "true",
-    className: "fa fa-twitter",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 106,
-      columnNumber: 21
-    }
+    className: "fa fa-twitter"
   }))), __jsx("li", {
-    className: "footer-social-list",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 109,
-      columnNumber: 17
-    }
+    className: "footer-social-list"
   }, __jsx("a", {
-    href: "#",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 110,
-      columnNumber: 19
-    }
+    href: "#"
   }, __jsx("i", {
     "aria-hidden": "true",
-    className: "fa fa-google",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 111,
-      columnNumber: 21
-    }
+    className: "fa fa-google"
   }))))))))));
 };
 
@@ -54954,9 +53197,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Guide\\Guide.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -54968,180 +53208,71 @@ var HowItWorks = function HowItWorks() {
     style: {
       marginTop: "7rem"
     },
-    id: "feature",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
-    }
+    id: "feature"
   }, __jsx("h3", {
     style: {
       color: "black"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 5
     }
-  }, "How it works"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 5
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  }, "How it works"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     xs: "12",
     md: "4",
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 7
-    }
+    className: ""
   }, __jsx("div", {
     className: " p-3 pb-5 shadow",
     style: {
       minHeight: "415px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 9
     }
   }, __jsx("p", {
     className: "text-left text-bold ",
     style: {
       fontSize: "22px",
       fontFamily: "Graphik_Semibold"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 11
     }
   }, "1"), __jsx("img", {
     src: "/assets/images/step_1.svg",
-    className: "w-100",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 11
-    }
+    className: "w-100"
   }), __jsx("p", {
-    className: "pt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 11
-    }
+    className: "pt-3"
   }, "Choose the crypto pair you\u2019d like to exchange. Make sure you are okay with the best rate on the market and the 0.25% service fee."))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     xs: "12",
     md: "4",
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 7
-    }
+    className: ""
   }, __jsx("div", {
     className: " p-3 pb-5 shadow",
     style: {
       minHeight: "415px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 9
     }
   }, __jsx("p", {
     className: "text-left text-bold ",
     style: {
       fontSize: "22px",
       fontFamily: "Graphik_Semibold"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 11
     }
   }, "2"), __jsx("img", {
     src: "/assets/images/step_2.svg",
-    className: "w-100",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
+    className: "w-100"
   }), __jsx("p", {
-    className: "pt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 11
-    }
+    className: "pt-3"
   }, "Confirm the transaction and sign in/sign up with just your email to save your transaction history."))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     xs: "12",
     md: "4",
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 7
-    }
+    className: ""
   }, __jsx("div", {
     className: " p-3 pb-5 shadow",
     style: {
       minHeight: "415px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 9
     }
   }, __jsx("p", {
     className: "text-left text-bold ",
     style: {
       fontSize: "22px",
       fontFamily: "Graphik_Semibold"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 11
     }
   }, "3"), __jsx("img", {
     src: "/assets/images/step_3.svg",
-    className: "w-100",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 11
-    }
+    className: "w-100"
   }), __jsx("p", {
-    className: "pt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 11
-    }
+    className: "pt-3"
   }, "Send the exact amount to the address provided and receive the crypto in your wallet within minutes. Debcoins works with a variety of trading platforms, and so has found the best offer on the market for you.")))));
 };
 
@@ -55165,9 +53296,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/auth */ "./utils/auth.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Header\\header.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -55197,97 +53325,27 @@ var Header = function Header(props) {
     style: {
       padding: "1rem",
       backgroundColor: props.isHome ? "" : "#333D7A"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 5
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
-  }, __jsx("nav", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 13
-    }
-  }, __jsx("a", {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, __jsx("nav", null, __jsx("a", {
     className: "m-r-auto",
-    href: "/",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 15
-    }
+    href: "/"
   }, __jsx("img", {
     alt: "",
     className: "img-fluid",
     src: "/assets/images/home/logo.png",
     style: {
       maxWidth: "200px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 17
     }
   })), __jsx("div", {
-    className: "responsive-btn",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 15
-    }
+    className: "responsive-btn"
   }, __jsx("a", {
     className: "toggle-nav",
-    onClick: clickSidebar,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 17
-    }
+    onClick: clickSidebar
   }, __jsx("i", {
     "aria-hidden": "true",
-    className: "fa fa-bars text-white",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 19
-    }
+    className: "fa fa-bars text-white"
   }))), __jsx(_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    isAuth: isAuthenticated(),
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 15
-    }
+    isAuth: isAuthenticated()
   }))))));
 };
 
@@ -55308,9 +53366,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Header\\nav.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -55331,224 +53386,73 @@ var Nav = function Nav(props) {
 
   return __jsx("div", {
     className: "navbar",
-    id: "togglebtn",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 5
-    }
+    id: "togglebtn"
   }, __jsx("div", {
-    className: "responsive-btn",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 7
-    }
+    className: "responsive-btn"
   }, __jsx("a", {
     className: "btn-back",
-    onClick: closeSidebar,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 9
-    }
-  }, __jsx("h5", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 11
-    }
-  }, "back"))), __jsx("ul", {
-    className: "main-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 7
-    }
+    onClick: closeSidebar
+  }, __jsx("h5", null, "back"))), __jsx("ul", {
+    className: "main-menu"
   }, __jsx("li", {
-    className: "mega-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 9
-    }
+    className: "mega-menu"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/support",
-    className: "active",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 11
-    }
+    className: "active"
   }, "Support")), __jsx("li", {
-    className: "mega-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 9
-    }
+    className: "mega-menu"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/term-of-use",
-    className: "active",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 25,
-      columnNumber: 11
-    }
+    className: "active"
   }, "Term of Use")), __jsx("li", {
-    className: "mega-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 9
-    }
+    className: "mega-menu"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/privacy-policy",
-    className: "active",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 11
-    }
+    className: "active"
   }, "Privacy Policy")), __jsx("li", {
-    className: "mega-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 9
-    }
+    className: "mega-menu"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/limits-and-compliance",
-    className: "active",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 11
-    }
+    className: "active"
   }, "Limits & Compliance")), props.isAuth === false ? __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("li", {
-    className: "mega-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 13
-    }
+    className: "mega-menu"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/login",
-    className: "active",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 15
-    }
+    className: "active"
   }, __jsx("a", {
     className: "btn btn-default primary-btn ",
     style: {
       padding: "10px 20px",
       marginRight: "5px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 17
     }
   }, "Login"))), __jsx("li", {
-    className: "mega-menu",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 13
-    }
+    className: "mega-menu"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signup",
-    className: "active",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56,
-      columnNumber: 15
-    }
+    className: "active"
   }, __jsx("a", {
     className: "btn btn-default primary-btn transparent",
     style: {
       padding: "10px 20px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 17
     }
   }, "Sign Up")))) : __jsx("li", {
-    className: "mega-menu account",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 11
-    }
+    className: "mega-menu account"
   }, __jsx("a", {
     href: "#",
     onClick: function onClick() {
       return setShow(!show);
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68,
-      columnNumber: 15
     }
   }, __jsx("i", {
-    className: "icon-user",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69,
-      columnNumber: 17
-    }
+    className: "icon-user"
   })), __jsx("div", {
     style: {
       top: '70'
     },
-    className: "dropdown-menu ".concat(show && "show", " dropdown-menu-right"),
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 15
-    }
+    className: "dropdown-menu ".concat(show && "show", " dropdown-menu-right")
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/logout",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75,
-      columnNumber: 17
-    }
+    href: "/logout"
   }, "Logout"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/settings",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 78,
-      columnNumber: 17
-    }
+    href: "/settings"
   }, "Profile")))));
 };
 
@@ -55568,9 +53472,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Licenses\\Licenses.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -55581,140 +53482,40 @@ var HowItWorks = function HowItWorks() {
     style: {
       backgroundColor: "#e1ebec"
     },
-    className: "mb-5 p-5",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
-    }
+    className: "mb-5 p-5"
   }, __jsx("h2", {
     className: " text-center",
     style: {
       color: "black"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 5
     }
-  }, "Licenses and Eligibility"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9,
-      columnNumber: 5
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  }, "Licenses and Eligibility"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     xs: "12",
-    md: "6",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 9
-    }
+    md: "6"
   }, __jsx("div", {
-    className: " p-3 pb-5 text-center",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 11
-    }
-  }, __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 13
-    }
-  }, __jsx("img", {
+    className: " p-3 pb-5 text-center"
+  }, __jsx("div", null, __jsx("img", {
     src: "/assets/images/saas2/usa.webp",
     style: {
       width: "130px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 15
     }
   })), __jsx("h6", {
-    className: "mt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 13
-    }
+    className: "mt-3"
   }, "Global coverage of 180+ countries and unprecedented 48 US states"), __jsx("p", {
-    className: "pt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 13
-    }
+    className: "pt-3"
   }, "Buy & sell cryptocurrencies no matter where you are"))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     xs: "12",
-    md: "6",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 9
-    }
+    md: "6"
   }, __jsx("div", {
-    className: " p-3 pb-5 text-center",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 11
-    }
-  }, __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 13
-    }
-  }, __jsx("img", {
+    className: " p-3 pb-5 text-center"
+  }, __jsx("div", null, __jsx("img", {
     src: "/assets/images/saas2/fincen.webp",
     style: {
       width: "82px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 15
     }
   })), __jsx("h6", {
-    className: "mt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 13
-    }
+    className: "mt-3"
   }, "FinCEN Department of the Treasury, United States of America"), __jsx("p", {
-    className: "pt-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38,
-      columnNumber: 13
-    }
+    className: "pt-3"
   }, "Money Service Business Registration: 31000166366948"))))));
 };
 
@@ -55737,10 +53538,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
 /* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-
-
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Prices\\Prices.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -55783,431 +53580,156 @@ var settings = {
 
 var Pricing = function Pricing(props) {
   return __jsx("section", {
-    className: "saas1 pricing pricing-6",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45,
-      columnNumber: 5
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46,
-      columnNumber: 7
-    }
-  }, __jsx(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 9
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 11
-    }
-  }, __jsx("div", {
-    className: "wrapper-full",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49,
-      columnNumber: 13
-    }
+    className: "saas1 pricing pricing-6"
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx("div", {
+    className: "wrapper-full"
   }, __jsx("h3", {
     className: "text-center",
     style: {
       fontSize: "28px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 15
     }
-  }, "Choose one of our packages"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 15
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+  }, "Choose one of our packages"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     lg: "12",
     md: "12",
     sm: "12",
     xs: "12",
-    className: "text-center",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 17
-    }
+    className: "text-center"
   }, __jsx(react_slick__WEBPACK_IMPORTED_MODULE_2___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "owl-carousel owl-theme pricing-slider plan-box"
-  }, settings, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 19
-    }
-  }), __jsx("div", {
-    className: "item ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 21
-    }
+  }, settings), __jsx("div", {
+    className: "item "
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 23
     }
   }, __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 25
-    }
+    className: ""
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 27
     }
   }, "50 USD")), __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 25
-    }
+    className: ""
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 74,
-      columnNumber: 27
     }
   }, "0.043 BTC")), __jsx("a", {
     className: "btn primary-btn btn-default ",
     onClick: function onClick() {
       return props.changePrice;
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 77,
-      columnNumber: 25
     }
   }, "Buy"))), __jsx("div", {
-    className: "item ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84,
-      columnNumber: 21
-    }
+    className: "item "
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85,
-      columnNumber: 23
     }
   }, __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 88,
-      columnNumber: 25
-    }
+    className: ""
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 90,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 93,
-      columnNumber: 27
     }
   }, "50 USD")), __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 96,
-      columnNumber: 25
-    }
+    className: ""
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 97,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 100,
-      columnNumber: 27
     }
   }, "0.043 BTC")), __jsx("a", {
-    className: "btn primary-btn btn-default ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 103,
-      columnNumber: 25
-    }
+    className: "btn primary-btn btn-default "
   }, "Buy"))), __jsx("div", {
-    className: "item ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 106,
-      columnNumber: 21
-    }
+    className: "item "
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 107,
-      columnNumber: 23
     }
   }, __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 110,
-      columnNumber: 25
-    }
+    className: ""
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 112,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 115,
-      columnNumber: 27
     }
   }, "50 USD")), __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 118,
-      columnNumber: 25
-    }
+    className: ""
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 119,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 120,
-      columnNumber: 27
     }
   }, "0.043 BTC")), __jsx("a", {
-    className: "btn primary-btn btn-default ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 123,
-      columnNumber: 25
-    }
+    className: "btn primary-btn btn-default "
   }, "Buy"))), __jsx("div", {
-    className: "item ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 126,
-      columnNumber: 21
-    }
+    className: "item "
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 127,
-      columnNumber: 23
     }
   }, __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 130,
-      columnNumber: 25
-    }
+    className: ""
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 132,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 135,
-      columnNumber: 27
     }
   }, "50 USD")), __jsx("h6", {
-    className: "",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 138,
-      columnNumber: 25
-    }
+    className: ""
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 139,
-      columnNumber: 25
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 142,
-      columnNumber: 27
     }
   }, "0.043 BTC")), __jsx("a", {
-    className: "btn primary-btn btn-default ",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 145,
-      columnNumber: 25
-    }
+    className: "btn primary-btn btn-default "
   }, "Buy")))))))))));
 };
 
@@ -56227,9 +53749,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Settings\\AddWallet.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -56245,74 +53764,17 @@ var addWallet = function addWallet(props) {
 
   return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     isOpen: props.isOpen,
-    toggle: props.toggle,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 5
-    }
+    toggle: props.toggle
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], {
-    toggle: props.toggle,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
-    }
-  }, "Add Wallet"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 7
-    }
-  }, __jsx("div", {
-    className: "typo-content",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 9
-    }
+    toggle: props.toggle
+  }, "Add Wallet"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, __jsx("div", {
+    className: "typo-content"
   }, __jsx("h4", {
-    className: "text-dark mb-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 11
-    }
-  }, "Add Wallet"), __jsx("form", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 11
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 13
-    }
-  }, __jsx("div", {
-    className: "col-sm-12  mb-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 15
-    }
+    className: "text-dark mb-3"
+  }, "Add Wallet"), __jsx("form", null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx("div", {
+    className: "col-sm-12  mb-3"
   }, __jsx("label", {
-    htmlFor: "title",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 17
-    }
+    htmlFor: "title"
   }, "Title *"), __jsx("input", {
     className: "form-control",
     id: "text",
@@ -56322,29 +53784,11 @@ var addWallet = function addWallet(props) {
     value: title,
     onChange: function onChange(e) {
       return setTitle(e.target.value);
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 17
     }
   })), __jsx("div", {
-    className: "col-sm-12  mb-3",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 15
-    }
+    className: "col-sm-12  mb-3"
   }, __jsx("label", {
-    htmlFor: "name",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 17
-    }
+    htmlFor: "name"
   }, "Wallet Address *"), __jsx("input", {
     className: "form-control",
     placeholder: "Wallet Address",
@@ -56353,40 +53797,15 @@ var addWallet = function addWallet(props) {
     value: address,
     onChange: function onChange(e) {
       return setAddress(e.target.value);
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36,
-      columnNumber: 17
     }
-  })))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49,
-      columnNumber: 7
-    }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+  })))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     color: "secondary",
-    onClick: props.toggle,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 9
-    }
+    onClick: props.toggle
   }, "Close"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     color: "primary",
     onClick: function onClick() {
       props.submit(title, address);
       props.toggle();
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 9
     }
   }, "Save Address")));
 };
@@ -56421,10 +53840,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var _this = undefined,
-    _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\auth.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -56503,12 +53918,6 @@ var AuthProvider = function AuthProvider(_ref) {
       isAuthenticated: isAuthenticated,
       isAdmin: isAdmin,
       loading: loading
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 5
     }
   }, children);
 };
@@ -56531,19 +53940,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var baseURL = "https://64.227.30.137:443" + "/api";
+var baseURL = "/api";
 var publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: baseURL,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Referrer-Policy': 'no-referrer'
-  }
+  baseURL: baseURL
 });
 
 
 /***/ }),
 
-/***/ 11:
+/***/ 8:
 /*!**********************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CWorking_place%5CHossam%5Cdebcoins_next1%5Cpages%5Cindex.js ***!
   \**********************************************************************************************************************************/
@@ -56566,5 +53971,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[11,"static/runtime/webpack.js","styles"]]]);
+},[[8,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
