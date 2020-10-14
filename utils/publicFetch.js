@@ -6,7 +6,8 @@ const baseURL =
 
 const publicFetch = axios.create({
   baseURL,
-  headers: {'Access-Control-Allow-Origin': '*'
+  headers: {'Access-Control-Allow-Origin': '*',
+  'Referrer-Policy': 'no-referrer'
   
 }
 })
