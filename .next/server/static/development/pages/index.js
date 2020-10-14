@@ -6548,9 +6548,7 @@ const baseURL = "https://64.227.30.137:443" + "/api";
 const publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL,
   headers: {
-    'Access-Control-Allow-Origin': '*',
-    referrerPolicy: 'no-referrer',
-    "referrer policy": 'no-referrer'
+    'Access-Control-Allow-Origin': '*'
   }
 });
 
