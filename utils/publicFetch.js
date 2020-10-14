@@ -5,7 +5,8 @@ const baseURL =
     
 
 const publicFetch = axios.create({
-  baseURL
+  baseURL,
+  headers: {'Access-Control-Allow-Origin': '*'}
 })
 
 export { publicFetch, baseURL }

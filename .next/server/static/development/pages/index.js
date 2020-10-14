@@ -6546,7 +6546,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const baseURL = "https://64.227.30.137:443" + "/api";
 const publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL
+  baseURL,
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
 });
 
 
