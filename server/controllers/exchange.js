@@ -1,5 +1,5 @@
 const Exchange = require('../models/exchange');
-const User = require('../models/User');
+const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
 const fetch = require('node-fetch');
 const {verificationRequest,verificationResult}=require('../utils/twilio');
