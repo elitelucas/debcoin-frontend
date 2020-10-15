@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import StartYourOrder from "./StartYourOrder";
 import VerifySms from "./VerifySms";
 import SelectWallet from "./selectWallet";
 import UploadImages from "./uploadImages";
 import GiftCardInformation from "./GiftCardInformation";
 import "react-light-accordion/demo/css/index.css";
-
+import { AuthContext } from '../../../../utils/auth';
 import {
   Collapse,
   CardBody,
@@ -19,15 +19,48 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
+import verifySms from "./VerifySms";
 
 const AccordionElementSection = (props) => {
   const [condition, setCondition] = useState("1st");
-
+  const [usd,setUSD]=useState(props.amount);
   const width = { width: "45px", height: "45px", backgroundColor: "#333D7A" };
   const [isLoading, setIsLoading] = useState(false);
-
+  const {loading}=useContext(AuthContext);
   let cardToShow = "";
-
+  const verifyReq=async ()=>{
+    try {
+      const { data } = await authAxios.get('verify');
+    } catch (error) {
+      console.log(error);        
+    }  
+  }
+  const verifySMS=async (sms)=>{
+    try {
+      const { data } = await authAxios.post('verify',{
+        code:sms
+      });
+      
+      setUserInfo({
+        ...userInfo,
+        phoneVerified:true
+      });
+      setCondition("3rd");
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);        
+    }  
+  }
+  useEffect(()=>{
+    if(props.amount>0){
+      if(props.userInfo.phoneVerified)
+        setCondition("3rd");
+      else{
+        verifyReq();
+        setCondition("2nd");
+      }
+    }
+  },[]);
   if (condition === "1st") {
     cardToShow = (
       <>
@@ -48,12 +81,20 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody className="w-100">
             <StartYourOrder
+              allowed={props.allowed}
               price={props.price}
               getRate={props.getRate}
-              isClicked={() => {
+              isClicked={(param) => {
+                setUSD(param);
                 setIsLoading(true);
                 setTimeout(() => {
-                  setCondition("2nd"), setIsLoading(false);
+                  if(props.userInfo.phoneVerified)
+                    setCondition("3rd");
+                  else{
+                    verifyReq();
+                    setCondition("2nd");
+                  }
+                  setIsLoading(false);
                 }, 1500);
               }}
               isLoading={isLoading}
@@ -81,12 +122,10 @@ const AccordionElementSection = (props) => {
         </CardHeader>
         <Collapse isOpen={true}>
           <CardBody>
-            <VerifySms
-              isClicked={() => {
+            <VerifySms phoneNumber={props.userInfo.phoneNumber}
+              isClicked={(sms) => {
                 setIsLoading(true);
-                setTimeout(() => {
-                  setCondition("3rd"), setIsLoading(false);
-                }, 1500);
+                verifySM(sms);             
               }}
               isLoading={isLoading}
             />

@@ -55,96 +55,108 @@ const Pricing = (props) => {
                   <Slider
                     className="owl-carousel owl-theme pricing-slider plan-box"
                     {...settings}>
-                    <div className="item ">
-                      <div
-                        className="price-box shadow"
-                        style={{ opacity: "1" }}>
-                        <h6 className="">Pay</h6>
+                    {props.allowed>=50 ? (
+                      <div className="item ">
+                        <div
+                          className="price-box shadow"
+                          style={{ opacity: "1" }}>
+                          <h6 className="">Pay</h6>
 
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>50 USD</span>
-                        </h4>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>50 USD</span>
+                          </h4>
 
-                        <h6 className="">Get</h6>
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>0.043 BTC</span>
-                        </h4>
+                          <h6 className="">Get</h6>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>{Math.floor(100000000*50/parseFloat(props.price))/100000000} BTC</span>
+                          </h4>
 
-                        <a
-                          className="btn primary-btn btn-default "
-                          onClick={() => props.changePrice}>
-                          Buy
-                        </a>
+                          <a
+                            className="btn primary-btn btn-default "
+                            onClick={()=>props.submit(50)}>
+                            Buy
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div className="item ">
-                      <div
-                        className="price-box shadow"
-                        style={{ opacity: "1" }}>
-                        <h6 className="">Pay</h6>
+                    ) : ''}
+                    
+                    {props.allowed>=100 ? (
+                      <div className="item ">
+                        <div
+                          className="price-box shadow"
+                          style={{ opacity: "1" }}>
+                          <h6 className="">Pay</h6>
 
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>50 USD</span>
-                        </h4>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>100 USD</span>
+                          </h4>
 
-                        <h6 className="">Get</h6>
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>0.043 BTC</span>
-                        </h4>
+                          <h6 className="">Get</h6>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>{Math.floor(10000000000/parseFloat(props.price))/100000000} BTC</span>
+                          </h4>
 
-                        <a className="btn primary-btn btn-default ">Buy</a>
+                          <a className="btn primary-btn btn-default " onClick={()=>props.submit(100)}>Buy</a>
+                        </div>
                       </div>
-                    </div>
-                    <div className="item ">
-                      <div
-                        className="price-box shadow"
-                        style={{ opacity: "1" }}>
-                        <h6 className="">Pay</h6>
+                    ) : ''}
+                    
+                    {props.allowed>=200 ? (
+                      <div className="item ">
+                        <div
+                          className="price-box shadow"
+                          style={{ opacity: "1" }}>
+                          <h6 className="">Pay</h6>
 
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>50 USD</span>
-                        </h4>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>200 USD</span>
+                          </h4>
 
-                        <h6 className="">Get</h6>
-                        <h4 className="no-weight" style={{ marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>0.043 BTC</span>
-                        </h4>
+                          <h6 className="">Get</h6>
+                          <h4 className="no-weight" style={{ marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>{Math.floor(20000000000/parseFloat(props.price))/100000000} BTC</span>
+                          </h4>
 
-                        <a className="btn primary-btn btn-default ">Buy</a>
+                          <a className="btn primary-btn btn-default " onClick={()=>props.submit(200)}>Buy</a>
+                        </div>
                       </div>
-                    </div>
-                    <div className="item ">
-                      <div
-                        className="price-box shadow"
-                        style={{ opacity: "1" }}>
-                        <h6 className="">Pay</h6>
+                    ) : ''}
+                    
+                    {props.allowed>=500 ? (
+                      <div className="item ">
+                        <div
+                          className="price-box shadow"
+                          style={{ opacity: "1" }}>
+                          <h6 className="">Pay</h6>
 
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>50 USD</span>
-                        </h4>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>500 USD</span>
+                          </h4>
 
-                        <h6 className="">Get</h6>
-                        <h4
-                          className="no-weight"
-                          style={{ fontSize: "25px", marginTop: "0rem" }}>
-                          <span style={{ fontSize: "25px" }}>0.043 BTC</span>
-                        </h4>
+                          <h6 className="">Get</h6>
+                          <h4
+                            className="no-weight"
+                            style={{ fontSize: "25px", marginTop: "0rem" }}>
+                            <span style={{ fontSize: "25px" }}>{Math.floor(50000000000/parseFloat(props.price))/100000000} BTC</span>
+                          </h4>
 
-                        <a className="btn primary-btn btn-default ">Buy</a>
+                          <a className="btn primary-btn btn-default " onClick={()=>props.submit(500)}>Buy</a>
+                        </div>
                       </div>
-                    </div>
+                    ) : ''}
+                    
                   </Slider>
                 </Col>
               </Row>

@@ -57,7 +57,7 @@ const {getTier2,postTier2,getTier3,postTier3}=require('./controllers/tier');
 const { listPopulerTags, searchTags, listTags } = require('./controllers/tags');
 const { upvote, downvote, unvote } = require('./controllers/votes');
 const { loadComments, validate, createComment, removeComment } = require('./controllers/comments');
-const { listExchange, 
+const { listExchange, allowedExchange,
 	getRate } = require('./controllers/exchange');
 const requireAdmin = require('./middlewares/requireAdmin');
 const requireAuth = require('./middlewares/requireAuth');
@@ -113,7 +113,7 @@ router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 //////////////////////////////////////////////////////////////
 //bitcoin exchange route
 router.get('/getRate',  getRate);
-
+router.get('/allowed',requireAuth, allowedExchange);
 
 
 //wallet manage

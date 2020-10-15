@@ -12,6 +12,7 @@ import {
   Spinner,
 } from "reactstrap";
 import Router  from 'next/router';
+import { toast } from 'react-toastify';
 const startYourOrder = (props) => {
   const [count,setCount]=useState(30);
   const [btc,setBtc]=useState(0);
@@ -32,7 +33,6 @@ const startYourOrder = (props) => {
   useEffect(() => {
     timer1=setInterval(async ()=>{
       if(count-1<=0){
-        console.log(count);
         props.getRate();
         setCount(30);
       }else{
@@ -108,9 +108,14 @@ const startYourOrder = (props) => {
               disabled={props.isLoading}
               onClick={(e) => {
                 e.preventDefault();
-                if(isAuthenticated())
-                  props.isClicked();
-                else
+                if(isAuthenticated()){
+                  if(usd<25 || usd>props.allowed)
+                  {
+                    toast.error("Only 25$ ~ "+props.allowed+"$ allowed at a time!");
+                    return;
+                  }
+                  props.isClicked(usd);
+                }else
                   Router.push('/login');
               }}>
               {props.isLoading ? (

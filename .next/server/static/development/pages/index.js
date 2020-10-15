@@ -137,6 +137,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/create */ "co
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/define-properties */ "core-js/library/fn/object/define-properties");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
@@ -156,6 +167,28 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptor */ "core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptors */ "core-js/library/fn/object/get-own-property-descriptors");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 
@@ -200,6 +233,36 @@ module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "core-js/
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/weak-map */ "core-js/library/fn/weak-map");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
 
 /***/ }),
 
@@ -2172,7 +2235,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./layouts/sections/Prices/Prices */ "./pages/layouts/sections/Prices/Prices.js");
 /* harmony import */ var _utils_publicFetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/publicFetch */ "./utils/publicFetch.js");
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
+/* harmony import */ var _utils_authFetch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../utils/authFetch */ "./utils/authFetch.js");
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -2190,25 +2256,149 @@ const index = () => {
     0: rate,
     1: setRate
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: allowed,
+    1: setAllowed
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    authAxios
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_utils_authFetch__WEBPACK_IMPORTED_MODULE_11__["FetchContext"]);
+  const {
+    isAuthenticated,
+    loading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_10__["AuthContext"]);
+  const {
+    0: userInfo,
+    1: setUserInfo
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
+  const {
+    0: amount,
+    1: setAmount
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
     document.body.style.setProperty("--light", "#f3f1e8");
     document.body.style.setProperty("--dark", "#9647DB");
+    getRate();
+    setAmount(0);
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (!loading) {
+      if (isAuthenticated()) {
+        (async () => {
+          try {
+            const {
+              data
+            } = await authAxios.get('myInfo');
+            setUserInfo(data);
+          } catch (error) {
+            console.log(error);
+          }
+
+          getAllowed();
+        })();
+      }
+    }
+  }, [loading]);
 
   const getRate = async () => {
     let tmp = await Object(_utils_publicFetch__WEBPACK_IMPORTED_MODULE_9__["publicFetch"])('getRate');
     setRate(tmp.data.rate);
   };
 
-  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  const getAllowed = async () => {
+    if (isAuthenticated()) {
+      let tmp = await authAxios('allowed');
+      setAllowed(tmp.data.rate);
+    }
+  };
+
+  const buying = tmp => {
+    setAmount(tmp);
+  };
+
+  return __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 5
+    }
+  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 7
+    }
+  }, __jsx("title", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 9
+    }
+  }, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "saas2",
-    isHome: true
+    isHome: true,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 7
+    }
   }), __jsx(_layouts_sections_Banner_Banner__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    amount: amount,
+    userInfo: userInfo,
+    allowed: allowed,
     price: rate,
-    getRate: getRate
-  }), __jsx(_layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_7__["default"], null), __jsx(_layouts_sections_Licenses_Licenses__WEBPACK_IMPORTED_MODULE_6__["default"], null), __jsx(_layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_8__["default"], null), __jsx(_layouts_sections_BeforeFooter_BeforeFooter__WEBPACK_IMPORTED_MODULE_5__["default"], null), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+    getRate: getRate,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 7
+    }
+  }), __jsx(_layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 7
+    }
+  }), __jsx(_layouts_sections_Licenses_Licenses__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74,
+      columnNumber: 7
+    }
+  }), __jsx(_layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    price: rate,
+    allowed: allowed,
+    submit: buying,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 7
+    }
+  }), __jsx(_layouts_sections_BeforeFooter_BeforeFooter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 7
+    }
+  }), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 7
+    }
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (index);
@@ -2230,66 +2420,230 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-number-format */ "react-number-format");
 /* harmony import */ var react_number_format__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_number_format__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\GiftCardInformation.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 const giftCardInformation = props => {
-  return __jsx("div", null, __jsx("div", {
+  return __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
     class: " d-flex row  p-2",
     style: {
       backgroundColor: "#ebf9f4"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 7
     }
   }, __jsx("div", {
-    class: "col-12"
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 9
+    }
   }, __jsx("span", {
-    class: "text-left font-14-18"
+    class: "text-left font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 11
+    }
   }, "Giftcard Amount"), __jsx("span", {
-    class: "float-right font-14-18"
-  }, "BTC Value"), __jsx("br", null)), __jsx("div", {
-    class: "col-12"
-  }, __jsx("span", null, "$25"), __jsx("span", {
-    class: "float-right"
+    class: "float-right font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 11
+    }
+  }, "BTC Value"), __jsx("br", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 11
+    }
+  })), __jsx("div", {
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 9
+    }
+  }, __jsx("span", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 11
+    }
+  }, "$25"), __jsx("span", {
+    class: "float-right",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 11
+    }
   }, "0.000183411 / $20.66"))), __jsx("div", {
-    className: "login-modal"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    className: "mt-3"
+    className: "login-modal",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 7
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    className: "mt-3",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 11
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "12"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    for: "Card Number"
+    md: "12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 13
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 15
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    for: "Card Number",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 17
+    }
   }, "Card Number *"), __jsx(react_number_format__WEBPACK_IMPORTED_MODULE_2___default.a, {
     format: "#### #### #### ####",
-    mask: "_"
+    mask: "_",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 17
+    }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "6"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    for: "examplePassword"
+    md: "6",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 13
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 15
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    for: "examplePassword",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 17
+    }
   }, "Expiration Date *"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     type: "text",
     name: "expirationDate",
     id: "expirationDate",
-    placeholder: "MM/YY"
+    placeholder: "MM/YY",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 17
+    }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "6"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    for: "examplePassword"
+    md: "6",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 13
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 15
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
+    for: "examplePassword",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 17
+    }
   }, "CVV*"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     type: "text",
     name: "cvv",
     id: "cvv",
-    placeholder: "3 or 4 digits"
+    placeholder: "3 or 4 digits",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 17
+    }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-0",
     disabled: props.isLoading,
     onClick: e => {
       e.preventDefault();
       props.isClicked();
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 11
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
     size: "sm",
-    color: "primary"
+    color: "primary",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 32
+    }
   }) : "Verify"))));
 };
 
@@ -2315,8 +2669,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-toastify */ "react-toastify");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_toastify__WEBPACK_IMPORTED_MODULE_5__);
 
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\StartYourOrder.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -2353,7 +2711,6 @@ const startYourOrder = props => {
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
     timer1 = setInterval(async () => {
       if (count - 1 <= 0) {
-        console.log(count);
         props.getRate();
         setCount(30);
       } else {
@@ -2368,39 +2725,152 @@ const startYourOrder = props => {
   const {
     isAuthenticated
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_2__["AuthContext"]);
-  return __jsx("div", null, __jsx("div", {
+  return __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
     class: " d-flex row  p-2 w-100",
     style: {
       backgroundColor: "#ebf9f4"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 7
     }
   }, __jsx("div", {
-    class: "col-12 "
+    class: "col-12 ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 9
+    }
   }, __jsx("span", {
     class: "text-left font-14-18",
-    style: {}
+    style: {},
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 11
+    }
   }, __jsx("i", {
-    class: "fab fa-btc pr-2"
+    class: "fab fa-btc pr-2",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 13
+    }
   }), "Bitcoins"), __jsx("span", {
-    class: "float-right font-14-18"
-  }, "1BTC = $", props.price, "USD"), __jsx("br", null)), __jsx("div", {
-    class: "col-12"
-  }, __jsx("span", null, "Bitcoin price has all Conversion Rate fees included"), __jsx("span", {
-    class: "float-right"
+    class: "float-right font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 3
+    }
+  }, "1BTC = $", props.price, "USD"), __jsx("br", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 11
+    }
+  })), __jsx("div", {
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 9
+    }
+  }, __jsx("span", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 11
+    }
+  }, "Bitcoin price has all Conversion Rate fees included"), __jsx("span", {
+    class: "float-right",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 11
+    }
   }, count, "s"))), __jsx("div", {
-    class: "col-12 mt-3"
+    class: "col-12 mt-3",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 7
+    }
   }, __jsx("div", {
-    className: "login-modal"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-    row: true
+    className: "login-modal",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 11
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
+    row: true,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 13
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    sm: 12
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupAddon"], {
-    addonType: "prepend"
+    sm: 12,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 15
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroup"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74,
+      columnNumber: 17
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupAddon"], {
+    addonType: "prepend",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 19
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupText"], {
     style: {
       borderTopLeftRadius: "20px",
       borderBottomLeftRadius: "20px",
       border: "0"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 21
     }
   }, "USD")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
     type: "number",
@@ -2409,18 +2879,55 @@ const startYourOrder = props => {
     name: "usd",
     id: "usd",
     placeholder: "USD",
-    onChange: calc_btc
+    onChange: calc_btc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85,
+      columnNumber: 19
+    }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-    row: true
+    row: true,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89,
+      columnNumber: 13
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    sm: 12
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroup"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupAddon"], {
-    addonType: "prepend"
+    sm: 12,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90,
+      columnNumber: 15
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroup"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 91,
+      columnNumber: 17
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupAddon"], {
+    addonType: "prepend",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 19
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["InputGroupText"], {
     style: {
       borderTopLeftRadius: "20px",
       borderBottomLeftRadius: "20px",
       border: "0"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 93,
+      columnNumber: 21
     }
   }, "BTC")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
     type: "number",
@@ -2428,17 +2935,43 @@ const startYourOrder = props => {
     name: "BTC",
     id: "BTC",
     placeholder: "BTC",
-    onChange: calc_usd
+    onChange: calc_usd,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 102,
+      columnNumber: 19
+    }
   })))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-0",
     disabled: props.isLoading,
     onClick: e => {
       e.preventDefault();
-      if (isAuthenticated()) props.isClicked();else next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/login');
+
+      if (isAuthenticated()) {
+        if (usd < 25 || usd > props.allowed) {
+          react_toastify__WEBPACK_IMPORTED_MODULE_5__["toast"].error("Only 25$ ~ " + props.allowed + "$ allowed at a time!");
+          return;
+        }
+
+        props.isClicked(usd);
+      } else next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/login');
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 106,
+      columnNumber: 13
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Spinner"], {
     size: "sm",
-    color: "primary"
+    color: "primary",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 122,
+      columnNumber: 17
+    }
   }) : "Buy Bitcoins")))));
 };
 
@@ -2459,38 +2992,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\VerifySms.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 const verifySms = props => {
+  const [sms, setSMS] = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState('');
   return __jsx("div", {
-    class: "col-12 mt-3"
-  }, __jsx("p", null, "A one-time SMS has been sent to your registered mobile number.", " ", __jsx("span", {
-    className: "text-dark"
-  }, "+19165810509")), __jsx("div", {
-    className: "login-modal"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, __jsx("div", {
-    className: "form-row"
+    class: "col-12 mt-3",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 5
+    }
+  }, __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 7
+    }
+  }, "A one-time SMS has been sent to your registered mobile number.", " ", __jsx("span", {
+    className: "text-dark",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 3
+    }
+  }, "+", props.phoneNumber)), __jsx("div", {
+    className: "login-modal",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "form-row",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 11
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
-    className: "col-md-12"
+    className: "col-md-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 13
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    for: "inputEmail"
+    for: "inputEmail",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 15
+    }
   }, "SMS"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     className: "form-control",
     id: "SMS",
     placeholder: "SMS",
-    type: "text"
+    type: "text",
+    value: sms,
+    onChange: e => setSMS(e.target.value),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 15
+    }
   }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-0",
     disabled: props.isLoading,
     onClick: e => {
       e.preventDefault();
-      props.isClicked();
+      props.isClicked(sms);
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 11
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
     size: "sm",
-    color: "primary"
+    color: "primary",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 32
+    }
   }) : "Verify"))));
 };
 
@@ -2507,18 +3112,47 @@ const verifySms = props => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _StartYourOrder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StartYourOrder */ "./pages/layouts/sections/Accordian/StartYourOrder.js");
-/* harmony import */ var _VerifySms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./VerifySms */ "./pages/layouts/sections/Accordian/VerifySms.js");
-/* harmony import */ var _selectWallet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./selectWallet */ "./pages/layouts/sections/Accordian/selectWallet.js");
-/* harmony import */ var _uploadImages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./uploadImages */ "./pages/layouts/sections/Accordian/uploadImages.js");
-/* harmony import */ var _GiftCardInformation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GiftCardInformation */ "./pages/layouts/sections/Accordian/GiftCardInformation.js");
-/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-light-accordion/demo/css/index.css */ "./node_modules/react-light-accordion/demo/css/index.css");
-/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_7__);
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-properties */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptors */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _StartYourOrder__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./StartYourOrder */ "./pages/layouts/sections/Accordian/StartYourOrder.js");
+/* harmony import */ var _VerifySms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./VerifySms */ "./pages/layouts/sections/Accordian/VerifySms.js");
+/* harmony import */ var _selectWallet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./selectWallet */ "./pages/layouts/sections/Accordian/selectWallet.js");
+/* harmony import */ var _uploadImages__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./uploadImages */ "./pages/layouts/sections/Accordian/uploadImages.js");
+/* harmony import */ var _GiftCardInformation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./GiftCardInformation */ "./pages/layouts/sections/Accordian/GiftCardInformation.js");
+/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-light-accordion/demo/css/index.css */ "./node_modules/react-light-accordion/demo/css/index.css");
+/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../utils/auth */ "./utils/auth.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_15__);
+
+
+
+
+
+
+
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\accordian.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(Object(source)).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
+
+
+
 
 
 
@@ -2532,7 +3166,11 @@ const AccordionElementSection = props => {
   const {
     0: condition,
     1: setCondition
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("1st");
+  } = Object(react__WEBPACK_IMPORTED_MODULE_7__["useState"])("1st");
+  const {
+    0: usd,
+    1: setUSD
+  } = Object(react__WEBPACK_IMPORTED_MODULE_7__["useState"])(props.amount);
   const width = {
     width: "45px",
     height: "45px",
@@ -2541,157 +3179,492 @@ const AccordionElementSection = props => {
   const {
     0: isLoading,
     1: setIsLoading
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_7__["useState"])(false);
+  const {
+    loading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_7__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_14__["AuthContext"]);
   let cardToShow = "";
 
+  const verifyReq = async () => {
+    try {
+      const {
+        data
+      } = await authAxios.get('verify');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const verifySMS = async sms => {
+    try {
+      const {
+        data
+      } = await authAxios.post('verify', {
+        code: sms
+      });
+      setUserInfo(_objectSpread({}, userInfo, {
+        phoneVerified: true
+      }));
+      setCondition("3rd");
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(() => {
+    if (props.amount > 0) {
+      if (props.userInfo.phoneVerified) setCondition("3rd");else {
+        verifyReq();
+        setCondition("2nd");
+      }
+    }
+  }, []);
+
   if (condition === "1st") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white"
-    }, __jsx("div", null, __jsx("div", {
-      class: " p-3 d-flex"
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardHeader"], {
+      className: "bg-white",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 67,
+        columnNumber: 9
+      }
+    }, __jsx("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 68,
+        columnNumber: 11
+      }
+    }, __jsx("div", {
+      class: " p-3 d-flex",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 69,
+        columnNumber: 13
+      }
     }, __jsx("div", {
       class: "rounded-circle text-white mr-4",
-      style: width
+      style: width,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70,
+        columnNumber: 15
+      }
     }, __jsx("span", {
       class: "text-white ",
       style: {
         fontSize: "2rem",
         padding: "15px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71,
+        columnNumber: 17
       }
     }, "1")), __jsx("span", {
-      class: "h6 align-self-center mb-0"
-    }, "START YOUR ORDER")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], {
-      className: "w-100"
-    }, __jsx(_StartYourOrder__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      class: "h6 align-self-center mb-0",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 77,
+        columnNumber: 15
+      }
+    }, "START YOUR ORDER")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["Collapse"], {
+      isOpen: true,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81,
+        columnNumber: 9
+      }
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardBody"], {
+      className: "w-100",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 82,
+        columnNumber: 11
+      }
+    }, __jsx(_StartYourOrder__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      allowed: props.allowed,
       price: props.price,
       getRate: props.getRate,
-      isClicked: () => {
+      isClicked: param => {
+        setUSD(param);
         setIsLoading(true);
         setTimeout(() => {
-          setCondition("2nd"), setIsLoading(false);
+          if (props.userInfo.phoneVerified) setCondition("3rd");else {
+            verifyReq();
+            setCondition("2nd");
+          }
+          setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading
+      isLoading: isLoading,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 83,
+        columnNumber: 13
+      }
     }))));
   } else if (condition === "2nd") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white"
-    }, __jsx("div", null, __jsx("div", {
-      class: " p-3 d-flex"
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardHeader"], {
+      className: "bg-white",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109,
+        columnNumber: 9
+      }
+    }, __jsx("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110,
+        columnNumber: 11
+      }
+    }, __jsx("div", {
+      class: " p-3 d-flex",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 111,
+        columnNumber: 13
+      }
     }, __jsx("div", {
       class: "rounded-circle  text-white mr-4",
-      style: width
+      style: width,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 112,
+        columnNumber: 15
+      }
     }, __jsx("span", {
       class: "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113,
+        columnNumber: 17
       }
     }, "2")), __jsx("span", {
-      class: "h6 align-self-center mb-0"
-    }, "Verify SMS")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_VerifySms__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      isClicked: () => {
+      class: "h6 align-self-center mb-0",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 119,
+        columnNumber: 15
+      }
+    }, "Verify SMS")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["Collapse"], {
+      isOpen: true,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 123,
+        columnNumber: 9
+      }
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardBody"], {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 124,
+        columnNumber: 11
+      }
+    }, __jsx(_VerifySms__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      phoneNumber: props.userInfo.phoneNumber,
+      isClicked: sms => {
         setIsLoading(true);
-        setTimeout(() => {
-          setCondition("3rd"), setIsLoading(false);
-        }, 1500);
+        verifySM(sms);
       },
-      isLoading: isLoading
+      isLoading: isLoading,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 125,
+        columnNumber: 13
+      }
     }))));
   } else if (condition === "3rd") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white"
-    }, __jsx("div", null, __jsx("div", {
-      class: " p-3 d-flex"
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardHeader"], {
+      className: "bg-white",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 139,
+        columnNumber: 9
+      }
+    }, __jsx("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 140,
+        columnNumber: 11
+      }
+    }, __jsx("div", {
+      class: " p-3 d-flex",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 141,
+        columnNumber: 13
+      }
     }, __jsx("div", {
       class: "rounded-circle  text-white mr-4",
-      style: width
+      style: width,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 142,
+        columnNumber: 15
+      }
     }, __jsx("span", {
       class: "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 143,
+        columnNumber: 17
       }
     }, "3")), __jsx("span", {
-      class: "h6 align-self-center mb-0"
-    }, "Select Wallet")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_selectWallet__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      class: "h6 align-self-center mb-0",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 149,
+        columnNumber: 15
+      }
+    }, "Select Wallet")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["Collapse"], {
+      isOpen: true,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 153,
+        columnNumber: 9
+      }
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardBody"], {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 154,
+        columnNumber: 11
+      }
+    }, __jsx(_selectWallet__WEBPACK_IMPORTED_MODULE_10__["default"], {
       isClicked: () => {
         setIsLoading(true);
         setTimeout(() => {
           setCondition("4th"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading
+      isLoading: isLoading,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 155,
+        columnNumber: 13
+      }
     }))));
   } else if (condition === "4th") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white"
-    }, __jsx("div", null, __jsx("div", {
-      class: " p-3 d-flex"
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardHeader"], {
+      className: "bg-white",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 171,
+        columnNumber: 9
+      }
+    }, __jsx("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 172,
+        columnNumber: 11
+      }
+    }, __jsx("div", {
+      class: " p-3 d-flex",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 173,
+        columnNumber: 13
+      }
     }, __jsx("div", {
       class: "rounded-circle  text-white mr-4",
-      style: width
+      style: width,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 174,
+        columnNumber: 15
+      }
     }, __jsx("span", {
       class: "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 175,
+        columnNumber: 17
       }
     }, "4")), __jsx("span", {
-      class: "h6 align-self-center mb-0"
-    }, "Upload Images")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_uploadImages__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      class: "h6 align-self-center mb-0",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 181,
+        columnNumber: 15
+      }
+    }, "Upload Images")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["Collapse"], {
+      isOpen: true,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 185,
+        columnNumber: 9
+      }
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardBody"], {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 186,
+        columnNumber: 11
+      }
+    }, __jsx(_uploadImages__WEBPACK_IMPORTED_MODULE_11__["default"], {
       isClicked: () => {
         setIsLoading(true);
         setTimeout(() => {
           setCondition("5th"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading
+      isLoading: isLoading,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 187,
+        columnNumber: 13
+      }
     }))));
   } else if (condition == "5th") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-      className: "bg-white"
-    }, __jsx("div", null, __jsx("div", {
-      class: " p-3 d-flex"
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardHeader"], {
+      className: "bg-white",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 203,
+        columnNumber: 9
+      }
+    }, __jsx("div", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 204,
+        columnNumber: 11
+      }
+    }, __jsx("div", {
+      class: " p-3 d-flex",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 205,
+        columnNumber: 13
+      }
     }, __jsx("div", {
       class: "rounded-circle text-white mr-4",
-      style: width
+      style: width,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 206,
+        columnNumber: 15
+      }
     }, __jsx("span", {
       class: "text-white ",
       style: {
         fontSize: "2rem",
         padding: "12px"
+      },
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 207,
+        columnNumber: 17
       }
     }, "5")), __jsx("span", {
-      class: "h6 align-self-center mb-0"
-    }, "Gift card Information")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-      isOpen: true
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, __jsx(_GiftCardInformation__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      class: "h6 align-self-center mb-0",
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 213,
+        columnNumber: 15
+      }
+    }, "Gift card Information")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["Collapse"], {
+      isOpen: true,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 219,
+        columnNumber: 9
+      }
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["CardBody"], {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 220,
+        columnNumber: 11
+      }
+    }, __jsx(_GiftCardInformation__WEBPACK_IMPORTED_MODULE_12__["default"], {
       isClicked: () => {
         setIsLoading(true);
         setTimeout(() => {
           setCondition("1st"), setIsLoading(false);
         }, 1500);
       },
-      isLoading: isLoading
+      isLoading: isLoading,
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 221,
+        columnNumber: 13
+      }
     }))));
   }
 
   return __jsx("div", {
-    className: "w-100 h-50 mt-sm"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], {
+    className: "w-100 h-50 mt-sm",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 237,
+      columnNumber: 5
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_15__["Card"], {
     className: "shadow  w-95 m-auto",
     style: {
       width: "95%",
       zIndex: "999"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 238,
+      columnNumber: 7
     }
   }, cardToShow));
 };
@@ -2714,6 +3687,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Settings_AddWallet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Settings/AddWallet */ "./pages/layouts/sections/Settings/AddWallet.js");
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\selectWallet.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -2727,61 +3701,198 @@ const selectWallet = props => {
 
   const toggleModal4 = () => setModal4(!modal4);
 
-  return __jsx("div", null, __jsx("div", {
+  return __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
     class: " d-flex row  p-2",
     style: {
       backgroundColor: "#ebf9f4"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 7
     }
   }, __jsx("div", {
-    class: "col-12"
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 9
+    }
   }, __jsx("span", {
-    class: "text-left font-14-18"
+    class: "text-left font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 11
+    }
   }, "Giftcard Amount"), __jsx("span", {
-    class: "float-right font-14-18"
-  }, "BTC Value"), __jsx("br", null)), __jsx("div", {
-    class: "col-12"
-  }, __jsx("span", null, "$25"), __jsx("span", {
-    class: "float-right"
+    class: "float-right font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 11
+    }
+  }, "BTC Value"), __jsx("br", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 11
+    }
+  })), __jsx("div", {
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 9
+    }
+  }, __jsx("span", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 11
+    }
+  }, "$25"), __jsx("span", {
+    class: "float-right",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 11
+    }
   }, "0.000183411 / $20.66"))), __jsx("div", {
-    className: " d-flex row mt-2 "
+    className: " d-flex row mt-2 ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 7
+    }
   }, __jsx("div", {
     className: "col-6  p-3 text-center",
     style: {
       backgroundColor: "#eaecf3 "
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 9
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
     check: true,
-    className: "float-right"
+    className: "float-right",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 11
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    type: "checkbox"
+    type: "checkbox",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 13
+    }
   })), __jsx("img", {
-    src: "/assets/images/home/btc.png"
-  }), __jsx("br", null), "MYBTC"), __jsx("p", {
+    src: "/assets/images/home/btc.png",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 11
+    }
+  }), __jsx("br", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 11
+    }
+  }), "MYBTC"), __jsx("p", {
     style: {
       color: "black",
       display: "block"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 9
     }
-  }, "No wallet has been registered with your account."), __jsx("br", null), __jsx("p", {
+  }, "No wallet has been registered with your account."), __jsx("br", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 9
+    }
+  }), __jsx("p", {
     style: {
       color: "black"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 9
     }
   }, __jsx("a", {
-    onClick: toggleModal4
+    onClick: toggleModal4,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 11
+    }
   }, "Add a wallet now"))), __jsx(_Settings_AddWallet__WEBPACK_IMPORTED_MODULE_2__["default"], {
     toggle: () => {
       toggleModal4();
     },
-    isOpen: modal4
+    isOpen: modal4,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 7
+    }
   }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-3",
     disabled: props.isLoading,
     onClick: e => {
       e.preventDefault();
       props.isClicked();
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 7
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Spinner"], {
     size: "sm",
-    color: "primary"
+    color: "primary",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 28
+    }
   }) : "Select"));
 };
 
@@ -2806,6 +3917,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
 
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\uploadImages.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -2840,103 +3952,362 @@ const uploadImages = props => {
 
   const toggleBogc = () => setModalBogc(!modalBogc);
 
-  return __jsx("div", null, __jsx("div", {
+  return __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
     class: " d-flex row  p-2",
     style: {
       backgroundColor: "#ebf9f4"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 7
     }
   }, __jsx("div", {
-    class: "col-12"
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 9
+    }
   }, __jsx("span", {
-    class: "text-left font-14-18"
+    class: "text-left font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 11
+    }
   }, "Giftcard Amount"), __jsx("span", {
-    class: "float-right font-14-18"
-  }, "BTC Value"), __jsx("br", null)), __jsx("div", {
-    class: "col-12"
-  }, __jsx("span", null, "$25"), __jsx("span", {
-    class: "float-right"
-  }, "0.000183411 / $20.66"))), __jsx("hr", null), __jsx("p", {
-    class: "text-left "
+    class: "float-right font-14-18",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 11
+    }
+  }, "BTC Value"), __jsx("br", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 11
+    }
+  })), __jsx("div", {
+    class: "col-12",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 9
+    }
+  }, __jsx("span", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 11
+    }
+  }, "$25"), __jsx("span", {
+    class: "float-right",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 11
+    }
+  }, "0.000183411 / $20.66"))), __jsx("hr", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 7
+    }
+  }), __jsx("p", {
+    class: "text-left ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 7
+    }
   }, "Front of reciept", __jsx("i", {
     onClick: toggleFor,
     className: "fa fa-question-circle pl-3 mb-3 font-14-18",
     style: {
       cursor: "pointer"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 9
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     isOpen: modalFor,
-    toggle: toggleFor
+    toggle: toggleFor,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 7
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalHeader"], {
-    toggle: toggleFor
+    toggle: toggleFor,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 9
+    }
   }, "Front of Receipt"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], {
-    className: "text-center"
+    className: "text-center",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 9
+    }
   }, __jsx("img", {
     src: "/assets/images/home/receipt.jpg",
     style: {
       maxHeight: "350px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 11
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     color: "secondary",
-    onClick: toggleFor
+    onClick: toggleFor,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 11
+    }
   }, "Cancel"))), __jsx("p", {
-    class: "text-left "
+    class: "text-left ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62,
+      columnNumber: 7
+    }
   }, "Front of Gift Card beside Reciept", __jsx("i", {
     onClick: toggleFogc,
     className: "fa fa-question-circle pl-3 mb-3 font-14-18",
     style: {
       cursor: "pointer"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 9
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     isOpen: modalFogc,
-    toggle: toggleFogc
+    toggle: toggleFogc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 7
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalHeader"], {
-    toggle: toggleFogc
-  }, "Front of Gift Card beside Reciept"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], null, __jsx("img", {
+    toggle: toggleFogc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 9
+    }
+  }, "Front of Gift Card beside Reciept"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 9
+    }
+  }, __jsx("img", {
     src: "/assets/images/home/card-front.png",
     style: {
       maxHeight: "350px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76,
+      columnNumber: 11
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     color: "secondary",
-    onClick: toggleFogc
+    onClick: toggleFogc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82,
+      columnNumber: 11
+    }
   }, "Cancel"))), __jsx("p", {
-    class: "text-left "
+    class: "text-left ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 7
+    }
   }, "Back of Gift Card beside Receipt", __jsx("i", {
     onClick: toggleBogc,
     className: "fa fa-question-circle pl-3 mb-3 font-14-18",
     "aria-hidden": "true",
     style: {
       cursor: "pointer"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89,
+      columnNumber: 9
     }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Modal"], {
     isOpen: modalBogc,
-    toggle: toggleBogc
+    toggle: toggleBogc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97,
+      columnNumber: 7
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalHeader"], {
-    toggle: toggleBogc
-  }, "Back of Gift Card beside Receipt"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], null, __jsx("img", {
+    toggle: toggleBogc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98,
+      columnNumber: 9
+    }
+  }, "Back of Gift Card beside Receipt"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalBody"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 101,
+      columnNumber: 9
+    }
+  }, __jsx("img", {
     src: "/assets/images/home/card-back.png",
     style: {
       maxHeight: "350px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 102,
+      columnNumber: 11
     }
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["ModalFooter"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     color: "secondary",
-    onClick: toggleBogc
-  }, "Cancel"))), __jsx("small", null, "Upload a picture of the back side of your prepaid gift card beside the written reeipt."), __jsx("div", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getRootProps(), {
+    onClick: toggleBogc,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108,
+      columnNumber: 11
+    }
+  }, "Cancel"))), __jsx("small", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113,
+      columnNumber: 7
+    }
+  }, "Upload a picture of the back side of your prepaid gift card beside the written reeipt."), __jsx("div", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getRootProps(), {
     className: "p-5 mt-2 text-center",
     style: {
       border: "1px dotted #aaaaaa",
       cursor: "pointer"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117,
+      columnNumber: 7
     }
-  }), __jsx("input", getInputProps()), isDragActive ? __jsx("p", null, "Drop the files here ...") : __jsx("p", null, "Tap to add a photo.")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  }), __jsx("input", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, getInputProps(), {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 124,
+      columnNumber: 9
+    }
+  })), isDragActive ? __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 11
+    }
+  }, "Drop the files here ...") : __jsx("p", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 128,
+      columnNumber: 11
+    }
+  }, "Tap to add a photo.")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     className: "btn primary-btn btn-default text-uppercase mt-3",
     disabled: props.isLoading,
     onClick: e => {
       e.preventDefault();
       props.isClicked();
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 131,
+      columnNumber: 7
     }
   }, props.isLoading ? __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Spinner"], {
     size: "sm",
-    color: "primary"
+    color: "primary",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 139,
+      columnNumber: 28
+    }
   }) : "Upload"));
 };
 
@@ -2962,6 +4333,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Accordian_accordian__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Accordian/accordian */ "./pages/layouts/sections/Accordian/accordian.js");
 /* harmony import */ var _public_assets_animation_animation_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../public/assets/animation/animation.json */ "./public/assets/animation/animation.json");
 var _public_assets_animation_animation_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../../../public/assets/animation/animation.json */ "./public/assets/animation/animation.json", 1);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Banner\\Banner.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -2986,66 +4358,204 @@ const Banner = props => {
   };
   return __jsx("section", {
     className: "saas2 header",
-    id: "home"
+    id: "home",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 5
+    }
   }, __jsx("div", {
-    className: "saas2-content "
+    className: "saas2-content ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 7
+    }
   }, __jsx("div", {
-    className: "bg saas2-bg"
+    className: "bg saas2-bg",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 9
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
     style: {
       paddingBottom: "13rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 11
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
     style: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 13
     }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "6",
-    className: " order-2 order-lg-1"
+    className: " order-2 order-lg-1",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 15
+    }
   }, __jsx(_Accordian_accordian__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    userInfo: props.userInfo,
+    amount: props.amount,
     price: props.price,
-    getRate: props.getRate
+    getRate: props.getRate,
+    allowed: props.allowed,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 17
+    }
   })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     lg: "6",
-    className: "order-1 order-lg-2"
+    className: "order-1 order-lg-2",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 15
+    }
   }, __jsx("div", {
-    className: "center-text bannerHomePadding "
-  }, __jsx("div", null, __jsx("div", {
-    className: "header-text"
+    className: "center-text bannerHomePadding ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 17
+    }
+  }, __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 19
+    }
+  }, __jsx("div", {
+    className: "header-text",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 21
+    }
   }, __jsx("h1", {
     style: {
       fontFamily: "Graphik_Semibold"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 23
     }
   }, " ", "Buy Bitcoin with Visa, Mastercard & Amex Gift Cards")), __jsx("div", {
-    className: "header-sub-text"
+    className: "header-sub-text",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43,
+      columnNumber: 21
+    }
   }, __jsx("p", {
-    className: "sub-para text-white"
+    className: "sub-para text-white",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 23
+    }
   }, "Get your Bitcoin instantly using our service - no more \"temporary holds\" on your Bitcoin that traditional exchanges have in place. Exchange your nonreloadable prepaid gift card today!")), __jsx(react_lottie__WEBPACK_IMPORTED_MODULE_2___default.a, {
     options: defaultOptions,
     isClickToPauseDisabled: true,
     height: "auto",
-    width: "100%"
+    width: "100%",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 21
+    }
   })))))), __jsx("img", {
     alt: "",
     className: "img-fluid set-abs background-animate",
     src: "/assets/images/background2.png",
     style: {
       pointerEvents: "none"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 11
     }
   }), __jsx("div", {
-    className: "center-content set-abs bottom-content"
+    className: "center-content set-abs bottom-content",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 11
+    }
   }, __jsx("div", {
-    className: "bottom"
+    className: "bottom",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85,
+      columnNumber: 13
+    }
   }, __jsx("a", {
     className: "down",
-    onClick: () => scrollToRef("feature")
+    onClick: () => scrollToRef("feature"),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 15
+    }
   }, __jsx("img", {
     alt: "",
     className: "img-fluid",
-    src: "/assets/images/down.png"
-  })), __jsx("div", null))))), __jsx("div", null));
+    src: "/assets/images/down.png",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 17
+    }
+  })), __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 93,
+      columnNumber: 15
+    }
+  }))))), __jsx("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98,
+      columnNumber: 7
+    }
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Banner);
@@ -3065,6 +4575,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\BeforeFooter\\BeforeFooter.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3079,23 +4590,86 @@ const BeforeFooter = () => __jsx("div", {
     backgroundSize: "cover",
     paddingTop: "12rem",
     paddingBottom: "12rem"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5,
+    columnNumber: 3
   }
-}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15,
+    columnNumber: 5
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16,
+    columnNumber: 7
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   md: "6",
-  xs: "12"
+  xs: "12",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 17,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: "beforeFooterHeading"
+  className: "beforeFooterHeading",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 18,
+    columnNumber: 11
+  }
 }, __jsx("div", {
-  className: "header-text "
-}, __jsx("h1", null, "Buy or Sell Cryptocurrency in Just a Few Minutes!")), __jsx("p", {
-  className: " text-dark mt-4"
+  className: "header-text ",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 19,
+    columnNumber: 13
+  }
+}, __jsx("h1", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 20,
+    columnNumber: 15
+  }
+}, "Buy or Sell Cryptocurrency in Just a Few Minutes!")), __jsx("p", {
+  className: " text-dark mt-4",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 23,
+    columnNumber: 13
+  }
 }, "The best way to exchange crypto and e-money around the world."))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   md: "6",
   xs: "12",
-  className: "text-center mb-3"
+  className: "text-center mb-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 28,
+    columnNumber: 9
+  }
 }, __jsx("a", {
   className: "btn btn-default primary-btn ",
-  href: "signup"
+  href: "signup",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 29,
+    columnNumber: 11
+  }
 }, "Get Started")))));
 
 /* harmony default export */ __webpack_exports__["default"] = (BeforeFooter);
@@ -3115,6 +4689,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Footer\\footer.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3124,117 +4699,489 @@ const Footer = () => __jsx("footer", {
   id: "contact",
   style: {
     backgroundColor: "#333D7A"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 4,
+    columnNumber: 3
   }
 }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-  className: ""
-}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  className: "",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 8,
+    columnNumber: 5
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 7
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   lg: "4",
   md: "6",
-  sm: "12"
+  sm: "12",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: "logo-sec"
+  className: "logo-sec",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11,
+    columnNumber: 11
+  }
 }, __jsx("div", {
-  className: "footer-contant"
+  className: "footer-contant",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 12,
+    columnNumber: 13
+  }
 }, __jsx("img", {
   alt: "",
   className: "img-fluid footer-logo",
   src: "/assets/images/home/logo.png",
   style: {
     maxWidth: "200px"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13,
+    columnNumber: 15
   }
 }), __jsx("div", {
-  className: "footer-para text-white"
+  className: "footer-para text-white",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 19,
+    columnNumber: 15
+  }
 }, __jsx("p", {
-  className: "text-white"
+  className: "text-white",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 20,
+    columnNumber: 17
+  }
 }, "Debcoins is a pending trademark of Debcoins, LLC. Debcoins has no relation to Visa, Mastercard, or American-express branded gift cards. Their respective wordmarks and trademarks belong to them alone."))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   lg: "2",
   md: "6",
-  sm: "12"
+  sm: "12",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 31,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: "footer-title mobile-title"
+  className: "footer-title mobile-title",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 32,
+    columnNumber: 11
+  }
 }, __jsx("h3", {
-  className: "text-white"
+  className: "text-white",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 33,
+    columnNumber: 13
+  }
 }, "Pages")), __jsx("div", {
-  className: "footer-contant"
+  className: "footer-contant",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 35,
+    columnNumber: 11
+  }
 }, __jsx("h5", {
-  className: "footer-headings"
-}, "QUICK LINKS"), __jsx("div", null, __jsx("ul", {
-  className: "footer-lists"
-}, __jsx("li", null, __jsx("a", {
-  href: "#"
-}, "Home")), __jsx("li", null, __jsx("a", {
-  href: "#"
-}, "Support")), __jsx("li", null, __jsx("a", {
-  href: "#"
+  className: "footer-headings",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 36,
+    columnNumber: 13
+  }
+}, "QUICK LINKS"), __jsx("div", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 37,
+    columnNumber: 13
+  }
+}, __jsx("ul", {
+  className: "footer-lists",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 38,
+    columnNumber: 15
+  }
+}, __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 39,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 40,
+    columnNumber: 19
+  }
+}, "Home")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 43,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 44,
+    columnNumber: 19
+  }
+}, "Support")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 46,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 47,
+    columnNumber: 19
+  }
 }, "Sign Up")))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   lg: "2",
   md: "6",
-  sm: "12"
+  sm: "12",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 54,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: "footer-title mobile-title"
+  className: "footer-title mobile-title",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 55,
+    columnNumber: 11
+  }
 }, __jsx("h3", {
-  className: "text-white"
+  className: "text-white",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 56,
+    columnNumber: 13
+  }
 }, "LEGAL")), __jsx("div", {
-  className: "footer-contant"
+  className: "footer-contant",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 58,
+    columnNumber: 11
+  }
 }, __jsx("h5", {
-  className: "footer-headings"
-}, "LEGAL"), __jsx("div", null, __jsx("ul", {
-  className: "footer-lists"
-}, __jsx("li", null, __jsx("a", {
-  href: "aml-kyc"
-}, "AML/KYC")), __jsx("li", null, __jsx("a", {
-  href: "#"
-}, "Support")), __jsx("li", null, __jsx("a", {
-  href: "#"
-}, "Term of Use")), __jsx("li", null, __jsx("a", {
-  href: "#"
-}, "privacy Policy")), __jsx("li", null, __jsx("a", {
-  href: "#"
-}, "Limit and Compliance")), __jsx("li", null, __jsx("a", {
-  href: "/fraud-notice"
+  className: "footer-headings",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 59,
+    columnNumber: 13
+  }
+}, "LEGAL"), __jsx("div", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 60,
+    columnNumber: 13
+  }
+}, __jsx("ul", {
+  className: "footer-lists",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 61,
+    columnNumber: 15
+  }
+}, __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 62,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "aml-kyc",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 63,
+    columnNumber: 19
+  }
+}, "AML/KYC")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 65,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 66,
+    columnNumber: 19
+  }
+}, "Support")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 68,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 69,
+    columnNumber: 19
+  }
+}, "Term of Use")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 71,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 72,
+    columnNumber: 19
+  }
+}, "privacy Policy")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 74,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 75,
+    columnNumber: 19
+  }
+}, "Limit and Compliance")), __jsx("li", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 77,
+    columnNumber: 17
+  }
+}, __jsx("a", {
+  href: "/fraud-notice",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 78,
+    columnNumber: 19
+  }
 }, " Fraud Notice")))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   lg: "4",
   md: "6",
-  sm: "12"
+  sm: "12",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 85,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: "logo-sec"
+  className: "logo-sec",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 86,
+    columnNumber: 11
+  }
 }, __jsx("div", {
-  className: "footer-title mobile-title p-t-0"
+  className: "footer-title mobile-title p-t-0",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 87,
+    columnNumber: 13
+  }
 }, __jsx("h3", {
-  className: "text-white"
+  className: "text-white",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 88,
+    columnNumber: 15
+  }
 }, "COMPANY INFO")), __jsx("div", {
-  className: "footer-contant"
+  className: "footer-contant",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 90,
+    columnNumber: 13
+  }
 }, __jsx("h5", {
-  className: "footer-headings"
+  className: "footer-headings",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 91,
+    columnNumber: 15
+  }
 }, "COMPANY INFO"), __jsx("div", {
-  className: "footer-para text-white"
+  className: "footer-para text-white",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 92,
+    columnNumber: 15
+  }
 }, __jsx("h6", {
-  className: "text-white para-address"
+  className: "text-white para-address",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 93,
+    columnNumber: 17
+  }
 }, "ABC Street New york City,", " "), __jsx("h6", {
-  className: "text-white para-address"
+  className: "text-white para-address",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 96,
+    columnNumber: 17
+  }
 }, "NY 10001.")), __jsx("ul", {
-  className: "d-d-flex footer-social social"
+  className: "d-d-flex footer-social social",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 98,
+    columnNumber: 15
+  }
 }, __jsx("li", {
-  className: "footer-social-list"
+  className: "footer-social-list",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 99,
+    columnNumber: 17
+  }
 }, __jsx("a", {
-  href: "#"
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 100,
+    columnNumber: 19
+  }
 }, __jsx("i", {
   "aria-hidden": "true",
-  className: "fa fa-facebook"
+  className: "fa fa-facebook",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 101,
+    columnNumber: 21
+  }
 }))), __jsx("li", {
-  className: "footer-social-list"
+  className: "footer-social-list",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 104,
+    columnNumber: 17
+  }
 }, __jsx("a", {
-  href: "#"
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 105,
+    columnNumber: 19
+  }
 }, __jsx("i", {
   "aria-hidden": "true",
-  className: "fa fa-twitter"
+  className: "fa fa-twitter",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 106,
+    columnNumber: 21
+  }
 }))), __jsx("li", {
-  className: "footer-social-list"
+  className: "footer-social-list",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 109,
+    columnNumber: 17
+  }
 }, __jsx("a", {
-  href: "#"
+  href: "#",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 110,
+    columnNumber: 19
+  }
 }, __jsx("i", {
   "aria-hidden": "true",
-  className: "fa fa-google"
+  className: "fa fa-google",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 111,
+    columnNumber: 21
+  }
 }))))))))));
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -3254,6 +5201,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Guide\\Guide.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3264,71 +5212,180 @@ const HowItWorks = () => __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Containe
   style: {
     marginTop: "7rem"
   },
-  id: "feature"
+  id: "feature",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5,
+    columnNumber: 3
+  }
 }, __jsx("h3", {
   style: {
     color: "black"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 6,
+    columnNumber: 5
   }
-}, "How it works"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+}, "How it works"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 7,
+    columnNumber: 5
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   xs: "12",
   md: "4",
-  className: ""
+  className: "",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 8,
+    columnNumber: 7
+  }
 }, __jsx("div", {
   className: " p-3 pb-5 shadow",
   style: {
     minHeight: "415px"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 9
   }
 }, __jsx("p", {
   className: "text-left text-bold ",
   style: {
     fontSize: "22px",
     fontFamily: "Graphik_Semibold"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10,
+    columnNumber: 11
   }
 }, "1"), __jsx("img", {
   src: "/assets/images/step_1.svg",
-  className: "w-100"
+  className: "w-100",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15,
+    columnNumber: 11
+  }
 }), __jsx("p", {
-  className: "pt-3"
+  className: "pt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16,
+    columnNumber: 11
+  }
 }, "Choose the crypto pair you\u2019d like to exchange. Make sure you are okay with the best rate on the market and the 0.25% service fee."))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   xs: "12",
   md: "4",
-  className: ""
+  className: "",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 22,
+    columnNumber: 7
+  }
 }, __jsx("div", {
   className: " p-3 pb-5 shadow",
   style: {
     minHeight: "415px"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 23,
+    columnNumber: 9
   }
 }, __jsx("p", {
   className: "text-left text-bold ",
   style: {
     fontSize: "22px",
     fontFamily: "Graphik_Semibold"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 24,
+    columnNumber: 11
   }
 }, "2"), __jsx("img", {
   src: "/assets/images/step_2.svg",
-  className: "w-100"
+  className: "w-100",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 29,
+    columnNumber: 11
+  }
 }), __jsx("p", {
-  className: "pt-3"
+  className: "pt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 30,
+    columnNumber: 11
+  }
 }, "Confirm the transaction and sign in/sign up with just your email to save your transaction history."))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   xs: "12",
   md: "4",
-  className: ""
+  className: "",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 36,
+    columnNumber: 7
+  }
 }, __jsx("div", {
   className: " p-3 pb-5 shadow",
   style: {
     minHeight: "415px"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 37,
+    columnNumber: 9
   }
 }, __jsx("p", {
   className: "text-left text-bold ",
   style: {
     fontSize: "22px",
     fontFamily: "Graphik_Semibold"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 38,
+    columnNumber: 11
   }
 }, "3"), __jsx("img", {
   src: "/assets/images/step_3.svg",
-  className: "w-100"
+  className: "w-100",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 43,
+    columnNumber: 11
+  }
 }), __jsx("p", {
-  className: "pt-3"
+  className: "pt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 44,
+    columnNumber: 11
+  }
 }, "Send the exact amount to the address provided and receive the crypto in your wallet within minutes. Debcoins works with a variety of trading platforms, and so has found the best offer on the market for you.")))));
 
 /* harmony default export */ __webpack_exports__["default"] = (HowItWorks);
@@ -3352,6 +5409,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/auth */ "./utils/auth.js");
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Header\\header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3382,27 +5440,97 @@ const Header = props => {
     style: {
       padding: "1rem",
       backgroundColor: props.isHome ? "" : "#333D7A"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 5
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, __jsx("nav", null, __jsx("a", {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 7
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 11
+    }
+  }, __jsx("nav", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 13
+    }
+  }, __jsx("a", {
     className: "m-r-auto",
-    href: "/"
+    href: "/",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 15
+    }
   }, __jsx("img", {
     alt: "",
     className: "img-fluid",
     src: "/assets/images/home/logo.png",
     style: {
       maxWidth: "200px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 17
     }
   })), __jsx("div", {
-    className: "responsive-btn"
+    className: "responsive-btn",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 15
+    }
   }, __jsx("a", {
     className: "toggle-nav",
-    onClick: clickSidebar
+    onClick: clickSidebar,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 17
+    }
   }, __jsx("i", {
     "aria-hidden": "true",
-    className: "fa fa-bars text-white"
+    className: "fa fa-bars text-white",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 19
+    }
   }))), __jsx(_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    isAuth: isAuthenticated()
+    isAuth: isAuthenticated(),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 15
+    }
   }))))));
 };
 
@@ -3423,6 +5551,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Header\\nav.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3444,71 +5573,222 @@ const Nav = props => {
 
   return __jsx("div", {
     className: `navbar`,
-    id: "togglebtn"
+    id: "togglebtn",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 5
+    }
   }, __jsx("div", {
-    className: "responsive-btn"
+    className: "responsive-btn",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 7
+    }
   }, __jsx("a", {
     className: "btn-back",
-    onClick: closeSidebar
-  }, __jsx("h5", null, "back"))), __jsx("ul", {
-    className: "main-menu"
+    onClick: closeSidebar,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 9
+    }
+  }, __jsx("h5", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 11
+    }
+  }, "back"))), __jsx("ul", {
+    className: "main-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 7
+    }
   }, __jsx("li", {
-    className: "mega-menu"
+    className: "mega-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 9
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/support",
-    className: "active"
+    className: "active",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 11
+    }
   }, "Support")), __jsx("li", {
-    className: "mega-menu"
+    className: "mega-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 9
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/term-of-use",
-    className: "active"
+    className: "active",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 11
+    }
   }, "Term of Use")), __jsx("li", {
-    className: "mega-menu"
+    className: "mega-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 9
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/privacy-policy",
-    className: "active"
+    className: "active",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 11
+    }
   }, "Privacy Policy")), __jsx("li", {
-    className: "mega-menu"
+    className: "mega-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 9
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/limits-and-compliance",
-    className: "active"
+    className: "active",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 11
+    }
   }, "Limits & Compliance")), props.isAuth === false ? __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("li", {
-    className: "mega-menu"
+    className: "mega-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 13
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/login",
-    className: "active"
+    className: "active",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 15
+    }
   }, __jsx("a", {
     className: "btn btn-default primary-btn ",
     style: {
       padding: "10px 20px",
       marginRight: "5px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 17
     }
   }, "Login"))), __jsx("li", {
-    className: "mega-menu"
+    className: "mega-menu",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 13
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signup",
-    className: "active"
+    className: "active",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 15
+    }
   }, __jsx("a", {
     className: "btn btn-default primary-btn transparent",
     style: {
       padding: "10px 20px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 17
     }
   }, "Sign Up")))) : __jsx("li", {
-    className: "mega-menu account"
+    className: "mega-menu account",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 11
+    }
   }, __jsx("a", {
     href: "#",
-    onClick: () => setShow(!show)
+    onClick: () => setShow(!show),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 15
+    }
   }, __jsx("i", {
-    className: "icon-user"
+    className: "icon-user",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 17
+    }
   })), __jsx("div", {
     style: {
       top: '70'
     },
-    className: `dropdown-menu ${show && `show`} dropdown-menu-right`
+    className: `dropdown-menu ${show && `show`} dropdown-menu-right`,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 15
+    }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/logout"
+    href: "/logout",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 17
+    }
   }, "Logout"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/settings"
+    href: "/settings",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 17
+    }
   }, "Profile")))));
 };
 
@@ -3529,6 +5809,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Licenses\\Licenses.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3538,40 +5819,140 @@ const HowItWorks = () => __jsx("div", {
   style: {
     backgroundColor: "#e1ebec"
   },
-  className: "mb-5 p-5"
+  className: "mb-5 p-5",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5,
+    columnNumber: 3
+  }
 }, __jsx("h2", {
   className: " text-center",
   style: {
     color: "black"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 6,
+    columnNumber: 5
   }
-}, "Licenses and Eligibility"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+}, "Licenses and Eligibility"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 5
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10,
+    columnNumber: 7
+  }
+}, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   xs: "12",
-  md: "6"
+  md: "6",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: " p-3 pb-5 text-center"
-}, __jsx("div", null, __jsx("img", {
+  className: " p-3 pb-5 text-center",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 12,
+    columnNumber: 11
+  }
+}, __jsx("div", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 13,
+    columnNumber: 13
+  }
+}, __jsx("img", {
   src: "/assets/images/saas2/usa.webp",
   style: {
     width: "130px"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 14,
+    columnNumber: 15
   }
 })), __jsx("h6", {
-  className: "mt-3"
+  className: "mt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 19,
+    columnNumber: 13
+  }
 }, "Global coverage of 180+ countries and unprecedented 48 US states"), __jsx("p", {
-  className: "pt-3"
+  className: "pt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 22,
+    columnNumber: 13
+  }
 }, "Buy & sell cryptocurrencies no matter where you are"))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
   xs: "12",
-  md: "6"
+  md: "6",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 27,
+    columnNumber: 9
+  }
 }, __jsx("div", {
-  className: " p-3 pb-5 text-center"
-}, __jsx("div", null, __jsx("img", {
+  className: " p-3 pb-5 text-center",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 28,
+    columnNumber: 11
+  }
+}, __jsx("div", {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 29,
+    columnNumber: 13
+  }
+}, __jsx("img", {
   src: "/assets/images/saas2/fincen.webp",
   style: {
     width: "82px"
+  },
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 30,
+    columnNumber: 15
   }
 })), __jsx("h6", {
-  className: "mt-3"
+  className: "mt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 35,
+    columnNumber: 13
+  }
 }, "FinCEN Department of the Treasury, United States of America"), __jsx("p", {
-  className: "pt-3"
+  className: "pt-3",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 38,
+    columnNumber: 13
+  }
 }, "Money Service Business Registration: 31000166366948"))))));
 
 /* harmony default export */ __webpack_exports__["default"] = (HowItWorks);
@@ -3588,14 +5969,18 @@ const HowItWorks = () => __jsx("div", {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-slick */ "react-slick");
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-float */ "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-slick */ "react-slick");
+/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_slick__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Prices\\Prices.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
@@ -3636,155 +6021,433 @@ var settings = {
 
 const Pricing = props => {
   return __jsx("section", {
-    className: "saas1 pricing pricing-6"
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, __jsx("div", {
-    className: "wrapper-full"
+    className: "saas1 pricing pricing-6",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45,
+      columnNumber: 5
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 7
+    }
+  }, __jsx(react__WEBPACK_IMPORTED_MODULE_2__["Fragment"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 9
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 11
+    }
+  }, __jsx("div", {
+    className: "wrapper-full",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 13
+    }
   }, __jsx("h3", {
     className: "text-center",
     style: {
       fontSize: "28px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 15
     }
-  }, "Choose one of our packages"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+  }, "Choose one of our packages"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 15
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
     lg: "12",
     md: "12",
     sm: "12",
     xs: "12",
-    className: "text-center"
-  }, __jsx(react_slick__WEBPACK_IMPORTED_MODULE_2___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: "text-center",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 17
+    }
+  }, __jsx(react_slick__WEBPACK_IMPORTED_MODULE_3___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "owl-carousel owl-theme pricing-slider plan-box"
-  }, settings), __jsx("div", {
-    className: "item "
+  }, settings, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 19
+    }
+  }), props.allowed >= 50 ? __jsx("div", {
+    className: "item ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 23
+    }
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 25
     }
   }, __jsx("h6", {
-    className: ""
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 27
+    }
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 29
     }
   }, "50 USD")), __jsx("h6", {
-    className: ""
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 27
+    }
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75,
+      columnNumber: 29
     }
-  }, "0.043 BTC")), __jsx("a", {
+  }, Math.floor(100000000 * 50 / _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1___default()(props.price)) / 100000000, " BTC")), __jsx("a", {
     className: "btn primary-btn btn-default ",
-    onClick: () => props.changePrice
-  }, "Buy"))), __jsx("div", {
-    className: "item "
+    onClick: () => props.submit(50),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 27
+    }
+  }, "Buy"))) : '', props.allowed >= 100 ? __jsx("div", {
+    className: "item ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 23
+    }
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89,
+      columnNumber: 25
     }
   }, __jsx("h6", {
-    className: ""
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 27
+    }
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97,
+      columnNumber: 29
     }
-  }, "50 USD")), __jsx("h6", {
-    className: ""
+  }, "100 USD")), __jsx("h6", {
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100,
+      columnNumber: 27
+    }
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 101,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 104,
+      columnNumber: 29
     }
-  }, "0.043 BTC")), __jsx("a", {
-    className: "btn primary-btn btn-default "
-  }, "Buy"))), __jsx("div", {
-    className: "item "
+  }, Math.floor(10000000000 / _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1___default()(props.price)) / 100000000, " BTC")), __jsx("a", {
+    className: "btn primary-btn btn-default ",
+    onClick: () => props.submit(100),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107,
+      columnNumber: 27
+    }
+  }, "Buy"))) : '', props.allowed >= 200 ? __jsx("div", {
+    className: "item ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113,
+      columnNumber: 23
+    }
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114,
+      columnNumber: 25
     }
   }, __jsx("h6", {
-    className: ""
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117,
+      columnNumber: 27
+    }
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 119,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 122,
+      columnNumber: 29
     }
-  }, "50 USD")), __jsx("h6", {
-    className: ""
+  }, "200 USD")), __jsx("h6", {
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 125,
+      columnNumber: 27
+    }
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 127,
+      columnNumber: 29
     }
-  }, "0.043 BTC")), __jsx("a", {
-    className: "btn primary-btn btn-default "
-  }, "Buy"))), __jsx("div", {
-    className: "item "
+  }, Math.floor(20000000000 / _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1___default()(props.price)) / 100000000, " BTC")), __jsx("a", {
+    className: "btn primary-btn btn-default ",
+    onClick: () => props.submit(200),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 130,
+      columnNumber: 27
+    }
+  }, "Buy"))) : '', props.allowed >= 500 ? __jsx("div", {
+    className: "item ",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 23
+    }
   }, __jsx("div", {
     className: "price-box shadow",
     style: {
       opacity: "1"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 25
     }
   }, __jsx("h6", {
-    className: ""
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140,
+      columnNumber: 27
+    }
   }, "Pay"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 142,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 145,
+      columnNumber: 29
     }
-  }, "50 USD")), __jsx("h6", {
-    className: ""
+  }, "500 USD")), __jsx("h6", {
+    className: "",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 148,
+      columnNumber: 27
+    }
   }, "Get"), __jsx("h4", {
     className: "no-weight",
     style: {
       fontSize: "25px",
       marginTop: "0rem"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 149,
+      columnNumber: 27
     }
   }, __jsx("span", {
     style: {
       fontSize: "25px"
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 152,
+      columnNumber: 29
     }
-  }, "0.043 BTC")), __jsx("a", {
-    className: "btn primary-btn btn-default "
-  }, "Buy")))))))))));
+  }, Math.floor(50000000000 / _babel_runtime_corejs2_core_js_parse_float__WEBPACK_IMPORTED_MODULE_1___default()(props.price)) / 100000000, " BTC")), __jsx("a", {
+    className: "btn primary-btn btn-default ",
+    onClick: () => props.submit(500),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 155,
+      columnNumber: 27
+    }
+  }, "Buy"))) : ''))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Pricing);
@@ -3804,6 +6467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Settings\\AddWallet.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -3819,17 +6483,74 @@ const addWallet = props => {
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
   return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     isOpen: props.isOpen,
-    toggle: props.toggle
+    toggle: props.toggle,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 5
+    }
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], {
-    toggle: props.toggle
-  }, "Add Wallet"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, __jsx("div", {
-    className: "typo-content"
+    toggle: props.toggle,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 7
+    }
+  }, "Add Wallet"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "typo-content",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 9
+    }
   }, __jsx("h4", {
-    className: "text-dark mb-3"
-  }, "Add Wallet"), __jsx("form", null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, __jsx("div", {
-    className: "col-sm-12  mb-3"
+    className: "text-dark mb-3",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 11
+    }
+  }, "Add Wallet"), __jsx("form", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 11
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 13
+    }
+  }, __jsx("div", {
+    className: "col-sm-12  mb-3",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 15
+    }
   }, __jsx("label", {
-    htmlFor: "title"
+    htmlFor: "title",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 17
+    }
   }, "Title *"), __jsx("input", {
     className: "form-control",
     id: "text",
@@ -3837,26 +6558,69 @@ const addWallet = props => {
     required: "",
     type: "text",
     value: title,
-    onChange: e => setTitle(e.target.value)
+    onChange: e => setTitle(e.target.value),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 17
+    }
   })), __jsx("div", {
-    className: "col-sm-12  mb-3"
+    className: "col-sm-12  mb-3",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 15
+    }
   }, __jsx("label", {
-    htmlFor: "name"
+    htmlFor: "name",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 17
+    }
   }, "Wallet Address *"), __jsx("input", {
     className: "form-control",
     placeholder: "Wallet Address",
     required: "",
     type: "text",
     value: address,
-    onChange: e => setAddress(e.target.value)
-  })))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    onChange: e => setAddress(e.target.value),
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 17
+    }
+  })))))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 7
+    }
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     color: "secondary",
-    onClick: props.toggle
+    onClick: props.toggle,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 9
+    }
   }, "Close"), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     color: "primary",
     onClick: () => {
       props.submit(title, address);
       props.toggle();
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 9
     }
   }, "Save Address")));
 };
@@ -3892,6 +6656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\auth.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 const AuthContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
@@ -3970,6 +6735,86 @@ const AuthProvider = ({
       isAuthenticated,
       isAdmin,
       loading
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 5
+    }
+  }, children);
+};
+
+
+
+/***/ }),
+
+/***/ "./utils/authFetch.js":
+/*!****************************!*\
+  !*** ./utils/authFetch.js ***!
+  \****************************/
+/*! exports provided: FetchContext, FetchProvider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FetchContext", function() { return FetchContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FetchProvider", function() { return FetchProvider; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth */ "./utils/auth.js");
+/* harmony import */ var _publicFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./publicFetch */ "./utils/publicFetch.js");
+
+var _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\utils\\authFetch.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+const FetchContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
+const {
+  Provider
+} = FetchContext;
+
+const FetchProvider = ({
+  children
+}) => {
+  const {
+    authState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_auth__WEBPACK_IMPORTED_MODULE_3__["AuthContext"]);
+  const authAxios = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
+    baseURL: _publicFetch__WEBPACK_IMPORTED_MODULE_4__["baseURL"]
+  });
+  authAxios.interceptors.request.use(config => {
+    config.headers.Authorization = `Bearer ${authState.token}`;
+    return config;
+  }, error => {
+    return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.reject(error);
+  });
+  authAxios.interceptors.response.use(response => {
+    return response;
+  }, error => {
+    const code = error && error.response ? error.response.status : 0;
+
+    if (code === 401 || code === 403) {
+      console.log('error code', code);
+    }
+
+    return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.reject(error);
+  });
+  return __jsx(Provider, {
+    value: {
+      authAxios
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 5
     }
   }, children);
 };
@@ -3991,8 +6836,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseURL", function() { return baseURL; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+ //const baseURL =
+//  "/api"
 
-const baseURL = "/api";
+const baseURL = "https://64.227.30.137/api";
 const publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL
 });
@@ -4067,6 +6914,17 @@ module.exports = require("core-js/library/fn/object/create");
 
 /***/ }),
 
+/***/ "core-js/library/fn/object/define-properties":
+/*!**************************************************************!*\
+  !*** external "core-js/library/fn/object/define-properties" ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/define-properties");
+
+/***/ }),
+
 /***/ "core-js/library/fn/object/define-property":
 /*!************************************************************!*\
   !*** external "core-js/library/fn/object/define-property" ***!
@@ -4086,6 +6944,28 @@ module.exports = require("core-js/library/fn/object/define-property");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/get-own-property-descriptors":
+/*!*************************************************************************!*\
+  !*** external "core-js/library/fn/object/get-own-property-descriptors" ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-descriptors");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/get-own-property-symbols":
+/*!*********************************************************************!*\
+  !*** external "core-js/library/fn/object/get-own-property-symbols" ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 
@@ -4229,6 +7109,17 @@ module.exports = require("react-number-format");
 /***/ (function(module, exports) {
 
 module.exports = require("react-slick");
+
+/***/ }),
+
+/***/ "react-toastify":
+/*!*********************************!*\
+  !*** external "react-toastify" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-toastify");
 
 /***/ }),
 

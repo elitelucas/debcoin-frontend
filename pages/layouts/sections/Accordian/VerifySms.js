@@ -1,11 +1,12 @@
 import React from "react";
 import { Label, Form, FormGroup, Input, Button, Spinner } from "reactstrap";
 const verifySms = (props) => {
+  const [sms,setSMS]=React.useState('');
   return (
     <div class="col-12 mt-3">
       <p>
         A one-time SMS has been sent to your registered mobile number.{" "}
-        <span className="text-dark">+19165810509</span>
+  <span className="text-dark">+{props.phoneNumber}</span>
       </p>
       <div className="login-modal">
         <Form>
@@ -17,6 +18,8 @@ const verifySms = (props) => {
                 id="SMS"
                 placeholder="SMS"
                 type="text"
+                value={sms}
+                onChange={(e)=>setSMS(e.target.value)}
               />
             </FormGroup>
           </div>
@@ -27,7 +30,7 @@ const verifySms = (props) => {
             onClick={(e) => {
               e.preventDefault();
 
-              props.isClicked();
+              props.isClicked(sms);
             }}>
             {props.isLoading ? <Spinner size="sm" color="primary" /> : "Verify"}
           </Button>

@@ -8,6 +8,7 @@ const ApiContracts = require('authorizenet').APIContracts;
 const ApiControllers = require('authorizenet').APIControllers;
 const SDKConstants = require('authorizenet').Constants;
 const getRateInfo =require('../utils/getRateInfo');
+const { findById } = require('../models/user');
 //prices of crypto currencies
 var market_prices;
 //Get prices of crypto currencies on markets
@@ -36,6 +37,35 @@ exports.listExchange = async (req, res, next) => {
     return res.status(500).json({message:'failed'});
   }
 };
+
+exports.allowedExchange = async (req, res, next) => {
+  try {
+    const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
+    const today=new Date();
+    var sunday=new Date();
+    sunday.setDate(today.getDate()-today.getDay());
+    var week_total=0;
+    for(var i=0;i<exchange.length;i++){
+        if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
+            week_total+=parseFloat(exchange[i].amount);
+        }else
+            break;
+    }
+    const user=await User.findById(req.user.id);
+    
+    if(user.level===2){
+      return res.status(200).json({total:(1999-week_total>500)? 500 : (1999-week_total>500)});
+    }else if(user.level===3){
+      return res.status(200).json({total:500});
+    }else{
+      return res.status(200).json({total:500-week_total});
+    }
+    
+  } catch (error) {
+    return res.status(500).json({message:'failed'});
+  }
+};
+
 exports.getRate=async (req, res, next) => {
   try {
     console.log(market_prices);
