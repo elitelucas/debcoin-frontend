@@ -14,7 +14,7 @@ import { AuthContext } from '../utils/auth';
 import {FetchContext} from '../utils/authFetch';
 const index = () => {
   const [rate,setRate]=useState('');
-  const [allowed,setAllowed]=useState('');
+  const [allowed,setAllowed]=useState(500);
   const {authAxios}=useContext(FetchContext);
   const {isAuthenticated,loading}=useContext(AuthContext);
   const [userInfo,setUserInfo]=useState({});
@@ -52,12 +52,13 @@ const index = () => {
   }
   const getAllowed=async ()=>{
     if(isAuthenticated()){
-      let tmp=await authAxios('allowed');
-      setAllowed(tmp.data.rate);
+      let {data}=await authAxios('allowed');
+      setAllowed(data.total);
     }
     
   };
   const buying=(tmp)=>{
+    window.scrollTo({top: 0, behavior: 'smooth'});
     setAmount(tmp);
   };
   return (
@@ -68,7 +69,7 @@ const index = () => {
 
       <Header className="saas2" isHome={true}/>
 
-      <BannerSection amount={amount} userInfo={userInfo} allowed={allowed} price={rate} getRate={getRate} />
+      <BannerSection resetAmount={()=>setAmount(0)} amount={amount} userInfo={userInfo} allowed={allowed} price={rate} getRate={getRate} />
       <Guide />
       {/* <AccordianSection /> */}
       <License />

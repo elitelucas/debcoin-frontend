@@ -21,7 +21,6 @@ import { AuthContext } from '../utils/auth';
 import classnames from "classnames";
 import { FetchContext } from '../utils/authFetch';
 import Router from "next/router";
-import verifySms from "./layouts/sections/Accordian/VerifySms";
 const settings = () => {
   const {authState,isAuthenticated,loading,logout}=useContext(AuthContext);
   

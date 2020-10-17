@@ -19,14 +19,15 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-import verifySms from "./VerifySms";
-
+import {FetchContext} from '../../../../utils/authFetch';
+import { toast } from 'react-toastify';
 const AccordionElementSection = (props) => {
   const [condition, setCondition] = useState("1st");
   const [usd,setUSD]=useState(props.amount);
   const width = { width: "45px", height: "45px", backgroundColor: "#333D7A" };
   const [isLoading, setIsLoading] = useState(false);
   const {loading}=useContext(AuthContext);
+  const {authAxios}=useContext(FetchContext);
   let cardToShow = "";
   const verifyReq=async ()=>{
     try {
@@ -35,20 +36,21 @@ const AccordionElementSection = (props) => {
       console.log(error);        
     }  
   }
-  const verifySMS=async (sms)=>{
+  const verifyResult=async (sms)=>{
     try {
       const { data } = await authAxios.post('verify',{
         code:sms
       });
       
-      setUserInfo({
-        ...userInfo,
-        phoneVerified:true
-      });
+
       setCondition("3rd");
       setIsLoading(false);
     } catch (error) {
-      console.log(error);        
+      console.log(error); 
+      toast.error("OTP failed");  
+      setIsLoading(false);   
+      props.resetAmount(0);
+      setCondition("1st");  
     }  
   }
   useEffect(()=>{
@@ -60,7 +62,7 @@ const AccordionElementSection = (props) => {
         setCondition("2nd");
       }
     }
-  },[]);
+  },[props.amount]);
   if (condition === "1st") {
     cardToShow = (
       <>
@@ -125,7 +127,7 @@ const AccordionElementSection = (props) => {
             <VerifySms phoneNumber={props.userInfo.phoneNumber}
               isClicked={(sms) => {
                 setIsLoading(true);
-                verifySM(sms);             
+                verifyResult(sms);             
               }}
               isLoading={isLoading}
             />
@@ -153,6 +155,7 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody>
             <SelectWallet
+              wallet={props.userInfo.wallet}
               isClicked={() => {
                 setIsLoading(true);
                 setTimeout(() => {

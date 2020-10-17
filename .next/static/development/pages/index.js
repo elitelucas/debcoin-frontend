@@ -88,17 +88,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/create */ "./
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/define-properties */ "./node_modules/core-js/library/fn/object/define-properties.js");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
@@ -118,28 +107,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptor */ "./node_modules/core-js/library/fn/object/get-own-property-descriptor.js");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptors */ "./node_modules/core-js/library/fn/object/get-own-property-descriptors.js");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "./node_modules/core-js/library/fn/object/get-own-property-symbols.js");
 
 /***/ }),
 
@@ -520,36 +487,6 @@ function _asyncToGenerator(fn) {
       _next(undefined);
     });
   };
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
-/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
-/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
 }
 
 /***/ }),
@@ -3656,22 +3593,6 @@ module.exports = function create(P, D) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/fn/object/define-properties.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/define-properties.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es6.object.define-properties */ "./node_modules/core-js/library/modules/es6.object.define-properties.js");
-var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object;
-module.exports = function defineProperties(T, D) {
-  return $Object.defineProperties(T, D);
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/fn/object/define-property.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/core-js/library/fn/object/define-property.js ***!
@@ -3700,32 +3621,6 @@ var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/cor
 module.exports = function getOwnPropertyDescriptor(it, key) {
   return $Object.getOwnPropertyDescriptor(it, key);
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/fn/object/get-own-property-descriptors.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/get-own-property-descriptors.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es7.object.get-own-property-descriptors */ "./node_modules/core-js/library/modules/es7.object.get-own-property-descriptors.js");
-module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.getOwnPropertyDescriptors;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/fn/object/get-own-property-symbols.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/get-own-property-symbols.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es6.symbol */ "./node_modules/core-js/library/modules/es6.symbol.js");
-module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.getOwnPropertySymbols;
 
 
 /***/ }),
@@ -5689,27 +5584,6 @@ module.exports = function (KEY, exec) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/modules/_own-keys.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/library/modules/_own-keys.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// all object keys, includes non-enumerable and symbols
-var gOPN = __webpack_require__(/*! ./_object-gopn */ "./node_modules/core-js/library/modules/_object-gopn.js");
-var gOPS = __webpack_require__(/*! ./_object-gops */ "./node_modules/core-js/library/modules/_object-gops.js");
-var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/library/modules/_an-object.js");
-var Reflect = __webpack_require__(/*! ./_global */ "./node_modules/core-js/library/modules/_global.js").Reflect;
-module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
-  var keys = gOPN.f(anObject(it));
-  var getSymbols = gOPS.f;
-  return getSymbols ? keys.concat(getSymbols(it)) : keys;
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/modules/_parse-float.js":
 /*!**************************************************************!*\
   !*** ./node_modules/core-js/library/modules/_parse-float.js ***!
@@ -6636,20 +6510,6 @@ $export($export.S, 'Object', { create: __webpack_require__(/*! ./_object-create 
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/modules/es6.object.define-properties.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/core-js/library/modules/es6.object.define-properties.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
-// 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ "./node_modules/core-js/library/modules/_descriptors.js"), 'Object', { defineProperties: __webpack_require__(/*! ./_object-dps */ "./node_modules/core-js/library/modules/_object-dps.js") });
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/modules/es6.object.define-property.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es6.object.define-property.js ***!
@@ -7542,39 +7402,6 @@ __webpack_require__(/*! ./_set-collection-of */ "./node_modules/core-js/library/
 var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
 
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(/*! ./_collection-to-json */ "./node_modules/core-js/library/modules/_collection-to-json.js")('Map') });
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/modules/es7.object.get-own-property-descriptors.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/core-js/library/modules/es7.object.get-own-property-descriptors.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// https://github.com/tc39/proposal-object-getownpropertydescriptors
-var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
-var ownKeys = __webpack_require__(/*! ./_own-keys */ "./node_modules/core-js/library/modules/_own-keys.js");
-var toIObject = __webpack_require__(/*! ./_to-iobject */ "./node_modules/core-js/library/modules/_to-iobject.js");
-var gOPD = __webpack_require__(/*! ./_object-gopd */ "./node_modules/core-js/library/modules/_object-gopd.js");
-var createProperty = __webpack_require__(/*! ./_create-property */ "./node_modules/core-js/library/modules/_create-property.js");
-
-$export($export.S, 'Object', {
-  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
-    var O = toIObject(object);
-    var getDesc = gOPD.f;
-    var keys = ownKeys(O);
-    var result = {};
-    var i = 0;
-    var key, desc;
-    while (keys.length > i) {
-      desc = getDesc(O, key = keys[i++]);
-      if (desc !== undefined) createProperty(result, key, desc);
-    }
-    return result;
-  }
-});
 
 
 /***/ }),
@@ -55694,7 +55521,7 @@ var index = function index() {
       rate = _useState[0],
       setRate = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(''),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(500),
       allowed = _useState2[0],
       setAllowed = _useState2[1];
 
@@ -55790,13 +55617,14 @@ var index = function index() {
 
   var getAllowed = /*#__PURE__*/function () {
     var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-      var tmp;
+      var _yield$authAxios, data;
+
       return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               if (!isAuthenticated()) {
-                _context3.next = 5;
+                _context3.next = 6;
                 break;
               }
 
@@ -55804,10 +55632,11 @@ var index = function index() {
               return authAxios('allowed');
 
             case 3:
-              tmp = _context3.sent;
-              setAllowed(tmp.data.rate);
+              _yield$authAxios = _context3.sent;
+              data = _yield$authAxios.data;
+              setAllowed(data.total);
 
-            case 5:
+            case 6:
             case "end":
               return _context3.stop();
           }
@@ -55821,6 +55650,10 @@ var index = function index() {
   }();
 
   var buying = function buying(tmp) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     setAmount(tmp);
   };
 
@@ -55828,21 +55661,21 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 65,
       columnNumber: 5
     }
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 66,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, "DebCoins ")), __jsx(_layouts_sections_Header_header__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -55851,10 +55684,13 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 70,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Banner_Banner__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    resetAmount: function resetAmount() {
+      return setAmount(0);
+    },
     amount: amount,
     userInfo: userInfo,
     allowed: allowed,
@@ -55863,21 +55699,21 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 72,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Guide_Guide__WEBPACK_IMPORTED_MODULE_9__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 73,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Licenses_Licenses__WEBPACK_IMPORTED_MODULE_8__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 75,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Prices_Prices__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -55887,21 +55723,21 @@ var index = function index() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 76,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_BeforeFooter_BeforeFooter__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 77,
       columnNumber: 7
     }
   }), __jsx(_layouts_sections_Footer_footer__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 78,
       columnNumber: 7
     }
   }));
@@ -56647,51 +56483,29 @@ var verifySms = function verifySms(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-properties */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptors */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _StartYourOrder__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./StartYourOrder */ "./pages/layouts/sections/Accordian/StartYourOrder.js");
-/* harmony import */ var _VerifySms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./VerifySms */ "./pages/layouts/sections/Accordian/VerifySms.js");
-/* harmony import */ var _selectWallet__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./selectWallet */ "./pages/layouts/sections/Accordian/selectWallet.js");
-/* harmony import */ var _uploadImages__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./uploadImages */ "./pages/layouts/sections/Accordian/uploadImages.js");
-/* harmony import */ var _GiftCardInformation__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./GiftCardInformation */ "./pages/layouts/sections/Accordian/GiftCardInformation.js");
-/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-light-accordion/demo/css/index.css */ "./node_modules/react-light-accordion/demo/css/index.css");
-/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../utils/auth */ "./utils/auth.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-
-
-
-
-
-
-
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _StartYourOrder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StartYourOrder */ "./pages/layouts/sections/Accordian/StartYourOrder.js");
+/* harmony import */ var _VerifySms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./VerifySms */ "./pages/layouts/sections/Accordian/VerifySms.js");
+/* harmony import */ var _selectWallet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./selectWallet */ "./pages/layouts/sections/Accordian/selectWallet.js");
+/* harmony import */ var _uploadImages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./uploadImages */ "./pages/layouts/sections/Accordian/uploadImages.js");
+/* harmony import */ var _GiftCardInformation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GiftCardInformation */ "./pages/layouts/sections/Accordian/GiftCardInformation.js");
+/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-light-accordion/demo/css/index.css */ "./node_modules/react-light-accordion/demo/css/index.css");
+/* harmony import */ var react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_light_accordion_demo_css_index_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../utils/auth */ "./utils/auth.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _utils_authFetch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../utils/authFetch */ "./utils/authFetch.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
 
 
 
 var _this = undefined,
     _jsxFileName = "D:\\Working_place\\Hossam\\debcoins_next1\\pages\\layouts\\sections\\Accordian\\accordian.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(Object(source)).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
@@ -56705,11 +56519,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var AccordionElementSection = function AccordionElementSection(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])("1st"),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])("1st"),
       condition = _useState[0],
       setCondition = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])(props.amount),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(props.amount),
       usd = _useState2[0],
       setUSD = _useState2[1];
 
@@ -56719,20 +56533,23 @@ var AccordionElementSection = function AccordionElementSection(props) {
     backgroundColor: "#333D7A"
   };
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])(false),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
       isLoading = _useState3[0],
       setIsLoading = _useState3[1];
 
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_9__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_16__["AuthContext"]),
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_utils_auth__WEBPACK_IMPORTED_MODULE_9__["AuthContext"]),
       loading = _useContext.loading;
+
+  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_utils_authFetch__WEBPACK_IMPORTED_MODULE_11__["FetchContext"]),
+      authAxios = _useContext2.authAxios;
 
   var cardToShow = "";
 
   var verifyReq = /*#__PURE__*/function () {
-    var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])( /*#__PURE__*/_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee() {
+    var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var _yield$authAxios$get, data;
 
-      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee$(_context) {
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -56764,11 +56581,11 @@ var AccordionElementSection = function AccordionElementSection(props) {
     };
   }();
 
-  var verifySMS = /*#__PURE__*/function () {
-    var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_8__["default"])( /*#__PURE__*/_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.mark(function _callee2(sms) {
+  var verifyResult = /*#__PURE__*/function () {
+    var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(sms) {
       var _yield$authAxios$post, data;
 
-      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_7___default.a.wrap(function _callee2$(_context2) {
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
@@ -56781,55 +56598,56 @@ var AccordionElementSection = function AccordionElementSection(props) {
             case 3:
               _yield$authAxios$post = _context2.sent;
               data = _yield$authAxios$post.data;
-              setUserInfo(_objectSpread({}, userInfo, {
-                phoneVerified: true
-              }));
               setCondition("3rd");
               setIsLoading(false);
-              _context2.next = 13;
+              _context2.next = 16;
               break;
 
-            case 10:
-              _context2.prev = 10;
+            case 9:
+              _context2.prev = 9;
               _context2.t0 = _context2["catch"](0);
               console.log(_context2.t0);
+              react_toastify__WEBPACK_IMPORTED_MODULE_12__["toast"].error("OTP failed");
+              setIsLoading(false);
+              props.resetAmount(0);
+              setCondition("1st");
 
-            case 13:
+            case 16:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 10]]);
+      }, _callee2, null, [[0, 9]]);
     }));
 
-    return function verifySMS(_x) {
+    return function verifyResult(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
 
-  Object(react__WEBPACK_IMPORTED_MODULE_9__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
     if (props.amount > 0) {
       if (props.userInfo.phoneVerified) setCondition("3rd");else {
         verifyReq();
         setCondition("2nd");
       }
     }
-  }, []);
+  }, [props.amount]);
 
   if (condition === "1st") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_9___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardHeader"], {
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], {
       className: "bg-white",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67,
+        lineNumber: 69,
         columnNumber: 9
       }
     }, __jsx("div", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68,
+        lineNumber: 70,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -56837,7 +56655,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69,
+        lineNumber: 71,
         columnNumber: 13
       }
     }, __jsx("div", {
@@ -56846,7 +56664,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70,
+        lineNumber: 72,
         columnNumber: 15
       }
     }, __jsx("span", {
@@ -56858,7 +56676,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71,
+        lineNumber: 73,
         columnNumber: 17
       }
     }, "1")), __jsx("span", {
@@ -56866,26 +56684,26 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 77,
+        lineNumber: 79,
         columnNumber: 15
       }
-    }, "START YOUR ORDER")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["Collapse"], {
+    }, "START YOUR ORDER")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Collapse"], {
       isOpen: true,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81,
+        lineNumber: 83,
         columnNumber: 9
       }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardBody"], {
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], {
       className: "w-100",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82,
+        lineNumber: 84,
         columnNumber: 11
       }
-    }, __jsx(_StartYourOrder__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }, __jsx(_StartYourOrder__WEBPACK_IMPORTED_MODULE_3__["default"], {
       allowed: props.allowed,
       price: props.price,
       getRate: props.getRate,
@@ -56904,24 +56722,24 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83,
+        lineNumber: 85,
         columnNumber: 13
       }
     }))));
   } else if (condition === "2nd") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_9___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardHeader"], {
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], {
       className: "bg-white",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109,
+        lineNumber: 111,
         columnNumber: 9
       }
     }, __jsx("div", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110,
+        lineNumber: 112,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -56929,7 +56747,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111,
+        lineNumber: 113,
         columnNumber: 13
       }
     }, __jsx("div", {
@@ -56938,7 +56756,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112,
+        lineNumber: 114,
         columnNumber: 15
       }
     }, __jsx("span", {
@@ -56950,7 +56768,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 113,
+        lineNumber: 115,
         columnNumber: 17
       }
     }, "2")), __jsx("span", {
@@ -56958,52 +56776,52 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 119,
+        lineNumber: 121,
         columnNumber: 15
       }
-    }, "Verify SMS")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["Collapse"], {
+    }, "Verify SMS")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Collapse"], {
       isOpen: true,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123,
+        lineNumber: 125,
         columnNumber: 9
       }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardBody"], {
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124,
+        lineNumber: 126,
         columnNumber: 11
       }
-    }, __jsx(_VerifySms__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }, __jsx(_VerifySms__WEBPACK_IMPORTED_MODULE_4__["default"], {
       phoneNumber: props.userInfo.phoneNumber,
       isClicked: function isClicked(sms) {
         setIsLoading(true);
-        verifySM(sms);
+        verifyResult(sms);
       },
       isLoading: isLoading,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 125,
+        lineNumber: 127,
         columnNumber: 13
       }
     }))));
   } else if (condition === "3rd") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_9___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardHeader"], {
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], {
       className: "bg-white",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 139,
+        lineNumber: 141,
         columnNumber: 9
       }
     }, __jsx("div", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 140,
+        lineNumber: 142,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -57011,7 +56829,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 141,
+        lineNumber: 143,
         columnNumber: 13
       }
     }, __jsx("div", {
@@ -57020,7 +56838,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 142,
+        lineNumber: 144,
         columnNumber: 15
       }
     }, __jsx("span", {
@@ -57032,7 +56850,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 143,
+        lineNumber: 145,
         columnNumber: 17
       }
     }, "3")), __jsx("span", {
@@ -57040,25 +56858,26 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 149,
+        lineNumber: 151,
         columnNumber: 15
       }
-    }, "Select Wallet")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["Collapse"], {
+    }, "Select Wallet")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Collapse"], {
       isOpen: true,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 153,
+        lineNumber: 155,
         columnNumber: 9
       }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardBody"], {
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 154,
+        lineNumber: 156,
         columnNumber: 11
       }
-    }, __jsx(_selectWallet__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }, __jsx(_selectWallet__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      wallet: props.userInfo.wallet,
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
@@ -57069,24 +56888,24 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 155,
+        lineNumber: 157,
         columnNumber: 13
       }
     }))));
   } else if (condition === "4th") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_9___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardHeader"], {
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], {
       className: "bg-white",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 171,
+        lineNumber: 174,
         columnNumber: 9
       }
     }, __jsx("div", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 172,
+        lineNumber: 175,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -57094,7 +56913,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 173,
+        lineNumber: 176,
         columnNumber: 13
       }
     }, __jsx("div", {
@@ -57103,7 +56922,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 174,
+        lineNumber: 177,
         columnNumber: 15
       }
     }, __jsx("span", {
@@ -57115,7 +56934,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 175,
+        lineNumber: 178,
         columnNumber: 17
       }
     }, "4")), __jsx("span", {
@@ -57123,25 +56942,25 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 181,
+        lineNumber: 184,
         columnNumber: 15
       }
-    }, "Upload Images")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["Collapse"], {
+    }, "Upload Images")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Collapse"], {
       isOpen: true,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 185,
+        lineNumber: 188,
         columnNumber: 9
       }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardBody"], {
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 186,
+        lineNumber: 189,
         columnNumber: 11
       }
-    }, __jsx(_uploadImages__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }, __jsx(_uploadImages__WEBPACK_IMPORTED_MODULE_6__["default"], {
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
@@ -57152,24 +56971,24 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 187,
+        lineNumber: 190,
         columnNumber: 13
       }
     }))));
   } else if (condition == "5th") {
-    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_9___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardHeader"], {
+    cardToShow = __jsx(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], {
       className: "bg-white",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 203,
+        lineNumber: 206,
         columnNumber: 9
       }
     }, __jsx("div", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 204,
+        lineNumber: 207,
         columnNumber: 11
       }
     }, __jsx("div", {
@@ -57177,7 +56996,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 205,
+        lineNumber: 208,
         columnNumber: 13
       }
     }, __jsx("div", {
@@ -57186,7 +57005,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 206,
+        lineNumber: 209,
         columnNumber: 15
       }
     }, __jsx("span", {
@@ -57198,7 +57017,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 207,
+        lineNumber: 210,
         columnNumber: 17
       }
     }, "5")), __jsx("span", {
@@ -57206,25 +57025,25 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 213,
+        lineNumber: 216,
         columnNumber: 15
       }
-    }, "Gift card Information")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["Collapse"], {
+    }, "Gift card Information")))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Collapse"], {
       isOpen: true,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 219,
+        lineNumber: 222,
         columnNumber: 9
       }
-    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["CardBody"], {
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 220,
+        lineNumber: 223,
         columnNumber: 11
       }
-    }, __jsx(_GiftCardInformation__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }, __jsx(_GiftCardInformation__WEBPACK_IMPORTED_MODULE_7__["default"], {
       isClicked: function isClicked() {
         setIsLoading(true);
         setTimeout(function () {
@@ -57235,7 +57054,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 221,
+        lineNumber: 224,
         columnNumber: 13
       }
     }))));
@@ -57246,10 +57065,10 @@ var AccordionElementSection = function AccordionElementSection(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 237,
+      lineNumber: 240,
       columnNumber: 5
     }
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_17__["Card"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], {
     className: "shadow  w-95 m-auto",
     style: {
       width: "95%",
@@ -57258,7 +57077,7 @@ var AccordionElementSection = function AccordionElementSection(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 238,
+      lineNumber: 241,
       columnNumber: 7
     }
   }, cardToShow));
@@ -58019,6 +57838,7 @@ var Banner = function Banner(props) {
     }
   }, __jsx(_Accordian_accordian__WEBPACK_IMPORTED_MODULE_3__["default"], {
     userInfo: props.userInfo,
+    resetAmount: props.resetAmount,
     amount: props.amount,
     price: props.price,
     getRate: props.getRate,
