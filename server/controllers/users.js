@@ -245,7 +245,7 @@ exports.authenticate = async (req, res) => {
 
     if (!user) {
       return res.status(403).json({
-        message: 'Wrong username or password.'
+        message: 'Wrong username .'
       });
     }
     //if(!user.phoneVerified){

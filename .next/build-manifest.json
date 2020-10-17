@@ -24,27 +24,7 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/login": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/privacy-policy": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
-    ],
-    "/settings": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/support": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
-    ],
-    "/term-of-use": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
