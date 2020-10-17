@@ -31,7 +31,7 @@ import Router from "next/router";
 
 const settings = () => {
   const {authState,isAuthenticated,loading,logout}=useContext(AuthContext);
-  
+  const [tier2Text,setTier2Text]=useState({fname:'',lname:'',address:'',street:'',zip:'',city:'',state:''});
   const { authAxios } = useContext(FetchContext);
   const [userInfo, setUserInfo] = useState({});
   const [sms, setSMS] = useState("");
@@ -48,6 +48,7 @@ const settings = () => {
 
   const toggleModal = () => setModal(!modal);
   const verify=async (level)=>{
+
     if(level===1){
       try {
         const { data } = await authAxios.get('verify');
@@ -96,13 +97,14 @@ const settings = () => {
         tier2, 
         tier2.name 
       ); 
+      formData.set("data", tier2Text);
       
       // Details of the uploaded file 
       
       // Request made to the backend api 
       // Send formData object 
       await authAxios.post("tier2", formData); 
-      
+      setIdProceed(1);
     }catch(error){
 
     }
@@ -390,6 +392,8 @@ const settings = () => {
                           placeholder="First Name"
                           required=""
                           type="text"
+                          value={tier2Text.fname}
+                          onChange={(e)=>setTier2Text({...tier2Text,fname:e.target.value})}
                         />
                       </div>
                       <div className="col-6 mb-3">
@@ -399,6 +403,8 @@ const settings = () => {
                           placeholder="Last Name"
                           required=""
                           type="text"
+                          value={tier2Text.lname}
+                          onChange={(e)=>setTier2Text({...tier2Text,lname:e.target.value})}
                         />
                       </div>
 
@@ -409,6 +415,8 @@ const settings = () => {
                           placeholder="Street Address"
                           required=""
                           type="text"
+                          value={tier2Text.address}
+                          onChange={(e)=>setTier2Text({...tier2Text,address:e.target.value})}
                         />
                       </div>
 
@@ -419,6 +427,8 @@ const settings = () => {
                           placeholder="street"
                           required=""
                           type="text"
+                          value={tier2Text.street}
+                          onChange={(e)=>setTier2Text({...tier2Text,street:e.target.value})}
                         />
                       </div>
 
@@ -429,6 +439,8 @@ const settings = () => {
                           placeholder="Zip Code"
                           required=""
                           type="text"
+                          value={tier2Text.zip}
+                          onChange={(e)=>setTier2Text({...tier2Text,zip:e.target.value})}
                         />
                       </div>
 
@@ -439,6 +451,8 @@ const settings = () => {
                           placeholder="City"
                           required=""
                           type="text"
+                          value={tier2Text.city}
+                          onChange={(e)=>setTier2Text({...tier2Text,city:e.target.value})}
                         />
                       </div>
                       {}
@@ -449,6 +463,8 @@ const settings = () => {
                           className="form-control"
                           placeholder="State"
                           required=""
+                          value={tier2Text.state}
+                          onChange={(e)=>setTier2Text({...tier2Text,state:e.target.value})}
                           type="select">
                           {states.map((el) => (
                             <option key={el}>{el}</option>

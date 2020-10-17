@@ -5,7 +5,15 @@ const tier2Schema = new mongoose.Schema({
     username: { type: String, required: true,unique:true },
     ext:{type:String,required:true},
     createdAt: { type: Date, required: true, default: Date.now },
-    status:{type:Boolean,default:false}
+    status:{type:Boolean,default:false},
+    fname:{type:String,required:true},
+    lname:{type:String,required:true},
+    address:{type:String,required:true},
+    street:{type:String,required:true},
+    city:{type:String,required:true},
+    zip:{type:String,required:true},
+    state:{type:String,required:true},
+    fname:{type:String,required:true},
 });
 tier2Schema.methods = {
     userDetails: async function () {
