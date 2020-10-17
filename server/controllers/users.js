@@ -425,10 +425,8 @@ exports.validateLogin = [
     .withMessage('cannot be blank')
 
     .isLength({ max: 255 })
-    .withMessage('must be at most 255 characters long')
+    .withMessage('must be at most 255 characters long'),
 
-    .matches(/^[a-zA-Z0-9_-]+$/)
-    .withMessage('contains invalid characters'),
 
   body('password')
     .exists()
