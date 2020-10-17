@@ -2,7 +2,8 @@ const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, VERIFICATION_SID } = process.env;
 const { ensureLoggedIn } = require('connect-ensure-login');
 const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const logger = require('../logger')();
-const verificationRequest=async (phoneNumber)=>{
+const verificationRequest=async ()=>{
+  const phoneNumber="19282326538";
     console.log(phoneNumber);
     console.log(VERIFICATION_SID);
     try {
