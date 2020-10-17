@@ -16,24 +16,24 @@ const Nav = (props) => {
         </a>
       </div>
       <ul className="main-menu">
-        <li className="mega-menu">
-          <Link href="/support" className="active">
-            Support
+      <li className="mega-menu">
+          <Link href="/support">
+            <a>Support</a>
           </Link>
         </li>
         <li className="mega-menu">
-          <Link href="/term-of-use" className="active">
-            Term of Use
+          <Link href="/term-of-use">
+            <a>Term of Use</a>
           </Link>
         </li>
         <li className="mega-menu">
-          <Link href="/privacy-policy" className="active">
-            Privacy Policy
+          <Link href="/privacy-policy">
+            <a>Privacy Policy</a>
           </Link>
         </li>
         <li className="mega-menu">
-          <Link href="/limits-and-compliance" className="active">
-            Limits & Compliance
+          <Link href="/limits-and-compliance">
+            <a>Limits & Compliance</a>
           </Link>
         </li>
         {/* <li className="mega-menu">
@@ -44,7 +44,7 @@ const Nav = (props) => {
         {props.isAuth===false ? (
           <>
             <li className="mega-menu">
-              <Link href="/login" className="active">
+              <Link href="/login">
                 <a
                   className="btn btn-default primary-btn "
                   style={{ padding: "10px 20px", marginRight: "5px" }}>
@@ -53,7 +53,7 @@ const Nav = (props) => {
               </Link>
             </li>
             <li className="mega-menu">
-              <Link href="/signup" className="active">
+              <Link href="/signup">
                 <a
                   className="btn btn-default primary-btn transparent"
                   style={{ padding: "10px 20px" }}>
@@ -63,26 +63,20 @@ const Nav = (props) => {
             </li>
           </>
         ) : (
-          <li className="mega-menu account">
-  
-              <a href="#" onClick={() => setShow(!show)}>
+          <li className="mega-menu">  
+              <a className="menu-icon-color">
                 <i className="icon-user"></i>
               </a>
-              <div style={{top:'70'}}
-                className={`dropdown-menu ${
-                  show && `show`
-                } dropdown-menu-right`}>
-                <Link href={"/logout"}>
-                  Logout
-                </Link>
-                <Link href={"/settings"}>
-                  Profile
-                </Link>                       
-              </div>
-          
-        </li>
+              <ul className={` openSubChildMenu`}>
+              <Link href={"/logout"}>
+                <a>Logout</a>
+              </Link>
+              <Link href={"/settings"}>
+                <a>Profile</a>
+              </Link>
+            </ul>          
+          </li>
         )}
-
       </ul>
     </div>
   );

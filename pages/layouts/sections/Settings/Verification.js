@@ -40,7 +40,9 @@ const verification = (props) => {
     width: "3.125rem",
     height: "3.125rem",
   };
-  
+
+  const [isSmsVerified, setIsSmsVerified] = useState("verified");
+
   return (
     <Container>
       <h4 className="text-dark mb-2 mt-2">Verification</h4>
@@ -64,9 +66,9 @@ const verification = (props) => {
               <p className="m-0 f-18 text-center text-white">Tier 1</p>
             </div>
             <p className="mt-2">Trade Volume</p>
-            <h5 class="h3 font-weight-bolder mb-1 mt-3">0$ - $499</h5>
+            <h5 className="h3 font-weight-bolder mb-1 mt-3">0$ - $499</h5>
             <br></br>
-            <div class="  text-white rounded-circle" style={colorSuccessBanner}>
+            <div className="  text-white rounded-circle" style={colorSuccessBanner}>
               <i
                 className="fa fa-mobile"
                 style={{
@@ -101,9 +103,9 @@ const verification = (props) => {
               <p className="m-0 f-18 text-center text-white">Tier 2</p>
             </div>
             <p className="mt-2">Trade Volume</p>
-            <h5 class="h3 font-weight-bolder mb-1 mt-3">$500 - $1999</h5>
+            <h5 className="h3 font-weight-bolder mb-1 mt-3">$500 - $1999</h5>
             <br></br>
-            <div class="  text-white rounded-circle" style={colorWarningBanner}>
+            <div className="  text-white rounded-circle" style={colorWarningBanner}>
               <i
                 className="fa fa-id-card"
                 style={{
@@ -149,9 +151,9 @@ const verification = (props) => {
               <p className="m-0 f-18 text-center text-white">Tier 3</p>
             </div>
             <p className="mt-2">Trade Volume</p>
-            <h5 class="h3 font-weight-bolder mb-1 mt-3">$2000+</h5>
+            <h5 className="h3 font-weight-bolder mb-1 mt-3">$2000+</h5>
             <br></br>
-            <div class="  text-white rounded-circle" style={colorDangerBanner}>
+            <div className="  text-white rounded-circle" style={colorDangerBanner}>
               <i
                 className="fa fa-file"
                 style={{
@@ -184,7 +186,7 @@ const verification = (props) => {
       <div className={`p-4  shadow-sm`}>
         <Row className="mt-3 ml-0">
           <Col sm="12" md="2">
-            <div class="  text-white rounded-circle" style={colorSuccessBanner}>
+            <div className="  text-white rounded-circle" style={colorSuccessBanner}>
               <i
                 className="fa fa-mobile"
                 style={{
@@ -194,7 +196,7 @@ const verification = (props) => {
             </div>
           </Col>
           {
-            props.phoneVerification===true ? (
+            props.phoneVerified===true ? (
               <>
               <Col sm="12" md="7">
                 <h5 className="mb-2"> SMS Verification</h5>
@@ -241,7 +243,7 @@ const verification = (props) => {
         <Row className="mt-3 ml-0">
           <Col sm="12" md="2">
             {" "}
-            <div class="  text-white rounded-circle" style={colorWarningBanner}>
+            <div className="  text-white rounded-circle" style={colorWarningBanner}>
               <i
                 className="fa fa-id-card"
                 style={{
@@ -261,7 +263,7 @@ const verification = (props) => {
                     onClick={toggleModal}></i>
                 </h5>
                 <p>
-                  Your mobile number 9165810509 is successfully verified via SMS.
+                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
                 </p>
               </Col>
               <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
@@ -287,7 +289,7 @@ const verification = (props) => {
                     onClick={toggleModal}></i>
                 </h5>
                 <p>
-                  Your mobile number 9165810509 is successfully verified via SMS.
+                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
                 </p>
               </Col>
               <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
@@ -311,7 +313,7 @@ const verification = (props) => {
         <Row className="mt-3 ml-0">
           <Col sm="12" md="2">
             {" "}
-            <div class="  text-white rounded-circle" style={colorDangerBanner}>
+            <div className="  text-white rounded-circle" style={colorDangerBanner}>
               <i
                 className="fa fa-file"
                 style={{

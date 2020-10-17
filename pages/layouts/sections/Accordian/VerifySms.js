@@ -3,7 +3,7 @@ import { Label, Form, FormGroup, Input, Button, Spinner } from "reactstrap";
 const verifySms = (props) => {
   const [sms,setSMS]=React.useState('');
   return (
-    <div class="col-12 mt-3">
+    <div className="col-12 mt-3">
       <p>
         A one-time SMS has been sent to your registered mobile number.{" "}
   <span className="text-dark">+{props.phoneNumber}</span>

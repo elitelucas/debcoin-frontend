@@ -50,10 +50,10 @@ const index = () => {
                     <p className="m-0 f-18 text-center text-white">Tier 1</p>
                   </div>
                   <p className="mt-2">Trade Volume</p>
-                  <h5 class="h3 font-weight-bolder mb-1 mt-3">0$ - $499</h5>
+                  <h5 className="h3 font-weight-bolder mb-1 mt-3">0$ - $499</h5>
                   <br></br>
                   <div
-                    class="  text-white rounded-circle"
+                    className="  text-white rounded-circle"
                     style={{
                       backgroundColor: "#5cc9a7",
                       borderRadius: "50%",
@@ -100,10 +100,12 @@ const index = () => {
                     <p className="m-0 f-18 text-center text-white">Tier 2</p>
                   </div>
                   <p className="mt-2">Trade Volume</p>
-                  <h5 class="h3 font-weight-bolder mb-1 mt-3">$500 - $1999</h5>
+                  <h5 className="h3 font-weight-bolder mb-1 mt-3">
+                    $500 - $1999
+                  </h5>
                   <br></br>
                   <div
-                    class="  text-white rounded-circle"
+                    className="  text-white rounded-circle"
                     style={{
                       backgroundColor: "#ffbe3d",
                       borderRadius: "50%",
@@ -151,10 +153,10 @@ const index = () => {
                     <p className="m-0 f-18 text-center text-white">Tier 3</p>
                   </div>
                   <p className="mt-2">Trade Volume</p>
-                  <h5 class="h3 font-weight-bolder mb-1 mt-3">$2000+</h5>
+                  <h5 className="h3 font-weight-bolder mb-1 mt-3">$2000+</h5>
                   <br></br>
                   <div
-                    class="  text-white rounded-circle"
+                    className="  text-white rounded-circle"
                     style={{
                       backgroundColor: "#f25767 ",
                       borderRadius: "50%",

@@ -68,15 +68,15 @@ const AccordionElementSection = (props) => {
       <>
         <CardHeader className="bg-white">
           <div>
-            <div class=" p-3 d-flex">
-              <div class="rounded-circle text-white mr-4" style={width}>
+            <div className=" p-3 d-flex">
+              <div className="rounded-circle text-white mr-4" style={width}>
                 <span
-                  class="text-white "
+                  className="text-white "
                   style={{ fontSize: "2rem", padding: "15px" }}>
                   1
                 </span>
               </div>
-              <span class="h6 align-self-center mb-0">START YOUR ORDER</span>
+              <span className="h6 align-self-center mb-0">START YOUR ORDER</span>
             </div>
           </div>
         </CardHeader>
@@ -110,15 +110,15 @@ const AccordionElementSection = (props) => {
       <>
         <CardHeader className="bg-white">
           <div>
-            <div class=" p-3 d-flex">
-              <div class="rounded-circle  text-white mr-4" style={width}>
+            <div className=" p-3 d-flex">
+              <div className="rounded-circle  text-white mr-4" style={width}>
                 <span
-                  class="text-white "
+                  className="text-white "
                   style={{ fontSize: "2rem", padding: "12px" }}>
                   2
                 </span>
               </div>
-              <span class="h6 align-self-center mb-0">Verify SMS</span>
+              <span className="h6 align-self-center mb-0">Verify SMS</span>
             </div>
           </div>
         </CardHeader>
@@ -140,15 +140,15 @@ const AccordionElementSection = (props) => {
       <>
         <CardHeader className="bg-white">
           <div>
-            <div class=" p-3 d-flex">
-              <div class="rounded-circle  text-white mr-4" style={width}>
+            <div className=" p-3 d-flex">
+              <div className="rounded-circle  text-white mr-4" style={width}>
                 <span
-                  class="text-white "
+                  className="text-white "
                   style={{ fontSize: "2rem", padding: "12px" }}>
                   3
                 </span>
               </div>
-              <span class="h6 align-self-center mb-0">Select Wallet</span>
+              <span className="h6 align-self-center mb-0">Select Wallet</span>
             </div>
           </div>
         </CardHeader>
@@ -173,15 +173,15 @@ const AccordionElementSection = (props) => {
       <>
         <CardHeader className="bg-white">
           <div>
-            <div class=" p-3 d-flex">
-              <div class="rounded-circle  text-white mr-4" style={width}>
+            <div className=" p-3 d-flex">
+              <div className="rounded-circle  text-white mr-4" style={width}>
                 <span
-                  class="text-white "
+                  className="text-white "
                   style={{ fontSize: "2rem", padding: "12px" }}>
                   4
                 </span>
               </div>
-              <span class="h6 align-self-center mb-0">Upload Images</span>
+              <span className="h6 align-self-center mb-0">Upload Images</span>
             </div>
           </div>
         </CardHeader>
@@ -205,15 +205,15 @@ const AccordionElementSection = (props) => {
       <>
         <CardHeader className="bg-white">
           <div>
-            <div class=" p-3 d-flex">
-              <div class="rounded-circle text-white mr-4" style={width}>
+            <div className=" p-3 d-flex">
+              <div className="rounded-circle text-white mr-4" style={width}>
                 <span
-                  class="text-white "
+                  className="text-white "
                   style={{ fontSize: "2rem", padding: "12px" }}>
                   5
                 </span>
               </div>
-              <span class="h6 align-self-center mb-0">
+              <span className="h6 align-self-center mb-0">
                 Gift card Information
               </span>
             </div>
@@ -240,7 +240,7 @@ const AccordionElementSection = (props) => {
     <div className="w-100 h-50 mt-sm">
       <Card
         className="shadow  w-95 m-auto"
-        style={{ width: "95%", zIndex: "999" }}>
+        style={{ width: "95%", zIndex: "100" }}>
         {cardToShow}
       </Card>
     </div>

@@ -9521,6 +9521,9 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: "Graphik_Semibold";
   src: url("/assets/fonts/Graphik_Web_Semibold_Regular.ttf"); }
 
+.accordion .accordion-item .title {
+  margin-bottom: 0px !important; }
+
 .saas1 p {
   margin-bottom: 20px !important; }
 
@@ -14641,7 +14644,6 @@ tap to top css end
         transition: all 0.5s; }
 
 .saas1.build-bg {
-  background-image: url("/assets/images/saas1/banner-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -14814,7 +14816,6 @@ tap to top css end
 
 .saas1.pricing {
   background-color: var(--secondary);
-  background-image: url("/assets/images/saas1/banner-2.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
   .saas1.pricing .title .main-title h2 {
@@ -15054,7 +15055,6 @@ tap to top css end
 
 .saas1.subscribe {
   background-color: var(--secondary);
-  background-image: url("/assets/images/saas1/banner-2.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
   .saas1.subscribe h6 {
@@ -15184,7 +15184,6 @@ tap to top css end
 
 .saas1.blog {
   background-color: var(--secondary);
-  background-image: url("/assets/images/saas1/banner-2.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
   .saas1.blog .blog-post-slider .slick-slide {
@@ -27027,6 +27026,9 @@ footer.saas1 h5 {
 .font-14-18 {
   font-size: 18px; }
 
+.menu-icon-color {
+  color: white !important; }
+
 @media only screen and (max-width: 767px) {
   footer.footer2.saas2 {
     background: #333d7a !important; }
@@ -27059,6 +27061,8 @@ footer.saas1 h5 {
     padding-top: 0px; } }
 
 @media only screen and (max-width: 991px) {
+  .menu-icon-color {
+    color: black !important; }
   .header .saas2-content .center-text div {
     width: 100%; } }
 

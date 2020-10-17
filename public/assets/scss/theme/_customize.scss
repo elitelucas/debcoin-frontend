@@ -34,6 +34,10 @@
 .font-14-18 {
   font-size: 18px;
 }
+.menu-icon-color {
+  color: white !important;
+}
+
 @media only screen and (max-width: 767px) {
   footer.footer2.saas2 {
     background: #333d7a !important;
@@ -83,6 +87,9 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .menu-icon-color {
+    color: black !important;
+  }
   .header .saas2-content .center-text div {
     width: 100%;
   }

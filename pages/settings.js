@@ -15,24 +15,38 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container, Modal, Button, ModalBody, ModalFooter 
+  Container,
+  Modal,
+  Button,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Input,
 } from "reactstrap";
+import states from "./layouts/sections/Settings/states";
 import { AuthContext } from '../utils/auth';
 import classnames from "classnames";
 import { FetchContext } from '../utils/authFetch';
 import Router from "next/router";
+
 const settings = () => {
   const {authState,isAuthenticated,loading,logout}=useContext(AuthContext);
   
-  const {authAxios}=useContext(FetchContext);
-  const [userInfo,setUserInfo]=useState({});
-  const [sms,setSMS]=useState('');
-  const [smsModal,setSMSModal]=useState(false);
-  const [tier2,setTier2]=useState(null);
-  const [tier2Modal,setTier2Modal]=useState(false);
-  const [tier3,setTier3]=useState(null);
-  const [tier3Modal,setTier3Modal]=useState(false);
+  const { authAxios } = useContext(FetchContext);
+  const [userInfo, setUserInfo] = useState({});
+  const [sms, setSMS] = useState("");
+  const [smsModal, setSMSModal] = useState(false);
+  const [tier2, setTier2] = useState(null);
+  const [tier2Modal, setTier2Modal] = useState(false);
+  const [tier3, setTier3] = useState(null);
+  const [tier3Modal, setTier3Modal] = useState(false);
+  const [poaProceed, setPoaProceed] = useState(false);
+  const [idProceed, setIdProceed] = useState(1);
+  const [modal2, setModal2] = useState(false);
+  const toggleModal2 = () => setModal2(!modal2);
+  const [modal, setModal] = useState(false);
 
+  const toggleModal = () => setModal(!modal);
   const verify=async (level)=>{
     if(level===1){
       try {
@@ -65,14 +79,14 @@ const settings = () => {
       console.log(error);        
     }  
     setSMSModal(false);
-  }
+  };
 
   const tier2Toggle=()=>{
     setTier2Modal(!tier2Modal);
-  }
+  };
   const selectTier2=(event)=>{
     setTier2(event.target.files[0])
-  }
+  };
   const tier2Submit=async ()=>{
     try{
       const formData = new FormData();      
@@ -93,10 +107,11 @@ const settings = () => {
 
     }
     setTier2Modal(false);
-  }
+  };
   const tier3Toggle=()=>{
+    setPoaProceed(false);
     setTier3Modal(!tier3Modal);
-  }
+  };
   const selectTier3=(event)=>{
     setTier3(event.target.files[0])
   }
@@ -120,7 +135,7 @@ const settings = () => {
     }
     setTier3Modal(false);
     
-  }
+  };
 
   const removeWallet=async (key)=>{
     try {
@@ -130,10 +145,9 @@ const settings = () => {
         wallet:data
       });
     } catch (error) {
-      console.log(error);
-  
+      console.log(error);  
     }  
-  }
+  };
   const addWallet=async (title, address)=>{
     try {
       const { data } = await authAxios.post('wallet/',{
@@ -159,13 +173,11 @@ const settings = () => {
             const { data } = await authAxios.get('myInfo');
             setUserInfo(data);
           } catch (error) {
-            console.log(error);
-        
+            console.log(error);        
           }  
         })();       
       }
-    }
-   
+    }   
   },[loading]);
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
@@ -202,7 +214,8 @@ const settings = () => {
     } catch (error) {
       console.log(error);     
     }
-  }
+  };
+  
   return (
     <div>
       <Head>
@@ -225,14 +238,7 @@ const settings = () => {
                           alt=""
                           className="img-fluid team"
                           src="/assets/images/home/user.png"
-                        />
-                        <div className="overlay-team set-abs">
-                          <img
-                            alt=""
-                            className="img-fluid wave"
-                            src="/assets/images/app_landing2/team/hover-wave-black.png"
-                          />
-                        </div>
+                        />                        
                       </div>
                     </div>
                   </div>
@@ -284,7 +290,14 @@ const settings = () => {
             </Nav>
             <TabContent activeTab={activeTab}>
               <TabPane tabId="1">
-                <Profile submit={submitProfile} username={authState.userInfo? authState.userInfo.username : ''} email={userInfo.email} phoneNumber={userInfo.phoneNumber} />
+              <Profile
+                  submit={submitProfile}
+                  username={
+                    authState.userInfo ? authState.userInfo.username : ""
+                  }
+                  email={userInfo.email}
+                  phoneNumber={userInfo.phoneNumber}
+                />
               </TabPane>
               <TabPane tabId="2">
                 <Account submit={submitAccount} />
@@ -308,16 +321,21 @@ const settings = () => {
 
       <FooterSection />
       <Modal isOpen={smsModal} toggle={smsToggle}>        
+        <ModalHeader>Verify your mobile number</ModalHeader>
         <ModalBody>
           <div className="typo-content">
+            <p>
+              Please enter the SMS we just sent to your mobile number{" "}
+              {userInfo.phoneNumber}
+            </p>
             <form>
-              <div className="form-row">
+              <div className="form-row mt-3">
                 <div className="col-12 mb-3">
-                  <label htmlFor="name">Verify SMS</label>
+                  <label htmlFor="name">SMS CODE</label>
                   <input
                     className="form-control"
                     id="name"
-                    placeholder="SMS"
+                    placeholder="Enter SMS Code"
                     required=""
                     type="text"
                     value={sms}
@@ -325,14 +343,14 @@ const settings = () => {
                   />
                 </div>                
               </div>
+              <p>
+                Didn't recieved SMS? <a onClick={() => verify(1)}>Resend</a>
+              </p>
             </form>
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={()=>verify(1)}>
-            ReSend
-          </Button>{" "}
-          <Button color="success" onClick={verifySMS}>
+          <Button color="primary" onClick={verifySMS}>
             Verify
           </Button>{" "}
           <Button color="secondary" onClick={smsToggle}>
@@ -340,49 +358,347 @@ const settings = () => {
           </Button>
         </ModalFooter>
       </Modal>
-      <Modal isOpen={tier2Modal} toggle={tier2Toggle}>        
-        <ModalBody>
-          <div className="typo-content">
-            <form>
-              <div className="form-row">
-                <div className="col-12 mb-3">
-                  <label htmlFor="name">Please select a image</label>
-                  <br />
-                  <input type="file" onChange={selectTier2} /> 
-                </div>                
-              </div>
-            </form>
-          </div>
+      <Modal isOpen={tier2Modal} toggle={tier2Toggle}>   
+        <ModalHeader>
+            {idProceed == 1 ? (
+              "Address"
+            ) : (
+              <>
+                Upload ID{" "}
+                <i
+                  className="fa fa-question-circle pl-2"
+                  onClick={toggleModal}></i>
+              </>
+            )}
+          </ModalHeader>     
+          <ModalBody>
+          {(() => {
+            if (idProceed === 1) {
+              return (
+                <div className="typo-content">
+                  <p>
+                    Type the address associated with your government-issued ID
+                    before uploading your photo.
+                  </p>
+                  <form>
+                    <div className="row mt-3">
+                      <div className="col-6 mb-3">
+                        <label htmlFor="first name">First Name *</label>
+                        <input
+                          className="form-control"
+                          id="name"
+                          placeholder="First Name"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                      <div className="col-6 mb-3">
+                        <label htmlFor="last name">Last Name *</label>
+                        <input
+                          className="form-control"
+                          placeholder="Last Name"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+
+                      <div className="col-12 mb-3">
+                        <label htmlFor="address">Address *</label>
+                        <input
+                          className="form-control"
+                          placeholder="Street Address"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+
+                      <div className="col-6 mb-3">
+                        <label htmlFor="street">Street</label>
+                        <input
+                          className="form-control"
+                          placeholder="street"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+
+                      <div className="col-6 mb-3">
+                        <label htmlFor="zip">Zip *</label>
+                        <input
+                          className="form-control"
+                          placeholder="Zip Code"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+
+                      <div className="col-6 mb-3">
+                        <label htmlFor="city">City *</label>
+                        <input
+                          className="form-control"
+                          placeholder="City"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                      {}
+
+                      <div className="col-6 mb-3">
+                        <label htmlFor="email">State *</label>
+                        <Input
+                          className="form-control"
+                          placeholder="State"
+                          required=""
+                          type="select">
+                          {states.map((el) => (
+                            <option key={el}>{el}</option>
+                          ))}
+                        </Input>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              );
+            } else if (idProceed === 2) {
+              return (
+                <>
+                  <h3>Requirements</h3>
+                  <p className="mt-2 mb-0">
+                    <i
+                      className="fa fa-check  mr-2"
+                      style={{ color: "#5cc9a7" }}></i>
+                    Remember to place your ID beside your receipt – and make
+                    sure your receipt says “Nonrefundable Payment to Debcoins”
+                    on it.
+                  </p>
+                  <p className="mt-2 mb-0">
+                    <i
+                      className="fa fa-check  mr-2"
+                      style={{ color: "#5cc9a7" }}></i>
+                    Make sure your ID is clear and all four corners are showing.
+                  </p>
+
+                  <p className="mt-2 mb-0">
+                    <i
+                      className="fa fa-check  mr-2"
+                      style={{ color: "#5cc9a7" }}></i>
+                    Make sure your ID is clear and all four corners are showing.
+                  </p>
+                  <img
+                    alt=""
+                    className="img-fluid team"
+                    src="/assets/images/home/id.png"
+                  />
+                </>
+              );
+            } else {
+              return (
+                <>
+                  <p>
+                    Please upload your government-issued identification below.
+                    An example image may be found by clicking on the “?” above.
+                  </p>
+                  <div className="form-row">
+                    <div className="col-12 mb-3">
+                      <label htmlFor="name">Please select a image</label>
+                      <br />
+                      <input type="file" onChange={selectTier2} />
+                    </div>
+                  </div>
+                  <p className="mt-2 mb-0">
+                    <i
+                      className="fa fa-check  mr-2"
+                      style={{ color: "#5cc9a7" }}></i>
+                    Remember to place your ID beside your receipt – and make
+                    sure your receipt says “Nonrefundable Payment to Debcoins”
+                    on it.
+                  </p>
+
+                  <p className="mt-2 mb-0">
+                    <i
+                      className="fa fa-check  mr-2"
+                      style={{ color: "#5cc9a7" }}></i>
+                    Make sure your ID is clear and all four corners are showing.
+                  </p>
+
+                  <p className="mt-2 mb-0">
+                    <i
+                      className="fa fa-check  mr-2"
+                      style={{ color: "#5cc9a7" }}></i>
+                    Make sure your ID is valid and not expired.
+                  </p>
+                </>
+              );
+            }
+          })()}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={tier2Submit}>
-            OK
-          </Button>{" "}
+          {(() => {
+            if (idProceed === 1) {
+              return (
+                <Button color="primary" onClick={() => setIdProceed(2)}>
+                  Proceed
+                </Button>
+              );
+            } else if (idProceed === 2) {
+              return (
+                <Button color="primary" onClick={() => setIdProceed(3)}>
+                  Proceed
+                </Button>
+              );
+            } else {
+              return (
+                <Button color="primary" onClick={tier2Submit}>
+                  Confirm
+                </Button>
+              );
+            }
+          })()}
           <Button color="secondary" onClick={tier2Toggle}>
             Cancel
           </Button>
         </ModalFooter>
       </Modal>
-      <Modal isOpen={tier3Modal} toggle={tier3Toggle}>        
+      <Modal isOpen={tier3Modal} toggle={tier3Toggle}>     
+      <ModalHeader>
+          {" "}
+          Proof of Address
+          <i className="fa fa-question-circle pl-2" onClick={toggleModal2}></i>
+        </ModalHeader>
         <ModalBody>
-          <div className="typo-content">
-            <form>
-              <div className="form-row">
-                <div className="col-12 mb-3">
-                  <label htmlFor="name">Please select a image</label>
-                  <br />
-                  <input type="file" onChange={selectTier3} /> 
-                </div>                
+          {poaProceed ? (
+            <>
+              <p>
+                Your document may be a utility bill or bank statement. Remember
+                to write “Debcoins” and todays date on your document. Make sure
+                your document is clear and all four corners are showing. Make
+                sure that your document is not over 6 months old. Please upload
+                your Proof of Address below. An example image may be found by
+                clicking on the “?” above.
+              </p>
+              <div className="typo-content">
+                <form>
+                  <div className="form-row mt-3 mb-3">
+                    <div className="col-12 mb-3">
+                      <label htmlFor="name">Please select a image</label>
+                      <br />
+                      <input type="file" onChange={selectTier3} />
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
+
+              <div>
+                <p className="mt-2 mb-0">
+                  <i
+                    className="fa fa-check  mr-2"
+                    style={{ color: "#5cc9a7" }}></i>
+                  Your document may be a utility bill or bank statement.
+                </p>
+                <p className="mt-2 mb-0">
+                  <i
+                    className="fa fa-check  mr-2"
+                    style={{ color: "#5cc9a7" }}></i>
+                  Remember to write “Debcoins” and todays date on your document.
+                </p>
+                <p className="mt-2 mb-0">
+                  <i
+                    className="fa fa-check  mr-2"
+                    style={{ color: "#5cc9a7" }}></i>
+                  Make sure your document is clear and all four corners are
+                  showing.
+                </p>
+                <p className="mt-2 mb-0">
+                  <i
+                    className="fa fa-check  mr-2"
+                    style={{ color: "#5cc9a7" }}></i>
+                  Make sure that your document is not over 6 months old.
+                </p>
+              </div>
+            </>
+          ) : (
+            <div>
+              <p className="mt-2 mb-0">
+                <i
+                  className="fa fa-check  mr-2"
+                  style={{ color: "#5cc9a7" }}></i>
+                Your document may be a utility bill or bank statement.
+              </p>
+              <p className="mt-2 mb-0">
+                <i
+                  className="fa fa-check  mr-2"
+                  style={{ color: "#5cc9a7" }}></i>
+                Remember to write “Debcoins” and todays date on your document.
+              </p>
+              <p className="mt-2 mb-0">
+                <i
+                  className="fa fa-check  mr-2"
+                  style={{ color: "#5cc9a7" }}></i>
+                Make sure your document is clear and all four corners are
+                showing.
+              </p>
+              <p className="mt-2 mb-0">
+                <i
+                  className="fa fa-check  mr-2"
+                  style={{ color: "#5cc9a7" }}></i>
+                Make sure that your document is not over 6 months old.
+              </p>
+              <div className="text-center">
+                <img
+                  alt=""
+                  className="img-fluid team"
+                  src="/assets/images/home/poa.png"
+                  style={{ width: "60%" }}
+                />
+              </div>{" "}
+            </div>
+          )}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={tier3Submit}>
-            OK
-          </Button>{" "}
+          {poaProceed ? (
+            <Button color="primary" onClick={tier3Submit}>
+              Confirm
+            </Button>
+          ) : (
+            <Button color="primary" onClick={() => setPoaProceed(true)}>
+              Proceed
+            </Button>
+          )}
           <Button color="secondary" onClick={tier3Toggle}>
             Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modal2} toggle={toggleModal2}>
+        <ModalHeader toggle={toggleModal2}>Proof of Address</ModalHeader>
+        <ModalBody className="text-center">
+          <img
+            alt=""
+            className="img-fluid team"
+            src="/assets/images/home/poa.png"
+            style={{ width: "60%" }}
+          />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggleModal2}>
+            Close
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modal} toggle={toggleModal}>
+        <ModalHeader toggle={toggleModal}>ID Verification</ModalHeader>
+        <ModalBody>
+          <img
+            alt=""
+            className="img-fluid team"
+            src="/assets/images/home/id.png"
+          />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggleModal}>
+            Close
           </Button>
         </ModalFooter>
       </Modal>

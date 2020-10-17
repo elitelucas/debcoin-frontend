@@ -50,18 +50,30 @@ const account = ({submit}) => {
                     onChange={(e)=>setConfirmPWD(e.target.value)}
                   />
                 </div>
-                <Button size="sm" className="btn primary-btn btn-default  mt-0" onClick={()=>{if(newPWD!=='' && confirmPWD===newPWD){ submit(prevPWD,newPWD);}}}>
-                  <i className="fa fa-pencil pr-2"></i> ok
-                </Button>
-                <p className="mt-2">
-                  You will automatically be logged out on successful password
-                  change.
-                </p>
+                <div className="col-sm-12  mb-3">
+                  <Button
+                    size="sm"
+                    className="btn primary-btn btn-default  mt-0"
+                    onClick={() => {
+                      if (newPWD !== "" && confirmPWD === newPWD) {
+                        submit(prevPWD, newPWD);
+                      }
+                    }}>
+                    <i className="fa fa-pencil pr-2"></i> Change Password
+                  </Button>
+                </div>
+                <br />
+                <div>
+                  <p className="mt-2">
+                    You will automatically be logged out on successful password
+                    change.
+                  </p>
+                </div>              
               </Row>
               <hr />
               <Row>
                 <h4 className="text-dark">Close account</h4>
-                <p class=" ">
+                <p>
                   Please contact us at{" "}
                   <a href="mailto:support@debcoins.com">support@debcoins.com</a>{" "}
                   to close your account. Your request should be sent from your

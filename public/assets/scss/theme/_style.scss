@@ -2,6 +2,11 @@
   font-family: "Graphik_Semibold";
   src: url("/assets/fonts/Graphik_Web_Semibold_Regular.ttf");
 }
+
+
+.accordion .accordion-item .title {
+  margin-bottom:0px !important;
+}
 .saas1 p {
  
   margin-bottom: 20px !important;
@@ -7113,7 +7118,7 @@ tap to top css end
     }
   }
   &.build-bg {
-    background-image: url("/assets/images/saas1/banner-2.jpg");
+    // background-image: url("/assets/images/saas1/banner-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -7366,7 +7371,7 @@ tap to top css end
   }
   &.pricing {
     background-color: $secondary;
-    background-image: url("/assets/images/saas1/banner-2.jpg");
+    // background-image: url("/assets/images/saas1/banner-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     .title {
@@ -7704,7 +7709,7 @@ tap to top css end
   }
   &.subscribe {
     background-color: $secondary;
-    background-image: url("/assets/images/saas1/banner-2.jpg");
+    // background-image: url("/assets/images/saas1/banner-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     h6 {
@@ -7879,7 +7884,7 @@ tap to top css end
   }
   &.blog {
     background-color: $secondary;
-    background-image: url("/assets/images/saas1/banner-2.jpg");
+    // background-image: url("/assets/images/saas1/banner-2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     .blog-post-slider {
