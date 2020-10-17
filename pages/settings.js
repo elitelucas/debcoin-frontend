@@ -97,7 +97,7 @@ const settings = () => {
         tier2, 
         tier2.name 
       ); 
-      formData.set("data", tier2Text);
+      formData.set("data", JSON.stringify(tier2Text));
       
       // Details of the uploaded file 
       
