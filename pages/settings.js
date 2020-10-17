@@ -97,8 +97,13 @@ const settings = () => {
         tier2, 
         tier2.name 
       ); 
-      formData.set("data", JSON.stringify(tier2Text));
-      
+      formData.set("fname", tier2Text.fname);
+      formData.set("lname", tier2Text.lname);
+      formData.set("address", tier2Text.address);
+      formData.set("city", tier2Text.city);
+      formData.set("zip", tier2Text.zip);
+      formData.set("state", tier2Text.state);
+      formData.set("street", tier2Text.street);
       // Details of the uploaded file 
       
       // Request made to the backend api 

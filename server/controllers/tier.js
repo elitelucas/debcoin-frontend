@@ -6,8 +6,7 @@ const fs=require('fs');
 exports.postTier2 = async (req, res, next) => {
 
     if(req.file) {
-        console.log(req.body.data);
-        console.log(req.body.data.fname);
+        console.log(req.body.lname);
         // const tempPath = req.file.path;
         // const tmp=await Tier2.findOne({_userId:req.user.id});
         // if(tmp!=null){
