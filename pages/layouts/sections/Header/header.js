@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 import { AuthContext } from '../../../../utils/auth';
 
 const Header = (props) => {
-  const {isAuthenticated}=useContext(AuthContext);
+  const {isAuthenticated,logout}=useContext(AuthContext);
 
   const [sidebar, setSidebar] = useState(false);
   const [search, setSearch] = useState(false);
@@ -41,7 +41,7 @@ const Header = (props) => {
                   <i aria-hidden="true" className="fa fa-bars text-white"></i>
                 </a>
               </div>
-              <Nav isAuth={isAuthenticated()} />
+              <Nav isAuth={isAuthenticated()} logout={()=>logout()} />
               
             </nav>
           </Col>

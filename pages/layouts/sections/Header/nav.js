@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { Router } from "next/router";
 const Nav = (props) => {
   const [sidebar, setSidebar] = useState(false);
   const [show, setShow] = useState(false);
@@ -68,9 +69,9 @@ const Nav = (props) => {
                 <i className="icon-user"></i>
               </a>
               <ul className={` openSubChildMenu`}>
-              <Link href={"/logout"}>
-                <a>Logout</a>
-              </Link>
+              <a onClick={()=>{props.logout();}}>
+                Logout
+              </a>
               <Link href={"/settings"}>
                 <a>Profile</a>
               </Link>
