@@ -3,6 +3,8 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const logger = require('../logger')();
 const verificationRequest=async (phoneNumber)=>{
+    console.log(phoneNumber);
+    console.log(VERIFICATION_SID);
     try {
         request = await twilio.verify.services(VERIFICATION_SID)
           .verifications
@@ -13,7 +15,7 @@ const verificationRequest=async (phoneNumber)=>{
         return false
       }
   
-      logger.debug(request);
+      // logger.debug(request);
 };
 const verificationResult=async (phoneNumber,code)=>{
     try {
