@@ -9,7 +9,7 @@ const verificationRequest=async (phoneNumber)=>{
           .create({ to: phoneNumber, channel:'sms' });
         return true;
       } catch (e) {
-        logger.error(e);
+        console.log(e);
         return false
       }
   
@@ -21,11 +21,11 @@ const verificationResult=async (phoneNumber,code)=>{
           .verificationChecks
           .create({ code, to: phoneNumber });
       } catch (e) {
-        logger.error(e);
+        console.log(e);
         return false;
       }
-    
-      logger.debug(result);
+      console.log(result);
+      // logger.debug(result);
     
       if (result.status === 'approved') {
         return true;
