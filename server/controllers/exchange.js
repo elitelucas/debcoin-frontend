@@ -169,23 +169,24 @@ exports.postReceipt = async (req, res, next) => {
       //         break;
       // }
       
-      const comp={};
-      comp._userId=req.user.id;
-      comp.username=req.user.username;
-      comp.amount=Math.abs(parseFloat(req.body.usd));
-      comp.wallet=Math.abs(parseFloat(req.body.wallet));
-      comp.rate=market_prices.last_trade_price;
-      if(user.level==2){
-          if(week_total+comp.amount>1999){
-              return res.status(400).json({error:"overflow weekly plan"});
-          }
-      }else if(user.level==1){
-          if(week_total+comp.amount>499){
-              return res.status(400).json({error:"overflow weekly plan"});
-          }
-      }
+      // const comp={};
+      // comp._userId=req.user.id;
+      // comp.username=req.user.username;
+      // comp.amount=Math.abs(parseFloat(req.body.usd));
+      // comp.wallet=Math.abs(parseFloat(req.body.wallet));
+      // comp.rate=market_prices.last_trade_price;
+      // if(user.level==2){
+      //     if(week_total+comp.amount>1999){
+      //         return res.status(400).json({error:"overflow weekly plan"});
+      //     }
+      // }else if(user.level==1){
+      //     if(week_total+comp.amount>499){
+      //         return res.status(400).json({error:"overflow weekly plan"});
+      //     }
+      // }
       
-      const saved=await (new Exchange(comp)).save();
+      // const saved=await (new Exchange(comp)).save();
+      const saved={_id:'sdf'};
       req.session.exchange=saved._id;
       await req.session.save();
       try{
