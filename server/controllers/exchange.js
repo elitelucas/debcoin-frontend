@@ -181,16 +181,16 @@ exports.postReceipt = async (req, res, next) => {
       //     }
           
           
-      } else {
-          fs.unlink(tempPath, err => {
+      // } else {
+      //     fs.unlink(tempPath, err => {
               
 
-              return res
-              .status(403)
-              .contentType("text/plain")
-              .json({message:"Only .png and .jpg files are allowed!"});
-          });
-      }
+      //         return res
+      //         .status(403)
+      //         .contentType("text/plain")
+      //         .json({message:"Only .png and .jpg files are allowed!"});
+      //     });
+      // }
   }
   res
   .status(403)
