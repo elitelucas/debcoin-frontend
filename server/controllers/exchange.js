@@ -157,15 +157,18 @@ exports.selectWallet = async (req, res, next) => {
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
     try{
+      const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
       const today=new Date();
       var sunday=new Date();
       sunday.setDate(today.getDate()-today.getDay());
-      var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday}});
-      var weeklyExchanged=0;
-      const user=await User.findById(req.user.id);
-      for(var i=0;i<exchangeList.length;i++){
-        weeklyExchanged+=exchangeList[i].amount;
+      var week_total=0;
+      for(var i=0;i<exchange.length;i++){
+          if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
+              week_total+=parseFloat(exchange[i].amount);
+          }else
+              break;
       }
+      
       const comp={};
       comp._userId=req.user.id;
       comp.username=req.user.username;
@@ -173,11 +176,11 @@ exports.postReceipt = async (req, res, next) => {
       comp.wallet=Math.abs(parseFloat(req.body.wallet));
       comp.rate=market_prices.last_trade_price;
       if(user.level==2){
-          if(weeklyExchanged+comp.amount>1999){
+          if(week_total+comp.amount>1999){
               return res.status(400).json({error:"overflow weekly plan"});
           }
       }else if(user.level==1){
-          if(weeklyExchanged+comp.amount>499){
+          if(week_total+comp.amount>499){
               return res.status(400).json({error:"overflow weekly plan"});
           }
       }
