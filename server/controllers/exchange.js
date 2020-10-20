@@ -11,6 +11,7 @@ const SDKConstants = require('authorizenet').Constants;
 const getRateInfo =require('../utils/getRateInfo');
 const { findById } = require('../models/user');
 const fs=require('fs');
+const path=require('path');
 //prices of crypto currencies
 var market_prices;
 //Get prices of crypto currencies on markets
