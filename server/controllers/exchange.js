@@ -155,42 +155,60 @@ exports.selectWallet = async (req, res, next) => {
 };
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
-      console.log(req.files);
-      // const tempPath = req.file.path;
-      // const exchange = await Exchange.findById(req.session.exchange);
+    try{
+      const today=new Date();
+      var sunday=new Date();
+      sunday.setDate(today.getDate()-today.getDay());
+      var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday}});
+      var weeklyExchanged=0;
+      const user=await User.findById(req.user.id);
+      for(var i=0;i<exchangeList.length;i++){
+        weeklyExchanged+=exchangeList[i].amount;
+      }
+      const comp={};
+      comp._userId=req.user.id;
+      comp.username=req.user.username;
+      comp.amount=Math.abs(parseFloat(req.body.usd));
+      comp.wallet=Math.abs(parseFloat(req.body.wallet));
+      comp.rate=market_prices.last_trade_price;
+      if(user.level==2){
+          if(weeklyExchanged+comp.amount>1999){
+              return res.status(400).json({error:"overflow weekly plan"});
+          }
+      }else if(user.level==1){
+          if(weeklyExchanged+comp.amount>499){
+              return res.status(400).json({error:"overflow weekly plan"});
+          }
+      }
       
-      // if (path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpeg"  || path.extname(req.file.originalname).toLowerCase() === ".jpg" ) {
-      //     try{
-              
-      //         const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+path.extname(req.file.originalname).toLowerCase());
-              
-      //         const renamed=await fs.rename(tempPath, targetPath,()=>{});
-              
-      //         exchange.ext=path.extname(req.file.originalname).toLowerCase();
-      //         const saved=await exchange.save();
-      //         return res
-      //         .status(200)
-      //         .contentType("text/plain")
-      //         .json({message:"ok"});
-      //     }catch(ex){
-      //         console.log(ex);
-      //         return res
-      //         .status(500)
-      //         .contentType("text/plain")
-      //         .json({message:"internal server error!"});
-      //     }
-          
-          
-      // } else {
-      //     fs.unlink(tempPath, err => {
-              
+      const saved=await (new Exchange(comp)).save();
+      req.session.exchange=saved._id;
+      await req.session.save();
+      try{
+        await fs.mkdir(path.join(__dirname, "../uploads/exchange/"+saved._id));
+        for(let i=0;i<req.files.length;i++){
+          const tempPath = req.files[i].path;     
+          const targetPath = path.join(__dirname, "../uploads/exchange/"+saved._id+"/"+req.file.filename);
+          const renamed=await fs.rename(tempPath, targetPath,()=>{});
+          console.log(targetPath);
+        } 
+        
+      }catch(ex){
+        console.log(ex);
+        return res
+        .status(500)
+        .contentType("text/plain")
+        .json({message:"internal server error!"});
+      }
+      res.status(200).json({message:'ok'});
+    }catch(ex){
+        res.status(400).json({error:'fail'});
+    }
 
-      //         return res
-      //         .status(403)
-      //         .contentType("text/plain")
-      //         .json({message:"Only .png and .jpg files are allowed!"});
-      //     });
-      // }
+
+      
+
+      
   }
   res
   .status(403)
