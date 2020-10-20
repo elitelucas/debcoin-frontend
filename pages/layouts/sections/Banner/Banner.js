@@ -28,7 +28,7 @@ const Banner = (props) => {
                 justifyContent: "center",
               }}>
               <Col lg="6" className=" order-2 order-lg-1">
-                <Accordian userInfo={props.userInfo} resetAmount={props.resetAmount} amount={props.amount} price={props.price} getRate={props.getRate} allowed={props.allowed} />
+                <Accordian addWallet={props.addWallet} userInfo={props.userInfo} resetAmount={props.resetAmount} amount={props.amount} price={props.price} getRate={props.getRate} allowed={props.allowed} />
               </Col>
               <Col lg="6" className="order-1 order-lg-2">
                 <div className="center-text bannerHomePadding ">

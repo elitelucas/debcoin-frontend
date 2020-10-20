@@ -18,11 +18,11 @@ exports.createWallet = async (req, res, next) => {
     const errors = result.array({ onlyFirstError: true });
     return res.status(422).json({ errors });
   }
-  var valid = WAValidator.validate(req.body.address, 'BTC');
-  if(!valid)
-    return res.status(400).json({
-      message: 'Address Invalid.'
-    });
+  // var valid = WAValidator.validate(req.body.address, 'BTC');
+  // if(!valid)
+  //   return res.status(400).json({
+  //     message: 'Address Invalid.'
+  //   });
   try {
     const {title,address}=req.body;
     const user = await User.findById(req.user.id);
@@ -60,7 +60,7 @@ exports.validateWallet = [
     .withMessage('cannot be blank')
 
     .isLength({ min: 6 })
-    .withMessage('must be at least 6 characters long')
+    .withMessage('must be at least 4 characters long')
 
     .isLength({ max: 50 })
     .withMessage('must be at most 50 characters long'),

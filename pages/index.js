@@ -12,6 +12,7 @@ import Pricing from "./layouts/sections/Prices/Prices";
 import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
 import {FetchContext} from '../utils/authFetch';
+import { SchemaMetaFieldDef } from "graphql";
 const index = () => {
   const [rate,setRate]=useState('');
   const [allowed,setAllowed]=useState(500);
@@ -47,7 +48,7 @@ const index = () => {
 
 
   const getRate=async ()=>{
-    let tmp=await publicFetch('getRate');
+    let tmp=await publicFetch('getRate').catch((err)=>{});
     setRate(tmp.data.rate);
   }
   const getAllowed=async ()=>{
@@ -61,6 +62,20 @@ const index = () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
     setAmount(tmp);
   };
+  const addWallet=async (title,address)=>{
+    try {
+      const { data } = await authAxios.post('wallet/',{
+        title,address
+      });
+      setUserInfo({
+        ...userInfo,
+        wallet:data
+      });
+    } catch (error) {
+      console.log(error);
+  
+    }  
+  }
   return (
     <div>
       <Head>
@@ -69,7 +84,7 @@ const index = () => {
 
       <Header className="saas2" isHome={true}/>
 
-      <BannerSection resetAmount={()=>setAmount(0)} amount={amount} userInfo={userInfo} allowed={allowed} price={rate} getRate={getRate} />
+      <BannerSection addWallet={addWallet} resetAmount={()=>setAmount(0)} amount={amount} userInfo={userInfo} allowed={allowed} price={rate} getRate={getRate} />
       <Guide />
       {/* <AccordianSection /> */}
       <License />

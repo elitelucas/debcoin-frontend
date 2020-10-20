@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import StartYourOrder from "./StartYourOrder";
 import VerifySms from "./VerifySms";
 import SelectWallet from "./selectWallet";
@@ -19,50 +19,50 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-import {FetchContext} from '../../../../utils/authFetch';
+import { FetchContext } from '../../../../utils/authFetch';
 import { toast } from 'react-toastify';
 const AccordionElementSection = (props) => {
   const [condition, setCondition] = useState("1st");
-  const [usd,setUSD]=useState(props.amount);
+  const [usd, setUSD] = useState(props.amount);
   const width = { width: "45px", height: "45px", backgroundColor: "#333D7A" };
   const [isLoading, setIsLoading] = useState(false);
-  const {loading}=useContext(AuthContext);
-  const {authAxios}=useContext(FetchContext);
+  const { loading } = useContext(AuthContext);
+  const { authAxios } = useContext(FetchContext);
   let cardToShow = "";
-  const verifyReq=async ()=>{
+  const verifyReq = async () => {
     try {
       const { data } = await authAxios.get('verify');
     } catch (error) {
-      console.log(error);        
-    }  
+      console.log(error);
+    }
   }
-  const verifyResult=async (sms)=>{
+  const verifyResult = async (sms) => {
     try {
-      const { data } = await authAxios.post('verify',{
-        code:sms
+      const { data } = await authAxios.post('verify', {
+        code: sms
       });
-      
+
 
       setCondition("3rd");
       setIsLoading(false);
     } catch (error) {
-      console.log(error); 
-      toast.error("OTP failed");  
-      setIsLoading(false);   
+      console.log(error);
+      toast.error("OTP failed");
+      setIsLoading(false);
       props.resetAmount(0);
-      setCondition("1st");  
-    }  
+      setCondition("1st");
+    }
   }
-  useEffect(()=>{
-    if(props.amount>0){
-      if(props.userInfo.phoneVerified)
+  useEffect(() => {
+    if (props.amount > 0) {
+      if (props.userInfo.phoneVerified)
         setCondition("3rd");
-      else{
+      else {
         verifyReq();
         setCondition("2nd");
       }
     }
-  },[props.amount]);
+  }, [props.amount]);
   if (condition === "1st") {
     cardToShow = (
       <>
@@ -90,9 +90,9 @@ const AccordionElementSection = (props) => {
                 setUSD(param);
                 setIsLoading(true);
                 setTimeout(() => {
-                  if(props.userInfo.phoneVerified)
+                  if (props.userInfo.phoneVerified)
                     setCondition("3rd");
-                  else{
+                  else {
                     verifyReq();
                     setCondition("2nd");
                   }
@@ -127,7 +127,7 @@ const AccordionElementSection = (props) => {
             <VerifySms phoneNumber={props.userInfo.phoneNumber}
               isClicked={(sms) => {
                 setIsLoading(true);
-                verifyResult(sms);             
+                verifyResult(sms);
               }}
               isLoading={isLoading}
             />
@@ -155,6 +155,9 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody>
             <SelectWallet
+              addWallet={props.addWallet}
+              price={props.price}
+              usd={usd}
               wallet={props.userInfo.wallet}
               isClicked={() => {
                 setIsLoading(true);

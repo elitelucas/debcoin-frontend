@@ -14,35 +14,45 @@ const selectWallet = (props) => {
         </div>
 
         <div className="col-12">
-          <span>$25</span>
-          <span className="float-right">0.000183411 / $20.66</span>
+          <span>${props.usd}</span>
+          <span className="float-right">{Math.floor(100000000*props.usd/props.price)/100000000} / ${props.usd}</span>
         </div>
       </div>
       <div className=" d-flex row mt-2 ">
-        <div
-          className="col-6  p-3 text-center"
-          style={{ backgroundColor: "#eaecf3 " }}>
-          <FormGroup check className="float-right">
-            <Input type="checkbox" />
-          </FormGroup>
-          <img src="/assets/images/home/btc.png" />
-          <br />
-          MYBTC
-        </div>
-        <p style={{ color: "black", display: "block" }}>
-          No wallet has been registered with your account.
-        </p>
-        <br />
-        <p style={{ color: "black" }}>
-          <a onClick={toggleModal4}>Add a wallet now</a>
-        </p>
+        {
+          props.wallet.length>0 ? props.wallet.map((ele,key)=>(
+            <div
+              className="col-6  p-3 text-center"
+              style={{ backgroundColor: "#eaecf3 " }}>
+              <FormGroup check className="float-right">
+                <Input type="checkbox" />
+              </FormGroup>
+              <img src="/assets/images/home/btc.png" />
+              <br />
+              {ele.title}
+            </div>
+          )) : (
+            <>
+              <p style={{ color: "black", display: "block" }}>
+                No wallet has been registered with your account.
+              </p>
+              <br />
+              <p style={{ color: "black" }}>
+                <a onClick={toggleModal4}>Add a wallet now</a>
+              </p>
+            
+            <AddWallet
+              submit={props.addWallet}
+              toggle={() => {
+                toggleModal4();
+              }}
+              isOpen={modal4}
+            />
+            </>
+          )
+        }
+        
       </div>
-      <AddWallet
-        toggle={() => {
-          toggleModal4();
-        }}
-        isOpen={modal4}
-      />
       <Button
         className="btn primary-btn btn-default text-uppercase mt-3"
         disabled={props.isLoading}

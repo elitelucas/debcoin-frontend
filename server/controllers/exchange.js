@@ -71,7 +71,7 @@ exports.allowedExchange = async (req, res, next) => {
 exports.getRate=async (req, res, next) => {
   try {
     console.log(market_prices);
-    return res.status(200).json({rate:market_prices.last_trade_price});
+    return res.status(200).json({rate:market_prices.last_trade_price*(100+2.5)/100});
   } catch (error) {
     return res.status(500).json({message:'failed'});
   }
