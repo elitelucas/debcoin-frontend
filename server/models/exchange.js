@@ -3,7 +3,6 @@ const User=require('./user');
 const exchangeSchema = new mongoose.Schema({
     _userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User',unique:true },
     username: { type: String, required: true,unique:true },
-    ext:{type:String,required:true},
     amount:{type:Number},
     verify:{type:Boolean,default:false},
     paid:{type:Boolean,default:false},
