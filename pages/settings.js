@@ -160,10 +160,12 @@ const settings = () => {
       const { data } = await authAxios.post('wallet/',{
         title,address
       });
-      setUserInfo({
+      console.log(data);
+      await setUserInfo({
         ...userInfo,
         wallet:data
       });
+      console.log(userInfo);
     } catch (error) {
       console.log(error);
   

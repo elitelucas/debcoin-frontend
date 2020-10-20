@@ -32,7 +32,7 @@ exports.createWallet = async (req, res, next) => {
       });
     user.wallet.push({title,address});
     const saved=await user.save();
-    return res.status(200).json({...saved.wallet});
+    return res.status(200).json({wallet:saved.wallet});
   } catch (error) {
     return res.status(500).json({message:'failed'});
   }
@@ -43,7 +43,7 @@ exports.removeWallet = async (req, res, next) => {
     const id=user.wallet.findIndex(ele=>ele.title===req.params.title);
     user.wallet.splice(id,1);
     const saved=await user.save();
-    return res.status(200).json({...saved.wallet});
+    return res.status(200).json({wallet:saved.wallet});
   } catch (error) {
     return res.status(500).json({message:'failed'});
   }
@@ -59,7 +59,7 @@ exports.validateWallet = [
     .notEmpty()
     .withMessage('cannot be blank')
 
-    .isLength({ min: 6 })
+    .isLength({ min: 4 })
     .withMessage('must be at least 4 characters long')
 
     .isLength({ max: 50 })
