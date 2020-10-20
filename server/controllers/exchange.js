@@ -191,6 +191,10 @@ exports.postReceipt = async (req, res, next) => {
       req.session.exchange=saved._id;
       await req.session.save();
       try{
+        if (!fs.existsSync(path.join(__dirname, "../uploads/exchange/"))) {
+          fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"));
+        }
+        
         fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+saved._id));
         for(let i=0;i<req.files.length;i++){
           const tempPath = req.files[i].path;     
