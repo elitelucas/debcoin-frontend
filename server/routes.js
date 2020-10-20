@@ -131,7 +131,7 @@ router.post('/receipt', [requireAuth,
 //bitcoin exchange route
 router.get('/getRate', getRate);
 router.get('/allowed', requireAuth, allowedExchange);
-
+router.get('/listExchange', requireAuth, listExchange);
 
 //wallet manage
 router.post('/wallet', [requireAuth, validateWallet], createWallet);
@@ -142,7 +142,9 @@ router.delete('/wallet/:title', requireAuth, removeWallet);
 //tiers
 router.get('/tier2', requireAuth, getTier2);
 router.get('/tier3', requireAuth, getTier3);
-router.post('/tier2', [requireAuth, uploadedFile.single('tier2')], postTier2);
+router.post('/tier2', [requireAuth,   
+  uploadedFile.array("tier2")
+ ], postTier2);
 router.post('/tier3', [requireAuth, uploadedFile.single('tier3')], postTier3);
 
 

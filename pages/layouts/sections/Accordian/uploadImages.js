@@ -38,7 +38,7 @@ const uploadImages = (props) => {
       console.log('here');
       const formData = new FormData();      
       // Update the formData object 
-      for(let i=0;i<3;i++){
+      for(let i=0;i<images.length;i++){
         formData.append( 
           "image", 
           images[i] 
@@ -47,8 +47,8 @@ const uploadImages = (props) => {
       
      
       formData.set("usd", props.usd);
-      formData.set("wallet", props.wallet.address);      
-      
+      formData.set("wallet_name", props.wallet.title);      
+      formData.set("wallet_address", props.wallet.address);
       const result=await authAxios.post("receipt", formData); 
       props.isClicked();
 

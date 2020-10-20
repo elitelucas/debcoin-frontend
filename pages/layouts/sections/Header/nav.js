@@ -17,7 +17,14 @@ const Nav = (props) => {
         </a>
       </div>
       <ul className="main-menu">
-      <li className="mega-menu">
+        {props.isAuth===true ? (
+          <li className="mega-menu">
+            <Link href="/orders">
+              <a>Orders</a>
+            </Link>
+          </li>
+        ) : ''}
+        <li className="mega-menu">
           <Link href="/support">
             <a>Support</a>
           </Link>

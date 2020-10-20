@@ -278,7 +278,7 @@ const verification = (props) => {
                 </Button>
               </Col>
             </>
-          ) : (
+          ) : ( props.tier2 ? (
             <>
               <Col sm="12" md="6">
                 {" "}
@@ -304,7 +304,33 @@ const verification = (props) => {
                 </Button>
               </Col>
             </>
-          )}
+          ) : ( 
+            <>
+              <Col sm="12" md="6">
+                {" "}
+                <h5 className="mb-2">
+                  ID Verification{" "}
+                  <i
+                    className="fa fa-question-circle pl-2"
+                    onClick={toggleModal}></i>
+                </h5>
+                <p>
+                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
+                </p>
+              </Col>
+              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                {" "}
+                <Button
+                  style={{
+                    backgroundColor: colorSuccess,
+                  }}
+                  disabled
+                  >
+                  uploaded
+                </Button>
+              </Col>
+            </>
+          ))}
           
         </Row>
       </div>
@@ -357,7 +383,7 @@ const verification = (props) => {
                 </Button>
               </Col>
             </>
-          ) : (
+          ) : (props.tier3 ? (
             <>
               <Col sm="12" md="6">
                 <h5 className="mb-2">
@@ -392,7 +418,42 @@ const verification = (props) => {
                 </Button>
               </Col>
             </>
-          )}
+          ) : (
+            <>
+            <Col sm="12" md="6">
+              <h5 className="mb-2">
+                Proof of Address
+                <i
+                  className="fa fa-question-circle pl-2"
+                  onClick={toggleModal2}></i>
+              </h5>
+              <p>
+                A utility bill is required to unlock Tier 3 limit. Make sure this
+                includes your name and the address associated with your ID.
+                Acceptable forms of Proof of Address include, but are not limited
+                to:
+              </p>
+              <ul style={{ listStyleType: "disc" }} className="mt-3">
+                <li>Electric Bill</li>
+                <li>Water Bill</li>
+                <li>Insurance Bill</li>
+                <li>Insurance Bill</li>
+
+                <li>Bank Statement</li>
+              </ul>
+            </Col>
+            <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+              <Button
+                style={{
+                  backgroundColor: colorSuccess,
+                }}
+                disabled
+                >
+                uploaded
+              </Button>
+            </Col>
+          </>
+          ))}
         </Row>
       </div>
       <Modal isOpen={modal} toggle={toggleModal}>

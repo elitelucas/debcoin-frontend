@@ -86,17 +86,19 @@ const settings = () => {
     setTier2Modal(!tier2Modal);
   };
   const selectTier2=(event)=>{
-    setTier2(event.target.files[0])
+    setTier2(event.target.files)
   };
   const tier2Submit=async ()=>{
     try{
       const formData = new FormData();      
       // Update the formData object 
-      formData.append( 
-        "tier2", 
-        tier2, 
-        tier2.name 
-      ); 
+      for(let i=0;i<tier2.length;i++){
+        formData.append( 
+          "tier2", 
+          tier2[i] 
+        );
+      }
+      
       formData.set("fname", tier2Text.fname);
       formData.set("lname", tier2Text.lname);
       formData.set("address", tier2Text.address);
@@ -315,6 +317,8 @@ const settings = () => {
               <TabPane tabId="3">
                 <Verification phoneVerified={userInfo.phoneVerified}
                   level={userInfo.level} 
+                  tier2={userInfo.tier2===null}
+                  tier3={userInfo.tier3===null}
                   phoneNumber={userInfo.phoneNumber}
                   verify={verify}
                   />
@@ -525,7 +529,7 @@ const settings = () => {
                     <div className="col-12 mb-3">
                       <label htmlFor="name">Please select a image</label>
                       <br />
-                      <input type="file" onChange={selectTier2} />
+                      <input type="file" onChange={selectTier2} multiple />
                     </div>
                   </div>
                   <p className="mt-2 mb-0">

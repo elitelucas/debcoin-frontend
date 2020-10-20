@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Head from "next/head";
 // import Custom Components
 import Header from "./layouts/sections/Header/header";
@@ -6,14 +6,43 @@ import FooterSection from "./layouts/sections/Footer/footer";
 import "react-light-accordion/demo/css/index.css";
 import { Container, Row, Col } from "reactstrap";
 import { Progress } from "reactstrap";
+import { AuthContext } from '../utils/auth';
+import  Router  from "next/router";
+import {FetchContext} from '../utils/authFetch';
 
 const index = () => {
+  const {isAuthenticated,loading}=useContext(AuthContext);
+  const {authAxios}=useContext(FetchContext);
+  const [list,setList]=useState([]);
+  const [total,setTotal]=useState('');
+  const [userInfo,setUserInfo]=useState({});
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
     document.body.style.setProperty("--light", "#f3f1e8");
     document.body.style.setProperty("--dark", "#9647DB");
   });
+  useEffect(()=>{ 
+    if(!loading){
+      if(!isAuthenticated()){
+        Router.push('/login');    
+      }else{
+        (async ()=>{
+          try {
+            let { data } = await authAxios.get('listExchange');
+            setList(data.exchange);
+            setTotal(data.week_total);
+            let res = await authAxios.get('myInfo');
+            setUserInfo(res.data);
+          } catch (error) {
+            console.log(error);
+        
+          }  
+        })();    
+      }
+    }
+   
+  },[loading]);
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -33,13 +62,27 @@ const index = () => {
                 className="shadow-sm"
                 style={{ alignSelf: "center" }}>
                 <h4>Limit Left</h4>
-                <p>$5000.00</p>
+                <p>{
+                  userInfo.level<=1 ? "$"+(499-total) : (
+                    userInfo.level<=2 ? "$"+(1999-total) :
+                    'Not Limited'
+                  )
+                }</p>
               </Col>
               <Col style={{ alignSelf: "center", textAlign: "right" }}>
                 {" "}
-                <Progress color="success" value="25" />
+                {
+                  userInfo.level===3 ? (
+                    <Progress color="success" value="0" />
+                  ) : (userInfo.level===2 ? (
+                    <Progress color="success" value={100*total/1999} />
+
+                  ) : (
+                    <Progress color="success" value={100*total/499} />
+                  ))
+                }
                 <small>
-                  You have traded $0.00 of your $5000.00 weekly limit.
+                  You have traded ${total} of your {userInfo.level<=1 ? "$499" : (userInfo.level<=2 ? "$1999" : 'Not Limited')} weekly limit.
                 </small>
               </Col>
             </Row>{" "}
@@ -61,7 +104,7 @@ const index = () => {
                 </div>
                 <div className="table-responsive">
                   <table className="table table-cards align-items-center">
-                    <thead>
+                    <thead>                   
                       <tr>
                         <th scope="col" style={{ minWidth: "240px" }}>
                           Order #{" "}
@@ -75,32 +118,34 @@ const index = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">
-                          <a href="order">e236ee19</a>
-                        </th>
-                        <td>$100.00 </td>
-                        <td>0.00711881 </td>
-                        <td>$82.64 </td>
-                        <td>MYBTC </td>
-                        <td>08-25-2020 12:06 UTC </td>
-                        <td>
-                          <span className="badge badge-danger">Cancelled</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">
-                          <a href="order">e236ee19</a>
-                        </th>
-                        <td>$100.00 </td>
-                        <td>0.00711881 </td>
-                        <td>$82.64 </td>
-                        <td>MYBTC </td>
-                        <td>08-25-2020 12:06 UTC </td>
-                        <td>
-                          <span className="badge badge-danger">Cancelled</span>
-                        </td>
-                      </tr>
+                      {
+                        list.map((ele,key)=>(
+                          <tr>
+                            <th scope="row">
+                              <a href="">{ele._id}</a>
+                            </th>
+                            <td>${ele.amount} </td>
+                            <td>{Math.floor(100000000*parseFloat(ele.amount)*parseFloat(ele.rate))/100000000} </td>
+                            <td>${ele.amount}  </td>
+                            <td>{ele.wallet_name}  </td>
+                            <td>{ele.createdAt} </td>
+                            <td>
+                              {
+                                ele.status==1 ? (
+                                  <span className="badge badge-success">Succeed</span>
+                                ) : (ele.status==0 ? (
+                                  <span className="badge badge-info">Waiting</span>
+                                ) : (
+                                  <span className="badge badge-danger">Cancelled</span>
+                                ))
+                              }
+                              
+                            </td>
+                          </tr>
+                        ))
+                      }
+                      
+                      
                     </tbody>
                   </table>
                 </div>

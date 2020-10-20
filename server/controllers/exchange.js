@@ -24,7 +24,7 @@ setInterval(getPrices,300000);
 
 exports.listExchange = async (req, res, next) => {
   try {
-    const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -37,13 +37,14 @@ exports.listExchange = async (req, res, next) => {
     }
     return res.status(200).json({exchange,week_total});
   } catch (error) {
+    console.log(error);
     return res.status(500).json({message:'failed'});
   }
 };
 
 exports.allowedExchange = async (req, res, next) => {
   try {
-    const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$not':-1}}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -57,11 +58,11 @@ exports.allowedExchange = async (req, res, next) => {
     const user=await User.findById(req.user.id);
     
     if(user.level===2){
-      return res.status(200).json({total:(1999-week_total>500)? 500 : (1999-week_total>500)});
+      return res.status(200).json({total:(1999-week_total>500)? 500 : (1999-week_total)});
     }else if(user.level===3){
       return res.status(200).json({total:500});
     }else{
-      return res.status(200).json({total:500-week_total});
+      return res.status(200).json({total:499-week_total});
     }
     
   } catch (error) {
@@ -86,7 +87,7 @@ exports.postAmount=async (req, res, next) => {
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
-    var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday}});
+    var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday},status:{'$not':-1}});
     var weeklyExchanged=0;
     const user=await User.findById(req.user.id);
     for(var i=0;i<exchangeList.length;i++){
@@ -140,25 +141,25 @@ exports.smsResult = async (req, res) => {
   else
       return res.status(400).json({error:'otp failed'});
 };
-exports.selectWallet = async (req, res, next) => {
-  try{
-      const exchange = await Exchange.findById(req.session.exchange);      
-      exchange.wallet=req.body.wallet;
-      const user=await User.findById(req.user.id);
-      const wallet=user.wallet.find((ele)=>ele.title==req.body.wallet);
-      if(wallet==null)
-        return res.status(400).json({error:'wallet not exist'});
-      exchange.wallet=wallet.address;
-      const saved=await exchange.save();
-      return res.status(200).send('ok');
-  }catch(ex){
-      return res.status(500).json({error:'server error'});
-  }
-};
+// exports.selectWallet = async (req, res, next) => {
+//   try{
+//       const exchange = await Exchange.findById(req.session.exchange);      
+//       exchange.wallet=req.body.wallet;
+//       const user=await User.findById(req.user.id);
+//       const wallet=user.wallet.find((ele)=>ele.title==req.body.wallet);
+//       if(wallet==null)
+//         return res.status(400).json({error:'wallet not exist'});
+//       exchange.wallet=wallet.address;
+//       const saved=await exchange.save();
+//       return res.status(200).send('ok');
+//   }catch(ex){
+//       return res.status(500).json({error:'server error'});
+//   }
+// };
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
     try{
-      const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
+      const exchange = await Exchange.find({_userId:req.user.id,status:{'$not':-1}}).sort('-createdAt');
       const today=new Date();
       var sunday=new Date();
       sunday.setDate(today.getDate()-today.getDay());
@@ -174,7 +175,8 @@ exports.postReceipt = async (req, res, next) => {
       comp._userId=req.user.id;
       comp.username=req.user.username;
       comp.amount=Math.abs(parseFloat(req.body.usd));
-      comp.wallet=Math.abs(parseFloat(req.body.wallet));
+      comp.wallet_name=req.body.wallet_name;
+      comp.wallet_addres=req.body.wallet_address;
       comp.rate=market_prices.last_trade_price;
       if(user.level==2){
           if(week_total+comp.amount>1999){
@@ -190,26 +192,20 @@ exports.postReceipt = async (req, res, next) => {
       // const saved={_id:'sdf'};
       req.session.exchange=saved._id;
       await req.session.save();
-      try{
-        if (!fs.existsSync(path.join(__dirname, "../uploads/exchange/"))) {
-          fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"));
-        }
-        
-        fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+saved._id));
-        for(let i=0;i<req.files.length;i++){
-          const tempPath = req.files[i].path;     
-          const targetPath = path.join(__dirname, "../uploads/exchange/"+saved._id+"/"+req.files[i].filename);
-          const renamed=await fs.rename(tempPath, targetPath,()=>{});
-          console.log(targetPath);
-        } 
-        
-      }catch(ex){
-        console.log(ex);
-        return res
-        .status(500)
-        .contentType("text/plain")
-        .json({message:"internal server error!"});
+      
+      if (!fs.existsSync(path.join(__dirname, "../uploads/exchange/"))) {
+        fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"));
       }
+      
+      fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+saved._id));
+      for(let i=0;i<req.files.length;i++){
+        const tempPath = req.files[i].path;     
+        const targetPath = path.join(__dirname, "../uploads/exchange/"+saved._id+"/"+req.files[i].filename);
+        const renamed=fs.renameSync(tempPath, targetPath);
+        console.log(targetPath);
+      } 
+        
+     
       return res.status(200).json({message:'ok'});
     }catch(ex){
       console.log(ex);

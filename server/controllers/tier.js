@@ -5,52 +5,48 @@ const path=require('path');
 const fs=require('fs');
 exports.postTier2 = async (req, res, next) => {
 
-    if(req.file) {
-        console.log(req.body.lname);
-        // const tempPath = req.file.path;
-        // const tmp=await Tier2.findOne({_userId:req.user.id});
-        // if(tmp!=null){
-        //     fs.unlink(tempPath, err => {
-                
+    if(req.files) {
+        try{
+            const comp={};
+            comp._userId=req.user.id;
+            comp.username=req.user.username
+            comp.fname=req.body.fname;
+            comp.lname=req.body.lname;
+            comp.address=req.body.address;
+            comp.street=req.body.street;
+            comp.zip=req.body.zip;
+            comp.city=req.body.city;
+            comp.state=req.body.state;
 
-        //         return res
-        //         .status(403)
-        //         .json({message:"already uploaded!"});
-        //     });
-        // }
-        // if (path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpeg"  || path.extname(req.file.originalname).toLowerCase() === ".jpg" ) {
-        //     try{
-        //         const targetPath = path.join(__dirname, "../uploads/tier2/"+req.user.username+path.extname(req.file.originalname).toLowerCase());
-
-        //         const renamed=await fs.rename(tempPath, targetPath,()=>{});
-                
-        //         var tier2=new Tier2({_userId:req.user.id,username:req.user.username,ext:path.extname(req.file.originalname).toLowerCase()});
-        //         const saved=await tier2.save();
-        //         return res
-        //         .status(200)
-        //         .json({message:"ok"});
-        //     }catch(ex){
-        //         console.log(ex);
-        //         return res
-        //         .status(500)
-        //         .json({message:"internal server error!"});
-        //     }
             
+            const saved=await (new Tier2(comp)).save();
+            if (!fs.existsSync(path.join(__dirname, "../uploads/tier2/"))) {
+              fs.mkdirSync(path.join(__dirname, "../uploads/tier2/"));
+            }
             
-        // } else {
-        //     fs.unlink(tempPath, err => {
-                
-
-        //         return res
-        //         .status(403)
-        //         .json({message:"Only .png and .jpg files are allowed!"});
-        //     });
-        // }
+            fs.mkdirSync(path.join(__dirname, "../uploads/tier2/"+saved._id));
+            for(let i=0;i<req.files.length;i++){
+              const tempPath = req.files[i].path;     
+              const targetPath = path.join(__dirname, "../uploads/tier2/"+saved._id+"/"+req.files[i].filename);
+              const renamed=fs.renameSync(tempPath, targetPath);
+            } 
+            return res.status(200).json({message:'ok'});
+          }catch(ex){
+            console.log(ex);
+            return res
+            .status(500)
+            .contentType("text/plain")
+            .json({message:"internal server error!"});
+          }
+        
+    }else{
+        console.log('no file');
+        return res
+            .status(403)
+            .contentType("text/plain")
+            .json({message:"Only .png and .jpg files are allowed!"});
     }
-    res
-    .status(403)
-    .contentType("text/plain")
-    .json({message:"Only .png and .jpg files are allowed!"});
+    return res.status(200).json({message:'ok'});
     
 };
 exports.getTier2 = async (req, res, next) => {
