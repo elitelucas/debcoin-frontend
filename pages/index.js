@@ -69,7 +69,7 @@ const index = () => {
       });
       setUserInfo({
         ...userInfo,
-        wallet:data
+        wallet:data.wallet
       });
     } catch (error) {
       console.log(error);

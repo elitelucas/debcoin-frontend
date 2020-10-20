@@ -10,17 +10,60 @@ import {
 } from "reactstrap";
 
 const uploadImages = (props) => {
-  const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
+  const maxSize = 10485760;
+  const [images,setImages]=useState(null);
+  const onDrop = useCallback(acceptedFiles => {
+    // console.log(acceptedFiles);
+    setImages(acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
+    onDrop,
+    accept: 'image/png, image/jpg, image/jpeg',
+    minSize: 0,
+    maxSize,
+  });
+
+  const isFileTooLarge = rejectedFiles && rejectedFiles.length > 0 && rejectedFiles[0].size > maxSize;
+  
   const [modalFor, setModalFor] = useState(false);
   const [modalFogc, setModalFogc] = useState(false);
   const [modalBogc, setModalBogc] = useState(false);
-
   const toggleFor = () => setModalFor(!modalFor);
   const toggleFogc = () => setModalFogc(!modalFogc);
   const toggleBogc = () => setModalBogc(!modalBogc);
+  const submit=async ()=>{
+    try{
+      const formData = new FormData();      
+      // Update the formData object 
+      formData.append( 
+        "image0", 
+        images[0], 
+        images[0].name 
+      ); 
+      formData.append( 
+        "image1", 
+        images[1], 
+        images[1].name 
+      ); 
+      formData.append( 
+        "image2", 
+        images[2], 
+        images[2].name 
+      ); 
+      formData.set("usd", props.usd);
+      formData.set("wallet", props.wallet.address);      
+      // Details of the uploaded file 
+      
+      // Request made to the backend api 
+      // Send formData object 
+      const result=await authAxios.post("receipt", formData); 
+      props.isClicked();
+
+    }catch(error){
+
+    }
+  };
   return (
     <div>
       <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
@@ -31,8 +74,8 @@ const uploadImages = (props) => {
         </div>
 
         <div className="col-12">
-          <span>$25</span>
-          <span className="float-right">0.000183411 / $20.66</span>
+          <span>${props.usd}</span>
+          <span className="float-right">{Math.floor(100000000*props.usd/props.price)/100000000} / ${props.usd}</span>
         </div>
       </div>
       <hr />
@@ -114,27 +157,35 @@ const uploadImages = (props) => {
         Upload a picture of the back side of your prepaid gift card beside the
         written reeipt.
       </small>
-      <div
-        {...getRootProps()}
-        className="p-5 mt-2 text-center"
-        style={{
-          border: "1px dotted #aaaaaa",
-          cursor: "pointer",
-        }}>
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
-        ) : (
-          <p>Tap to add a photo.</p>
-        )}
+      <div>
+        <div className="container text-center mt-5">
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            {!isDragActive && 'Click here or drop a file to upload!'}
+            {isDragActive && !isDragReject && "Drop it like it's hot!"}
+            {isDragReject && "File type not accepted, sorry!"}
+            {isFileTooLarge && (
+              <div className="text-danger mt-2">
+                File is too large.
+              </div>
+            )}
+          </div>
+        </div>
+        <ul className="list-group mt-2">
+          {acceptedFiles.length > 0 && acceptedFiles.map(acceptedFile => (
+            <li className="list-group-item list-group-item-success">
+              {acceptedFile.name}
+            </li>
+          ))}
+        </ul>
       </div>
       <Button
         className="btn primary-btn btn-default text-uppercase mt-3"
         disabled={props.isLoading}
         onClick={(e) => {
           e.preventDefault();
-
-          props.isClicked();
+          submit();
+          
         }}>
         {props.isLoading ? <Spinner size="sm" color="primary" /> : "Upload"}
       </Button>

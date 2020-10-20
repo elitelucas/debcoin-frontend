@@ -18,7 +18,6 @@ const BtcWallet = (props) => {
   const toggleModal3 = () => setModal3(!modal3);
   const toggleModal4 = () => setModal4(!modal4);
   const remove = (key) => () => {
-    console.log(key);
     setRemoveKey(key);
     setModal3(true);
   };
@@ -126,13 +125,13 @@ const BtcWallet = (props) => {
       <Modal isOpen={modal3} toggle={toggleModal3}>
         <ModalHeader toggle={toggleModal3}>ID Verification</ModalHeader>
         <ModalBody>
-          It will permanently delete wallet {removeKey ? props.wallet[removeKey].title : ''}. Do you want to proceed?
+          It will permanently delete wallet {(props.wallet && props.wallet.length>0 && removeKey!=='') ? props.wallet[removeKey].title : ''}. Do you want to proceed?
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={toggleModal3}>
             Close
           </Button>
-          <Button color="primary" onClick={() => { console.log(removeKey);props.remove(removeKey); toggleModal3() }}>
+          <Button color="primary" onClick={() => { props.remove(removeKey); toggleModal3() }}>
             Confirm
           </Button>
         </ModalFooter>

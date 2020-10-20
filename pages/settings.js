@@ -149,7 +149,7 @@ const settings = () => {
       const { data } = await authAxios.delete('wallet/'+userInfo.wallet[key].title);
       setUserInfo({
         ...userInfo,
-        wallet:data
+        wallet:data.wallet
       });
     } catch (error) {
       console.log(error);  
@@ -163,7 +163,7 @@ const settings = () => {
       console.log(data);
       await setUserInfo({
         ...userInfo,
-        wallet:data
+        wallet:data.wallet
       });
       console.log(userInfo);
     } catch (error) {

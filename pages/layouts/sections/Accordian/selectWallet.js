@@ -4,6 +4,7 @@ import AddWallet from "../Settings/AddWallet";
 const selectWallet = (props) => {
   const [modal4, setModal4] = useState(false);
   const toggleModal4 = () => setModal4(!modal4);
+  const [wallet,setWallet]=useState('');
   return (
     <div>
       <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
@@ -21,11 +22,11 @@ const selectWallet = (props) => {
       <div className=" d-flex row mt-2 ">
         {
           props.wallet.length>0 ? props.wallet.map((ele,key)=>(
-            <div
+            <div key={key} onClick={()=>setWallet(key)}
               className="col-6  p-3 text-center"
               style={{ backgroundColor: "#eaecf3 " }}>
               <FormGroup check className="float-right">
-                <Input type="checkbox" />
+                <Input type="checkbox" checked={key===wallet} onChange={(e)=>setWallet(key)} />
               </FormGroup>
               <img src="/assets/images/home/btc.png" />
               <br />
@@ -58,8 +59,8 @@ const selectWallet = (props) => {
         disabled={props.isLoading}
         onClick={(e) => {
           e.preventDefault();
-
-          props.isClicked();
+          if(wallet!=='' && props.wallet[wallet])
+            props.isClicked(wallet);
         }}>
         {props.isLoading ? <Spinner size="sm" color="primary" /> : "Select"}
       </Button>

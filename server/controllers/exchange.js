@@ -155,30 +155,30 @@ exports.selectWallet = async (req, res, next) => {
 };
 exports.postReceipt = async (req, res, next) => {
   if(req.file) {
+      console.log(req.file);
+      // const tempPath = req.file.path;
+      // const exchange = await Exchange.findById(req.session.exchange);
       
-      const tempPath = req.file.path;
-      const exchange = await Exchange.findById(req.session.exchange);
-      
-      if (path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpeg"  || path.extname(req.file.originalname).toLowerCase() === ".jpg" ) {
-          try{
+      // if (path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpeg"  || path.extname(req.file.originalname).toLowerCase() === ".jpg" ) {
+      //     try{
               
-              const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+path.extname(req.file.originalname).toLowerCase());
+      //         const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+path.extname(req.file.originalname).toLowerCase());
               
-              const renamed=await fs.rename(tempPath, targetPath,()=>{});
+      //         const renamed=await fs.rename(tempPath, targetPath,()=>{});
               
-              exchange.ext=path.extname(req.file.originalname).toLowerCase();
-              const saved=await exchange.save();
-              return res
-              .status(200)
-              .contentType("text/plain")
-              .json({message:"ok"});
-          }catch(ex){
-              console.log(ex);
-              return res
-              .status(500)
-              .contentType("text/plain")
-              .json({message:"internal server error!"});
-          }
+      //         exchange.ext=path.extname(req.file.originalname).toLowerCase();
+      //         const saved=await exchange.save();
+      //         return res
+      //         .status(200)
+      //         .contentType("text/plain")
+      //         .json({message:"ok"});
+      //     }catch(ex){
+      //         console.log(ex);
+      //         return res
+      //         .status(500)
+      //         .contentType("text/plain")
+      //         .json({message:"internal server error!"});
+      //     }
           
           
       } else {

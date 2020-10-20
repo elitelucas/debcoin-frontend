@@ -28,6 +28,7 @@ const AccordionElementSection = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { loading } = useContext(AuthContext);
   const { authAxios } = useContext(FetchContext);
+  const [wallet, setWallet] = useState('');
   let cardToShow = "";
   const verifyReq = async () => {
     try {
@@ -159,8 +160,9 @@ const AccordionElementSection = (props) => {
               price={props.price}
               usd={usd}
               wallet={props.userInfo.wallet}
-              isClicked={() => {
+              isClicked={(wallet) => {
                 setIsLoading(true);
+                setWallet(wallet);
                 setTimeout(() => {
                   setCondition("4th"), setIsLoading(false);
                 }, 1500);
@@ -191,6 +193,9 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody>
             <UploadImages
+              price={props.price}
+              usd={usd}
+              wallet={props.userInfo.wallet[wallet]}
               isClicked={() => {
                 setIsLoading(true);
                 setTimeout(() => {

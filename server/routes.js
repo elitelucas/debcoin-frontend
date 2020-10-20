@@ -50,15 +50,15 @@ const {
 const {
   validateWallet,
   createWallet,
-  listWallet,removeWallet}=require('./controllers/wallet');
-// const {checkTicker,postReceipt,postWithdraw,getWithdraw}= require('./controllers/kraken');
-const {checkoutAuthorizeNet}=require('./controllers/authorizeNet');
-const {getTier2,postTier2,getTier3,postTier3}=require('./controllers/tier');
+  listWallet, removeWallet } = require('./controllers/wallet');
+const { checkoutAuthorizeNet } = require('./controllers/authorizeNet');
+const { getTier2, postTier2, getTier3, postTier3 } = require('./controllers/tier');
 const { listPopulerTags, searchTags, listTags } = require('./controllers/tags');
 const { upvote, downvote, unvote } = require('./controllers/votes');
 const { loadComments, validate, createComment, removeComment } = require('./controllers/comments');
 const { listExchange, allowedExchange,
-	getRate } = require('./controllers/exchange');
+  postReceipt,
+  getRate } = require('./controllers/exchange');
 const requireAdmin = require('./middlewares/requireAdmin');
 const requireAuth = require('./middlewares/requireAuth');
 const questionAuth = require('./middlewares/questionAuth');
@@ -73,32 +73,32 @@ const tier = multer({
 
 //authentication
 router.post('/signup', signup);
-router.get('/verify',requireAuth, requestVerify);
-router.post('/verify',requireAuth, resultVerify);
-router.get('/emailVerify',requireAuth, requestEmailVerify);
-router.post('/emailVerify',requireAuth, resultEmailVerify);
+router.get('/verify', requireAuth, requestVerify);
+router.post('/verify', requireAuth, resultVerify);
+router.get('/emailVerify', requireAuth, requestEmailVerify);
+router.post('/emailVerify', requireAuth, resultEmailVerify);
 router.post('/authenticate', validateLogin, authenticate);
-router.put('/account',[requireAuth,validatePassword], passwordChange);
+router.put('/account', [requireAuth, validatePassword], passwordChange);
 
-router.get('/myInfo',requireAuth, getMyInfo);
-router.put('/profile',[requireAuth,validateProfile], putProfile);
+router.get('/myInfo', requireAuth, getMyInfo);
+router.put('/profile', [requireAuth, validateProfile], putProfile);
 
-router.post('/contact_anonym',validateContact, postContact);
-router.post('/contact',requireAuth, postContact);
+router.post('/contact_anonym', validateContact, postContact);
+router.post('/contact', requireAuth, postContact);
 //admin
-router.get('/admin/users', [requireAuth,requireAdmin], listUsers);
-router.get('/admin/users/:search', [requireAuth,requireAdmin], search);
-router.get('/admin/user/:username', [requireAuth,requireAdmin],  find);
+router.get('/admin/users', [requireAuth, requireAdmin], listUsers);
+router.get('/admin/users/:search', [requireAuth, requireAdmin], search);
+router.get('/admin/user/:username', [requireAuth, requireAdmin], find);
 
-router.get('/admin/tier2', [requireAuth,requireAdmin],  listTier2);
-router.patch('/admin/tier2/:id', [requireAuth,requireAdmin],  patchTier2);
-router.get('/admin/tier2/image/:id', [requireAuth,requireAdmin],  imageTier2);
-router.get('/admin/tier2/:id', [requireAuth,requireAdmin],  detailTier2);
+router.get('/admin/tier2', [requireAuth, requireAdmin], listTier2);
+router.patch('/admin/tier2/:id', [requireAuth, requireAdmin], patchTier2);
+router.get('/admin/tier2/image/:id', [requireAuth, requireAdmin], imageTier2);
+router.get('/admin/tier2/:id', [requireAuth, requireAdmin], detailTier2);
 
-router.get('/admin/tier3', [requireAuth,requireAdmin],  listTier3);
-router.patch('/admin/tier3/:id', [requireAuth,requireAdmin],  patchTier3);
-router.get('/admin/tier3/image/:id', [requireAuth,requireAdmin],  imageTier3);
-router.get('/admin/tier3/:id', [requireAuth,requireAdmin],  detailTier3);
+router.get('/admin/tier3', [requireAuth, requireAdmin], listTier3);
+router.patch('/admin/tier3/:id', [requireAuth, requireAdmin], patchTier3);
+router.get('/admin/tier3/image/:id', [requireAuth, requireAdmin], imageTier3);
+router.get('/admin/tier3/:id', [requireAuth, requireAdmin], detailTier3);
 //authorize.net
 router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 //kraken
@@ -107,26 +107,29 @@ router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 // router.get('/smsVerify', requireAuth, smsVerify);
 // router.post('/smsResult', requireAuth, smsResult);
 // router.post('/selectWallet', requireAuth, selectWallet);
-// router.post('/receipt', [requireAuth, tier.single('receipt')], postReceipt);
+router.post('/receipt', [requireAuth, 
+  tier.single('image0'), 
+  tier.single('image1'), 
+  tier.single('image2')], postReceipt);
 // router.post('/giftcard', requireAuth, postGiftCard);
 
 //////////////////////////////////////////////////////////////
 //bitcoin exchange route
-router.get('/getRate',  getRate);
-router.get('/allowed',requireAuth, allowedExchange);
+router.get('/getRate', getRate);
+router.get('/allowed', requireAuth, allowedExchange);
 
 
 //wallet manage
-router.post('/wallet', [requireAuth,validateWallet], createWallet);
+router.post('/wallet', [requireAuth, validateWallet], createWallet);
 router.get('/wallet', requireAuth, listWallet);
 router.delete('/wallet/:title', requireAuth, removeWallet);
 //users
 
 //tiers
-router.get('/tier2',requireAuth , getTier2);
-router.get('/tier3',requireAuth , getTier3);
-router.post('/tier2',[requireAuth, tier.single('tier2')], postTier2);
-router.post('/tier3',[requireAuth, tier.single('tier3')], postTier3);
+router.get('/tier2', requireAuth, getTier2);
+router.get('/tier3', requireAuth, getTier3);
+router.post('/tier2', [requireAuth, tier.single('tier2')], postTier2);
+router.post('/tier3', [requireAuth, tier.single('tier3')], postTier3);
 
 
 //questions
