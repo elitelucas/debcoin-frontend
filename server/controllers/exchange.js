@@ -200,9 +200,10 @@ exports.postReceipt = async (req, res, next) => {
         .contentType("text/plain")
         .json({message:"internal server error!"});
       }
-      res.status(200).json({message:'ok'});
+      return res.status(200).json({message:'ok'});
     }catch(ex){
-        res.status(400).json({error:'fail'});
+      console.log(ex);
+        return res.status(400).json({error:'fail'});
     }
 
 
