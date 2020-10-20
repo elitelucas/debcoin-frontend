@@ -123,7 +123,7 @@ router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 // router.post('/smsResult', requireAuth, smsResult);
 // router.post('/selectWallet', requireAuth, selectWallet);
 router.post('/receipt', [requireAuth, 
-  uploadedFile.array("multi-files", 3)
+  uploadedFile.any()
  ], postReceipt);
 // router.post('/giftcard', requireAuth, postGiftCard);
 

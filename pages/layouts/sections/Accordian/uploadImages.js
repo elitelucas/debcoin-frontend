@@ -38,27 +38,17 @@ const uploadImages = (props) => {
       console.log('here');
       const formData = new FormData();      
       // Update the formData object 
-      formData.append( 
-        "image0", 
-        images[0], 
-        images[0].name 
-      ); 
-      formData.append( 
-        "image1", 
-        images[1], 
-        images[1].name 
-      ); 
-      formData.append( 
-        "image2", 
-        images[2], 
-        images[2].name 
-      ); 
-      formData.set("usd", props.usd);
-      formData.set("wallet", props.wallet.address);      
-      // Details of the uploaded file 
+      for(let i=0;i<3;i++){
+        formData.append( 
+          "image", 
+          images[i] 
+        );
+      }
       
-      // Request made to the backend api 
-      // Send formData object 
+     
+      // formData.set("usd", props.usd);
+      // formData.set("wallet", props.wallet.address);      
+      
       const result=await authAxios.post("receipt", formData); 
       props.isClicked();
 
