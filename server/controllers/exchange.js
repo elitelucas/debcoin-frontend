@@ -158,36 +158,36 @@ exports.selectWallet = async (req, res, next) => {
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
     try{
-      // const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
-      // const today=new Date();
-      // var sunday=new Date();
-      // sunday.setDate(today.getDate()-today.getDay());
-      // var week_total=0;
-      // for(var i=0;i<exchange.length;i++){
-      //     if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
-      //         week_total+=parseFloat(exchange[i].amount);
-      //     }else
-      //         break;
-      // }
+      const exchange = await Exchange.find({_userId:req.user.id}).sort('-createdAt');
+      const today=new Date();
+      var sunday=new Date();
+      sunday.setDate(today.getDate()-today.getDay());
+      var week_total=0;
+      for(var i=0;i<exchange.length;i++){
+          if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
+              week_total+=parseFloat(exchange[i].amount);
+          }else
+              break;
+      }
       
-      // const comp={};
-      // comp._userId=req.user.id;
-      // comp.username=req.user.username;
-      // comp.amount=Math.abs(parseFloat(req.body.usd));
-      // comp.wallet=Math.abs(parseFloat(req.body.wallet));
-      // comp.rate=market_prices.last_trade_price;
-      // if(user.level==2){
-      //     if(week_total+comp.amount>1999){
-      //         return res.status(400).json({error:"overflow weekly plan"});
-      //     }
-      // }else if(user.level==1){
-      //     if(week_total+comp.amount>499){
-      //         return res.status(400).json({error:"overflow weekly plan"});
-      //     }
-      // }
+      const comp={};
+      comp._userId=req.user.id;
+      comp.username=req.user.username;
+      comp.amount=Math.abs(parseFloat(req.body.usd));
+      comp.wallet=Math.abs(parseFloat(req.body.wallet));
+      comp.rate=market_prices.last_trade_price;
+      if(user.level==2){
+          if(week_total+comp.amount>1999){
+              return res.status(400).json({error:"overflow weekly plan"});
+          }
+      }else if(user.level==1){
+          if(week_total+comp.amount>499){
+              return res.status(400).json({error:"overflow weekly plan"});
+          }
+      }
       
-      // const saved=await (new Exchange(comp)).save();
-      const saved={_id:'sdf'};
+      const saved=await (new Exchange(comp)).save();
+      // const saved={_id:'sdf'};
       req.session.exchange=saved._id;
       await req.session.save();
       try{
@@ -195,7 +195,7 @@ exports.postReceipt = async (req, res, next) => {
           fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"));
         }
         
-        // fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+saved._id));
+        fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+saved._id));
         for(let i=0;i<req.files.length;i++){
           const tempPath = req.files[i].path;     
           const targetPath = path.join(__dirname, "../uploads/exchange/"+saved._id+"/"+req.files[i].filename);
