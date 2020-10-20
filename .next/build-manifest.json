@@ -30,7 +30,7 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/settings": [
+    "/login": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
