@@ -191,7 +191,7 @@ exports.postReceipt = async (req, res, next) => {
       req.session.exchange=saved._id;
       await req.session.save();
       try{
-        await fs.mkdir(path.join(__dirname, "../uploads/exchange/"+saved._id));
+        await fs.mkdir(path.join(__dirname, "../uploads/exchange/"+saved._id),(err)=>{});
         for(let i=0;i<req.files.length;i++){
           const tempPath = req.files[i].path;     
           const targetPath = path.join(__dirname, "../uploads/exchange/"+saved._id+"/"+req.file.filename);
