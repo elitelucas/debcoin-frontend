@@ -48,8 +48,13 @@ const index = () => {
 
 
   const getRate=async ()=>{
-    let tmp=await publicFetch('getRate').catch((err)=>{});
-    setRate(tmp.data.rate);
+    try{
+      let tmp=await publicFetch('getRate').catch((err)=>{});
+      setRate(tmp.data.rate);
+    }catch(err){
+      
+    }
+    
   }
   const getAllowed=async ()=>{
     if(isAuthenticated()){

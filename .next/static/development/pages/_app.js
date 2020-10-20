@@ -19210,7 +19210,7 @@ __webpack_require__.r(__webpack_exports__);
  //const baseURL =
 //  "/api"
 
-var baseURL = "https://64.227.30.137/api";
+var baseURL = "http://64.227.30.137/api";
 var publicFetch = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: baseURL
 });

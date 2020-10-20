@@ -8,7 +8,7 @@ const api=require('./routes');
 const next = require('next');    
 const mongoose = require("mongoose");
 const config = require("./config");
-const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const path=require('path');
 
@@ -63,13 +63,10 @@ app.prepare()
     });
   });
 
-  const options = {
-    key: fs.readFileSync(path.join(__dirname, './key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, './cert.pem'))
-  };
-  https.createServer(options, server)
-  .listen(config.port, function () {
-    console.log('Example app listening on port 3000! Go to https://localhost:3000/')
+
+  http.createServer(server)
+  .listen(80, function () {
+    console.log('Example app listening on port 3000! Go to http://localhost:3000/')
   });
 
 })
