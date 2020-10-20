@@ -66,10 +66,25 @@ const commentAuth = require('./middlewares/commentAuth');
 const answerAuth = require('./middlewares/answerAuth');
 const multer = require("multer");
 const router = require('express').Router();
-const tier = multer({
-  dest: "/uploads/temp"
-  // you might also want to set some limits: https://github.com/expressjs/multer#limits
+
+var storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "/uploads/temp");
+  },
+  filename: (req, file, callback) => {
+    const match = ["image/png", "image/jpeg", "image/jpg"];
+
+    if (match.indexOf(file.mimetype) === -1) {
+      var message = `${file.originalname} is invalid. Only accept png/jpeg.`;
+      return callback(message, null);
+    }
+
+    var filename = `${Date.now()}-bezkoder-${file.originalname}`;
+    callback(null, filename);
+  }
 });
+
+var uploadedFile = multer({ storage: storage });
 
 //authentication
 router.post('/signup', signup);
@@ -108,9 +123,8 @@ router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 // router.post('/smsResult', requireAuth, smsResult);
 // router.post('/selectWallet', requireAuth, selectWallet);
 router.post('/receipt', [requireAuth, 
-  tier.single('image0'), 
-  tier.single('image1'), 
-  tier.single('image2')], postReceipt);
+  uploadedFile.array("multi-files", 3)
+ ], postReceipt);
 // router.post('/giftcard', requireAuth, postGiftCard);
 
 //////////////////////////////////////////////////////////////
@@ -128,8 +142,8 @@ router.delete('/wallet/:title', requireAuth, removeWallet);
 //tiers
 router.get('/tier2', requireAuth, getTier2);
 router.get('/tier3', requireAuth, getTier3);
-router.post('/tier2', [requireAuth, tier.single('tier2')], postTier2);
-router.post('/tier3', [requireAuth, tier.single('tier3')], postTier3);
+router.post('/tier2', [requireAuth, uploadedFile.single('tier2')], postTier2);
+router.post('/tier3', [requireAuth, uploadedFile.single('tier3')], postTier3);
 
 
 //questions

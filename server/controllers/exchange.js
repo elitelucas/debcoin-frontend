@@ -154,8 +154,8 @@ exports.selectWallet = async (req, res, next) => {
   }
 };
 exports.postReceipt = async (req, res, next) => {
-  if(req.file) {
-      console.log(req.file);
+  if(req.files) {
+      console.log(req.files);
       // const tempPath = req.file.path;
       // const exchange = await Exchange.findById(req.session.exchange);
       

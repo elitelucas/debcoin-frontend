@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback,useContext } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   Modal,
@@ -8,10 +8,11 @@ import {
   Button,
   Spinner,
 } from "reactstrap";
-
+import {FetchContext} from '../../../../utils/authFetch';
 const uploadImages = (props) => {
   const maxSize = 10485760;
   const [images,setImages]=useState(null);
+  const {authAxios}=useContext(FetchContext);
   const onDrop = useCallback(acceptedFiles => {
     // console.log(acceptedFiles);
     setImages(acceptedFiles);
@@ -34,6 +35,7 @@ const uploadImages = (props) => {
   const toggleBogc = () => setModalBogc(!modalBogc);
   const submit=async ()=>{
     try{
+      console.log('here');
       const formData = new FormData();      
       // Update the formData object 
       formData.append( 
@@ -61,7 +63,7 @@ const uploadImages = (props) => {
       props.isClicked();
 
     }catch(error){
-
+      console.log(error);
     }
   };
   return (
