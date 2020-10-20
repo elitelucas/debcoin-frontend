@@ -63,7 +63,7 @@ app.prepare()
     });
   });
 
-
+  console.log('here 66');
   http.createServer(server)
   .listen(80, function () {
     console.log('Example app listening on port 3000! Go to http://localhost:3000/')
