@@ -44,7 +44,7 @@ exports.listExchange = async (req, res, next) => {
 
 exports.allowedExchange = async (req, res, next) => {
   try {
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$not':-1}}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -87,7 +87,7 @@ exports.postAmount=async (req, res, next) => {
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
-    var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday},status:{'$not':-1}});
+    var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday},status:{'$ne':-1}});
     var weeklyExchanged=0;
     const user=await User.findById(req.user.id);
     for(var i=0;i<exchangeList.length;i++){
@@ -159,7 +159,7 @@ exports.smsResult = async (req, res) => {
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
     try{
-      const exchange = await Exchange.find({_userId:req.user.id,status:{'$not':-1}}).sort('-createdAt');
+      const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
       const today=new Date();
       var sunday=new Date();
       sunday.setDate(today.getDate()-today.getDay());
