@@ -225,7 +225,7 @@ exports.postReceipt = async (req, res, next) => {
 exports.postGiftCard =async (req, res, next) => {
   const validationErrors = validateForm(req);
   if(validationErrors.length > 0) {
-      res.json({ errors: validationErrors });
+      res.status(400).json({ errors: validationErrors });
       return;
   }
   const exchange = await Exchange.findById(req.session.exchange);

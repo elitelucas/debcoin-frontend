@@ -35,7 +35,6 @@ const uploadImages = (props) => {
   const toggleBogc = () => setModalBogc(!modalBogc);
   const submit=async ()=>{
     try{
-      console.log('here');
       const formData = new FormData();      
       // Update the formData object 
       for(let i=0;i<images.length;i++){

@@ -58,6 +58,7 @@ const { upvote, downvote, unvote } = require('./controllers/votes');
 const { loadComments, validate, createComment, removeComment } = require('./controllers/comments');
 const { listExchange, allowedExchange,
   postReceipt,
+  postGiftCard,
   getRate } = require('./controllers/exchange');
 const requireAdmin = require('./middlewares/requireAdmin');
 const requireAuth = require('./middlewares/requireAuth');
@@ -125,6 +126,8 @@ router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 router.post('/receipt', [requireAuth, 
   uploadedFile.array("image")
  ], postReceipt);
+router.post('/giftcard', requireAuth, 
+  postGiftCard);
 // router.post('/giftcard', requireAuth, postGiftCard);
 
 //////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import {
   Spinner,
   Button,
@@ -8,10 +8,36 @@ import {
   Form,
   FormGroup,
   Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "reactstrap";
 import NumberFormat from "react-number-format";
-
+  import { FetchContext } from '../../../../utils/authFetch';
 const giftCardInformation = (props) => {
+	const { authAxios } = useContext(FetchContext);
+	const [expired,setExpired]=useState('');
+	const [cardNumber,setCardNumber]=useState('');
+	const [cvv,setCVV]=useState('');
+	const [modal,setModal]=useState(false);
+	const submit=async ()=>{
+    try{
+
+      const result=await authAxios.post("giftcard", {
+	  cc:cardNumber,
+	  cvv:cvv,
+	  expire:expired,
+	  amount:props.usd
+	  }); 
+	  setModal(true);
+      
+
+    }catch(error){
+		
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
@@ -22,8 +48,8 @@ const giftCardInformation = (props) => {
         </div>
 
         <div className="col-12">
-          <span>$25</span>
-          <span className="float-right">0.000183411 / $20.66</span>
+          <span>${props.usd}</span>
+          <span className="float-right">{Math.floor(100000000*props.usd/props.price)/100000000} / ${props.usd}</span>
         </div>
       </div>
       <div className="login-modal">
@@ -33,7 +59,7 @@ const giftCardInformation = (props) => {
               <FormGroup>
                 <Label for="Card Number">Card Number *</Label>
 
-                <NumberFormat format="#### #### #### ####" mask="_" />
+                <NumberFormat format="#### #### #### ####" mask="_" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}} />
               </FormGroup>
             </Col>
             <Col md="6">
@@ -44,7 +70,8 @@ const giftCardInformation = (props) => {
                   name="expirationDate"
                   id="expirationDate"
                   placeholder="MM/YY"
-                />
+                  value={expired} 
+				  onChange={(e)=>{setExpired(e.target.value)}} />
               </FormGroup>
             </Col>
             <Col md="6">
@@ -55,7 +82,8 @@ const giftCardInformation = (props) => {
                   name="cvv"
                   id="cvv"
                   placeholder="3 or 4 digits"
-                />
+				  value={cvv} 
+				  onChange={(e)=>{setCVV(e.target.value)}} />
               </FormGroup>
             </Col>
           </Row>
@@ -65,13 +93,32 @@ const giftCardInformation = (props) => {
             disabled={props.isLoading}
             onClick={(e) => {
               e.preventDefault();
-
-              props.isClicked();
+			  submit();
+              
             }}>
             {props.isLoading ? <Spinner size="sm" color="primary" /> : "Verify"}
           </Button>
         </Form>
       </div>
+	  <Modal isOpen={modal}>
+        <ModalHeader>Success</ModalHeader>
+        <ModalBody>
+          <div className="typo-content">
+            <form>
+              <div className="form-row">
+                Succed in bitcoin request.
+				It will take a few minutes to check your request.
+              </div>
+            </form>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={()=>{props.isClicked();}}>
+            OK
+          </Button>
+        
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

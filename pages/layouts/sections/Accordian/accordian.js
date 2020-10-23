@@ -230,6 +230,8 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody>
             <GiftCardInformation
+			  price={props.price}
+              usd={usd}
               isClicked={() => {
                 setIsLoading(true);
                 setTimeout(() => {
