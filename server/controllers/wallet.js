@@ -18,11 +18,11 @@ exports.createWallet = async (req, res, next) => {
     const errors = result.array({ onlyFirstError: true });
     return res.status(422).json({ errors });
   }
-  // var valid = WAValidator.validate(req.body.address, 'BTC');
-  // if(!valid)
-  //   return res.status(400).json({
-  //     message: 'Address Invalid.'
-  //   });
+   var valid = WAValidator.validate(req.body.address, 'BTC');
+   if(!valid)
+     return res.status(400).json({
+       message: 'Address Invalid.'
+     });
   try {
     const {title,address}=req.body;
     const user = await User.findById(req.user.id);
