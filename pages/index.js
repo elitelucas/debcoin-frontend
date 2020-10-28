@@ -25,7 +25,7 @@ const index = () => {
     document.body.style.setProperty("--light", "#f3f1e8");
     document.body.style.setProperty("--dark", "#9647DB");
     getRate();
-    setAmount(0);
+    setAmount(25);
   },[]);
   useEffect(()=>{ 
     if(!loading){
@@ -90,7 +90,7 @@ const index = () => {
       <Guide />
       {/* <AccordianSection /> */}
       <License />
-      <Pricing price={rate} allowed={allowed} submit={buying} />
+      <Pricing price={rate} allowed={500} submit={buying} />
       <BeforeFooter />
       <FooterSection />
     </div>
