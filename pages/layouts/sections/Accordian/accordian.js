@@ -29,17 +29,35 @@ const AccordionElementSection = (props) => {
   const { loading } = useContext(AuthContext);
   const { authAxios } = useContext(FetchContext);
   const [wallet, setWallet] = useState('');
+  const [id, setID] = useState(null);
   let cardToShow = "";
+  const submitAmount = async (amount) => {
+    try {
+      const { data } = await authAxios.post('amount', { amount });
+      setID(data);
+      setTimeout(() => {
+
+        verifyReq();
+        setCondition("2nd");
+
+        setIsLoading(false);
+      }, 500);
+    } catch (error) {
+      console.log(error);
+      setCondition("1st");
+    }
+  }
   const verifyReq = async () => {
     try {
-      const { data } = await authAxios.get('verify');
+      const { data } = await authAxios.get('smsVerify');
     } catch (error) {
       console.log(error);
     }
   }
   const verifyResult = async (sms) => {
     try {
-      const { data } = await authAxios.post('verify', {
+      const { data } = await authAxios.post('smsVerify', {
+        id: id,
         code: sms
       });
 
@@ -50,20 +68,27 @@ const AccordionElementSection = (props) => {
       console.log(error);
       toast.error("OTP failed");
       setIsLoading(false);
-      props.resetAmount(0);
       setCondition("1st");
     }
   }
-  useEffect(() => {
-    if (props.amount > 0) {
-      if (props.userInfo.phoneVerified)
-        setCondition("3rd");
-      else {
-        verifyReq();
-        setCondition("2nd");
-      }
+  const submitWallet =async (wallet) => {
+
+    try {
+      const { data } = await authAxios.post('selectWallet', {
+        wallet_name: wallet.title,
+        wallet_address: wallet.address
+      });
+      setWallet(wallet);
+      setTimeout(() => {
+        setCondition("4th"), setIsLoading(false);
+      }, 1500);
+
+    } catch (error) {
+      console.log(error);
+      setCondition("1st");
     }
-  }, [props.amount]);
+  }
+
   if (condition === "1st") {
     cardToShow = (
       <>
@@ -84,21 +109,15 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody className="w-100">
             <StartYourOrder
+              amount={props.amount}
               allowed={props.allowed}
               price={props.price}
               getRate={props.getRate}
               isClicked={(param) => {
                 setUSD(param);
                 setIsLoading(true);
-                setTimeout(() => {
-                  if (props.userInfo.phoneVerified)
-                    setCondition("3rd");
-                  else {
-                    verifyReq();
-                    setCondition("2nd");
-                  }
-                  setIsLoading(false);
-                }, 1500);
+                submitAmount(param);
+
               }}
               isLoading={isLoading}
             />
@@ -162,10 +181,8 @@ const AccordionElementSection = (props) => {
               wallet={props.userInfo.wallet}
               isClicked={(wallet) => {
                 setIsLoading(true);
-                setWallet(wallet);
-                setTimeout(() => {
-                  setCondition("4th"), setIsLoading(false);
-                }, 1500);
+                submitWallet(wallet);
+
               }}
               isLoading={isLoading}
             />
@@ -230,6 +247,8 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody>
             <GiftCardInformation
+              price={props.price}
+              usd={usd}
               isClicked={() => {
                 setIsLoading(true);
                 setTimeout(() => {

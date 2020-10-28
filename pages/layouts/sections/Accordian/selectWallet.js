@@ -60,7 +60,7 @@ const selectWallet = (props) => {
         onClick={(e) => {
           e.preventDefault();
           if(wallet!=='' && props.wallet[wallet])
-            props.isClicked(wallet);
+            props.isClicked(props.wallet[wallet]);
         }}>
         {props.isLoading ? <Spinner size="sm" color="primary" /> : "Select"}
       </Button>

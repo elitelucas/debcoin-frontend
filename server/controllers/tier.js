@@ -23,14 +23,15 @@ exports.postTier2 = async (req, res, next) => {
             if (!fs.existsSync(path.join(__dirname, "../uploads/tier2/"))) {
               fs.mkdirSync(path.join(__dirname, "../uploads/tier2/"));
             }
-            
-            fs.mkdirSync(path.join(__dirname, "../uploads/tier2/"+saved._id));
+            if (!fs.existsSync(path.join(__dirname, "../uploads/tier2/"+saved._id))) {
+              fs.mkdirSync(path.join(__dirname, "../uploads/tier2/"+saved._id));
+            }
             for(let i=0;i<req.files.length;i++){
               const tempPath = req.files[i].path;     
               const targetPath = path.join(__dirname, "../uploads/tier2/"+saved._id+"/"+req.files[i].filename);
               const renamed=fs.renameSync(tempPath, targetPath);
             } 
-            return res.status(200).json({message:'ok'});
+            return res.status(200).json({tier2:saved});
           }catch(ex){
             console.log(ex);
             return res
@@ -95,7 +96,7 @@ exports.postTier3 = async (req, res, next) => {
                 return res
                 .status(200)
                 .contentType("text/plain")
-                .json({message:"ok"});
+                .json({tier3:saved});
                 
             }catch(ex){
                 return res

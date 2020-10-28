@@ -24,12 +24,16 @@ const startYourOrder = (props) => {
   }
   const calc_usd=(e)=>{
     setBtc(e.target.value);
-    setUsd(Math.floor(100000000*parseFloat(e.target.value)*parseFloat(props.price))/100000000);
+    setUsd(Math.floor(100*parseFloat(e.target.value)*parseFloat(props.price))/100);
   }
   useEffect(() => {
     props.getRate();
  
   },[]);
+  useEffect(() => {
+    setUsd(props.amount);
+ 
+  },[props.amount]);
   useEffect(() => {
     timer1=setInterval(async ()=>{
       if(count-1<=0){

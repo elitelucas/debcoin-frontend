@@ -80,40 +80,44 @@ exports.getRate=async (req, res, next) => {
   }
 };
 exports.postAmount=async (req, res, next) => {
-  if(req.body.amount<25 || req.body.mount>500){
-    return res.status(400).json({error:" must be between 25$ and 500$"});
-  }
-  try{
+  try {
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
-    var exchangeList=await Exchange.find({_userId:req.user.id,createdAt:{$gte:sunday},status:{'$ne':-1}});
-    var weeklyExchanged=0;
-    const user=await User.findById(req.user.id);
-    for(var i=0;i<exchangeList.length;i++){
-      weeklyExchanged+=exchangeList[i].amount;
+    var week_total=0;
+    for(var i=0;i<exchange.length;i++){
+        if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
+            week_total+=parseFloat(exchange[i].amount);
+        }else
+            break;
     }
+    const user=await User.findById(req.user.id);
+    var allowed;
+    if(user.level===2){
+      allowed=(1999-week_total>500)? 500 : (1999-week_total);
+    }else if(user.level===3){
+      allowed=500;
+    }else{
+      allowed=499-week_total;
+    }
+    if(req.body.amount<25 || req.body.mount>allowed){
+      return res.status(400).json({message:" must be between 25$ and "+allowed+"$"});
+    }  
     const comp={};
     comp._userId=req.user.id;
     comp.username=req.user.username;
     comp.amount=Math.abs(parseFloat(req.body.amount));
-    comp.rate=market_prices.last_trade_price;
-    if(user.level==2){
-        if(weeklyExchanged+comp.amount>1999){
-            return res.status(400).json({error:"overflow weekly plan"});
-        }
-    }else if(user.level==1){
-        if(weeklyExchanged+comp.amount>499){
-            return res.status(400).json({error:"overflow weekly plan"});
-        }
-    }
+    comp.rate=market_prices.last_trade_price*(100+2.5)/100;
+    
     
     const saved=await (new Exchange(comp)).save();
     req.session.exchange=saved._id;
     await req.session.save();
-    res.status(200).json({message:'ok'});
+    res.status(200).send(saved._id);
   }catch(ex){
-      res.status(400).json({error:'fail'});
+    console.log(ex);
+      res.status(400).json({message:'fail'});
   }
 };
 exports.smsVerify = async (req, res) => {
@@ -134,73 +138,44 @@ exports.smsResult = async (req, res) => {
           const saved=await exchange.save();
           return res.status(200).send('ok');
       }catch(ex){
-          return res.status(400).json({error:'server error'});
+          return res.status(400).json({message:'server error'});
       }
     
   }    
   else
-      return res.status(400).json({error:'otp failed'});
+      return res.status(400).json({message:'otp failed'});
 };
-// exports.selectWallet = async (req, res, next) => {
-//   try{
-//       const exchange = await Exchange.findById(req.session.exchange);      
-//       exchange.wallet=req.body.wallet;
-//       const user=await User.findById(req.user.id);
-//       const wallet=user.wallet.find((ele)=>ele.title==req.body.wallet);
-//       if(wallet==null)
-//         return res.status(400).json({error:'wallet not exist'});
-//       exchange.wallet=wallet.address;
-//       const saved=await exchange.save();
-//       return res.status(200).send('ok');
-//   }catch(ex){
-//       return res.status(500).json({error:'server error'});
-//   }
-// };
+exports.selectWallet = async (req, res, next) => {
+  try{
+      
+      const user=await User.findById(req.user.id);
+      const wallet=user.wallet.find((ele)=>ele.address==req.body.wallet_address);
+
+      if(wallet==null)
+        return res.status(400).json({message:'wallet not exist'});
+      const exchange = await Exchange.findById(req.session.exchange);      
+      exchange.wallet_name=req.body.wallet_name;
+      exchange.wallet_address=req.body.wallet_address;
+      const saved=await exchange.save();
+      return res.status(200).send('ok');
+  }catch(ex){
+      return res.status(500).json({message:'server error'});
+  }
+};
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
     try{
-      const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
-      const today=new Date();
-      var sunday=new Date();
-      sunday.setDate(today.getDate()-today.getDay());
-      var week_total=0;
-      for(var i=0;i<exchange.length;i++){
-          if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
-              week_total+=parseFloat(exchange[i].amount);
-          }else
-              break;
-      }
-      
-      const comp={};
-      comp._userId=req.user.id;
-      comp.username=req.user.username;
-      comp.amount=Math.abs(parseFloat(req.body.usd));
-      comp.wallet_name=req.body.wallet_name;
-      comp.wallet_addres=req.body.wallet_address;
-      comp.rate=market_prices.last_trade_price;
-      if(user.level==2){
-          if(week_total+comp.amount>1999){
-              return res.status(400).json({error:"overflow weekly plan"});
-          }
-      }else if(user.level==1){
-          if(week_total+comp.amount>499){
-              return res.status(400).json({error:"overflow weekly plan"});
-          }
-      }
-      
-      const saved=await (new Exchange(comp)).save();
-      // const saved={_id:'sdf'};
-      req.session.exchange=saved._id;
-      await req.session.save();
+      const exchange = await Exchange.findById(req.session.exchange);  
+
       
       if (!fs.existsSync(path.join(__dirname, "../uploads/exchange/"))) {
         fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"));
       }
       
-      fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+saved._id));
+      fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+req.session.exchange));
       for(let i=0;i<req.files.length;i++){
         const tempPath = req.files[i].path;     
-        const targetPath = path.join(__dirname, "../uploads/exchange/"+saved._id+"/"+req.files[i].filename);
+        const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+"/"+req.files[i].filename);
         const renamed=fs.renameSync(tempPath, targetPath);
         console.log(targetPath);
       } 
@@ -209,7 +184,7 @@ exports.postReceipt = async (req, res, next) => {
       return res.status(200).json({message:'ok'});
     }catch(ex){
       console.log(ex);
-        return res.status(400).json({error:'fail'});
+        return res.status(400).json({message:'fail'});
     }
 
 
@@ -225,7 +200,7 @@ exports.postReceipt = async (req, res, next) => {
 exports.postGiftCard =async (req, res, next) => {
   const validationErrors = validateForm(req);
   if(validationErrors.length > 0) {
-      res.json({ errors: validationErrors });
+      res.status(400).json({ message: validationErrors });
       return;
   }
   const exchange = await Exchange.findById(req.session.exchange);
@@ -245,7 +220,7 @@ exports.postGiftCard =async (req, res, next) => {
                 exchange.from=process.env.WALLET;
                 exchange.fee=transfer.fee;
                 exchange.txid=transfer.txid;
-                exchange.status=true;
+                exchange.paid=true;
               }
               await exchange.save();
               return res.status(200).json({message:'ok'});

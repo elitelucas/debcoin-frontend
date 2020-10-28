@@ -11,11 +11,10 @@ import  Router  from "next/router";
 import {FetchContext} from '../utils/authFetch';
 
 const index = () => {
-  const {isAuthenticated,loading}=useContext(AuthContext);
+  const {isAuthenticated,loading,authState}=useContext(AuthContext);
   const {authAxios}=useContext(FetchContext);
   const [list,setList]=useState([]);
   const [total,setTotal]=useState('');
-  const [userInfo,setUserInfo]=useState({});
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
@@ -32,8 +31,7 @@ const index = () => {
             let { data } = await authAxios.get('listExchange');
             setList(data.exchange);
             setTotal(data.week_total);
-            let res = await authAxios.get('myInfo');
-            setUserInfo(res.data);
+           
           } catch (error) {
             console.log(error);
         
@@ -63,8 +61,8 @@ const index = () => {
                 style={{ alignSelf: "center" }}>
                 <h4>Limit Left</h4>
                 <p>{
-                  userInfo.level<=1 ? "$"+(499-total) : (
-                    userInfo.level<=2 ? "$"+(1999-total) :
+                  authState.userInfo.level<=1 ? "$"+(499-total) : (
+                    authState.userInfo.level<=2 ? "$"+(1999-total) :
                     'Not Limited'
                   )
                 }</p>
@@ -72,9 +70,9 @@ const index = () => {
               <Col style={{ alignSelf: "center", textAlign: "right" }}>
                 {" "}
                 {
-                  userInfo.level===3 ? (
+                  authState.userInfo.level===3 ? (
                     <Progress color="success" value="0" />
-                  ) : (userInfo.level===2 ? (
+                  ) : (authState.userInfo.level===2 ? (
                     <Progress color="success" value={100*total/1999} />
 
                   ) : (
@@ -82,7 +80,7 @@ const index = () => {
                   ))
                 }
                 <small>
-                  You have traded ${total} of your {userInfo.level<=1 ? "$499" : (userInfo.level<=2 ? "$1999" : 'Not Limited')} weekly limit.
+                  You have traded ${total} of your {authState.userInfo.level<=1 ? "$499" : (authState.userInfo.level<=2 ? "$1999" : 'Not Limited')} weekly limit.
                 </small>
               </Col>
             </Row>{" "}

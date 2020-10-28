@@ -35,7 +35,6 @@ const uploadImages = (props) => {
   const toggleBogc = () => setModalBogc(!modalBogc);
   const submit=async ()=>{
     try{
-      console.log('here');
       const formData = new FormData();      
       // Update the formData object 
       for(let i=0;i<images.length;i++){
@@ -43,12 +42,8 @@ const uploadImages = (props) => {
           "image", 
           images[i] 
         );
-      }
-      
-     
-      formData.set("usd", props.usd);
-      formData.set("wallet_name", props.wallet.title);      
-      formData.set("wallet_address", props.wallet.address);
+      }        
+    
       const result=await authAxios.post("receipt", formData); 
       props.isClicked();
 
