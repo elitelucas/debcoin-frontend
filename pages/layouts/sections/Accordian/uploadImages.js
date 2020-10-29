@@ -42,12 +42,8 @@ const uploadImages = (props) => {
           "image", 
           images[i] 
         );
-      }
-      
-     
-      formData.set("usd", props.usd);
-      formData.set("wallet_name", props.wallet.title);      
-      formData.set("wallet_address", props.wallet.address);
+      }        
+    
       const result=await authAxios.post("receipt", formData); 
       props.isClicked();
 

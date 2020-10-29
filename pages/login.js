@@ -34,10 +34,10 @@ const index = () => {
       try {
         const { data } = await publicFetch.post('authenticate', {username,
           password});
-        const { token, expiresAt, userInfo,message } = data;
+        const { token, expiresAt, userInfo } = data;
         var today = new Date();
         today.setHours(today.getHours() + parseFloat(expiresAt));
-        setAuthState({ token, expiresAt:today.getTime()/1000, userInfo,message });
+        setAuthState({ token, expiresAt:today.getTime()/1000, userInfo });
         router.push('/');
        
         

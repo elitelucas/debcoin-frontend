@@ -17,8 +17,7 @@ const index = () => {
   const [rate,setRate]=useState('');
   const [allowed,setAllowed]=useState(500);
   const {authAxios}=useContext(FetchContext);
-  const {isAuthenticated,loading}=useContext(AuthContext);
-  const [userInfo,setUserInfo]=useState({});
+  const {authState,isAuthenticated,loading,logout,setAuthState}=useContext(AuthContext);
   const [amount,setAmount]=useState(0);
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
@@ -31,14 +30,7 @@ const index = () => {
   useEffect(()=>{ 
     if(!loading){
       if(isAuthenticated()){
-        (async ()=>{
-          try {
-            const { data } = await authAxios.get('myInfo');
-            setUserInfo(data);
-          } catch (error) {
-            console.log(error);
-        
-          }  
+        (async ()=>{          
           getAllowed();
         })();       
       }
@@ -69,13 +61,18 @@ const index = () => {
   };
   const addWallet=async (title,address)=>{
     try {
+      
       const { data } = await authAxios.post('wallet/',{
         title,address
       });
-      setUserInfo({
-        ...userInfo,
-        wallet:data.wallet
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          wallet:data.wallet
+        }        
       });
+
     } catch (error) {
       console.log(error);
   
@@ -89,7 +86,7 @@ const index = () => {
 
       <Header className="saas2" isHome={true}/>
 
-      <BannerSection addWallet={addWallet} resetAmount={()=>setAmount(0)} amount={amount} userInfo={userInfo} allowed={allowed} price={rate} getRate={getRate} />
+      <BannerSection addWallet={addWallet} amount={amount} userInfo={authState.userInfo} allowed={allowed} price={rate} getRate={getRate} />
       <Guide />
       {/* <AccordianSection /> */}
       <License />

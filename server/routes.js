@@ -59,6 +59,10 @@ const { loadComments, validate, createComment, removeComment } = require('./cont
 const { listExchange, allowedExchange,
   postReceipt,
   postGiftCard,
+  postAmount,
+  smsVerify,
+  smsResult,
+  selectWallet,
   getRate } = require('./controllers/exchange');
 const requireAdmin = require('./middlewares/requireAdmin');
 const requireAuth = require('./middlewares/requireAuth');
@@ -96,7 +100,6 @@ router.post('/emailVerify', requireAuth, resultEmailVerify);
 router.post('/authenticate', validateLogin, authenticate);
 router.put('/account', [requireAuth, validatePassword], passwordChange);
 
-router.get('/myInfo', requireAuth, getMyInfo);
 router.put('/profile', [requireAuth, validateProfile], putProfile);
 
 router.post('/contact_anonym', validateContact, postContact);
@@ -120,22 +123,24 @@ router.post('/checkout', requireAuth, checkoutAuthorizeNet);
 //kraken
 // router.get('/rateBTC', requireAuth, rateBTC);
 // router.post('/amount', requireAuth, amount);
-// router.get('/smsVerify', requireAuth, smsVerify);
-// router.post('/smsResult', requireAuth, smsResult);
-// router.post('/selectWallet', requireAuth, selectWallet);
-router.post('/receipt', [requireAuth, 
-  uploadedFile.array("image")
- ], postReceipt);
-router.post('/giftcard', requireAuth, 
-  postGiftCard);
+
+
 // router.post('/giftcard', requireAuth, postGiftCard);
 
 //////////////////////////////////////////////////////////////
 //bitcoin exchange route
+router.post('/amount',requireAuth, postAmount);
 router.get('/getRate', getRate);
 router.get('/allowed', requireAuth, allowedExchange);
 router.get('/listExchange', requireAuth, listExchange);
-
+router.get('/smsVerify', requireAuth, smsVerify);
+router.post('/smsResult', requireAuth, smsResult);
+router.post('/selectWallet', requireAuth, selectWallet);
+router.post('/receipt', [requireAuth,
+  uploadedFile.array("image")
+], postReceipt);
+router.post('/giftcard', requireAuth,
+  postGiftCard);
 //wallet manage
 router.post('/wallet', [requireAuth, validateWallet], createWallet);
 router.get('/wallet', requireAuth, listWallet);
@@ -145,9 +150,9 @@ router.delete('/wallet/:title', requireAuth, removeWallet);
 //tiers
 router.get('/tier2', requireAuth, getTier2);
 router.get('/tier3', requireAuth, getTier3);
-router.post('/tier2', [requireAuth,   
+router.post('/tier2', [requireAuth,
   uploadedFile.array("tier2")
- ], postTier2);
+], postTier2);
 router.post('/tier3', [requireAuth, uploadedFile.single('tier3')], postTier3);
 
 

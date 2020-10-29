@@ -31,6 +31,10 @@ const startYourOrder = (props) => {
  
   },[]);
   useEffect(() => {
+    setUsd(props.amount);
+ 
+  },[props.amount]);
+  useEffect(() => {
     timer1=setInterval(async ()=>{
       if(count-1<=0){
         props.getRate();

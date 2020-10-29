@@ -30,10 +30,9 @@ import { FetchContext } from '../utils/authFetch';
 import Router from "next/router";
 
 const settings = () => {
-  const {authState,isAuthenticated,loading,logout}=useContext(AuthContext);
+  const {authState,isAuthenticated,loading,logout,setAuthState}=useContext(AuthContext);
   const [tier2Text,setTier2Text]=useState({fname:'',lname:'',address:'',street:'',zip:'',city:'',state:''});
   const { authAxios } = useContext(FetchContext);
-  const [userInfo, setUserInfo] = useState({});
   const [sms, setSMS] = useState("");
   const [smsModal, setSMSModal] = useState(false);
   const [tier2, setTier2] = useState(null);
@@ -72,9 +71,12 @@ const settings = () => {
         code:sms
       });
       
-      setUserInfo({
-        ...userInfo,
-        phoneVerified:true
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          phoneVerified:true
+        }        
       });
     } catch (error) {
       console.log(error);        
@@ -110,7 +112,14 @@ const settings = () => {
       
       // Request made to the backend api 
       // Send formData object 
-      await authAxios.post("tier2", formData); 
+      const { data }=await authAxios.post("tier2", formData);
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          ...data
+        }        
+      });      
       setIdProceed(1);
     }catch(error){
 
@@ -138,7 +147,15 @@ const settings = () => {
       
       // Request made to the backend api 
       // Send formData object 
-      await authAxios.post("tier3", formData); 
+      const { data }=await authAxios.post("tier3", formData);
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          ...data
+        }        
+      });   
+
     }catch(error){
 
     }
@@ -148,11 +165,14 @@ const settings = () => {
 
   const removeWallet=async (key)=>{
     try {
-      const { data } = await authAxios.delete('wallet/'+userInfo.wallet[key].title);
-      setUserInfo({
-        ...userInfo,
-        wallet:data.wallet
-      });
+      const { data } = await authAxios.delete('wallet/'+authState.userInfo.wallet[key].title);
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          wallet:data.wallet
+        }        
+      });        
     } catch (error) {
       console.log(error);  
     }  
@@ -163,11 +183,15 @@ const settings = () => {
         title,address
       });
       console.log(data);
-      await setUserInfo({
-        ...userInfo,
-        wallet:data.wallet
-      });
-      console.log(userInfo);
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          wallet:data.wallet
+        }        
+      });   
+
+      console.log(authState.userInfo);
     } catch (error) {
       console.log(error);
   
@@ -177,17 +201,7 @@ const settings = () => {
     if(loading){    
     }else{
       if(!isAuthenticated())
-        Router.push('/login');
-      else{
-        (async ()=>{
-          try {
-            const { data } = await authAxios.get('myInfo');
-            setUserInfo(data);
-          } catch (error) {
-            console.log(error);        
-          }  
-        })();       
-      }
+        Router.push('/login');     
     }   
   },[loading]);
   useEffect(() => {
@@ -201,10 +215,15 @@ const settings = () => {
       const { data } = await authAxios.put('profile',{
         email,phoneNumber
       });
-      setUserInfo({
-        ...userInfo,
-        email,phoneNumber
-      });
+      setAuthState({
+        ...authState,
+        userInfo:{
+          ...authState.userInfo,
+          ...data
+        }        
+      });   
+
+      
     } catch (error) {
       console.log(error);     
     }  
@@ -306,8 +325,8 @@ const settings = () => {
                   username={
                     authState.userInfo ? authState.userInfo.username : ""
                   }
-                  email={userInfo.email}
-                  phoneNumber={userInfo.phoneNumber}
+                  email={authState.userInfo.email}
+                  phoneNumber={authState.userInfo.phoneNumber}
                 />
               </TabPane>
               <TabPane tabId="2">
@@ -315,17 +334,17 @@ const settings = () => {
               </TabPane>
 
               <TabPane tabId="3">
-                <Verification phoneVerified={userInfo.phoneVerified}
-                  level={userInfo.level} 
-                  tier2={userInfo.tier2===null}
-                  tier3={userInfo.tier3===null}
-                  phoneNumber={userInfo.phoneNumber}
+                <Verification phoneVerified={authState.userInfo.phoneVerified}
+                  level={authState.userInfo.level} 
+                  tier2={authState.userInfo.tier2===null}
+                  tier3={authState.userInfo.tier3===null}
+                  phoneNumber={authState.userInfo.phoneNumber}
                   verify={verify}
                   />
               </TabPane>
 
               <TabPane tabId="4">
-                <BtcWallet submit={addWallet} wallet={userInfo.wallet} remove={removeWallet} />
+                <BtcWallet submit={addWallet} wallet={authState.userInfo.wallet} remove={removeWallet} />
               </TabPane>
             </TabContent>
           </Col>
@@ -339,7 +358,7 @@ const settings = () => {
           <div className="typo-content">
             <p>
               Please enter the SMS we just sent to your mobile number{" "}
-              {userInfo.phoneNumber}
+              {authState.userInfo.phoneNumber}
             </p>
             <form>
               <div className="form-row mt-3">

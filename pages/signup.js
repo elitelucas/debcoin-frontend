@@ -42,10 +42,10 @@ const index = () => {
       try {
         const { data } = await publicFetch.post('signup', {username,
           password,email,phoneNumber,'g-recaptcha-response':captcha});
-        const { token, expiresAt, userInfo,message } = data;
+        const { token, expiresAt, userInfo } = data;
         var today = new Date();
         today.setHours(today.getHours() + parseFloat(expiresAt));
-        setAuthState({ token, expiresAt:today.getTime()/1000, userInfo,message });
+        setAuthState({ token, expiresAt:today.getTime()/1000, userInfo });
         router.push('/', undefined, { shallow: true });
        
         

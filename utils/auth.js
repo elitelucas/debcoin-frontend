@@ -10,26 +10,23 @@ const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token')
     const userInfo = localStorage.getItem('userInfo')
     const expiresAt = localStorage.getItem('expiresAt')
-    const message = localStorage.getItem('message')
     setAuthState({
       token,
       expiresAt,
-      userInfo: userInfo ? JSON.parse(userInfo) : {},
-      message
+      userInfo: userInfo ? JSON.parse(userInfo) : {}
+      
     });
     setLoading(false);
   }, [])
 
-  const setAuthInfo = ({ token, userInfo, expiresAt,message }) => {
+  const setAuthInfo = ({ token, userInfo, expiresAt }) => {
     localStorage.setItem('token', token)
     localStorage.setItem('userInfo', JSON.stringify(userInfo))
     localStorage.setItem('expiresAt', expiresAt)
-    localStorage.setItem('message', message)
     setAuthState({
       token,
       userInfo,
       expiresAt,
-      message
     })
   }
 
@@ -37,13 +34,12 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('token')
     localStorage.removeItem('userInfo')
     localStorage.removeItem('expiresAt')
-    localStorage.removeItem('message')
 
     setAuthState({})
   }
 
   const isAuthenticated = () => {
-    if (!authState.token || !authState.expiresAt || authState.message==="not verified") {
+    if (!authState.token || !authState.expiresAt) {
       return false
     }
     return new Date().getTime() / 1000 < authState.expiresAt
