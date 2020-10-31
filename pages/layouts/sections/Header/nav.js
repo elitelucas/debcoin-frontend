@@ -17,13 +17,15 @@ const Nav = (props) => {
         </a>
       </div>
       <ul className="main-menu">
-        {props.isAuth===true ? (
+        {props.isAuth === true ? (
           <li className="mega-menu">
             <Link href="/orders">
               <a>Orders</a>
             </Link>
           </li>
-        ) : ''}
+        ) : (
+          ""
+        )}
         <li className="mega-menu">
           <Link href="/support">
             <a>Support</a>
@@ -49,7 +51,7 @@ const Nav = (props) => {
             Fraud Notice
           </Link>
         </li> */}
-        {props.isAuth===false ? (
+        {props.isAuth === false ? (
           <>
             <li className="mega-menu">
               <Link href="/login">
@@ -63,7 +65,7 @@ const Nav = (props) => {
             <li className="mega-menu">
               <Link href="/signup">
                 <a
-                  className="btn btn-default primary-btn transparent"
+                  className="btn btn-default primary-btn "
                   style={{ padding: "10px 20px" }}>
                   Sign Up
                 </a>
@@ -71,18 +73,21 @@ const Nav = (props) => {
             </li>
           </>
         ) : (
-          <li className="mega-menu">  
-              <a className="menu-icon-color">
-                <i className="icon-user"></i>
-              </a>
-              <ul className={` openSubChildMenu`}>
-              <a onClick={()=>{props.logout();}}>
+          <li className="mega-menu">
+            <a className="menu-icon-color">
+              <i className="icon-user"></i>
+            </a>
+            <ul className={` openSubChildMenu`}>
+              <a
+                onClick={() => {
+                  props.logout();
+                }}>
                 Logout
               </a>
               <Link href={"/settings"}>
                 <a>Profile</a>
               </Link>
-            </ul>          
+            </ul>
           </li>
         )}
       </ul>
