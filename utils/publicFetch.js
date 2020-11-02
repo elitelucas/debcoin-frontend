@@ -1,12 +1,11 @@
-import axios from 'axios'
+import axios from "axios";
 
-const baseURL ="/api"
-//const baseURL = "http://localhost/api"  
-//  const baseURL ="http://64.227.30.137/api"   
+// const baseURL ="/api"
+// const baseURL = "http://localhost/api";
+const baseURL = "http://64.227.30.137/api";
 
 const publicFetch = axios.create({
-  baseURL
- 
-})
+  baseURL,
+});
 
-export { publicFetch, baseURL }
+export { publicFetch, baseURL };

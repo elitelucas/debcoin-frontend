@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Head from "next/head";
 // import Custom Components
 import Header from "./layouts/sections/Header/header";
@@ -24,14 +24,28 @@ import {
   Input,
 } from "reactstrap";
 import states from "./layouts/sections/Settings/states";
-import { AuthContext } from '../utils/auth';
+import { AuthContext } from "../utils/auth";
 import classnames from "classnames";
-import { FetchContext } from '../utils/authFetch';
+import { FetchContext } from "../utils/authFetch";
 import Router from "next/router";
 
 const settings = () => {
-  const {authState,isAuthenticated,loading,logout,setAuthState}=useContext(AuthContext);
-  const [tier2Text,setTier2Text]=useState({fname:'',lname:'',address:'',street:'',zip:'',city:'',state:''});
+  const {
+    authState,
+    isAuthenticated,
+    loading,
+    logout,
+    setAuthState,
+  } = useContext(AuthContext);
+  const [tier2Text, setTier2Text] = useState({
+    fname: "",
+    lname: "",
+    address: "",
+    street: "",
+    zip: "",
+    city: "",
+    state: "",
+  });
   const { authAxios } = useContext(FetchContext);
   const [sms, setSMS] = useState("");
   const [smsModal, setSMSModal] = useState(false);
@@ -46,61 +60,56 @@ const settings = () => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => setModal(!modal);
-  const verify=async (level)=>{
-
-    if(level===1){
+  const verify = async (level) => {
+    if (level === 1) {
       try {
-        const { data } = await authAxios.get('verify');
+        const { data } = await authAxios.get("verify");
         setSMSModal(true);
       } catch (error) {
-        console.log(error);        
-      }  
-      
-    }else if(level===2){
+        console.log(error);
+      }
+    } else if (level === 2) {
       setTier2Modal(true);
-    }else{
+    } else {
       setTier3Modal(true);
     }
   };
-  const smsToggle=()=>{
+  const smsToggle = () => {
     setSMSModal(!smsModal);
-  }
-  const verifySMS=async ()=>{
+  };
+  const verifySMS = async () => {
     try {
-      const { data } = await authAxios.post('verify',{
-        code:sms
+      const { data } = await authAxios.post("verify", {
+        code: sms,
       });
-      
+
       setAuthState({
         ...authState,
-        userInfo:{
+        userInfo: {
           ...authState.userInfo,
-          phoneVerified:true
-        }        
+          phoneVerified: true,
+        },
       });
     } catch (error) {
-      console.log(error);        
-    }  
+      console.log(error);
+    }
     setSMSModal(false);
   };
 
-  const tier2Toggle=()=>{
+  const tier2Toggle = () => {
     setTier2Modal(!tier2Modal);
   };
-  const selectTier2=(event)=>{
-    setTier2(event.target.files)
+  const selectTier2 = (event) => {
+    setTier2(event.target.files);
   };
-  const tier2Submit=async ()=>{
-    try{
-      const formData = new FormData();      
-      // Update the formData object 
-      for(let i=0;i<tier2.length;i++){
-        formData.append( 
-          "tier2", 
-          tier2[i] 
-        );
+  const tier2Submit = async () => {
+    try {
+      const formData = new FormData();
+      // Update the formData object
+      for (let i = 0; i < tier2.length; i++) {
+        formData.append("tier2", tier2[i]);
       }
-      
+
       formData.set("fname", tier2Text.fname);
       formData.set("lname", tier2Text.lname);
       formData.set("address", tier2Text.address);
@@ -108,144 +117,133 @@ const settings = () => {
       formData.set("zip", tier2Text.zip);
       formData.set("state", tier2Text.state);
       formData.set("street", tier2Text.street);
-      // Details of the uploaded file 
-      
-      // Request made to the backend api 
-      // Send formData object 
-      const { data }=await authAxios.post("tier2", formData);
+      // Details of the uploaded file
+
+      // Request made to the backend api
+      // Send formData object
+      const { data } = await authAxios.post("tier2", formData);
       setAuthState({
         ...authState,
-        userInfo:{
+        userInfo: {
           ...authState.userInfo,
-          ...data
-        }        
-      });      
+          ...data,
+        },
+      });
       setIdProceed(1);
-    }catch(error){
-
-    }
+    } catch (error) {}
     setTier2Modal(false);
   };
-  const tier3Toggle=()=>{
+  const tier3Toggle = () => {
     setPoaProceed(false);
     setTier3Modal(!tier3Modal);
   };
-  const selectTier3=(event)=>{
-    setTier3(event.target.files[0])
-  }
-  const tier3Submit=async ()=>{
-    try{
-      const formData = new FormData();      
-      // Update the formData object 
-      formData.append( 
-        "tier3", 
-        tier3, 
-        tier3.name 
-      ); 
-      
+  const selectTier3 = (event) => {
+    setTier3(event.target.files[0]);
+  };
+  const tier3Submit = async () => {
+    try {
+      const formData = new FormData();
+      // Update the formData object
+      formData.append("tier3", tier3, tier3.name);
 
-      
-      // Request made to the backend api 
-      // Send formData object 
-      const { data }=await authAxios.post("tier3", formData);
+      // Request made to the backend api
+      // Send formData object
+      const { data } = await authAxios.post("tier3", formData);
       setAuthState({
         ...authState,
-        userInfo:{
+        userInfo: {
           ...authState.userInfo,
-          ...data
-        }        
-      });   
-
-    }catch(error){
-
-    }
+          ...data,
+        },
+      });
+    } catch (error) {}
     setTier3Modal(false);
-    
   };
 
-  const removeWallet=async (key)=>{
+  const removeWallet = async (key) => {
     try {
-      const { data } = await authAxios.delete('wallet/'+authState.userInfo.wallet[key].title);
+      const { data } = await authAxios.delete(
+        "wallet/" + authState.userInfo.wallet[key].title
+      );
       setAuthState({
         ...authState,
-        userInfo:{
+        userInfo: {
           ...authState.userInfo,
-          wallet:data.wallet
-        }        
-      });        
+          wallet: data.wallet,
+        },
+      });
     } catch (error) {
-      console.log(error);  
-    }  
+      console.log(error);
+    }
   };
-  const addWallet=async (title, address)=>{
+  const addWallet = async (title, address) => {
     try {
-      const { data } = await authAxios.post('wallet/',{
-        title,address
+      const { data } = await authAxios.post("wallet/", {
+        title,
+        address,
       });
       console.log(data);
       setAuthState({
         ...authState,
-        userInfo:{
+        userInfo: {
           ...authState.userInfo,
-          wallet:data.wallet
-        }        
-      });   
+          wallet: data.wallet,
+        },
+      });
 
       console.log(authState.userInfo);
     } catch (error) {
       console.log(error);
-  
-    }  
-  }
-  useEffect(()=>{ 
-    if(loading){    
-    }else{
-      if(!isAuthenticated())
-        Router.push('/login');     
-    }   
-  },[loading]);
+    }
+  };
+  useEffect(() => {
+    if (loading) {
+    } else {
+      if (!isAuthenticated()) Router.push("/login");
+    }
+  }, [loading]);
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
     document.body.style.setProperty("--light", "#f3f1e8");
     document.body.style.setProperty("--dark", "#9647DB");
   });
-  const submitProfile=async (email,phoneNumber)=>{
+  const submitProfile = async (email, phoneNumber) => {
     try {
-      const { data } = await authAxios.put('profile',{
-        email,phoneNumber
+      const { data } = await authAxios.put("profile", {
+        email,
+        phoneNumber,
       });
+
       setAuthState({
         ...authState,
-        userInfo:{
+        userInfo: {
           ...authState.userInfo,
-          ...data
-        }        
-      });   
-
-      
+          ...data,
+        },
+      });
     } catch (error) {
-      console.log(error);     
-    }  
+      console.log(error);
+    }
   };
   const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-  const submitAccount=async (old_password,new_password)=>{
+  const submitAccount = async (old_password, new_password) => {
     try {
-      const { data } = await authAxios.put('account',{
-        old_password,new_password
+      const { data } = await authAxios.put("account", {
+        old_password,
+        new_password,
       });
       logout();
-      Router.push('/login');
-      
+      Router.push("/login");
     } catch (error) {
-      console.log(error);     
+      console.log(error);
     }
   };
-  
+
   return (
     <div>
       <Head>
@@ -268,7 +266,7 @@ const settings = () => {
                           alt=""
                           className="img-fluid team"
                           src="/assets/images/home/user.png"
-                        />                        
+                        />
                       </div>
                     </div>
                   </div>
@@ -320,7 +318,7 @@ const settings = () => {
             </Nav>
             <TabContent activeTab={activeTab}>
               <TabPane tabId="1">
-              <Profile
+                <Profile
                   submit={submitProfile}
                   username={
                     authState.userInfo ? authState.userInfo.username : ""
@@ -334,17 +332,22 @@ const settings = () => {
               </TabPane>
 
               <TabPane tabId="3">
-                <Verification phoneVerified={authState.userInfo.phoneVerified}
-                  level={authState.userInfo.level} 
-                  tier2={authState.userInfo.tier2===null}
-                  tier3={authState.userInfo.tier3===null}
+                <Verification
+                  phoneVerified={authState.userInfo.phoneVerified}
+                  level={authState.userInfo.level}
+                  tier2={authState.userInfo.tier2 === null}
+                  tier3={authState.userInfo.tier3 === null}
                   phoneNumber={authState.userInfo.phoneNumber}
                   verify={verify}
-                  />
+                />
               </TabPane>
 
               <TabPane tabId="4">
-                <BtcWallet submit={addWallet} wallet={authState.userInfo.wallet} remove={removeWallet} />
+                <BtcWallet
+                  submit={addWallet}
+                  wallet={authState.userInfo.wallet}
+                  remove={removeWallet}
+                />
               </TabPane>
             </TabContent>
           </Col>
@@ -352,7 +355,7 @@ const settings = () => {
       </Container>
 
       <FooterSection />
-      <Modal isOpen={smsModal} toggle={smsToggle}>        
+      <Modal isOpen={smsModal} toggle={smsToggle}>
         <ModalHeader>Verify your mobile number</ModalHeader>
         <ModalBody>
           <div className="typo-content">
@@ -371,9 +374,9 @@ const settings = () => {
                     required=""
                     type="text"
                     value={sms}
-                    onChange={(e)=>setSMS(e.target.value)}
+                    onChange={(e) => setSMS(e.target.value)}
                   />
-                </div>                
+                </div>
               </div>
               <p>
                 Didn't recieved SMS? <a onClick={() => verify(1)}>Resend</a>
@@ -390,20 +393,20 @@ const settings = () => {
           </Button>
         </ModalFooter>
       </Modal>
-      <Modal isOpen={tier2Modal} toggle={tier2Toggle}>   
+      <Modal isOpen={tier2Modal} toggle={tier2Toggle}>
         <ModalHeader>
-            {idProceed == 1 ? (
-              "Address"
-            ) : (
-              <>
-                Upload ID{" "}
-                <i
-                  className="fa fa-question-circle pl-2"
-                  onClick={toggleModal}></i>
-              </>
-            )}
-          </ModalHeader>     
-          <ModalBody>
+          {idProceed == 1 ? (
+            "Address"
+          ) : (
+            <>
+              Upload ID{" "}
+              <i
+                className="fa fa-question-circle pl-2"
+                onClick={toggleModal}></i>
+            </>
+          )}
+        </ModalHeader>
+        <ModalBody>
           {(() => {
             if (idProceed === 1) {
               return (
@@ -423,7 +426,12 @@ const settings = () => {
                           required=""
                           type="text"
                           value={tier2Text.fname}
-                          onChange={(e)=>setTier2Text({...tier2Text,fname:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({
+                              ...tier2Text,
+                              fname: e.target.value,
+                            })
+                          }
                         />
                       </div>
                       <div className="col-6 mb-3">
@@ -434,7 +442,12 @@ const settings = () => {
                           required=""
                           type="text"
                           value={tier2Text.lname}
-                          onChange={(e)=>setTier2Text({...tier2Text,lname:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({
+                              ...tier2Text,
+                              lname: e.target.value,
+                            })
+                          }
                         />
                       </div>
 
@@ -446,7 +459,12 @@ const settings = () => {
                           required=""
                           type="text"
                           value={tier2Text.address}
-                          onChange={(e)=>setTier2Text({...tier2Text,address:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({
+                              ...tier2Text,
+                              address: e.target.value,
+                            })
+                          }
                         />
                       </div>
 
@@ -458,7 +476,12 @@ const settings = () => {
                           required=""
                           type="text"
                           value={tier2Text.street}
-                          onChange={(e)=>setTier2Text({...tier2Text,street:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({
+                              ...tier2Text,
+                              street: e.target.value,
+                            })
+                          }
                         />
                       </div>
 
@@ -470,7 +493,9 @@ const settings = () => {
                           required=""
                           type="text"
                           value={tier2Text.zip}
-                          onChange={(e)=>setTier2Text({...tier2Text,zip:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({ ...tier2Text, zip: e.target.value })
+                          }
                         />
                       </div>
 
@@ -482,7 +507,9 @@ const settings = () => {
                           required=""
                           type="text"
                           value={tier2Text.city}
-                          onChange={(e)=>setTier2Text({...tier2Text,city:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({ ...tier2Text, city: e.target.value })
+                          }
                         />
                       </div>
                       {}
@@ -494,7 +521,12 @@ const settings = () => {
                           placeholder="State"
                           required=""
                           value={tier2Text.state}
-                          onChange={(e)=>setTier2Text({...tier2Text,state:e.target.value})}
+                          onChange={(e) =>
+                            setTier2Text({
+                              ...tier2Text,
+                              state: e.target.value,
+                            })
+                          }
                           type="select">
                           {states.map((el) => (
                             <option key={el}>{el}</option>
@@ -605,8 +637,8 @@ const settings = () => {
           </Button>
         </ModalFooter>
       </Modal>
-      <Modal isOpen={tier3Modal} toggle={tier3Toggle}>     
-      <ModalHeader>
+      <Modal isOpen={tier3Modal} toggle={tier3Toggle}>
+        <ModalHeader>
           {" "}
           Proof of Address
           <i className="fa fa-question-circle pl-2" onClick={toggleModal2}></i>

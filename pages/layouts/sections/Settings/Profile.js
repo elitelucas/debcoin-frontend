@@ -1,14 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-
+import {
+  Row,
+  Col,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "reactstrap";
 
 const profile = (props) => {
-  const [email,setEmail]=useState(props.email);
-  const [phoneNumber,setPhoneNumber]=useState(props.phoneNumber); 
+  const [email, setEmail] = useState(props.email);
+  const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber);
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
-  const showModal=()=>{
+  const showModal = () => {
     setEmail(props.email);
     setPhoneNumber(props.phoneNumber);
     toggle();
@@ -18,7 +25,7 @@ const profile = (props) => {
     <Row className="mt-3 mb-3">
       <Col sm="12">
         <h4 className="text-dark">Profile</h4>
-        <div className={`p-5 shadow-showcase text-center shadow mt-2`}>          
+        <div className={`p-5 shadow-showcase text-center shadow mt-2`}>
           <Row className="mt-3">
             <Col sm="12" md="3" className="mb-3">
               <h4 className="text-dark">Username</h4>
@@ -43,6 +50,17 @@ const profile = (props) => {
               </Button>
             </Col>
           </Row>
+
+          <div
+            className="alert alert-success dark fade show text-left"
+            role="alert">
+            Profile Updated Successfully.
+          </div>
+          <div
+            className="alert alert-danger dark  fade show text-left"
+            role="alert">
+            There was an error updating your profile. Please try again.
+          </div>
         </div>
       </Col>
       <Modal isOpen={modal} toggle={toggle}>
@@ -60,7 +78,7 @@ const profile = (props) => {
                     required=""
                     type="text"
                     value={phoneNumber}
-                    onChange={(e)=>setPhoneNumber(e.target.value)}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
                 <div className="col-12 mb-3">
@@ -72,15 +90,20 @@ const profile = (props) => {
                     required=""
                     type="email"
                     value={email}
-                    onChange={(e)=>setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                </div>                
+                </div>
               </div>
             </form>
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={()=>{props.submit(email,phoneNumber);toggle();}}>
+          <Button
+            color="primary"
+            onClick={() => {
+              props.submit(email, phoneNumber);
+              toggle();
+            }}>
             ok
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
