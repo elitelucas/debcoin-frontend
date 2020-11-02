@@ -4,8 +4,7 @@ const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const logger = require('../logger')();
 const verificationRequest=async (phoneNumber)=>{
   phoneNumber="+1"+phoneNumber;
-    console.log(phoneNumber);
-    console.log(VERIFICATION_SID);
+ 
     try {
         request = await twilio.verify.services(VERIFICATION_SID)
           .verifications
