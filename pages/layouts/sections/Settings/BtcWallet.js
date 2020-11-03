@@ -70,12 +70,12 @@ const BtcWallet = (props) => {
                 onClick={toggleModal4}></i>
             </Col>
           </Row>
-          <div className="alert alert-success dark fade show" role="alert">
+          {/* <div className="alert alert-success dark fade show" role="alert">
             Wallet Added Successfully..
           </div>
           <div className="alert alert-danger dark  fade show" role="alert">
             There was an error adding your wallet. Please try again.
-          </div>
+          </div> */}
         </div>
       </Col>
       <AddWallet

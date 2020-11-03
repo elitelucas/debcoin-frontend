@@ -134,7 +134,7 @@ router.get('/getRate', getRate);
 router.get('/allowed', requireAuth, allowedExchange);
 router.get('/listExchange', requireAuth, listExchange);
 router.get('/smsVerify', requireAuth, smsVerify);
-router.post('/smsResult', requireAuth, smsResult);
+router.post('/smsVerify', requireAuth, smsResult);
 router.post('/selectWallet', requireAuth, selectWallet);
 router.post('/receipt', [requireAuth,
   uploadedFile.array("image")

@@ -13,6 +13,7 @@ import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
 import {FetchContext} from '../utils/authFetch';
 import { SchemaMetaFieldDef } from "graphql";
+import { toast } from 'react-toastify';
 const index = () => {
   const [rate,setRate]=useState('');
   const [allowed,setAllowed]=useState(500);
@@ -72,9 +73,9 @@ const index = () => {
           wallet:data.wallet
         }        
       });
-
+      toast.success("Wallet added succesfully.")
     } catch (error) {
-      console.log(error);
+      toast.success("Failed in adding a new wallet.")
   
     }  
   }

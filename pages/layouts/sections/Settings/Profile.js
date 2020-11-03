@@ -51,16 +51,17 @@ const profile = (props) => {
             </Col>
           </Row>
 
-          <div
+          {/* <div
             className="alert alert-success dark fade show text-left"
-            role="alert">
+            role="alert" >
             Profile Updated Successfully.
+            <button><i className="fa fa-times pr-2"></i></button>
           </div>
           <div
             className="alert alert-danger dark  fade show text-left"
             role="alert">
             There was an error updating your profile. Please try again.
-          </div>
+          </div> */}
         </div>
       </Col>
       <Modal isOpen={modal} toggle={toggle}>

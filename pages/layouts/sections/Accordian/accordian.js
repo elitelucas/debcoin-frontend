@@ -44,6 +44,7 @@ const AccordionElementSection = (props) => {
       }, 500);
     } catch (error) {
       console.log(error);
+      toast.error("Failed in submition.")
       setCondition("1st");
     }
   }
@@ -51,7 +52,8 @@ const AccordionElementSection = (props) => {
     try {
       const { data } = await authAxios.get('smsVerify');
     } catch (error) {
-      console.log(error);
+      toast.error("Failed in OTP verification.");
+      setCondition("1st");
     }
   }
   const verifyResult = async (sms) => {
@@ -65,7 +67,6 @@ const AccordionElementSection = (props) => {
       setCondition("3rd");
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
       toast.error("OTP failed");
       setIsLoading(false);
       setCondition("1st");
@@ -84,7 +85,7 @@ const AccordionElementSection = (props) => {
       }, 1500);
 
     } catch (error) {
-      console.log(error);
+      toast.error("Failed in selecting a wallet.")
       setCondition("1st");
     }
   }

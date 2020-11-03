@@ -24,10 +24,8 @@ const verificationResult=async (phoneNumber,code)=>{
           .verificationChecks
           .create({ code, to: phoneNumber });
       } catch (e) {
-        console.log(e);
         return false;
       }
-      console.log(result);
       // logger.debug(result);
     
       if (result.status === 'approved') {
