@@ -12,7 +12,7 @@ const http = require('http');
 const fs = require('fs');
 const path=require('path');
 
-const dev = false;
+const dev = true;
 const app = next({ 
   dev,
   dir: path.join(__dirname, '../'),
