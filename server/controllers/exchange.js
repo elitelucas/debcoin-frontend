@@ -175,9 +175,8 @@ exports.postReceipt = async (req, res, next) => {
       fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+req.session.exchange));
       for(let i=0;i<req.files.length;i++){
         const tempPath = req.files[i].path;     
-        const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+"/"+req.files[i].filename);
+        const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+"/"+i+path.extname(req.files[i].originalname).toLowerCase());
         const renamed=fs.renameSync(tempPath, targetPath);
-        console.log(targetPath);
       } 
         
      

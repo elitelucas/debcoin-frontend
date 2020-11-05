@@ -44,7 +44,7 @@ const settings = () => {
     street: "",
     zip: "",
     city: "",
-    state: "",
+    state: "Alabama",
   });
   const { authAxios } = useContext(FetchContext);
   const [sms, setSMS] = useState("");
@@ -130,6 +130,7 @@ const settings = () => {
           ...data,
         },
       });
+	  toast.success("Submitted successfully.")
       setIdProceed(1);
     } catch (error) {
       toast.error("Submition failed.");
@@ -160,7 +161,7 @@ const settings = () => {
         },
       });
     } catch (error) {
-      toast.success("Submition failed.")
+      toast.error("Submition failed.")
     }
     setTier3Modal(false);
   };

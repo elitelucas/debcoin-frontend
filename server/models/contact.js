@@ -6,6 +6,7 @@ const contactModel = new Schema({
   email:{type:String, required:true},
   help:{type:String, required:true},
   status:{type:Boolean,default:false},
+  title:{type:String,required:true},
   created: { type: Date, default: Date.now }
 });
 

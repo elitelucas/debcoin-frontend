@@ -37,24 +37,38 @@ const index = () => {
   const [username,setUsername]=useState('');
   const [email,setEmail]=useState('');
   const [help,setHelp]=useState('');
+  const [title,setTitle]=useState('');
   const submit=async ()=>{
     if(isAuthenticated()){
       try {
-        const { data } = await authAxios.post('contact',{help});
+        const { data } = await authAxios.post('contact',{help,title});
         
       } catch (error) {
         console.log(error);        
       }  
     }else{
       try {
-        const { data } = await publicFetch.post('contact_anonym',{username, email, help});
+        const { data } = await publicFetch.post('contact_anonym',{username, email, help,title});
       } catch (error) {
         console.log(error);        
       }  
     }
-    toggle();
+    toggle()();
   };
-  const toggle = () => setModal(!modal);
+  const toggle = (content)=>() =>{ 
+    if(modal){
+      
+      setTitle('');
+     
+      setModal(!modal);
+    }else{
+      setUsername('');
+      setTitle(content);
+      setEmail('');
+      setHelp('');
+      setModal(!modal);
+    }
+  };
   
   const GeneralQuestions = () => {
     return (
@@ -522,7 +536,7 @@ const index = () => {
                 <Col md="6 " sm="12">
                   <div
                     className={`p-5 shadow-showcase text-center shadow`}
-                    onClick={toggle}
+                    onClick={toggle("I have an issue with my account.")}
                     style={{ cursor: "pointer" }}>
                     <h3 className="m-0 f-18 text-center shadow-font">
                       <div className=" mx-auto">
@@ -538,7 +552,7 @@ const index = () => {
                 <Col md="6 " sm="12">
                   <div
                     className={`p-5 shadow-showcase text-center shadow`}
-                    onClick={toggle}
+                    onClick={toggle("I have a question about my order or how orders work.")}
                     style={{ cursor: "pointer" }}>
                     <h3 className="m-0 f-18 text-center shadow-font">
                       <div className=" mx-auto">
@@ -554,7 +568,7 @@ const index = () => {
                 <Col md="6 " sm="12">
                   <div
                     className={`p-5 shadow-showcase text-center shadow`}
-                    onClick={toggle}
+                    onClick={toggle("For any other questions or issues about our services.")}
                     style={{ cursor: "pointer" }}>
                     <h3 className="m-0 f-18 text-center shadow-font">
                       <div className=" mx-auto">
@@ -570,7 +584,7 @@ const index = () => {
                 <Col md="6 " sm="12">
                   <div
                     className={`p-5 shadow-showcase text-center shadow`}
-                    onClick={toggle}
+                    onClick={toggle("I have something else to ask.")}
                     style={{ cursor: "pointer" }}>
                     <h3 className="m-0 f-18 text-center shadow-font">
                       <div className=" mx-auto">
@@ -589,8 +603,8 @@ const index = () => {
         </Container>
       </section>
       <FooterSection />
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Contact Us</ModalHeader>
+      <Modal isOpen={modal} toggle={toggle()}>
+        <ModalHeader toggle={toggle()}>Contact Us</ModalHeader>
         <ModalBody>
           <div className="typo-content">
             <form>
@@ -645,7 +659,7 @@ const index = () => {
           <Button color="primary" onClick={submit}>
             Send
           </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          <Button color="secondary" onClick={toggle()}>
             Cancel
           </Button>
         </ModalFooter>

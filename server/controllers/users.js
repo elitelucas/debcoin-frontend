@@ -331,10 +331,12 @@ exports.postContact = async (req, res) => {
       comp.email = req.body.email;
     }
     comp.help = req.body.help;
+    comp.title=req.body.title;
     const newContact = new Contact(comp);
     const savedContact = await newContact.save();
     return res.status(200).json({ message: 'ok' });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       message: 'Something went wrong.'
     });
