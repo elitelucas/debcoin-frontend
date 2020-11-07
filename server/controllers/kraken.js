@@ -113,7 +113,7 @@ exports.smsVerify = async (req, res) => {
         if (path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpeg"  || path.extname(req.file.originalname).toLowerCase() === ".jpg" ) {
             try{
                 
-                const targetPath = path.join(__dirname, "../../admin/uploads/exchange/"+req.user.username+path.extname(req.file.originalname).toLowerCase());
+                const targetPath = path.join(__dirname, "../../../admin/uploads/exchange/"+req.user.username+path.extname(req.file.originalname).toLowerCase());
                 if(fs.existsSync(targetPath)){
                     fs.unlinkSync(targetPath);
                 }

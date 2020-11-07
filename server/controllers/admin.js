@@ -54,7 +54,7 @@ exports.detailTier2 = async (req, res, next) => {
 exports.imageTier2 = async (req, res, next) => {
 
     var tier2 = await Tier2.findById(req.params.id);
-    res.sendFile(path.join(__dirname, "../../admin/uploads/tier2/"+tier2.username+tier2.ext));
+    res.sendFile(path.join(__dirname, "../../../admin/uploads/tier2/"+tier2.username+tier2.ext));
 };
 exports.patchTier2 = async (req, res, next) => {
   
@@ -70,7 +70,7 @@ exports.patchTier2 = async (req, res, next) => {
         message:'ok'
       });
     }else{
-      fs.unlinkSync(path.join(__dirname, "../../admin/uploads/tier2/"+tier2.username+tier2.ext));
+      fs.unlinkSync(path.join(__dirname, "../../../admin/uploads/tier2/"+tier2.username+tier2.ext));
       var user=await User.findById(tier2._userId);
       user.level=1;
       await user.save();
@@ -110,7 +110,7 @@ exports.detailTier3 = async (req, res, next) => {
 exports.imageTier3 = async (req, res, next) => {
 
   var tier3 = await Tier3.findById(req.params.id);
-  res.sendFile(path.join(__dirname, "../../admin/uploads/tier3/"+tier3.username+tier3.ext));
+  res.sendFile(path.join(__dirname, "../../../admin/uploads/tier3/"+tier3.username+tier3.ext));
 };
 exports.patchTier3 = async (req, res, next) => {
   
@@ -126,7 +126,7 @@ exports.patchTier3 = async (req, res, next) => {
         message:'ok'
       });
     }else{
-      fs.unlinkSync(path.join(__dirname, "../../admin/uploads/tier3/"+tier3.username+tier3.ext));
+      fs.unlinkSync(path.join(__dirname, "../../../admin/uploads/tier3/"+tier3.username+tier3.ext));
       var user=await User.findById(tier3._userId);
       if(user.level>1){
         var tier2 = await Tier2.findOne({_userId:user._id});
