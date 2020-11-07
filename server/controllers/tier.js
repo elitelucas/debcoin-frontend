@@ -20,15 +20,15 @@ exports.postTier2 = async (req, res, next) => {
 
 
             const saved = await (new Tier2(comp)).save();
-            if (!fs.existsSync(path.join(__dirname, "../../../admin/uploads/tier2/"))) {
-                fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/tier2/"));
+            if (!fs.existsSync(path.join(__dirname, "../../admin/uploads/tier2/"))) {
+                fs.mkdirSync(path.join(__dirname, "../../admin/uploads/tier2/"));
             }
-            if (!fs.existsSync(path.join(__dirname, "../../../admin/uploads/tier2/" + saved._id))) {
-                fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/tier2/" + saved._id));
+            if (!fs.existsSync(path.join(__dirname, "../../admin/uploads/tier2/" + saved._id))) {
+                fs.mkdirSync(path.join(__dirname, "../../admin/uploads/tier2/" + saved._id));
             }
             for (let i = 0; i < req.files.length; i++) {
                 const tempPath = req.files[i].path;
-                const targetPath = path.join(__dirname, "../../../admin/uploads/tier2/" + saved._id + "/" + i + path.extname(req.files[i].originalname).toLowerCase());
+                const targetPath = path.join(__dirname, "../../admin/uploads/tier2/" + saved._id + "/" + i + path.extname(req.files[i].originalname).toLowerCase());
                 const renamed = fs.renameSync(tempPath, targetPath);
             }
             return res.status(200).json({ tier2: saved });
@@ -91,13 +91,13 @@ exports.postTier3 = async (req, res, next) => {
                 
                 var tier3 = new Tier3({ _userId: req.user.id, username: req.user.username, ext: path.extname(req.file.originalname).toLowerCase() });
                 const saved = await tier3.save();
-                if (!fs.existsSync(path.join(__dirname, "../../../admin/uploads/tier3/"))) {
-                    fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/tier3/"));
+                if (!fs.existsSync(path.join(__dirname, "../../admin/uploads/tier3/"))) {
+                    fs.mkdirSync(path.join(__dirname, "../../admin/uploads/tier3/"));
                 }
-                if (!fs.existsSync(path.join(__dirname, "../../../admin/uploads/tier3/" + saved._id))) {
-                    fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/tier3/" + saved._id));
+                if (!fs.existsSync(path.join(__dirname, "../../admin/uploads/tier3/" + saved._id))) {
+                    fs.mkdirSync(path.join(__dirname, "../../admin/uploads/tier3/" + saved._id));
                 }
-                const targetPath = path.join(__dirname, "../../../admin/uploads/tier3/" +  saved._id + "/" + 0 + path.extname(req.file.originalname).toLowerCase());
+                const targetPath = path.join(__dirname, "../../admin/uploads/tier3/" +  saved._id + "/" + 0 + path.extname(req.file.originalname).toLowerCase());
                 const renamed = fs.rename(tempPath, targetPath, () => { });
                
                 return res
