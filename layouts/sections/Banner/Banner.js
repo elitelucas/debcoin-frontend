@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Lottie from "react-lottie";
 import Accordian from "../Accordian/accordian";
-import animationData from "../../../../public/assets/animation/animation.json";
+import animationData from "../../../public/assets/animation/animation.json";
 const Banner = (props) => {
   const scrollToRef = (val) => {
     document.querySelector(`#${val}`).scrollIntoView({ behavior: "smooth" });

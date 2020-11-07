@@ -74,7 +74,7 @@ const router = require('express').Router();
 
 var storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "/uploads/temp");
+    callback(null, "../../admin/uploads/temp");
   },
   filename: (req, file, callback) => {
     const match = ["image/png", "image/jpeg", "image/jpg"];

@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useContext} from "react";
-import {AuthContext} from '../../../../utils/auth';
+import {AuthContext} from '../../../utils/auth';
 import {
   Button,
   Col,

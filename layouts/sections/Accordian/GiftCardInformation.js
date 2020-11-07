@@ -14,7 +14,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 import NumberFormat from "react-number-format";
-import { FetchContext } from '../../../../utils/authFetch';
+import { FetchContext } from '../../../utils/authFetch';
 const giftCardInformation = (props) => {
   const { authAxios } = useContext(FetchContext);
   const [expired, setExpired] = useState('');

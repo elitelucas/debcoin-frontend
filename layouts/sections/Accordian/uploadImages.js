@@ -8,7 +8,7 @@ import {
   Button,
   Spinner,
 } from "reactstrap";
-import {FetchContext} from '../../../../utils/authFetch';
+import {FetchContext} from '../../../utils/authFetch';
 const uploadImages = (props) => {
   const maxSize = 10485760;
   const [images,setImages]=useState(null);

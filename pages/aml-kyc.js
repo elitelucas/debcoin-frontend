@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 // import Custom Components
-import Header from "./layouts/sections/Header/header";
-import FooterSection from "./layouts/sections/Footer/footer";
+import Header from "../layouts/sections/Header/header";
+import FooterSection from "../layouts/sections/Footer/footer";
 import "react-light-accordion/demo/css/index.css";
 import { Container, Row, Col } from "reactstrap";
 

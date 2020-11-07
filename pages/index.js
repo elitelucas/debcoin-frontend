@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 
-import Header from "./layouts/sections/Header/header";
+import Header from "../layouts/sections/Header/header";
 
-import BannerSection from "./layouts/sections/Banner/Banner";
-import FooterSection from "./layouts/sections/Footer/footer";
-import BeforeFooter from "./layouts/sections/BeforeFooter/BeforeFooter";
-import License from "./layouts/sections/Licenses/Licenses";
-import Guide from "./layouts/sections/Guide/Guide";
-import Pricing from "./layouts/sections/Prices/Prices";
+import BannerSection from "../layouts/sections/Banner/Banner";
+import FooterSection from "../layouts/sections/Footer/footer";
+import BeforeFooter from "../layouts/sections/BeforeFooter/BeforeFooter";
+import License from "../layouts/sections/Licenses/Licenses";
+import Guide from "../layouts/sections/Guide/Guide";
+import Pricing from "../layouts/sections/Prices/Prices";
 import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
 import {FetchContext} from '../utils/authFetch';

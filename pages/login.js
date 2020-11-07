@@ -2,10 +2,10 @@ import React, { useEffect,useState,useContext } from "react";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 // import Custom Components
-import Header from "./layouts/sections/Header/header";
+import Header from "../layouts/sections/Header/header";
 import { publicFetch } from '../utils/publicFetch';
 import { AuthContext } from '../utils/auth';
-import FooterSection from "./layouts/sections/Footer/footer";
+import FooterSection from "../layouts/sections/Footer/footer";
 import { toast } from 'react-toastify';
 
 import {

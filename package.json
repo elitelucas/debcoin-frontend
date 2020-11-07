@@ -6,7 +6,7 @@
     "dev": "next",
     "prod:build": "next build",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "node server/index.js"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",

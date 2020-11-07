@@ -2,7 +2,7 @@ import React, { useState,useContext } from "react";
 import Nav from "./nav";
 import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
-import { AuthContext } from '../../../../utils/auth';
+import { AuthContext } from '../../../utils/auth';
 
 const Header = (props) => {
   const {isAuthenticated,logout}=useContext(AuthContext);

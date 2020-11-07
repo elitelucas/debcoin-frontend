@@ -6,7 +6,7 @@ import UploadImages from "./uploadImages";
 import GiftCardInformation from "./GiftCardInformation";
 
 import Lottie from "react-lottie";
-import animationData from "../../../../public/assets/animation/animation.json";
+import animationData from "../../../public/assets/animation/animation.json";
 import {
   Collapse,
   CardBody,

@@ -5,7 +5,7 @@ import SelectWallet from "./selectWallet";
 import UploadImages from "./uploadImages";
 import GiftCardInformation from "./GiftCardInformation";
 import "react-light-accordion/demo/css/index.css";
-import { AuthContext } from '../../../../utils/auth';
+import { AuthContext } from '../../../utils/auth';
 import {
   Collapse,
   CardBody,
@@ -19,7 +19,7 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-import { FetchContext } from '../../../../utils/authFetch';
+import { FetchContext } from '../../../utils/authFetch';
 import { toast } from 'react-toastify';
 const AccordionElementSection = (props) => {
   const [condition, setCondition] = useState("1st");

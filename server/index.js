@@ -12,7 +12,8 @@ const http = require('http');
 const fs = require('fs');
 const path=require('path');
 
-const dev = process.env.NODE_ENV !== 'production'
+//const dev = process.env.NODE_ENV !== 'production'
+const dev = false;
 const app = next({ 
   dev,
   dir: path.join(__dirname, '../'),
@@ -65,7 +66,7 @@ app.prepare()
 
   console.log('here 66');
   http.createServer(server)
-  .listen(80, function () {
+  .listen(config.port, function () {
     console.log('Example app listening on port 3000! Go to http://localhost:3000/')
   });
 

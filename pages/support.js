@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import Head from "next/head";
 // import Custom Components
-import Header from "./layouts/sections/Header/header";
+import Header from "../layouts/sections/Header/header";
 // import Header from "../containers/common/header";
-import BannerSection from "./layouts/sections/Banner/Banner";
-import AccordianSection from "./layouts/sections/Accordian/accordian";
-import FooterSection from "./layouts/sections/Footer/footer";
+import BannerSection from "../layouts/sections/Banner/Banner";
+import AccordianSection from "../layouts/sections/Accordian/accordian";
+import FooterSection from "../layouts/sections/Footer/footer";
 import { Accordion, AccordionItem } from "react-light-accordion";
 import "react-light-accordion/demo/css/index.css";
 import { Container, Row, Col } from "reactstrap";

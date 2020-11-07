@@ -2,11 +2,11 @@ import React, { useEffect, useState,useContext } from "react";
 import Head from "next/head";
 import { useRouter } from 'next/router'
 // import Custom Components
-import Header from "./layouts/sections/Header/header";
+import Header from "../layouts/sections/Header/header";
 // import Header from "../containers/common/header";
-import BannerSection from "./layouts/sections/Banner/Banner";
-import AccordianSection from "./layouts/sections/Accordian/accordian";
-import FooterSection from "./layouts/sections/Footer/footer";
+import BannerSection from "../layouts/sections/Banner/Banner";
+import AccordianSection from "../layouts/sections/Accordian/accordian";
+import FooterSection from "../layouts/sections/Footer/footer";
 import {
   Row,
   Col,

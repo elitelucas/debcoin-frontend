@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import Head from "next/head";
 // import Custom Components
-import Header from "./layouts/sections/Header/header";
-import FooterSection from "./layouts/sections/Footer/footer";
-import Profile from "./layouts/sections/Settings/Profile";
-import BtcWallet from "./layouts/sections/Settings/BtcWallet";
-import Verification from "./layouts/sections/Settings/Verification";
-import Account from "./layouts/sections/Settings/Account";
+import Header from "../layouts/sections/Header/header";
+import FooterSection from "../layouts/sections/Footer/footer";
+import Profile from "../layouts/sections/Settings/Profile";
+import BtcWallet from "../layouts/sections/Settings/BtcWallet";
+import Verification from "../layouts/sections/Settings/Verification";
+import Account from "../layouts/sections/Settings/Account";
 import {
   Row,
   Col,
@@ -23,7 +23,7 @@ import {
   ModalHeader,
   Input,
 } from "reactstrap";
-import states from "./layouts/sections/Settings/states";
+import states from "../layouts/sections/Settings/states";
 import { AuthContext } from "../utils/auth";
 import classnames from "classnames";
 import { FetchContext } from "../utils/authFetch";
