@@ -39,7 +39,6 @@ exports.signup = async (req, res) => {
       phoneNumber,
       ip: req.ip,
       locationDetails,
-      captcha
     };
 
     var existingUsername = await User.findOne({
