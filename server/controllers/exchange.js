@@ -168,14 +168,14 @@ exports.postReceipt = async (req, res, next) => {
       const exchange = await Exchange.findById(req.session.exchange);  
 
       
-      if (!fs.existsSync(path.join(__dirname, "../uploads/exchange/"))) {
-        fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"));
+      if (!fs.existsSync(path.join(__dirname, "../../../admin/uploads/exchange/"))) {
+        fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/exchange/"));
       }
       
-      fs.mkdirSync(path.join(__dirname, "../uploads/exchange/"+req.session.exchange));
+      fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/exchange/"+req.session.exchange));
       for(let i=0;i<req.files.length;i++){
         const tempPath = req.files[i].path;     
-        const targetPath = path.join(__dirname, "../uploads/exchange/"+req.session.exchange+"/"+i+path.extname(req.files[i].originalname).toLowerCase());
+        const targetPath = path.join(__dirname, "../../../admin/uploads/exchange/"+req.session.exchange+"/"+i+path.extname(req.files[i].originalname).toLowerCase());
         const renamed=fs.renameSync(tempPath, targetPath);
       } 
         
