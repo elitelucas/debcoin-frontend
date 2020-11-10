@@ -33,8 +33,8 @@ const startYourOrder = (props) => {
   useEffect(() => {
     setUsd(props.amount);
     setBtc(Math.floor(100000000*parseFloat(props.amount)/parseFloat(props.price))/100000000);
-    console.log(pros.amount);
-    console.log(pros.price);
+    console.log(props.amount);
+    console.log(props.price);
     console.log(Math.floor(100000000*parseFloat(props.amount)/parseFloat(props.price))/100000000);
   },[props.amount]);
   useEffect(() => {
