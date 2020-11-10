@@ -36,6 +36,7 @@ const AccordionElementSection = (props) => {
       const { data } = await authAxios.post('amount', { amount });
       setID(data);
       setCondition("3rd");
+      setIsLoading(false);
       // setTimeout(() => {
 
       //   verifyReq();
