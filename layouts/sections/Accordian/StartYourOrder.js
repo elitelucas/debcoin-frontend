@@ -32,7 +32,7 @@ const startYourOrder = (props) => {
   },[]);
   useEffect(() => {
     setUsd(props.amount);
- 
+    setBtc(Math.floor(100000000*parseFloat(props.amount)/parseFloat(props.price))/100000000);
   },[props.amount]);
   useEffect(() => {
     timer1=setInterval(async ()=>{

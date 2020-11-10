@@ -3,7 +3,7 @@ import Nav from "./nav";
 import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
 import { AuthContext } from '../../../utils/auth';
-
+import Router from 'next/router';
 const Header = (props) => {
   const {isAuthenticated,logout}=useContext(AuthContext);
 
@@ -41,7 +41,7 @@ const Header = (props) => {
                   <i aria-hidden="true" className="fa fa-bars text-white"></i>
                 </a>
               </div>
-              <Nav isAuth={isAuthenticated()} logout={()=>logout()} />
+              <Nav isAuth={isAuthenticated()} logout={()=>{logout();Router.push('/login'); }} />
               
             </nav>
           </Col>

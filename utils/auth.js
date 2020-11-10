@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem('userInfo')
     localStorage.removeItem('expiresAt')
 
-    setAuthState({})
+    setAuthState({});
   }
 
   const isAuthenticated = () => {

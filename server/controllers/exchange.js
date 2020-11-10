@@ -12,6 +12,7 @@ const getRateInfo =require('../utils/getRateInfo');
 const { findById } = require('../models/user');
 const fs=require('fs');
 const path=require('path');
+const del=require('del');
 //prices of crypto currencies
 var market_prices;
 //Get prices of crypto currencies on markets
@@ -43,7 +44,14 @@ exports.listExchange = async (req, res, next) => {
 };
 
 exports.allowedExchange = async (req, res, next) => {
-  try {
+  try {    
+    const trash = await Exchange.find({_userId:req.user.id,paid:false}).sort('-createdAt');
+    for(let i=0;i<trash.length;i++){
+      if (fs.existsSync(path.join(__dirname, "../../../admin/uploads/exchange/"+trash[i].id))) {
+        await del(path.join(__dirname, "../../../admin/uploads/exchange/"+trash[i].id));
+      }
+      await trash[i].remove();
+    }
     const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();

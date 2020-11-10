@@ -21,13 +21,13 @@ exports.signup = async (req, res) => {
   try {
 
     // verify captchca
-    var secretKey = process.env.CAPTCHA_KEY;
-    var response = req.body['g-recaptcha-response'];
-    const remoteip = req.ip;
-    console.log(secretKey + " " + response + " " + remoteip);
-    const captcha = await verifyCaptcha(secretKey, response, remoteip);
-    if (!captcha.success)
-      return res.status(422).json({ message: 'Please select Captcha' });
+    // var secretKey = process.env.CAPTCHA_KEY;
+    // var response = req.body['g-recaptcha-response'];
+    // const remoteip = req.ip;
+    // console.log(secretKey + " " + response + " " + remoteip);
+    // const captcha = await verifyCaptcha(secretKey, response, remoteip);
+    // if (!captcha.success)
+    //   return res.status(422).json({ message: 'Please select Captcha' });
 
     const { username, email, phoneNumber } = req.body;
     const hashedPassword = await hashPassword(req.body.password);

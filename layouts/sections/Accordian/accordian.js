@@ -35,13 +35,14 @@ const AccordionElementSection = (props) => {
     try {
       const { data } = await authAxios.post('amount', { amount });
       setID(data);
-      setTimeout(() => {
+      setCondition("3rd");
+      // setTimeout(() => {
 
-        verifyReq();
-        setCondition("2nd");
+      //   verifyReq();
+      //   setCondition("2nd");
 
-        setIsLoading(false);
-      }, 500);
+      //   setIsLoading(false);
+      // }, 500);
     } catch (error) {
       console.log(error);
       toast.error("Failed in submition.")
