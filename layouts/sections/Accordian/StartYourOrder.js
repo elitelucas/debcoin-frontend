@@ -36,7 +36,7 @@ const startYourOrder = (props) => {
     console.log(props.amount);
     console.log(props.price);
     console.log(Math.floor(100000000*parseFloat(props.amount)/parseFloat(props.price))/100000000);
-  },[props.amount]);
+  },[props.amount,props.price]);
   useEffect(() => {
     timer1=setInterval(async ()=>{
       if(count-1<=0){
