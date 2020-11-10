@@ -49,6 +49,7 @@ const AccordionElementSection = (props) => {
       toast.error("Failed in submition.")
       setCondition("1st");
     }
+    setIsLoading(false);
   }
   const verifyReq = async () => {
     try {
