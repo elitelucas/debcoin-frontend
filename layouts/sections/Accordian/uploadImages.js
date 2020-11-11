@@ -6,7 +6,7 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Spinner,
+  Spinner,Progress 
 } from "reactstrap";
 import {FetchContext} from '../../../utils/authFetch';
 import { toast } from 'react-toastify';
@@ -34,6 +34,10 @@ const uploadImages = (props) => {
   const toggleFor = () => setModalFor(!modalFor);
   const toggleFogc = () => setModalFogc(!modalFogc);
   const toggleBogc = () => setModalBogc(!modalBogc);
+  const [progress,setProgress]=useState(0);
+  const onUploadProgress=(event)=>{
+    setProgress(Math.round((100 * event.loaded) / event.total));
+  };
   const submit=async ()=>{
     try{
       const formData = new FormData();      
@@ -45,11 +49,18 @@ const uploadImages = (props) => {
         );
       }        
     
-      const result=await authAxios.post("receipt", formData); 
+      const result=await authAxios.post("receipt", formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress,
+      }); 
       props.isClicked();
 
     }catch(error){
-      toast.error("Failed in posting the images.")
+      toast.error("Failed in posting the images.");
+      setProgress(0);
       console.log(error);
     }
   };
@@ -168,6 +179,7 @@ const uploadImages = (props) => {
           ))}
         </ul>
       </div>
+      <Progress value={progress} />
       <Button
         className="btn primary-btn btn-default text-uppercase mt-3"
         disabled={props.isLoading}

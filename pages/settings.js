@@ -21,7 +21,7 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader,
-  Input,
+  Input,Progress
 } from "reactstrap";
 import states from "../layouts/sections/Settings/states";
 import { AuthContext } from "../utils/auth";
@@ -58,7 +58,14 @@ const settings = () => {
   const [modal2, setModal2] = useState(false);
   const toggleModal2 = () => setModal2(!modal2);
   const [modal, setModal] = useState(false);
-
+  const [progress2,setProgress2]=useState(0);
+  const onUploadProgress2=(event)=>{
+    setProgress2(Math.round((100 * event.loaded) / event.total));
+  };
+  const [progress3,setProgress3]=useState(0);
+  const onUploadProgress3=(event)=>{
+    setProgress3(Math.round((100 * event.loaded) / event.total));
+  };
   const toggleModal = () => setModal(!modal);
   const verify = async (level) => {
     if (level === 1) {
@@ -122,7 +129,13 @@ const settings = () => {
 
       // Request made to the backend api
       // Send formData object
-      const { data } = await authAxios.post("tier2", formData);
+      const { data } = await authAxios.post("tier2", formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress2,
+      });
       setAuthState({
         ...authState,
         userInfo: {
@@ -152,7 +165,13 @@ const settings = () => {
       toast.success("Submitted successfully.")
       // Request made to the backend api
       // Send formData object
-      const { data } = await authAxios.post("tier3", formData);
+      const { data } = await authAxios.post("tier3", formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress3,
+      });
       setAuthState({
         ...authState,
         userInfo: {
@@ -597,6 +616,8 @@ const settings = () => {
                         <label htmlFor="name">Please select a image</label>
                         <br />
                         <input type="file" onChange={selectTier2} multiple />
+                        <br />
+                        <Progress value={progress3} />
                       </div>
                     </div>
                     <p className="mt-2 mb-0">
@@ -677,6 +698,8 @@ const settings = () => {
                         <label htmlFor="name">Please select a image</label>
                         <br />
                         <input type="file" onChange={selectTier3} />
+                        <br/>
+                        <Progress value={progress3} />
                       </div>
                     </div>
                   </form>
