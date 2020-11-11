@@ -9,6 +9,7 @@ import {
   Spinner,
 } from "reactstrap";
 import {FetchContext} from '../../../utils/authFetch';
+import { toast } from 'react-toastify';
 const uploadImages = (props) => {
   const maxSize = 10485760;
   const [images,setImages]=useState(null);
@@ -48,6 +49,7 @@ const uploadImages = (props) => {
       props.isClicked();
 
     }catch(error){
+      toast.error("Failed in posting the images.")
       console.log(error);
     }
   };
