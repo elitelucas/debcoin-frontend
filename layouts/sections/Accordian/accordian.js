@@ -36,22 +36,22 @@ const AccordionElementSection = (props) => {
       const { data } = await authAxios.post('amount', { amount });
       setID(data);
       /////////////////
-      setCondition("3rd");
-      setIsLoading(false);
+      // setCondition("3rd");
+      // setIsLoading(false);
       /////////////////
-      // setTimeout(() => {
+      setTimeout(() => {
 
-      //   verifyReq();
-      //   setCondition("2nd");
+        verifyReq();
+        setCondition("2nd");
 
-      //   setIsLoading(false);
-      // }, 500);
+        setIsLoading(false);
+      }, 500);
     } catch (error) {
       console.log(error);
       toast.error("Failed in submition.")
       setCondition("1st");
     }
-    setIsLoading(false);
+    // setIsLoading(false);
   }
   const verifyReq = async () => {
     try {
