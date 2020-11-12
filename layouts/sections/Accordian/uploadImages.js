@@ -40,6 +40,10 @@ const uploadImages = (props) => {
   };
   const submit=async ()=>{
     try{
+      if(images===null || images.length!=3){
+        toast.warning("You must upload 3 images!");
+        return;
+      }
       const formData = new FormData();      
       // Update the formData object 
       for(let i=0;i<images.length;i++){
@@ -59,6 +63,7 @@ const uploadImages = (props) => {
       props.isClicked();
 
     }catch(error){
+      console.log(error);
       toast.error("Failed in posting the images.");
       setProgress(0);
       console.log(error);
@@ -158,7 +163,7 @@ const uploadImages = (props) => {
         written reeipt.
       </small>
       <div>
-        <div className="container text-center mt-5">
+        <div className="container text-center mt-5" style={{cursor:"pointer"}}>
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {!isDragActive && 'Click here or drop a file to upload!'}
@@ -172,8 +177,8 @@ const uploadImages = (props) => {
           </div>
         </div>
         <ul className="list-group mt-2">
-          {acceptedFiles.length > 0 && acceptedFiles.map(acceptedFile => (
-            <li className="list-group-item list-group-item-success">
+          {acceptedFiles.length > 0 && acceptedFiles.map((acceptedFile,key) => (
+            <li className="list-group-item list-group-item-success" key={key}>
               {acceptedFile.name}
             </li>
           ))}

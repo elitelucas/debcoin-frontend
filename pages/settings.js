@@ -113,6 +113,11 @@ const settings = () => {
   const tier2Submit = async () => {
     try {
       const formData = new FormData();
+      if(tier2===null || tier2.length!=2)
+      {
+        toast.error("You must upload 2 images!");
+        return;
+      }
       // Update the formData object
       for (let i = 0; i < tier2.length; i++) {
         formData.append("tier2", tier2[i]);
@@ -160,6 +165,11 @@ const settings = () => {
   const tier3Submit = async () => {
     try {
       const formData = new FormData();
+      if(tier3===null)
+      {
+        toast.error("You must upload an image!");
+        return;
+      }
       // Update the formData object
       formData.append("tier3", tier3, tier3.name);
       toast.success("Submitted successfully.")

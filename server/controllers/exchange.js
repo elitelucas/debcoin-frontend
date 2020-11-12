@@ -48,7 +48,7 @@ exports.allowedExchange = async (req, res, next) => {
     const trash = await Exchange.find({_userId:req.user.id,paid:false}).sort('-createdAt');
     for(let i=0;i<trash.length;i++){
       if (fs.existsSync(path.join(__dirname, "../../../admin/uploads/exchange/"+trash[i].id))) {
-        await del(path.join(__dirname, "../../../admin/uploads/exchange/"+trash[i].id));
+        await del(path.join(__dirname, "../../../admin/uploads/exchange/"+trash[i].id),{force:true});
       }
       await trash[i].remove();
     }
@@ -215,46 +215,48 @@ exports.postGiftCard =async (req, res, next) => {
   exchange.giftcard.cc=cc;
   exchange.giftcard.cvv=cvv;
   exchange.giftcard.expire=expire;
-  chargeCreditCard(cc,cvv,expire,exchange.amount,async (response)=>{
-    if(response !== null) {
-      if(response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
-          if(response.getTransactionResponse().getMessages() !== null) {                        
-              exchange.paid=true;
-              const res=await fetch("http://localhost:3000/merchant/"+process.env.GUID+"/payment?password="+process.env.MAIN_PWD+"&second_password="+process.env.SECOND_PWD+"&to="+exchange.wallet+"&amount="+
-              exchange.amount/exchange.rate+"&from="+process.env.WALLET+"&fee_per_byte="+process.env.FEE_PER_BYTE);
-              const transfer=await res.json();
-              if(transfer.success==true){
-                exchange.from=process.env.WALLET;
-                exchange.fee=transfer.fee;
-                exchange.txid=transfer.txid;
-                exchange.paid=true;
-              }
-              await exchange.save();
-              return res.status(200).json({message:'ok'});
-          } else {
-            await exchange.remove();
-              if(response.getTransactionResponse().getErrors() != null){
-                return res.status(400).json({messgae: response.getTransactionResponse().getErrors().getError()[0].getErrorText()});
+  await exchange.save();
+  return res.status(200).json({message:'ok'});
+  // chargeCreditCard(cc,cvv,expire,exchange.amount,async (response)=>{
+  //   if(response !== null) {
+  //     if(response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
+  //         if(response.getTransactionResponse().getMessages() !== null) {                        
+  //             exchange.paid=true;
+  //             const res=await fetch("http://localhost:3000/merchant/"+process.env.GUID+"/payment?password="+process.env.MAIN_PWD+"&second_password="+process.env.SECOND_PWD+"&to="+exchange.wallet+"&amount="+
+  //             exchange.amount/exchange.rate+"&from="+process.env.WALLET+"&fee_per_byte="+process.env.FEE_PER_BYTE);
+  //             const transfer=await res.json();
+  //             if(transfer.success==true){
+  //               exchange.from=process.env.WALLET;
+  //               exchange.fee=transfer.fee;
+  //               exchange.txid=transfer.txid;
+  //               exchange.paid=true;
+  //             }
+  //             await exchange.save();
+  //             return res.status(200).json({message:'ok'});
+  //         } else {
+  //           await exchange.remove();
+  //             if(response.getTransactionResponse().getErrors() != null){
+  //               return res.status(400).json({messgae: response.getTransactionResponse().getErrors().getError()[0].getErrorText()});
  
-              }
-              return res.status(400).json({messgae: 'Failed Transaction.'});
+  //             }
+  //             return res.status(400).json({messgae: 'Failed Transaction.'});
 
-          }    
-      } else {
-        await exchange.remove();
-          console.log('Failed Transaction. ');
-          if(response.getTransactionResponse() != null && response.getTransactionResponse().getErrors() != null){
-            return res.status(400).json({messgae: response.getTransactionResponse().getErrors().getError()[0].getErrorText()});
+  //         }    
+  //     } else {
+  //       await exchange.remove();
+  //         console.log('Failed Transaction. ');
+  //         if(response.getTransactionResponse() != null && response.getTransactionResponse().getErrors() != null){
+  //           return res.status(400).json({messgae: response.getTransactionResponse().getErrors().getError()[0].getErrorText()});
     
-          }
-          else {
-            return res.status(400).json({messgae:response.getMessages().getMessage()[0].getText()});
+  //         }
+  //         else {
+  //           return res.status(400).json({messgae:response.getMessages().getMessage()[0].getText()});
             
-          }
-      }  
-    } else {
-      await exchange.remove();
-      return res.status(400).json({messgae: 'Failed Transaction.'});
-    }
-  });
+  //         }
+  //     }  
+  //   } else {
+  //     await exchange.remove();
+  //     return res.status(400).json({messgae: 'Failed Transaction.'});
+  //   }
+  // });
 };

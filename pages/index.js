@@ -75,7 +75,7 @@ const index = () => {
       });
       toast.success("Wallet added succesfully.")
     } catch (error) {
-      toast.success("Failed in adding a new wallet.")
+      toast.error("Failed in adding a new wallet.")
   
     }  
   }

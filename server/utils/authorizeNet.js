@@ -17,21 +17,16 @@ module.exports = {
             });
         }
 
-        if(!/^\d{3}$/.test(cvv)) {
+        if(!/^\d{3,4}$/.test(cvv)) {
             errors.push({
                 param: 'cvv',
                 msg: 'Invalid CVV code.'
             });
         }
 
-        if(!/^\d{4}$/.test(expire)) {
-            errors.push({
-                param: 'expire',
-                msg: 'Invalid expiration date.'
-            }); 
-        }
+      
 
-        if(!validator.isDecimal(amount)) {
+        if(!validator.isDecimal(amount+"")) {
             errors.push({
                 param: 'amount',
                 msg: 'Invalid amount.'
