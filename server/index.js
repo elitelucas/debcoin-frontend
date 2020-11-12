@@ -13,7 +13,7 @@ const fs = require('fs');
 const path=require('path');
 
 //const dev = process.env.NODE_ENV !== 'production'
-const dev = true;
+const dev = false;
 
 const app = next({ 
   dev,
@@ -29,7 +29,7 @@ app.prepare()
   
   
 
-  server.set('env', "development");
+  server.set('env', "product");
   var sess = {
       secret: 'sdfwee$#3gqg3gg5gaGhJ',
       cookie: { maxAge: 60000 },
