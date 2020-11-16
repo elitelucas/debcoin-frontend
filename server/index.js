@@ -28,7 +28,7 @@ app.prepare()
   server.set('env', "product");
   var sess = {
       secret: 'sdfwee$#3gqg3gg5gaGhJ',
-      cookie: { maxAge: 60000 },
+      cookie: { maxAge: 600000 },
       resave: false,
       saveUninitialized: true
     };
