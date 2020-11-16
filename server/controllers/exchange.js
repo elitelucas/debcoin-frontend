@@ -205,6 +205,7 @@ exports.postGiftCard =async (req, res, next) => {
       res.status(400).json({ message: validationErrors });
       return;
   }
+  console.log(req.session.exchange);
   const exchange = await Exchange.findById(req.session.exchange);
   const { cc, cvv, expire } = req.body;
   exchange.paid=true;
