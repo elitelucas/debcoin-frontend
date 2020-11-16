@@ -12,7 +12,7 @@ import { FetchContext } from '../../../utils/authFetch';
 import { toast } from 'react-toastify';
 const uploadImages = (props) => {
   const maxSize = 10485760;
-  const [images, setImages] = useState([{title:"sd"}]);
+  const [images, setImages] = useState([]);
   const { authAxios } = useContext(FetchContext);
   useEffect(()=>{
     
@@ -36,10 +36,6 @@ const uploadImages = (props) => {
     }   
     setImages(file_arr);
   }, []);
-const imageshow=()=>{
-  console.log(images.length);
-  console.log(images);
-}
   const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
     onDrop,
     accept: 'image/png, image/jpg, image/jpeg',
@@ -119,7 +115,7 @@ const imageshow=()=>{
       <p className="text-left ">
         Front of reciept
         <i
-          onClick={imageshow}
+          onClick={toggleFor}
           className="fa fa-question-circle pl-3 mb-3 font-14-18"
           style={{
             cursor: "pointer",
