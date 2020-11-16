@@ -33,9 +33,6 @@ const startYourOrder = (props) => {
   useEffect(() => {
     setUsd(props.amount);
     setBtc(Math.floor(100000000*parseFloat(props.amount)/parseFloat(props.price))/100000000);
-    console.log(props.amount);
-    console.log(props.price);
-    console.log(Math.floor(100000000*parseFloat(props.amount)/parseFloat(props.price))/100000000);
   },[props.amount,props.price]);
   useEffect(() => {
     timer1=setInterval(async ()=>{
@@ -59,10 +56,10 @@ const startYourOrder = (props) => {
     <div>
       <div
         className=" d-flex row  p-2 w-100"
-        style={{ backgroundColor: "#ebf9f4" }}>
+        style={{ backgroundColor: "#ebf5ff", marginLeft: '0', marginRight: '0' }}>
         <div className="col-12 ">
           <span className="text-left font-14-18" style={{}}>
-            <i className="fab fa-btc pr-2"></i>Bitcoins
+            <i className="fa fa-btc pr-2"></i>Bitcoins
           </span>
   <span className="float-right font-14-18">1BTC = ${props.price}USD</span>
           <br />
@@ -89,7 +86,7 @@ const startYourOrder = (props) => {
                       USD
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input type="number" min={25} value={usd} name="usd" id="usd" placeholder="USD" onChange={calc_btc} />
+                  <Input type="number" style={{backgroundColor:'white'}} min={25} value={usd} name="usd" id="usd" placeholder="USD" onChange={calc_btc} />
                 </InputGroup>
               </Col>
             </FormGroup>
@@ -106,7 +103,7 @@ const startYourOrder = (props) => {
                       BTC
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input type="number" value={btc} name="BTC" id="BTC" placeholder="BTC" onChange={calc_usd} />
+                  <Input type="number" disabled value={btc} name="BTC" id="BTC" placeholder="BTC" />
                 </InputGroup>
               </Col>
             </FormGroup>

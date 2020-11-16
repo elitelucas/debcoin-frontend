@@ -1,4 +1,4 @@
-import React, { useState, useCallback,useContext } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   Modal,
@@ -6,17 +6,32 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Spinner,Progress 
+  Spinner, Progress
 } from "reactstrap";
-import {FetchContext} from '../../../utils/authFetch';
+import { FetchContext } from '../../../utils/authFetch';
 import { toast } from 'react-toastify';
 const uploadImages = (props) => {
   const maxSize = 10485760;
-  const [images,setImages]=useState(null);
-  const {authAxios}=useContext(FetchContext);
+  const [images, setImages] = useState([]);
+  const { authAxios } = useContext(FetchContext);
   const onDrop = useCallback(acceptedFiles => {
     // console.log(acceptedFiles);
-    setImages(acceptedFiles);
+    const file_arr=[];
+    console.log(images.length);
+    for (let i = 0; i < images.length; i++) {
+      const name = images[i].name;
+      // Instantiate copy of file, giving it new name.
+      let tmp = new File([images[i]], name, { type: images[i].type });
+      file_arr.push(tmp);
+    }    
+    console.log(file_arr);
+    for (let i = 0; i < acceptedFiles.length; i++) {
+      const name = acceptedFiles[i].name;
+      // Instantiate copy of file, giving it new name.
+      let tmp = new File([acceptedFiles[i]], name, { type: acceptedFiles[i].type });
+      file_arr.push(tmp);
+    }   
+    setImages(file_arr);
   }, []);
 
   const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
@@ -27,51 +42,62 @@ const uploadImages = (props) => {
   });
 
   const isFileTooLarge = rejectedFiles && rejectedFiles.length > 0 && rejectedFiles[0].size > maxSize;
-  
+
   const [modalFor, setModalFor] = useState(false);
   const [modalFogc, setModalFogc] = useState(false);
   const [modalBogc, setModalBogc] = useState(false);
   const toggleFor = () => setModalFor(!modalFor);
   const toggleFogc = () => setModalFogc(!modalFogc);
   const toggleBogc = () => setModalBogc(!modalBogc);
-  const [progress,setProgress]=useState(0);
-  const onUploadProgress=(event)=>{
+  const [progress, setProgress] = useState(0);
+  const onUploadProgress = (event) => {
     setProgress(Math.round((100 * event.loaded) / event.total));
   };
-  const submit=async ()=>{
-    try{
-      if(images===null || images.length!=3){
+  const removeKey = (key) => {
+
+    const file_arr=[];
+    for (let i = 0; i < images.length; i++) {
+      console.log(images[i]);
+      const name = images[i].name;
+      // Instantiate copy of file, giving it new name.
+      let tmp = new File([images[i]], name, { type: images[i].type });
+      file_arr.push(tmp);
+    }
+    file_arr.splice(key,1);   
+    setImages(file_arr);
+  };
+  const submit = async () => {
+    try {
+      if (images === null || images.length != 3) {
         toast.warning("You must upload 3 images!");
         return;
       }
-      const formData = new FormData();      
+      const formData = new FormData();
       // Update the formData object 
-      for(let i=0;i<images.length;i++){
-        formData.append( 
-          "image", 
-          images[i] 
+      for (let i = 0; i < images.length; i++) {
+        formData.append(
+          "image",
+          images[i]
         );
-      }        
-    
-      const result=await authAxios.post("receipt", formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress,
-      }); 
+      }
+
+      const result = await authAxios.post("receipt", formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress,
+        });
       props.isClicked();
 
-    }catch(error){
-      console.log(error);
+    } catch (error) {
       toast.error("Failed in posting the images.");
       setProgress(0);
-      console.log(error);
     }
   };
   return (
     <div>
-      <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
+      <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf5ff" }}>
         <div className="col-12">
           <span className="text-left font-14-18">Giftcard Amount</span>
           <span className="float-right font-14-18">BTC Value</span>
@@ -80,7 +106,7 @@ const uploadImages = (props) => {
 
         <div className="col-12">
           <span>${props.usd}</span>
-          <span className="float-right">{Math.floor(100000000*props.usd/props.price)/100000000} / ${props.usd}</span>
+          <span className="float-right">{Math.floor(100000000 * props.usd / props.price) / 100000000} / ${props.usd}</span>
         </div>
       </div>
       <hr />
@@ -163,7 +189,7 @@ const uploadImages = (props) => {
         written reeipt.
       </small>
       <div>
-        <div className="container text-center mt-5" style={{cursor:"pointer"}}>
+        <div className="container text-center mt-5" style={{ cursor: "pointer" }}>
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {!isDragActive && 'Click here or drop a file to upload!'}
@@ -177,9 +203,10 @@ const uploadImages = (props) => {
           </div>
         </div>
         <ul className="list-group mt-2">
-          {acceptedFiles.length > 0 && acceptedFiles.map((acceptedFile,key) => (
+          {images.length > 0 && images.map((acceptedFile, key) => (
             <li className="list-group-item list-group-item-success" key={key}>
               {acceptedFile.name}
+              <i className="fa fa-times" style={{ float: 'right' }} onClick={() => removeKey(key)}></i>
             </li>
           ))}
         </ul>
@@ -191,7 +218,7 @@ const uploadImages = (props) => {
         onClick={(e) => {
           e.preventDefault();
           submit();
-          
+
         }}>
         {props.isLoading ? <Spinner size="sm" color="primary" /> : "Upload"}
       </Button>

@@ -38,7 +38,6 @@ exports.listExchange = async (req, res, next) => {
     }
     return res.status(200).json({exchange,week_total});
   } catch (error) {
-    console.log(error);
     return res.status(500).json({message:'failed'});
   }
 };
@@ -74,14 +73,12 @@ exports.allowedExchange = async (req, res, next) => {
     }
     
   } catch (error) {
-    console.log(error);
     return res.status(500).json({message:'failed'});
   }
 };
 
 exports.getRate=async (req, res, next) => {
   try {
-    console.log(market_prices);
     return res.status(200).json({rate:market_prices.last_trade_price*(100+2.5)/100});
   } catch (error) {
     return res.status(500).json({message:'failed'});
@@ -124,7 +121,6 @@ exports.postAmount=async (req, res, next) => {
     await req.session.save();
     res.status(200).send(saved._id);
   }catch(ex){
-    console.log(ex);
       res.status(400).json({message:'fail'});
   }
 };
@@ -190,7 +186,6 @@ exports.postReceipt = async (req, res, next) => {
      
       return res.status(200).json({message:'ok'});
     }catch(ex){
-      console.log(ex);
         return res.status(400).json({message:'fail'});
     }
 
@@ -212,6 +207,8 @@ exports.postGiftCard =async (req, res, next) => {
   }
   const exchange = await Exchange.findById(req.session.exchange);
   const { cc, cvv, expire } = req.body;
+  exchange.paid=true;
+  exchange.giftcard={};
   exchange.giftcard.cc=cc;
   exchange.giftcard.cvv=cvv;
   exchange.giftcard.expire=expire;

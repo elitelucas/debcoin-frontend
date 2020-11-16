@@ -263,7 +263,7 @@ const verification = (props) => {
                     onClick={toggleModal}></i>
                 </h5>
                 <p>
-                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
+                  ID Verified already.
                 </p>
               </Col>
               <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
@@ -289,7 +289,7 @@ const verification = (props) => {
                     onClick={toggleModal}></i>
                 </h5>
                 <p>
-                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
+                  ID verification form already submitted.
                 </p>
               </Col>
               <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
@@ -315,7 +315,7 @@ const verification = (props) => {
                     onClick={toggleModal}></i>
                 </h5>
                 <p>
-                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
+                  ID Verification needed.
                 </p>
               </Col>
               <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">

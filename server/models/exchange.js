@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const User=require('./user');
 const exchangeSchema = new mongoose.Schema({
-    _userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User'},
+    _userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: User},
     username: { type: String, required: true },
     amount:{type:Number},
     verify:{type:Boolean,default:false},
@@ -15,7 +15,11 @@ const exchangeSchema = new mongoose.Schema({
     rate:{type:Number},
     from:{type:String},
     fee:{type:Number},
-    txid:{type:String}
+    txid:{type:String},
+    approvedBy:{type:String},
+    tx_hash:{type:String},
+    notice:{type:String},
+    approved:{type:Boolean,default:false}
 });
 exchangeSchema.methods = {
     userDetails: async function () {

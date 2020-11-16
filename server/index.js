@@ -13,7 +13,7 @@ const fs = require('fs');
 const path=require('path');
 
 //const dev = process.env.NODE_ENV !== 'production'
-const dev = false;
+const dev = true;
 
 const app = next({ 
   dev,
@@ -25,11 +25,7 @@ const handle = app.getRequestHandler();
 app.prepare()
 .then(() => {
   const server = express()
-    
-  
-  
-
-  server.set('env', "product");
+  server.set('env', "develop");
   var sess = {
       secret: 'sdfwee$#3gqg3gg5gaGhJ',
       cookie: { maxAge: 60000 },

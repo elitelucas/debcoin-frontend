@@ -23,43 +23,46 @@ const giftCardInformation = (props) => {
   const [cvv, setCVV] = useState('');
   const [modal, setModal] = useState(false);
   let now_year = (new Date()).getFullYear();
-  let now_month = ((new Date()).getMonth() + 1);
   const dates=[];
-  for(let i=0;i<36;i++){
-    if(now_month<10){
-      dates[i]=now_year+"/0"+now_month;
-    }else{
-      dates[i]=now_year+"/"+now_month;
-    }
-    
-    if(now_month===12){
-      now_month=1;
-      now_year+=1;
-    }else{
-      now_month+=1;
-    }
+  for(let i=1;i<11;i++){
+    dates[i-1]=now_year+i;
   }
-  const [expired, setExpired] = useState(dates[0]);
+  const [expired, setExpired] = useState({
+    year:now_year+1,
+    month:'01'
+  });
   const onCVV=(value)=>{
     setCVV(value);
-
-  }
+  };
+  const handleExp=(val,type)=>{
+    if(type==0)
+      setExpired({
+        ...expired,
+        month:val
+      });
+    else
+      setExpired({
+        ...expired,
+        year:val
+      });
+  };
   const submit = async () => {
-    console.log(expired);
     try {
       if(cardNumber==='' || cvv==='' || expired==='')
       {
         toast.error("Please fill out all the form.");
         return;
       }
-      if(!cvv.match(/^[0-9]{3,4}$/)){
+      let tmp_cvv=parseInt(cvv);
+      tmp_cvv+="";
+      if(!tmp_cvv.match(/^[0-9]{3,4}$/)){
         toast.error("Only 3 or 4 digits allowed in cvv.");
         return;
       }
       const result = await authAxios.post("giftcard", {
         cc: cardNumber,
-        cvv: cvv,
-        expire: expired,
+        cvv: tmp_cvv,
+        expire: expired.year+"/"+expired.month,
         amount: props.usd
       });
       setModal(true);
@@ -75,7 +78,7 @@ const giftCardInformation = (props) => {
   };
   return (
     <div>
-      <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
+      <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf5ff" }}>
         <div className="col-12">
           <span className="text-left font-14-18">Giftcard Amount</span>
           <span className="float-right font-14-18">BTC Value</span>
@@ -100,7 +103,22 @@ const giftCardInformation = (props) => {
             <Col md="6">
               <FormGroup>
                 <Label for="expirationDate">Expiration Date *</Label>
-                <Input type="select" name="select" id="expirationDate" onChange={(e) => { setExpired(e.target.value) }}  name="expirationDate" value={expired} placeholder="YY/MM">
+                <br />
+                <Input style={{display:'inline-block',width:'45%',marginRight:'5px'}} type="select" name="select" id="expirationDate1" onChange={(e) => { handleExp(e.target.value,0) }}  name="expirationDate1" value={expired.month} placeholder="MM">
+                  <option >01</option>
+                  <option >02</option>   
+                  <option >03</option>   
+                  <option >04</option>                  
+                  <option >05</option>   
+                  <option >06</option>   
+                  <option >07</option>   
+                  <option >08</option>   
+                  <option >09</option>   
+                  <option >10</option>   
+                  <option >11</option>   
+                  <option >12</option>                     
+                </Input>   
+                <Input style={{display:'inline-block',width:'45%'}} type="select" name="select" id="expirationDate2" onChange={(e) => { handleExp(e.target.value,1) }}  name="expirationDate2" value={expired.year} placeholder="YY">
                   {dates.map((ele,key)=>(
                     <option key={key}>{ele}</option>
                   ))}                  
@@ -110,13 +128,8 @@ const giftCardInformation = (props) => {
             <Col md="6">
               <FormGroup>
                 <Label for="cvv">CVV*</Label>
-                <Input
-                  type="text"
-                  name="cvv"
-                  id="cvv"
-                  placeholder="3 or 4 digits"
-                  value={cvv}
-                  onChange={(e) => {onCVV(e.target.value)}} />
+                <NumberFormat placeholder="3 or 4 digits" name="cvv"
+                  id="cvv" format="####" mask="_" value={cvv} onChange={(e) => { onCVV(e.target.value) }} />                
               </FormGroup>
             </Col>
           </Row>

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { FormGroup, Input, Spinner, Button } from "reactstrap";
 import AddWallet from "../Settings/AddWallet";
+import { toast } from 'react-toastify';
 const selectWallet = (props) => {
   const [modal4, setModal4] = useState(false);
   const toggleModal4 = () => setModal4(!modal4);
   const [wallet, setWallet] = useState("");
   return (
     <div>
-      <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf9f4" }}>
+      <div className=" d-flex row  p-2" style={{ backgroundColor: "#ebf5ff" }}>
         <div className="col-12">
           <span className="text-left font-14-18">Giftcard Amount</span>
           <span className="float-right font-14-18">BTC Value</span>
@@ -62,11 +63,11 @@ const selectWallet = (props) => {
           </>
         )}
       </div>
-      <div
+      {/* <div
         className="alert alert-danger dark  fade show text-left"
         role="alert">
         Please select a wallet.
-      </div>
+      </div> */}
       <Button
         className="btn primary-btn btn-default text-uppercase mt-3"
         disabled={props.isLoading}
@@ -74,6 +75,8 @@ const selectWallet = (props) => {
           e.preventDefault();
           if (wallet !== "" && props.wallet[wallet])
             props.isClicked(props.wallet[wallet]);
+          else
+            toast.error("Please select a wallet.")
         }}>
         {props.isLoading ? <Spinner size="sm" color="primary" /> : "Select"}
       </Button>

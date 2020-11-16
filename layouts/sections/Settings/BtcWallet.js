@@ -31,7 +31,7 @@ const BtcWallet = (props) => {
             {props.wallet && props.wallet.length > 0
               ? props.wallet.map((ele, key) => (
                   <Col xs="12" md="4" className="shadow-sm mt-2" key={key}>
-                    <div class="card-header pl-2 pr-2 ">
+                    <div className="card-header pl-2 pr-2 ">
                       <strong> {ele.title}</strong>
                       <span className="float-right" onClick={remove(key)}>
                         <i
