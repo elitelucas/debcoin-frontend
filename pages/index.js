@@ -43,7 +43,8 @@ const index = () => {
   const getRate=async ()=>{
     try{
       let tmp=await publicFetch('getRate').catch((err)=>{});
-      setRate(tmp.data.rate);
+
+      setRate(Math.floor(parseFloat(tmp.data.rate)*100)/100);
     }catch(err){
       
     }
