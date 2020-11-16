@@ -9,7 +9,7 @@ const verifySms = (props) => {
   <span className="text-dark">+{props.phoneNumber}</span>
       </p>
       <div className="login-modal">
-        <Form>
+        <Form onSubmit={(e)=>{e.preventDefault();}}>
           <div className="form-row">
             <FormGroup className="col-md-12">
               <Label for="inputEmail">SMS</Label>
@@ -25,6 +25,7 @@ const verifySms = (props) => {
           </div>
 
           <Button
+          type="button"
             className="btn primary-btn btn-default text-uppercase mt-0"
             disabled={props.isLoading}
             onClick={(e) => {

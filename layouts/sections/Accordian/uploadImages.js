@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useCallback, useContext, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   Modal,
@@ -12,12 +12,15 @@ import { FetchContext } from '../../../utils/authFetch';
 import { toast } from 'react-toastify';
 const uploadImages = (props) => {
   const maxSize = 10485760;
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([{title:"sd"}]);
   const { authAxios } = useContext(FetchContext);
+  useEffect(()=>{
+    
+  },[images]);
   const onDrop = useCallback(acceptedFiles => {
     // console.log(acceptedFiles);
     const file_arr=[];
-    console.log(images.length);
+    console.log(images);
     for (let i = 0; i < images.length; i++) {
       const name = images[i].name;
       // Instantiate copy of file, giving it new name.
@@ -33,7 +36,10 @@ const uploadImages = (props) => {
     }   
     setImages(file_arr);
   }, []);
-
+const imageshow=()=>{
+  console.log(images.length);
+  console.log(images);
+}
   const { isDragActive, getRootProps, getInputProps, isDragReject, acceptedFiles, rejectedFiles } = useDropzone({
     onDrop,
     accept: 'image/png, image/jpg, image/jpeg',
@@ -113,7 +119,7 @@ const uploadImages = (props) => {
       <p className="text-left ">
         Front of reciept
         <i
-          onClick={toggleFor}
+          onClick={imageshow}
           className="fa fa-question-circle pl-3 mb-3 font-14-18"
           style={{
             cursor: "pointer",
