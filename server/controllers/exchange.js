@@ -201,6 +201,7 @@ exports.postReceipt = async (req, res, next) => {
   .json({message:"Only .png and .jpg files are allowed!"});
 };
 exports.postGiftCard =async (req, res, next) => {
+  console.log(req.session.exchange);
   const validationErrors = validateForm(req);
   if(validationErrors.length > 0) {
       res.status(400).json({ message: validationErrors });
