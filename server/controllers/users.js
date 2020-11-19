@@ -1,7 +1,6 @@
 const User = require('../models/user');
 const Contact = require('../models/contact');
 const Token = require('../models/token');
-const jwtDecode = require('jwt-decode');
 const { body, validationResult } = require('express-validator');
 const { ipDetect } = require('../utils/ipDetect');
 const { createToken, hashPassword, verifyPassword } = require('../utils/authentication');
@@ -12,7 +11,10 @@ const crypto = require('crypto');
 const config = require('../config');
 const Tier2 = require('../models/tier2');
 const Tier3 = require('../models/tier3');
+
+//signup
 exports.signup = async (req, res) => {
+  //to check validation
   const result = validationResult(req);
   if (!result.isEmpty()) {
     const errors = result.array({ onlyFirstError: true });
@@ -40,7 +42,7 @@ exports.signup = async (req, res) => {
       ip: req.ip,
       locationDetails,
     };
-
+    //to check if it name is already registered
     var existingUsername = await User.findOne({
       username: userData.username
     });
@@ -50,6 +52,8 @@ exports.signup = async (req, res) => {
         message: 'Username already exists.'
       });
     }
+
+    //to check if it email is already registered
     existingUsername = await User.findOne({
       email: userData.email
     });
@@ -59,6 +63,8 @@ exports.signup = async (req, res) => {
         message: 'Email already exists.'
       });
     }
+
+    //to check if it Phone number is already registered
     existingUsername = await User.findOne({
       phoneNumber: userData.phoneNumber
     });
@@ -68,14 +74,14 @@ exports.signup = async (req, res) => {
         message: 'Phone Number already exists.'
       });
     }
+
+    //to save user
     const newUser = new User(userData);
     const savedUser = await newUser.save();
 
     if (savedUser) {
       const token = createToken(savedUser);
       const expiresAt = config.jwt.expiry;
-
-
       const { username, role, id, created, wallet, email, phoneNumber, emailVerified, phoneVerified, level } = savedUser;
       const userInfo = {
         username,
@@ -98,6 +104,8 @@ exports.signup = async (req, res) => {
     });
   }
 };
+
+//sms verification
 exports.requestVerify = async (req, res) => {
   const bool = await verificationRequest(req.user.phoneNumber);
   if (bool)
@@ -119,7 +127,7 @@ exports.resultVerify = async (req, res) => {
     return res.status(500).send('failed');
 };
 
-
+//Email verification
 exports.requestEmailVerify = async (req, res) => {
   var token = new Token({ _userId: req.user.id, token: crypto.randomBytes(16).toString('hex') });
   // Save the token
@@ -162,7 +170,7 @@ exports.resultEmailVerify = async (req, res) => {
   });
 };
 
-
+//to change user phone
 exports.phoneChange = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
@@ -182,25 +190,20 @@ exports.phoneChange = async (req, res) => {
 
 };
 
-
+//to change password
 exports.passwordChange = async (req, res) => {
-
   const result = validationResult(req);
   if (!result.isEmpty()) {
     const errors = result.array({ onlyFirstError: true });
     return res.status(422).json({ errors });
   }
   try {
-    // verify captchca
-
     const user = await User.findById(req.user.id);
-
     if (!user) {
       return res.status(403).json({
         message: 'Wrong username or password.'
       });
     }
-
     const passwordValid = await verifyPassword(req.body.old_password, user.password);
 
     if (passwordValid) {
@@ -219,6 +222,8 @@ exports.passwordChange = async (req, res) => {
   }
 };
 
+
+//signin
 exports.authenticate = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
@@ -246,11 +251,6 @@ exports.authenticate = async (req, res) => {
         message: 'Wrong username .'
       });
     }
-    //if(!user.phoneVerified){
-    //  return res.status(403).json({
-    //    message: 'Please have a phone verification.'
-    //  });
-    //}
     const passwordValid = await verifyPassword(password, user.password);
 
     if (passwordValid) {
@@ -287,6 +287,7 @@ exports.authenticate = async (req, res) => {
   }
 };
 
+//to change email and phone number
 exports.putProfile = async (req, res) => {
 
   try {
@@ -313,6 +314,7 @@ exports.putProfile = async (req, res) => {
 
 };
 
+//to submit a form --contact us
 exports.postContact = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {

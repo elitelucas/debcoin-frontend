@@ -2,6 +2,7 @@ import React from "react";
 import { Label, Form, FormGroup, Input, Button, Spinner } from "reactstrap";
 const verifySms = (props) => {
   const [sms,setSMS]=React.useState('');
+  
   return (
     <div className="col-12 mt-3">
       <p>
@@ -10,6 +11,10 @@ const verifySms = (props) => {
       </p>
       <div className="login-modal">
         <Form onSubmit={(e)=>{e.preventDefault();}}>
+          <div className="form-row">
+          <Button color="success" onClick={props.verifyReq}>ReSend OTP</Button>
+          </div>
+
           <div className="form-row">
             <FormGroup className="col-md-12">
               <Label for="inputEmail">SMS</Label>

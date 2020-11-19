@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
 var WAValidator = require('wallet-address-validator');
-
+//to show all wallet
 exports.listWallet = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
@@ -11,8 +11,9 @@ exports.listWallet = async (req, res, next) => {
     return res.status(500).json({message:'failed'});
   }
 };
-
+//to add a new wallet
 exports.createWallet = async (req, res, next) => {
+  //to check validation
   const result = validationResult(req);
   if (!result.isEmpty()) {
     const errors = result.array({ onlyFirstError: true });
@@ -23,6 +24,7 @@ exports.createWallet = async (req, res, next) => {
      return res.status(400).json({
        message: 'Address Invalid.'
      });
+  //to add
   try {
     const {title,address}=req.body;
     const user = await User.findById(req.user.id);
@@ -37,6 +39,8 @@ exports.createWallet = async (req, res, next) => {
     return res.status(500).json({message:'failed'});
   }
 };
+
+//to remove a wallet
 exports.removeWallet = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);

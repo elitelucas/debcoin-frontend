@@ -1,15 +1,12 @@
 const Exchange = require('../models/exchange');
 const User = require('../models/user');
-const { body, validationResult } = require('express-validator');
-const fetch = require('node-fetch');
 const {verificationRequest,verificationResult}=require('../utils/twilio');
 const user = require('../models/user');
-const {validateForm,chargeCreditCard} =require('../utils/authorizeNet');
-const ApiContracts = require('authorizenet').APIContracts;
-const ApiControllers = require('authorizenet').APIControllers;
-const SDKConstants = require('authorizenet').Constants;
+const {validateForm} =require('../utils/authorizeNet');
+// const ApiContracts = require('authorizenet').APIContracts;
+// const ApiControllers = require('authorizenet').APIControllers;
+// const SDKConstants = require('authorizenet').Constants;
 const getRateInfo =require('../utils/getRateInfo');
-const { findById } = require('../models/user');
 const fs=require('fs');
 const path=require('path');
 const del=require('del');
@@ -22,14 +19,16 @@ const getPrices=async ()=>{
 getPrices();
 setInterval(getPrices,300000);
 
-
+//exchange history
 exports.listExchange = async (req, res, next) => {
   try {
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1},paid:true}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
+    //to calculate Sunday of current week
     sunday.setDate(today.getDate()-today.getDay());
     var week_total=0;
+    //to sum up all the exchanges in a week
     for(var i=0;i<exchange.length;i++){
         if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
             week_total+=parseFloat(exchange[i].amount);
@@ -41,9 +40,10 @@ exports.listExchange = async (req, res, next) => {
     return res.status(500).json({message:'failed'});
   }
 };
-
+//to know how much left in this week
 exports.allowedExchange = async (req, res, next) => {
   try {    
+    //to get the corrupt exchanges and remove
     const trash = await Exchange.find({_userId:req.user.id,paid:false}).sort('-createdAt');
     for(let i=0;i<trash.length;i++){
       if (fs.existsSync(path.join(__dirname, "../../../admin/uploads/exchange/"+trash[i].id))) {
@@ -51,7 +51,8 @@ exports.allowedExchange = async (req, res, next) => {
       }
       await trash[i].remove();
     }
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
+    //to sum up all the exchanges in a week
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1},paid:true}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -62,8 +63,8 @@ exports.allowedExchange = async (req, res, next) => {
         }else
             break;
     }
-    const user=await User.findById(req.user.id);
-    
+
+    const user=await User.findById(req.user.id);    
     if(user.level===2){
       return res.status(200).json({total:(1999-week_total>500)? 500 : (1999-week_total)});
     }else if(user.level===3){
@@ -76,7 +77,8 @@ exports.allowedExchange = async (req, res, next) => {
     return res.status(500).json({message:'failed'});
   }
 };
-
+//to know the rate
+//including fee-2.5%
 exports.getRate=async (req, res, next) => {
   try {
     return res.status(200).json({rate:market_prices.last_trade_price*(100+2.5)/100});
@@ -84,9 +86,11 @@ exports.getRate=async (req, res, next) => {
     return res.status(500).json({message:'failed'});
   }
 };
+//exchanging step-1
 exports.postAmount=async (req, res, next) => {
   try {
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1}}).sort('-createdAt');
+    //to sum up all the exchanges in a week
+    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1},paid:true}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -97,6 +101,7 @@ exports.postAmount=async (req, res, next) => {
         }else
             break;
     }
+    //to check if it is allowed
     const user=await User.findById(req.user.id);
     var allowed;
     if(user.level===2){
@@ -109,13 +114,13 @@ exports.postAmount=async (req, res, next) => {
     if(req.body.amount<25 || req.body.mount>allowed){
       return res.status(400).json({message:" must be between 25$ and "+allowed+"$"});
     }  
+
+    //to register the exchange
     const comp={};
     comp._userId=req.user.id;
     comp.username=req.user.username;
     comp.amount=Math.abs(parseFloat(req.body.amount));
-    comp.rate=market_prices.last_trade_price*(100+2.5)/100;
-    
-    
+    comp.rate=market_prices.last_trade_price*(100+2.5)/100;    
     const saved=await (new Exchange(comp)).save();
     req.session.exchange=saved._id;
     await req.session.save();
@@ -124,6 +129,7 @@ exports.postAmount=async (req, res, next) => {
       res.status(400).json({message:'fail'});
   }
 };
+//Exchange step-2
 exports.smsVerify = async (req, res) => {
   const bool=await verificationRequest(req.user.phoneNumber);
   if(bool)
@@ -131,7 +137,6 @@ exports.smsVerify = async (req, res) => {
   else
     return res.status(500).send('failed');
 };
-
 
 exports.smsResult = async (req, res) => {
   const bool=await verificationResult(req.user.phoneNumber,req.body.code);
@@ -149,6 +154,8 @@ exports.smsResult = async (req, res) => {
   else
       return res.status(400).json({message:'otp failed'});
 };
+
+//Exchange step-3
 exports.selectWallet = async (req, res, next) => {
   try{
       
@@ -166,48 +173,45 @@ exports.selectWallet = async (req, res, next) => {
       return res.status(500).json({message:'server error'});
   }
 };
+
+//Exchange step-4
 exports.postReceipt = async (req, res, next) => {
   if(req.files) {
     try{
       const exchange = await Exchange.findById(req.session.exchange);  
-
-      
+      //to make dir if it is not existed
       if (!fs.existsSync(path.join(__dirname, "../../../admin/uploads/exchange/"))) {
         fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/exchange/"));
       }
       
       fs.mkdirSync(path.join(__dirname, "../../../admin/uploads/exchange/"+req.session.exchange));
+      //to move the images
       for(let i=0;i<req.files.length;i++){
         const tempPath = req.files[i].path;     
         const targetPath = path.join(__dirname, "../../../admin/uploads/exchange/"+req.session.exchange+"/"+i+path.extname(req.files[i].originalname).toLowerCase());
         const renamed=fs.renameSync(tempPath, targetPath);
       } 
-        
-     
       return res.status(200).json({message:'ok'});
     }catch(ex){
       console.log(ex);
         return res.status(400).json({message:'fail'});
-    }
-
-
-      
-
-      
+    } 
   }
   res
   .status(403)
   .contentType("text/plain")
   .json({message:"Only .png and .jpg files are allowed!"});
 };
+
+//Exchange step-5
 exports.postGiftCard =async (req, res, next) => {
-  console.log(req.session.exchange);
+  //to check the card nmber
   const validationErrors = validateForm(req);
   if(validationErrors.length > 0) {
       res.status(400).json({ message: validationErrors });
       return;
   }
-  console.log(req.session.exchange);
+  //to finalize the exchange
   const exchange = await Exchange.findById(req.session.exchange);
   const { cc, cvv, expire } = req.body;
   exchange.paid=true;

@@ -133,7 +133,7 @@ const index = () => {
                                   ele.status == 1 ? (
                                     <span className="badge badge-success">Succeed</span>
                                   ) : (ele.status == 0 ? (
-                                    <span className="badge badge-info">Waiting</span>
+                                    <span className="badge badge-info">pending</span>
                                   ) : (
                                       <span className="badge badge-danger">Cancelled</span>
                                     ))
