@@ -119,6 +119,7 @@ const AccordionElementSection = (props) => {
               allowed={props.allowed}
               price={props.price}
               getRate={props.getRate}
+              seconds={props.seconds}
               isClicked={(param) => {
                 setUSD(param);
                 setIsLoading(true);

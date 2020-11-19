@@ -20,6 +20,7 @@ const index = () => {
   const {authAxios}=useContext(FetchContext);
   const {authState,isAuthenticated,loading,logout,setAuthState}=useContext(AuthContext);
   const [amount,setAmount]=useState(0);
+  const [secs,setSecs]=useState('');
   useEffect(() => {
     document.body.style.setProperty("--primary", "#333D7A");
     document.body.style.setProperty("--secondary", "##FAEBEE");
@@ -45,6 +46,7 @@ const index = () => {
       let tmp=await publicFetch('getRate').catch((err)=>{});
 
       setRate(Math.floor(parseFloat(tmp.data.rate)*100)/100);
+      setSecs(tmp.data.time);
     }catch(err){
       
     }
@@ -87,8 +89,10 @@ const index = () => {
       </Head>
 
       <Header className="saas2" isHome={true}/>
+      {secs ? (
+      <BannerSection seconds={secs} addWallet={addWallet} amount={amount} userInfo={authState.userInfo} allowed={allowed} price={rate} getRate={getRate} />
 
-      <BannerSection addWallet={addWallet} amount={amount} userInfo={authState.userInfo} allowed={allowed} price={rate} getRate={getRate} />
+      ) : 'Loading...'}
       <Guide />
       {/* <AccordianSection /> */}
       <License />

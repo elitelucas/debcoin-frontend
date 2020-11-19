@@ -1,5 +1,6 @@
 const Exchange = require('../models/exchange');
 const User = require('../models/user');
+const Fee=require('../models/fee');
 const {verificationRequest,verificationResult}=require('../utils/twilio');
 const user = require('../models/user');
 const {validateForm} =require('../utils/authorizeNet');
@@ -12,12 +13,19 @@ const path=require('path');
 const del=require('del');
 //prices of crypto currencies
 var market_prices;
+var start_time=(new Date()).getTime();
 //Get prices of crypto currencies on markets
 const getPrices=async ()=>{
-  market_prices=await getRateInfo();
+  start_time=(new Date()).getTime();
+  console.log('start_time='+start_time);
+  try{
+    market_prices=await getRateInfo();
+  }catch(err){
+    market_prices={last_trade_price:undefined};
+  }
 };
 getPrices();
-setInterval(getPrices,300000);
+setInterval(getPrices,30000);
 
 //exchange history
 exports.listExchange = async (req, res, next) => {
@@ -78,11 +86,20 @@ exports.allowedExchange = async (req, res, next) => {
   }
 };
 //to know the rate
-//including fee-2.5%
+//including fee
 exports.getRate=async (req, res, next) => {
   try {
-    return res.status(200).json({rate:market_prices.last_trade_price*(100+2.5)/100});
+    const tmp=await Fee.findOne({});
+    let fee=0;
+    if(tmp)
+      fee=tmp.fee;
+    let current_time=(new Date()).getTime();
+    console.log("current_time="+current_time);
+    current_time-=start_time;
+    console.log("remain="+current_time);
+    return res.status(200).json({rate:market_prices.last_trade_price*(100+fee)/100, time:current_time});
   } catch (error) {
+    console.log(error);
     return res.status(500).json({message:'failed'});
   }
 };
@@ -120,7 +137,12 @@ exports.postAmount=async (req, res, next) => {
     comp._userId=req.user.id;
     comp.username=req.user.username;
     comp.amount=Math.abs(parseFloat(req.body.amount));
-    comp.rate=market_prices.last_trade_price*(100+2.5)/100;    
+    const tmp=await Fee.findOne({});
+    //to get the fee
+    let fee=0;
+    if(tmp)
+      fee=tmp.fee;
+    comp.rate=market_prices.last_trade_price*(100+fee)/100;    
     const saved=await (new Exchange(comp)).save();
     req.session.exchange=saved._id;
     await req.session.save();

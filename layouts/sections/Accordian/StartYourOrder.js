@@ -14,7 +14,8 @@ import {
 import Router  from 'next/router';
 import { toast } from 'react-toastify';
 const startYourOrder = (props) => {
-  const [count,setCount]=useState(30);
+  console.log(props.seconds);
+  const [count,setCount]=useState((30-Math.floor(parseInt(props.seconds)/1000)));
   const [btc,setBtc]=useState(0);
   const [usd,setUsd]=useState(0);
   let timer1;
