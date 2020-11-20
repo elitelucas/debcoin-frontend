@@ -152,6 +152,7 @@ const AccordionElementSection = (props) => {
         <Collapse isOpen={true}>
           <CardBody>
             <VerifySms phoneNumber={props.userInfo.phoneNumber}
+            verifyReq={verifyReq}
               isClicked={(sms) => {
                 setIsLoading(true);
                 verifyResult(sms);
