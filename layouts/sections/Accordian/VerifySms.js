@@ -12,12 +12,13 @@ const verifySms = (props) => {
       <div className="login-modal">
         <Form onSubmit={(e)=>{e.preventDefault();}}>
           <div className="form-row">
-          <Button color="success" onClick={props.verifyReq}>ReSend OTP</Button>
+         
           </div>
 
           <div className="form-row">
             <FormGroup className="col-md-12">
               <Label for="inputEmail">SMS</Label>
+              <Button color="success" onClick={props.verifyReq} style={{float:'right'}}>ReSend OTP</Button>
               <Input
                 className="form-control"
                 id="SMS"

@@ -196,46 +196,46 @@ const verification = (props) => {
             </div>
           </Col>
           {
-            props.phoneVerified===true ? (
+            props.phoneVerified === true ? (
               <>
-              <Col sm="12" md="7">
-                <h5 className="mb-2"> SMS Verification</h5>
-                <p>
-                  Your mobile number {props.phoneNumber} is successfully verified via SMS.
+                <Col sm="12" md="7">
+                  <h5 className="mb-2"> SMS Verification</h5>
+                  <p>
+                    Your mobile number {props.phoneNumber} is successfully verified via SMS.
                 </p>
-              </Col>
-              <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
-                <Button
-                  style={{
-                    backgroundColor: colorSuccess,
-                  }}
-                  disabled>
-                  Verified
+                </Col>
+                <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
+                  <Button
+                    style={{
+                      backgroundColor: colorSuccess,
+                    }}
+                    disabled>
+                    Verified
                 </Button>
-              </Col>
+                </Col>
               </>
             ) : (
-              <>
-              <Col sm="12" md="7">
-                <h5 className="mb-2"> SMS Verification</h5>
-                <p>
-                  Your mobile number {props.phoneNumber} is not verified.
+                <>
+                  <Col sm="12" md="7">
+                    <h5 className="mb-2"> SMS Verification</h5>
+                    <p>
+                      Your mobile number {props.phoneNumber} is not verified.
                 </p>
-              </Col>
-              <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
-                <Button
-                  style={{
-                    backgroundColor: colorWarning,
-                  }}
-                  onClick={()=>props.verify(1)}
-                  >
-                  start
+                  </Col>
+                  <Col sm="12" md="3" className="mt-3 text-sm-center text-md-right">
+                    <Button
+                      style={{
+                        backgroundColor: colorWarning,
+                      }}
+                      onClick={() => props.verify(1)}
+                    >
+                      start
                 </Button>
-              </Col>
-              </>
-            )
+                  </Col>
+                </>
+              )
           }
-          
+
         </Row>
       </div>
 
@@ -252,86 +252,117 @@ const verification = (props) => {
                 }}></i>
             </div>
           </Col>
-          {props.level===2 ? (
-            <>
-              <Col sm="12" md="6">
-                {" "}
-                <h5 className="mb-2">
-                  ID Verification{" "}
-                  <i
-                    className="fa fa-question-circle pl-2"
-                    onClick={toggleModal}></i>
-                </h5>
-                <p>
-                  ID Verified already.
-                </p>
-              </Col>
-              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-                {" "}
-                <Button
-                  style={{
-                    backgroundColor: colorSuccess,
-                  }}
-                  disabled
+          {
+            props.phoneVerified != true ? (
+              <>
+                <Col sm="12" md="6">
+                  {" "}
+                  <h5 className="mb-2">
+                    ID Verification{" "}
+                    <i
+                      className="fa fa-question-circle pl-2"
+                      onClick={toggleModal}></i>
+                  </h5>
+                  <p>
+                    Your mobile number {props.phoneNumber} is not verified.
+                  </p>
+                </Col>
+                <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                  {" "}
+                  <Button
+                    style={{
+                      backgroundColor: colorSuccess,
+                    }}
+                    disabled
                   >
-                  Verified
-                </Button>
-              </Col>
-            </>
-          ) : ( props.tier2 ? (
-            <>
-              <Col sm="12" md="6">
-                {" "}
-                <h5 className="mb-2">
-                  ID Verification{" "}
-                  <i
-                    className="fa fa-question-circle pl-2"
-                    onClick={toggleModal}></i>
-                </h5>
-                <p>
-                  ID verification form already submitted.
-                </p>
-              </Col>
-              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-                {" "}
-                <Button
-                  style={{
-                    backgroundColor: colorWarning,
-                  }}
-                  onClick={()=>props.verify(2)}
-                  >
-                  Start
-                </Button>
-              </Col>
-            </>
-          ) : ( 
-            <>
-              <Col sm="12" md="6">
-                {" "}
-                <h5 className="mb-2">
-                  ID Verification{" "}
-                  <i
-                    className="fa fa-question-circle pl-2"
-                    onClick={toggleModal}></i>
-                </h5>
-                <p>
-                  ID Verification needed.
-                </p>
-              </Col>
-              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-                {" "}
-                <Button
-                  style={{
-                    backgroundColor: colorSuccess,
-                  }}
-                  disabled
-                  >
-                  uploaded
-                </Button>
-              </Col>
-            </>
-          ))}
-          
+                    Not Alloewd
+                  </Button>
+                </Col>
+              </>
+            ) : (
+                props.level === 2 ? (
+                  <>
+                    <Col sm="12" md="6">
+                      {" "}
+                      <h5 className="mb-2">
+                        ID Verification{" "}
+                        <i
+                          className="fa fa-question-circle pl-2"
+                          onClick={toggleModal}></i>
+                      </h5>
+                      <p>
+                        ID Verified already.
+                  </p>
+                    </Col>
+                    <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                      {" "}
+                      <Button
+                        style={{
+                          backgroundColor: colorSuccess,
+                        }}
+                        disabled
+                      >
+                        Verified
+                  </Button>
+                    </Col>
+                  </>
+                ) : (props.tier2 ? (
+                  <>
+                    <Col sm="12" md="6">
+                      {" "}
+                      <h5 className="mb-2">
+                        ID Verification{" "}
+                        <i
+                          className="fa fa-question-circle pl-2"
+                          onClick={toggleModal}></i>
+                      </h5>
+                      <p>
+                        ID verification form already submitted.
+                  </p>
+                    </Col>
+                    <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                      {" "}
+                      <Button
+                        style={{
+                          backgroundColor: colorWarning,
+                        }}
+                        onClick={() => props.verify(2)}
+                      >
+                        Start
+                  </Button>
+                    </Col>
+                  </>
+                ) : (
+                    <>
+                      <Col sm="12" md="6">
+                        {" "}
+                        <h5 className="mb-2">
+                          ID Verification{" "}
+                          <i
+                            className="fa fa-question-circle pl-2"
+                            onClick={toggleModal}></i>
+                        </h5>
+                        <p>
+                          ID Verification needed.
+                  </p>
+                      </Col>
+                      <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                        {" "}
+                        <Button
+                          style={{
+                            backgroundColor: colorSuccess,
+                          }}
+                          disabled
+                        >
+                          uploaded
+                  </Button>
+                      </Col>
+                    </>
+                  ))
+              )
+
+          }
+
         </Row>
       </div>
 
@@ -348,112 +379,167 @@ const verification = (props) => {
                 }}></i>
             </div>
           </Col>
-          {props.level===3 ? (
-            <>
-              <Col sm="12" md="6">
-                <h5 className="mb-2">
-                  Proof of Address
-                  <i
-                    className="fa fa-question-circle pl-2"
-                    onClick={toggleModal2}></i>
-                </h5>
-                <p>
-                  A utility bill is required to unlock Tier 3 limit. Make sure this
-                  includes your name and the address associated with your ID.
-                  Acceptable forms of Proof of Address include, but are not limited
-                  to:
-                </p>
-                <ul style={{ listStyleType: "disc" }} className="mt-3">
-                  <li>Electric Bill</li>
-                  <li>Water Bill</li>
-                  <li>Insurance Bill</li>
-                  <li>Insurance Bill</li>
-
-                  <li>Bank Statement</li>
-                </ul>
-              </Col>
-              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-                <Button
-                  style={{
-                    backgroundColor: colorSuccess,
-                  }}
-                  disabled
+          {
+            props.phoneVerified != true ? (
+              <>
+                <Col sm="12" md="6">
+                  <h5 className="mb-2">
+                    Proof of Address
+                      <i
+                      className="fa fa-question-circle pl-2"
+                      onClick={toggleModal2}></i>
+                  </h5>
+                  <p>
+                    Your mobile number {props.phoneNumber} is not verified.
+                    </p>
+                </Col>
+                <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                  <Button
+                    style={{
+                      backgroundColor: colorSuccess,
+                    }}
+                    disabled
                   >
-                  Verified
-                </Button>
-              </Col>
-            </>
-          ) : (props.tier3 ? (
-            <>
-              <Col sm="12" md="6">
-                <h5 className="mb-2">
-                  Proof of Address
-                  <i
-                    className="fa fa-question-circle pl-2"
-                    onClick={toggleModal2}></i>
-                </h5>
-                <p>
-                  A utility bill is required to unlock Tier 3 limit. Make sure this
-                  includes your name and the address associated with your ID.
-                  Acceptable forms of Proof of Address include, but are not limited
-                  to:
-                </p>
-                <ul style={{ listStyleType: "disc" }} className="mt-3">
-                  <li>Electric Bill</li>
-                  <li>Water Bill</li>
-                  <li>Insurance Bill</li>
-                  <li>Insurance Bill</li>
+                    Not Allowed
+                    </Button>
+                </Col>
+              </>
+            ) : (
+                props.level < 2 ? (
+                  <>
+                    <Col sm="12" md="6">
+                      <h5 className="mb-2">
+                        Proof of Address
+                      <i
+                          className="fa fa-question-circle pl-2"
+                          onClick={toggleModal2}></i>
+                      </h5>
+                      <p>
+                        Not ID Verified
+                    </p>
+                    </Col>
+                    <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                      <Button
+                        style={{
+                          backgroundColor: colorSuccess,
+                        }}
+                        disabled
+                      >
+                        Not Allowed
+                    </Button>
+                    </Col>
+                  </>
+                ) : (
+                    props.level === 3 ? (
+                      <>
+                        <Col sm="12" md="6">
+                          <h5 className="mb-2">
+                            Proof of Address
+                      <i
+                              className="fa fa-question-circle pl-2"
+                              onClick={toggleModal2}></i>
+                          </h5>
+                          <p>
+                            A utility bill is required to unlock Tier 3 limit. Make sure this
+                            includes your name and the address associated with your ID.
+                            Acceptable forms of Proof of Address include, but are not limited
+                            to:
+                    </p>
+                          <ul style={{ listStyleType: "disc" }} className="mt-3">
+                            <li>Electric Bill</li>
+                            <li>Water Bill</li>
+                            <li>Insurance Bill</li>
+                            <li>Insurance Bill</li>
 
-                  <li>Bank Statement</li>
-                </ul>
-              </Col>
-              <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-                <Button
-                  style={{
-                    backgroundColor: colorWarning,
-                  }}
-                  onClick={()=>props.verify(3)}
-                  >
-                  Start
-                </Button>
-              </Col>
-            </>
-          ) : (
-            <>
-            <Col sm="12" md="6">
-              <h5 className="mb-2">
-                Proof of Address
-                <i
-                  className="fa fa-question-circle pl-2"
-                  onClick={toggleModal2}></i>
-              </h5>
-              <p>
-                A utility bill is required to unlock Tier 3 limit. Make sure this
-                includes your name and the address associated with your ID.
-                Acceptable forms of Proof of Address include, but are not limited
-                to:
-              </p>
-              <ul style={{ listStyleType: "disc" }} className="mt-3">
-                <li>Electric Bill</li>
-                <li>Water Bill</li>
-                <li>Insurance Bill</li>
-                <li>Insurance Bill</li>
+                            <li>Bank Statement</li>
+                          </ul>
+                        </Col>
+                        <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                          <Button
+                            style={{
+                              backgroundColor: colorSuccess,
+                            }}
+                            disabled
+                          >
+                            Verified
+                    </Button>
+                        </Col>
+                      </>
+                    ) : (props.tier3 ? (
+                      <>
+                        <Col sm="12" md="6">
+                          <h5 className="mb-2">
+                            Proof of Address
+                      <i
+                              className="fa fa-question-circle pl-2"
+                              onClick={toggleModal2}></i>
+                          </h5>
+                          <p>
+                            A utility bill is required to unlock Tier 3 limit. Make sure this
+                            includes your name and the address associated with your ID.
+                            Acceptable forms of Proof of Address include, but are not limited
+                            to:
+                    </p>
+                          <ul style={{ listStyleType: "disc" }} className="mt-3">
+                            <li>Electric Bill</li>
+                            <li>Water Bill</li>
+                            <li>Insurance Bill</li>
+                            <li>Insurance Bill</li>
 
-                <li>Bank Statement</li>
-              </ul>
-            </Col>
-            <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
-              <Button
-                style={{
-                  backgroundColor: colorSuccess,
-                }}
-                disabled
-                >
-                uploaded
-              </Button>
-            </Col>
-          </>
-          ))}
+                            <li>Bank Statement</li>
+                          </ul>
+                        </Col>
+                        <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                          <Button
+                            style={{
+                              backgroundColor: colorWarning,
+                            }}
+                            onClick={() => props.verify(3)}
+                          >
+                            Start
+                    </Button>
+                        </Col>
+                      </>
+                    ) : (
+                        <>
+                          <Col sm="12" md="6">
+                            <h5 className="mb-2">
+                              Proof of Address
+                    <i
+                                className="fa fa-question-circle pl-2"
+                                onClick={toggleModal2}></i>
+                            </h5>
+                            <p>
+                              A utility bill is required to unlock Tier 3 limit. Make sure this
+                              includes your name and the address associated with your ID.
+                              Acceptable forms of Proof of Address include, but are not limited
+                              to:
+                  </p>
+                            <ul style={{ listStyleType: "disc" }} className="mt-3">
+                              <li>Electric Bill</li>
+                              <li>Water Bill</li>
+                              <li>Insurance Bill</li>
+                              <li>Insurance Bill</li>
+
+                              <li>Bank Statement</li>
+                            </ul>
+                          </Col>
+                          <Col sm="12" md="4" className="mt-3 text-sm-center text-md-right">
+                            <Button
+                              style={{
+                                backgroundColor: colorSuccess,
+                              }}
+                              disabled
+                            >
+                              uploaded
+                  </Button>
+                          </Col>
+                        </>
+                      ))
+                  )
+              )
+
+          }
         </Row>
       </div>
       <Modal isOpen={modal} toggle={toggleModal}>

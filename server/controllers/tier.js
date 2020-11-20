@@ -6,6 +6,13 @@ const fs = require('fs');
 
 //to submit a tier 2
 exports.postTier2 = async (req, res, next) => {
+    const user=await User.findById(req.user.id);
+    if(!user.phoneVerified){
+        return res
+                .status(500)
+                .contentType("text/plain")
+                .json({ message: "Please have an SMS verification first!" });
+    }
     if (req.files) {
         try {
             const comp = {};
@@ -74,6 +81,19 @@ exports.getTier2 = async (req, res, next) => {
 
 //to submit a tier 3 form
 exports.postTier3 = async (req, res, next) => {
+    const user=await User.findById(req.user.id);
+    if(!user.phoneVerified){
+        return res
+                .status(500)
+                .contentType("text/plain")
+                .json({ message: "Please have an SMS verification first!" });
+    }
+    if(user.level<2){
+        return res
+                .status(500)
+                .contentType("text/plain")
+                .json({ message: "Please apply a tier 2 first!" });
+    }
     if (req.file) {
         const tempPath = req.file.path;
         //to remve earlier submitted one
