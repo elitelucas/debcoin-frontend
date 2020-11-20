@@ -124,18 +124,18 @@ const index = () => {
                                 <a href="">{ele._id}</a>
                               </th>
                               <td>${ele.amount} </td>
-                              <td>{Math.floor(100000000 * parseFloat(ele.amount) * parseFloat(ele.rate)) / 100000000} </td>
+                              <td>{Math.floor(100000000 * parseFloat(ele.amount) / parseFloat(ele.rate)) / 100000000} </td>
                               <td>${ele.amount}  </td>
                               <td>{ele.wallet_name}  </td>
                               <td>{ele.createdAt} </td>
                               <td>
                                 {
-                                  ele.status == 1 ? (
-                                    <span className="badge badge-success">Succeed</span>
-                                  ) : (ele.status == 0 ? (
-                                    <span className="badge badge-info">pending</span>
+                                  ele.approved == 1 ? (
+                                    <span className="badge badge-success">Approved</span>
+                                  ) : (ele.approved == 0 ? (
+                                    <span className="badge badge-warning">pending</span>
                                   ) : (
-                                      <span className="badge badge-danger">Cancelled</span>
+                                      <span className="badge badge-danger">Declined</span>
                                     ))
                                 }
 

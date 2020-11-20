@@ -12,8 +12,8 @@ const http = require('http');
 const fs = require('fs');
 const path=require('path');
 
-const dev = false;
-// const dev = true;
+//const dev = false;
+ const dev = true;
 const app = next({ 
   dev,
   dir: path.join(__dirname, '../'),
@@ -24,8 +24,8 @@ const handle = app.getRequestHandler();
 app.prepare()
 .then(() => {
   const server = express()
-  server.set('env', "product");
-//   server.set('env', "development");
+//  server.set('env', "product");
+   server.set('env', "development");
   var sess = {
       secret: 'sdfwee$#3gqg3gg5gaGhJ',
       cookie: { maxAge: 600000 },

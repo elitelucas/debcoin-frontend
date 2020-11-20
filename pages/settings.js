@@ -318,7 +318,7 @@ const settings = () => {
                     <div
                       className="employee"
                       style={{ alignSelf: "center", marginLeft: " 2rem" }}>
-                      <h4 className="e-name text-center">name</h4>
+                      <h4 className="e-name text-center">{authState.userInfo.username}</h4>
                     </div>
                   </div>
                 </Col>

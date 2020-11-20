@@ -17,7 +17,6 @@ var start_time=(new Date()).getTime();
 //Get prices of crypto currencies on markets
 const getPrices=async ()=>{
   start_time=(new Date()).getTime();
-  console.log('start_time='+start_time);
   try{
     market_prices=await getRateInfo();
   }catch(err){
@@ -30,16 +29,17 @@ setInterval(getPrices,30000);
 //exchange history
 exports.listExchange = async (req, res, next) => {
   try {
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1},paid:true}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,paid:true}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
+    const exchange1 = await Exchange.find({_userId:req.user.id,approved:{'$ne':-1},paid:true}).sort('-createdAt');
     //to calculate Sunday of current week
     sunday.setDate(today.getDate()-today.getDay());
     var week_total=0;
     //to sum up all the exchanges in a week
-    for(var i=0;i<exchange.length;i++){
-        if(new Date(exchange[i].createdAt).getTime()-sunday.getTime()>=0){
-            week_total+=parseFloat(exchange[i].amount);
+    for(var i=0;i<exchange1.length;i++){
+        if(new Date(exchange1[i].createdAt).getTime()-sunday.getTime()>=0){
+            week_total+=parseFloat(exchange1[i].amount);
         }else
             break;
     }
@@ -60,7 +60,7 @@ exports.allowedExchange = async (req, res, next) => {
       await trash[i].remove();
     }
     //to sum up all the exchanges in a week
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1},paid:true}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,approved:{'$ne':-1},paid:true}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -94,9 +94,7 @@ exports.getRate=async (req, res, next) => {
     if(tmp)
       fee=tmp.fee;
     let current_time=(new Date()).getTime();
-    console.log("current_time="+current_time);
     current_time-=start_time;
-    console.log("remain="+current_time);
     return res.status(200).json({rate:market_prices.last_trade_price*(100+fee)/100, time:current_time});
   } catch (error) {
     console.log(error);
@@ -107,7 +105,7 @@ exports.getRate=async (req, res, next) => {
 exports.postAmount=async (req, res, next) => {
   try {
     //to sum up all the exchanges in a week
-    const exchange = await Exchange.find({_userId:req.user.id,status:{'$ne':-1},paid:true}).sort('-createdAt');
+    const exchange = await Exchange.find({_userId:req.user.id,approved:{'$ne':-1},paid:true}).sort('-createdAt');
     const today=new Date();
     var sunday=new Date();
     sunday.setDate(today.getDate()-today.getDay());
@@ -165,7 +163,7 @@ exports.smsResult = async (req, res) => {
   if(bool){
       try{
           const exchange = await Exchange.findById(req.session.exchange);
-          exchange.verify=true;
+          exchange.smsVerified=true;
           const saved=await exchange.save();
           return res.status(200).send('ok');
       }catch(ex){
