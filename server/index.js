@@ -24,8 +24,8 @@ const handle = app.getRequestHandler();
 app.prepare()
 .then(() => {
   const server = express()
-  server.set('env', "product");
-//   server.set('env', "development");
+  // server.set('env', "production");
+  server.set('env', "development");
   var sess = {
       secret: 'sdfwee$#3gqg3gg5gaGhJ',
       cookie: { maxAge: 600000 },
